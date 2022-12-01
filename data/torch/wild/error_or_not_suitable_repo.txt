@@ -1,0 +1,10 @@
+https://github.com/AntixK/PyTorch-VAE.git
+https://github.com/WXinlong/SOLO.git
+https://github.com/huggingface/datasets.git
+https://github.com/layumi/Person_reID_baseline_pytorch
+https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Sequence-Labeling
+https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Super-Resolution
+https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Text-Classification
+https://github.com/DuanYiqun/pytorch_implementation_of_Yolov1
+https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Machine-Translation
+https://github.com/harskish/ganspace

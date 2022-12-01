@@ -1,0 +1,37 @@
+#!/bin/bash
+
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_executor.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_extensions.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_ffi_container.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_batch_processor.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_control_flow.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_data.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_estimator.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_event_handler.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_indexing.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_model_zoo.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_probability_v2.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_save.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_trainer.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_gluon_utils.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_higher_order_grad.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_image.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_infer_shape.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_infer_type.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_io.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_kvstore.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_kvstore_custom.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_loss.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_memory_opt.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_metric.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_numpy_contrib_gluon_data_vision.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_numpy_default_dtype.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_numpy_gluon_data_vision.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_numpy_interoperability.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_numpy_loss.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_numpy_ndarray.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_numpy_op.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_operator.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_optimizer.py
+pytest -q /media/nimashiri/SSD1/mxnet/tests/python/unittest/test_profiler.py

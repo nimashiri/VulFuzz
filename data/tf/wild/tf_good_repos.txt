@@ -1,0 +1,15 @@
+https://github.com/TensorSpeech/TensorFlowTTS.git
+https://github.com/huggingface/datasets.git
+https://github.com/DeepWisdom/AutoDL.git
+https://github.com/Tencent/TNN.git
+https://github.com/isl-org/Open3D-ML.git
+https://github.com/mlech26l/ncps.git
+https://github.com/zenml-io/zenml.git
+https://github.com/jrieke/traingenerator.git
+https://github.com/neuralmagic/sparseml.git
+https://github.com/neuralmagic/deepsparse.git
+https://github.com/replicate/cog.git
+https://github.com/coqui-ai/STT.git
+https://github.com/spotify/pedalboard.git
+https://github.com/yeemachine/kalidokit.git
+https://github.com/AIZOOTech/FaceMaskDetection

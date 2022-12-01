@@ -1,0 +1,2345 @@
+Full, Raw
+"tf.raw_ops.QuantizeAndDequantizeV3(
+    input,
+    input_min,
+    input_max,
+    num_bits,
+    signed_input=True,
+    range_given=True,
+    narrow_range=False,
+    axis=-1,
+    name=None
+)
+",tf.raw_ops.QuantizeAndDequantizeV3
+"tf.quantization.fake_quant_with_min_max_vars_gradient(
+    gradients, inputs, min, max, num_bits=8, narrow_range=False, name=None
+)
+",tf.quantization.fake_quant_with_min_max_vars_gradient
+"tf.random.gamma(
+    shape,
+    alpha,
+    beta=None,
+    dtype=tf.dtypes.float32,
+    seed=None,
+    name=None
+)
+",tf.random.gamma
+"tf.raw_ops.RandomPoissonV2(
+    shape,
+    rate,
+    seed=0,
+    seed2=0,
+    dtype=tf.dtypes.int64,
+    name=None
+)
+",tf.raw_ops.RandomPoissonV2
+"tf.raw_ops.Unbatch(
+    batched_tensor,
+    batch_index,
+    id,
+    timeout_micros,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.Unbatch
+"tf.raw_ops.DrawBoundingBoxes(
+    images, boxes, name=None
+)
+",tf.raw_ops.DrawBoundingBoxes
+"tf.raw_ops.Eig(
+    input, Tout, compute_v=True, name=None
+)
+",tf.raw_ops.Eig
+"tf.raw_ops.Conv2DBackpropInput(
+    input_sizes,
+    filter,
+    out_backprop,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2DBackpropInput
+"tf.raw_ops.EmptyTensorList(
+    element_shape, max_num_elements, element_dtype, name=None
+)
+",tf.raw_ops.EmptyTensorList
+"tf.sparse.cross(
+    inputs, name=None, separator=None
+)
+",tf.sparse.cross
+"tf.raw_ops.Conv2D(
+    input,
+    filter,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2D
+"tf.raw_ops.AudioSummaryV2(
+    tag, tensor, sample_rate, max_outputs=3, name=None
+)
+",tf.raw_ops.AudioSummaryV2
+"tf.raw_ops.CollectiveGather(
+    input,
+    group_size,
+    group_key,
+    instance_key,
+    shape,
+    communication_hint='auto',
+    timeout_seconds=0,
+    name=None
+)
+",tf.raw_ops.CollectiveGather
+"tf.raw_ops.SetSize(
+    set_indices, set_values, set_shape, validate_indices=True, name=None
+)
+",tf.raw_ops.SetSize
+"tf.raw_ops.TensorListFromTensor(
+    tensor, element_shape, name=None
+)
+",tf.raw_ops.TensorListFromTensor
+"tf.raw_ops.TensorListScatter(
+    tensor, indices, element_shape, name=None
+)
+",tf.raw_ops.TensorListScatter
+"tf.raw_ops.TensorListScatterV2(
+    tensor, indices, element_shape, num_elements, name=None
+)
+",tf.raw_ops.TensorListScatterV2
+"tf.quantization.fake_quant_with_min_max_vars_per_channel_gradient(
+    gradients, inputs, min, max, num_bits=8, narrow_range=False, name=None
+)
+",tf.quantization.fake_quant_with_min_max_vars_per_channel_gradient
+"tf.raw_ops.MaxPool(
+    input,
+    ksize,
+    strides,
+    padding,
+    explicit_paddings=[],
+    data_format='NHWC',
+    name=None
+)
+",tf.raw_ops.MaxPool
+"tf.linalg.matrix_rank(
+    a, tol=None, validate_args=False, name=None
+)
+",tf.linalg.matrix_rank
+"tf.raw_ops.DenseBincount(
+    input, size, weights, binary_output=False, name=None
+)
+",tf.raw_ops.DenseBincount
+"tf.raw_ops.RaggedBincount(
+    splits, values, size, weights, binary_output=False, name=None
+)
+",tf.raw_ops.RaggedBincount
+"tf.raw_ops.LRNGrad(
+    input_grads,
+    input_image,
+    output_image,
+    depth_radius=5,
+    bias=1,
+    alpha=1,
+    beta=0.5,
+    name=None
+)
+",tf.raw_ops.LRNGrad
+"tf.raw_ops.ParameterizedTruncatedNormal(
+    shape, means, stdevs, minvals, maxvals, seed=0, seed2=0, name=None
+)
+",tf.raw_ops.ParameterizedTruncatedNormal
+"tf.raw_ops.Save(
+    filename, tensor_names, data, name=None
+)
+",tf.raw_ops.Save
+"tf.raw_ops.SparseBincount(
+    indices, values, dense_shape, size, weights, binary_output=False, name=None
+)
+",tf.raw_ops.SparseBincount
+"tf.raw_ops.RaggedTensorToVariant(
+    rt_nested_splits, rt_dense_values, batched_input, name=None
+)
+",tf.raw_ops.RaggedTensorToVariant
+"tf.raw_ops.FractionalMaxPoolGrad(
+    orig_input,
+    orig_output,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalMaxPoolGrad
+"tf.raw_ops.QuantizedRelu(
+    features,
+    min_features,
+    max_features,
+    out_type=tf.dtypes.quint8,
+    name=None
+)
+",tf.raw_ops.QuantizedRelu
+"tf.raw_ops.QuantizedRelu6(
+    features,
+    min_features,
+    max_features,
+    out_type=tf.dtypes.quint8,
+    name=None
+)
+",tf.raw_ops.QuantizedRelu6
+"tf.raw_ops.QuantizeDownAndShrinkRange(
+    input, input_min, input_max, out_type, name=None
+)
+",tf.raw_ops.QuantizeDownAndShrinkRange
+"tf.raw_ops.QuantizedMatMul(
+    a,
+    b,
+    min_a,
+    max_a,
+    min_b,
+    max_b,
+    Toutput=tf.dtypes.qint32,
+    transpose_a=False,
+    transpose_b=False,
+    Tactivation=tf.dtypes.quint8,
+    name=None
+)
+",tf.raw_ops.QuantizedMatMul
+"tf.raw_ops.FakeQuantWithMinMaxVarsPerChannel(
+    inputs, min, max, num_bits=8, narrow_range=False, name=None
+)
+",tf.raw_ops.FakeQuantWithMinMaxVarsPerChannel
+"tf.raw_ops.QuantizedBiasAdd(
+    input, bias, min_input, max_input, min_bias, max_bias, out_type, name=None
+)
+",tf.raw_ops.QuantizedBiasAdd
+"tf.raw_ops.Requantize(
+    input,
+    input_min,
+    input_max,
+    requested_output_min,
+    requested_output_max,
+    out_type,
+    name=None
+)
+",tf.raw_ops.Requantize
+"tf.raw_ops.FakeQuantWithMinMaxVars(
+    inputs, min, max, num_bits=8, narrow_range=False, name=None
+)
+",tf.raw_ops.FakeQuantWithMinMaxVars
+"tf.raw_ops.QuantizedInstanceNorm(
+    x,
+    x_min,
+    x_max,
+    output_range_given=False,
+    given_y_min=0,
+    given_y_max=0,
+    variance_epsilon=1e-05,
+    min_separation=0.001,
+    name=None
+)
+",tf.raw_ops.QuantizedInstanceNorm
+"tf.raw_ops.Conv2DBackpropInput(
+    input_sizes,
+    filter,
+    out_backprop,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2DBackpropInput
+"tf.raw_ops.AvgPoolGrad(
+    orig_input_shape,
+    grad,
+    ksize,
+    strides,
+    padding,
+    data_format='NHWC',
+    name=None
+)
+",tf.raw_ops.AvgPoolGrad
+"tf.raw_ops.QuantizedAdd(
+    x,
+    y,
+    min_x,
+    max_x,
+    min_y,
+    max_y,
+    Toutput=tf.dtypes.qint32,
+    name=None
+)
+",tf.raw_ops.QuantizedAdd
+"tf.raw_ops.QuantizedAvgPool(
+    input, min_input, max_input, ksize, strides, padding, name=None
+)
+",tf.raw_ops.QuantizedAvgPool
+"tf.raw_ops.LowerBound(
+    sorted_inputs,
+    values,
+    out_type=tf.dtypes.int32,
+    name=None
+)
+",tf.raw_ops.LowerBound
+"tf.raw_ops.UpperBound(
+    sorted_inputs,
+    values,
+    out_type=tf.dtypes.int32,
+    name=None
+)
+",tf.raw_ops.UpperBound
+"tf.raw_ops.BlockLSTMGradV2(
+    seq_len_max,
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    i,
+    cs,
+    f,
+    o,
+    ci,
+    co,
+    h,
+    cs_grad,
+    h_grad,
+    use_peephole,
+    name=None
+)
+",tf.raw_ops.BlockLSTMGradV2
+"tf.raw_ops.BlockLSTMGradV2(
+    seq_len_max,
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    i,
+    cs,
+    f,
+    o,
+    ci,
+    co,
+    h,
+    cs_grad,
+    h_grad,
+    use_peephole,
+    name=None
+)
+",tf.raw_ops.BlockLSTMGradV2
+"tf.raw_ops.BlockLSTMGradV2(
+    seq_len_max,
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    i,
+    cs,
+    f,
+    o,
+    ci,
+    co,
+    h,
+    cs_grad,
+    h_grad,
+    use_peephole,
+    name=None
+)
+",tf.raw_ops.BlockLSTMGradV2
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.AvgPool3DGrad(
+    orig_input_shape,
+    grad,
+    ksize,
+    strides,
+    padding,
+    data_format='NDHWC',
+    name=None
+)
+",tf.raw_ops.AvgPool3DGrad
+"tf.raw_ops.UnbatchGrad(
+    original_input,
+    batch_index,
+    grad,
+    id,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.UnbatchGrad
+"tf.raw_ops.UnbatchGrad(
+    original_input,
+    batch_index,
+    grad,
+    id,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.UnbatchGrad
+"tf.raw_ops.AvgPool(
+    value, ksize, strides, padding, data_format='NHWC', name=None
+)
+",tf.raw_ops.AvgPool
+"tf.raw_ops.RaggedRange(
+    starts,
+    limits,
+    deltas,
+    Tsplits=tf.dtypes.int64,
+    name=None
+)
+",tf.raw_ops.RaggedRange
+"tf.raw_ops.TensorListReserve(
+    element_shape, num_elements, element_dtype, name=None
+)
+",tf.raw_ops.TensorListReserve
+"tf.raw_ops.SobolSample(
+    dim,
+    num_results,
+    skip,
+    dtype=tf.dtypes.float32,
+    name=None
+)
+",tf.raw_ops.SobolSample
+"tf.reshape(
+    tensor, shape, name=None
+)
+",tf.reshape
+"tf.histogram_fixed_width(
+    values,
+    value_range,
+    nbins=100,
+    dtype=tf.dtypes.int32,
+    name=None
+)
+",tf.histogram_fixed_width
+"tf.ragged.constant([[0], [1, 2]]).shape",tf.ragged.constant
+"tf.strings.unsorted_segment_join(
+    inputs, segment_ids, num_segments, separator='', name=None
+)
+",tf.strings.unsorted_segment_join
+"tf.strings.unsorted_segment_join(
+    inputs, segment_ids, num_segments, separator='', name=None
+)
+",tf.strings.unsorted_segment_join
+"tf.raw_ops.EditDistance(
+    hypothesis_indices,
+    hypothesis_values,
+    hypothesis_shape,
+    truth_indices,
+    truth_values,
+    truth_shape,
+    normalize=True,
+    name=None
+)
+",tf.raw_ops.EditDistance
+"tf.raw_ops.SpaceToBatchND(
+    input, block_shape, paddings, name=None
+)
+",tf.raw_ops.SpaceToBatchND
+"tf.raw_ops.QuantizedConv2D(
+    input,
+    filter,
+    min_input,
+    max_input,
+    min_filter,
+    max_filter,
+    strides,
+    padding,
+    out_type=tf.dtypes.qint32,
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.QuantizedConv2D
+"tf.raw_ops.SparseTensorDenseAdd(
+    a_indices, a_values, a_shape, b, name=None
+)
+",tf.raw_ops.SparseTensorDenseAdd
+"tf.raw_ops.QueueIsClosedV2(
+    handle, name=None
+)
+",tf.raw_ops.QueueIsClosedV2
+"tf.summary.flush(
+    writer=None, name=None
+)
+",tf.summary.flush
+"tf.raw_ops.Conv3DBackpropFilterV2(
+    input,
+    filter_sizes,
+    out_backprop,
+    strides,
+    padding,
+    data_format='NDHWC',
+    dilations=[1, 1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv3DBackpropFilterV2
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.LSTMBlockCell(
+    x,
+    cs_prev,
+    h_prev,
+    w,
+    wci,
+    wcf,
+    wco,
+    b,
+    forget_bias=1,
+    cell_clip=3,
+    use_peephole=False,
+    name=None
+)
+",tf.raw_ops.LSTMBlockCell
+"tf.raw_ops.SparseTensorToCSRSparseMatrix(
+    indices, values, dense_shape, name=None
+)
+",tf.raw_ops.SparseTensorToCSRSparseMatrix
+"tf.raw_ops.SparseTensorToCSRSparseMatrix(
+    indices, values, dense_shape, name=None
+)
+",tf.raw_ops.SparseTensorToCSRSparseMatrix
+"tf.raw_ops.LoadAndRemapMatrix(
+    ckpt_path,
+    old_tensor_name,
+    row_remapping,
+    col_remapping,
+    initializing_values,
+    num_rows,
+    num_cols,
+    max_rows_in_memory=-1,
+    name=None
+)
+",tf.raw_ops.LoadAndRemapMatrix
+"tf.raw_ops.UnsortedSegmentJoin(
+    inputs, segment_ids, num_segments, separator='', name=None
+)
+",tf.raw_ops.UnsortedSegmentJoin
+"tf.raw_ops.StagePeek(
+    index,
+    dtypes,
+    capacity=0,
+    memory_limit=0,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.StagePeek
+"tf.raw_ops.GetSessionTensor(
+    handle, dtype, name=None
+)
+",tf.raw_ops.GetSessionTensor
+"tf.raw_ops.DeleteSessionTensor(
+    handle, name=None
+)
+",tf.raw_ops.DeleteSessionTensor
+"tf.raw_ops.QuantizeAndDequantizeV4Grad(
+    gradients, input, input_min, input_max, axis=-1, name=None
+)
+",tf.raw_ops.QuantizeAndDequantizeV4Grad
+"tf.sparse.split(
+    sp_input=None, num_split=None, axis=None, name=None
+)
+",tf.sparse.split
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.QuantizedMaxPool(
+    input, min_input, max_input, ksize, strides, padding, name=None
+)
+",tf.raw_ops.QuantizedMaxPool
+"tf.raw_ops.FractionalMaxPool(
+    value,
+    pooling_ratio,
+    pseudo_random=False,
+    overlapping=False,
+    deterministic=False,
+    seed=0,
+    seed2=0,
+    name=None
+)
+",tf.raw_ops.FractionalMaxPool
+"tf.raw_ops.AddManySparseToTensorsMap(
+    sparse_indices,
+    sparse_values,
+    sparse_shape,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.AddManySparseToTensorsMap
+"tf.raw_ops.SparseDenseCwiseDiv(
+    sp_indices, sp_values, sp_shape, dense, name=None
+)
+",tf.raw_ops.SparseDenseCwiseDiv
+"tf.raw_ops.SparseDenseCwiseDiv(
+    sp_indices, sp_values, sp_shape, dense, name=None
+)
+",tf.raw_ops.SparseDenseCwiseDiv
+"tf.raw_ops.StringNGrams(
+    data,
+    data_splits,
+    separator,
+    ngram_widths,
+    left_pad,
+    right_pad,
+    pad_width,
+    preserve_short_sequences,
+    name=None
+)
+",tf.raw_ops.StringNGrams
+"tf.raw_ops.ThreadPoolHandle(
+    num_threads,
+    display_name,
+    max_intra_op_parallelism=1,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.ThreadPoolHandle
+"tf.raw_ops.ConcatV2(
+    values, axis, name=None
+)
+",tf.raw_ops.ConcatV2
+"tf.raw_ops.UnravelIndex(
+    indices, dims, name=None
+)
+",tf.raw_ops.UnravelIndex
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.Dequantize(
+    input,
+    min_range,
+    max_range,
+    mode='MIN_COMBINED',
+    narrow_range=False,
+    axis=-1,
+    dtype=tf.dtypes.float32,
+    name=None
+)
+",tf.raw_ops.Dequantize
+"tf.raw_ops.Dequantize(
+    input,
+    min_range,
+    max_range,
+    mode='MIN_COMBINED',
+    narrow_range=False,
+    axis=-1,
+    dtype=tf.dtypes.float32,
+    name=None
+)
+",tf.raw_ops.Dequantize
+"tf.raw_ops.ReverseSequence(
+    input, seq_lengths, seq_dim, batch_dim=0, name=None
+)
+",tf.raw_ops.ReverseSequence
+"tf.raw_ops.AvgPoolGrad(
+    orig_input_shape,
+    grad,
+    ksize,
+    strides,
+    padding,
+    data_format='NHWC',
+    name=None
+)
+",tf.raw_ops.AvgPoolGrad
+"tf.raw_ops.SparseFillEmptyRows(
+    indices, values, dense_shape, default_value, name=None
+)
+",tf.raw_ops.SparseFillEmptyRows
+"tf.raw_ops.SplitV(
+    value, size_splits, axis, num_split, name=None
+)
+",tf.raw_ops.SplitV
+"tf.raw_ops.SplitV(
+    value, size_splits, axis, num_split, name=None
+)
+",tf.raw_ops.SplitV
+"tf.raw_ops.CudnnRNNV3(
+    input,
+    input_h,
+    input_c,
+    params,
+    sequence_lengths,
+    rnn_mode='lstm',
+    input_mode='linear_input',
+    direction='unidirectional',
+    dropout=0,
+    seed=0,
+    seed2=0,
+    num_proj=0,
+    is_training=True,
+    time_major=True,
+    name=None
+)
+",tf.raw_ops.CudnnRNNV3
+"tf.raw_ops.AllToAll(
+    input,
+    group_assignment,
+    concat_dimension,
+    split_dimension,
+    split_count,
+    name=None
+)
+",tf.raw_ops.AllToAll
+"tf.raw_ops.CollectiveReduceV2(
+    input,
+    group_size,
+    group_key,
+    instance_key,
+    ordering_token,
+    merge_op,
+    final_op,
+    communication_hint='auto',
+    timeout_seconds=0,
+    max_subdivs_per_device=-1,
+    name=None
+)
+",tf.raw_ops.CollectiveReduceV2
+"tf.raw_ops.SparseMatMul(
+    a,
+    b,
+    transpose_a=False,
+    transpose_b=False,
+    a_is_sparse=False,
+    b_is_sparse=False,
+    name=None
+)
+",tf.raw_ops.SparseMatMul
+"tf.raw_ops.Transpose(
+    x, perm, name=None
+)
+",tf.raw_ops.Transpose
+"tf.raw_ops.DeserializeSparse(
+    serialized_sparse, dtype, name=None
+)
+",tf.raw_ops.DeserializeSparse
+"tf.ragged.cross(
+    inputs, name=None
+)
+",tf.ragged.cross
+"tf.raw_ops.QuantizeV2(
+    input,
+    min_range,
+    max_range,
+    T,
+    mode='MIN_COMBINED',
+    round_mode='HALF_AWAY_FROM_ZERO',
+    narrow_range=False,
+    axis=-1,
+    ensure_minimum_range=0.01,
+    name=None
+)
+",tf.raw_ops.QuantizeV2
+"tf.raw_ops.QuantizeAndDequantizeV4Grad(
+    gradients, input, input_min, input_max, axis=-1, name=None
+)
+",tf.raw_ops.QuantizeAndDequantizeV4Grad
+"tf.raw_ops.ParallelConcat(
+    values, shape, name=None
+)
+",tf.raw_ops.ParallelConcat
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.keras.layers.UpSampling2D(
+    size=(2, 2), data_format=None, interpolation='nearest', **kwargs
+)
+",tf.keras.layers.UpSampling2D
+"tf.summary.create_file_writer(
+    logdir,
+    max_queue=None,
+    flush_millis=None,
+    filename_suffix=None,
+    name=None,
+    experimental_trackable=False
+)
+",tf.summary.create_file_writer
+"tf.math.segment_max(
+    data, segment_ids, name=None
+)
+",tf.math.segment_max
+"tf.math.segment_min(
+    data, segment_ids, name=None
+)
+",tf.math.segment_min
+"tf.math.segment_mean(
+    data, segment_ids, name=None
+)
+",tf.math.segment_mean
+"tf.math.segment_sum(
+    data, segment_ids, name=None
+)
+",tf.math.segment_sum
+"tf.math.segment_prod(
+    data, segment_ids, name=None
+)
+",tf.math.segment_prod
+"tf.keras.models.model_from_yaml(
+    yaml_string, custom_objects=None
+)
+",tf.keras.models.model_from_yaml
+"tf.raw_ops.Dequantize(
+    input,
+    min_range,
+    max_range,
+    mode='MIN_COMBINED',
+    narrow_range=False,
+    axis=-1,
+    dtype=tf.dtypes.float32,
+    name=None
+)
+",tf.raw_ops.Dequantize
+"tf.raw_ops.Conv2D(
+    input,
+    filter,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2D
+"tf.raw_ops.Conv2D(
+    input,
+    filter,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2D
+"tf.raw_ops.SparseFillEmptyRows(
+    indices, values, dense_shape, default_value, name=None
+)
+",tf.raw_ops.SparseFillEmptyRows
+"tf.raw_ops.MaxPoolGrad(
+    orig_input,
+    orig_output,
+    grad,
+    ksize,
+    strides,
+    padding,
+    explicit_paddings=[],
+    data_format='NHWC',
+    name=None
+)
+",tf.raw_ops.MaxPoolGrad
+"tf.raw_ops.MaxPoolGrad(
+    orig_input,
+    orig_output,
+    grad,
+    ksize,
+    strides,
+    padding,
+    explicit_paddings=[],
+    data_format='NHWC',
+    name=None
+)
+",tf.raw_ops.MaxPoolGrad
+"tf.raw_ops.MapStage(
+    key,
+    indices,
+    values,
+    dtypes,
+    capacity=0,
+    memory_limit=0,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.MapStage
+"tf.raw_ops.SdcaOptimizerV2(
+    sparse_example_indices,
+    sparse_feature_indices,
+    sparse_feature_values,
+    dense_features,
+    example_weights,
+    example_labels,
+    sparse_indices,
+    sparse_weights,
+    dense_weights,
+    example_state_data,
+    loss_type,
+    l1,
+    l2,
+    num_loss_partitions,
+    num_inner_iterations,
+    adaptive=True,
+    name=None
+)
+",tf.raw_ops.SdcaOptimizerV2
+"tf.raw_ops.MapPeek(
+    key,
+    indices,
+    dtypes,
+    capacity=0,
+    memory_limit=0,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.MapPeek
+"tf.raw_ops.UpperBound(
+    sorted_inputs,
+    values,
+    out_type=tf.dtypes.int32,
+    name=None
+)
+",tf.raw_ops.UpperBound
+"tf.raw_ops.LowerBound(
+    sorted_inputs,
+    values,
+    out_type=tf.dtypes.int32,
+    name=None
+)
+",tf.raw_ops.LowerBound
+"tf.raw_ops.NonMaxSuppressionV5(
+    boxes,
+    scores,
+    max_output_size,
+    iou_threshold,
+    score_threshold,
+    soft_nms_sigma,
+    pad_to_max_output_size=False,
+    name=None
+)
+",tf.raw_ops.NonMaxSuppressionV5
+"tf.raw_ops.CombinedNonMaxSuppression(
+    boxes,
+    scores,
+    max_output_size_per_class,
+    max_total_size,
+    iou_threshold,
+    score_threshold,
+    pad_per_class=False,
+    clip_boxes=True,
+    name=None
+)
+",tf.raw_ops.CombinedNonMaxSuppression
+"tf.raw_ops.UnravelIndex(
+    indices, dims, name=None
+)
+",tf.raw_ops.UnravelIndex
+"tf.raw_ops.RaggedTensorToVariant(
+    rt_nested_splits, rt_dense_values, batched_input, name=None
+)
+",tf.raw_ops.RaggedTensorToVariant
+"tf.raw_ops.RequantizationRangePerChannel(
+    input, input_min, input_max, clip_value_max, name=None
+)
+",tf.raw_ops.RequantizationRangePerChannel
+"tf.raw_ops.RequantizationRangePerChannel(
+    input, input_min, input_max, clip_value_max, name=None
+)
+",tf.raw_ops.RequantizationRangePerChannel
+"tf.raw_ops.RequantizationRangePerChannel(
+    input, input_min, input_max, clip_value_max, name=None
+)
+",tf.raw_ops.RequantizationRangePerChannel
+"tf.raw_ops.QuantizeV2(
+    input,
+    min_range,
+    max_range,
+    T,
+    mode='MIN_COMBINED',
+    round_mode='HALF_AWAY_FROM_ZERO',
+    narrow_range=False,
+    axis=-1,
+    ensure_minimum_range=0.01,
+    name=None
+)
+",tf.raw_ops.QuantizeV2
+"tf.raw_ops.BoostedTreesSparseCalculateBestFeatureSplit(
+    node_id_range,
+    stats_summary_indices,
+    stats_summary_values,
+    stats_summary_shape,
+    l1,
+    l2,
+    tree_complexity,
+    min_node_weight,
+    logits_dimension,
+    split_type='inequality',
+    name=None
+)
+",tf.raw_ops.BoostedTreesSparseCalculateBestFeatureSplit
+"tf.raw_ops.InplaceSub(
+    x, i, v, name=None
+)
+",tf.raw_ops.InplaceSub
+"tf.raw_ops.SqrtGrad(
+    y, dy, name=None
+)
+",tf.raw_ops.SqrtGrad
+"tf.raw_ops.MatrixSetDiagV3(
+    input, diagonal, k, align='RIGHT_LEFT', name=None
+)
+",tf.raw_ops.MatrixSetDiagV3
+"tf.raw_ops.MatrixDiagV3(
+    diagonal,
+    k,
+    num_rows,
+    num_cols,
+    padding_value,
+    align='RIGHT_LEFT',
+    name=None
+)
+",tf.raw_ops.MatrixDiagV3
+"tf.raw_ops.RaggedTensorToSparse(
+    rt_nested_splits, rt_dense_values, name=None
+)
+",tf.raw_ops.RaggedTensorToSparse
+"tf.raw_ops.ResourceScatterUpdate(
+    resource, indices, updates, name=None
+)
+",tf.raw_ops.ResourceScatterUpdate
+"tf.raw_ops.ResourceGather(
+    resource, indices, dtype, batch_dims=0, validate_indices=True, name=None
+)
+",tf.raw_ops.ResourceGather
+"tf.raw_ops.ResourceGather(
+    resource, indices, dtype, batch_dims=0, validate_indices=True, name=None
+)
+",tf.raw_ops.ResourceGather
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.ExperimentalDatasetToTFRecord(
+    input_dataset, filename, compression_type, name=None
+)
+",tf.raw_ops.ExperimentalDatasetToTFRecord
+"tf.raw_ops.UncompressElement(
+    compressed, output_types, output_shapes, name=None
+)
+",tf.raw_ops.UncompressElement
+"tf.raw_ops.SparseTensorSliceDataset(
+    indices, values, dense_shape, name=None
+)
+",tf.raw_ops.SparseTensorSliceDataset
+"tf.raw_ops.StringNGrams(
+    data,
+    data_splits,
+    separator,
+    ngram_widths,
+    left_pad,
+    right_pad,
+    pad_width,
+    preserve_short_sequences,
+    name=None
+)
+",tf.raw_ops.StringNGrams
+"tf.raw_ops.QuantizeAndDequantizeV4Grad(
+    gradients, input, input_min, input_max, axis=-1, name=None
+)
+",tf.raw_ops.QuantizeAndDequantizeV4Grad
+"tf.raw_ops.MatrixDiagPartV2(
+    input, k, padding_value, name=None
+)
+",tf.raw_ops.MatrixDiagPartV2
+"tf.raw_ops.TensorListReserve(
+    element_shape, num_elements, element_dtype, name=None
+)
+",tf.raw_ops.TensorListReserve
+"tf.raw_ops.RaggedGather(
+    params_nested_splits,
+    params_dense_values,
+    indices,
+    OUTPUT_RAGGED_RANK,
+    name=None
+)
+",tf.raw_ops.RaggedGather
+"tf.raw_ops.RaggedGather(
+    params_nested_splits,
+    params_dense_values,
+    indices,
+    OUTPUT_RAGGED_RANK,
+    name=None
+)
+",tf.raw_ops.RaggedGather
+"tf.raw_ops.ResourceScatterDiv(
+    resource, indices, updates, name=None
+)
+",tf.raw_ops.ResourceScatterDiv
+"tf.raw_ops.SparseReshape(
+    input_indices, input_shape, new_shape, name=None
+)
+",tf.raw_ops.SparseReshape
+"tf.raw_ops.Restore(
+    file_pattern, tensor_name, dt, preferred_shard=-1, name=None
+)
+",tf.raw_ops.Restore
+"tf.raw_ops.RestoreSlice(
+    file_pattern,
+    tensor_name,
+    shape_and_slice,
+    dt,
+    preferred_shard=-1,
+    name=None
+)
+",tf.raw_ops.RestoreSlice
+"tf.raw_ops.RaggedTensorToTensor(
+    shape,
+    values,
+    default_value,
+    row_partition_tensors,
+    row_partition_types,
+    name=None
+)
+",tf.raw_ops.RaggedTensorToTensor
+"tf.raw_ops.CompressElement(
+    components, name=None
+)
+",tf.raw_ops.CompressElement
+"tf.raw_ops.SparseDenseCwiseDiv(
+    sp_indices, sp_values, sp_shape, dense, name=None
+)
+",tf.raw_ops.SparseDenseCwiseDiv
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.strings.substr(
+    input, pos, len, unit='BYTE', name=None
+)
+",tf.strings.substr
+"tf.transpose(
+    a, perm=None, conjugate=False, name='transpose'
+)
+",tf.transpose
+"tf.io.decode_raw(
+    input_bytes, out_type, little_endian=True, fixed_length=None, name=None
+)
+",tf.io.decode_raw
+"tf.raw_ops.CTCLoss(
+    inputs,
+    labels_indices,
+    labels_values,
+    sequence_length,
+    preprocess_collapse_repeated=False,
+    ctc_merge_repeated=True,
+    ignore_longer_outputs_than_inputs=False,
+    name=None
+)
+",tf.raw_ops.CTCLoss
+"tf.raw_ops.CTCLoss(
+    inputs,
+    labels_indices,
+    labels_values,
+    sequence_length,
+    preprocess_collapse_repeated=False,
+    ctc_merge_repeated=True,
+    ignore_longer_outputs_than_inputs=False,
+    name=None
+)
+",tf.raw_ops.CTCLoss
+"tf.raw_ops.CTCLoss(
+    inputs,
+    labels_indices,
+    labels_values,
+    sequence_length,
+    preprocess_collapse_repeated=False,
+    ctc_merge_repeated=True,
+    ignore_longer_outputs_than_inputs=False,
+    name=None
+)
+",tf.raw_ops.CTCLoss
+"tf.raw_ops.BandedTriangularSolve(
+    matrix, rhs, lower=True, adjoint=False, name=None
+)
+",tf.raw_ops.BandedTriangularSolve
+"tf.raw_ops.QuantizeAndDequantizeV2(
+    input,
+    input_min,
+    input_max,
+    signed_input=True,
+    num_bits=8,
+    range_given=False,
+    round_mode='HALF_TO_EVEN',
+    narrow_range=False,
+    axis=-1,
+    name=None
+)
+",tf.raw_ops.QuantizeAndDequantizeV2
+"tf.raw_ops.SparseReshape(
+    input_indices, input_shape, new_shape, name=None
+)
+",tf.raw_ops.SparseReshape
+"tf.raw_ops.SparseReshape(
+    input_indices, input_shape, new_shape, name=None
+)
+",tf.raw_ops.SparseReshape
+"tf.raw_ops.SparseReshape(
+    input_indices, input_shape, new_shape, name=None
+)
+",tf.raw_ops.SparseReshape
+"tf.raw_ops.SparseSparseMinimum(
+    a_indices, a_values, a_shape, b_indices, b_values, b_shape, name=None
+)
+",tf.raw_ops.SparseSparseMinimum
+"tf.raw_ops.SparseSparseMinimum(
+    a_indices, a_values, a_shape, b_indices, b_values, b_shape, name=None
+)
+",tf.raw_ops.SparseSparseMinimum
+"tf.raw_ops.SparseSparseMinimum(
+    a_indices, a_values, a_shape, b_indices, b_values, b_shape, name=None
+)
+",tf.raw_ops.SparseSparseMinimum
+"tf.raw_ops.SparseAdd(
+    a_indices,
+    a_values,
+    a_shape,
+    b_indices,
+    b_values,
+    b_shape,
+    thresh,
+    name=None
+)
+",tf.raw_ops.SparseAdd
+"tf.raw_ops.SparseAdd(
+    a_indices,
+    a_values,
+    a_shape,
+    b_indices,
+    b_values,
+    b_shape,
+    thresh,
+    name=None
+)
+",tf.raw_ops.SparseAdd
+"tf.raw_ops.SparseAdd(
+    a_indices,
+    a_values,
+    a_shape,
+    b_indices,
+    b_values,
+    b_shape,
+    thresh,
+    name=None
+)
+",tf.raw_ops.SparseAdd
+"tf.raw_ops.RaggedTensorToTensor(
+    shape,
+    values,
+    default_value,
+    row_partition_tensors,
+    row_partition_types,
+    name=None
+)
+",tf.raw_ops.RaggedTensorToTensor
+"tf.raw_ops.SpaceToBatchND(
+    input, block_shape, paddings, name=None
+)
+",tf.raw_ops.SpaceToBatchND
+"tf.split(
+    value, num_or_size_splits, axis=0, num=None, name='split'
+)
+",tf.split
+"tf.one_hot(
+    indices,
+    depth,
+    on_value=None,
+    off_value=None,
+    axis=None,
+    dtype=None,
+    name=None
+)
+",tf.one_hot
+"tf.raw_ops.FusedBatchNorm(
+    x,
+    scale,
+    offset,
+    mean,
+    variance,
+    epsilon=0.0001,
+    exponential_avg_factor=1,
+    data_format='NHWC',
+    is_training=True,
+    name=None
+)
+",tf.raw_ops.FusedBatchNorm
+"tf.raw_ops.SparseSplit(
+    split_dim, indices, values, shape, num_split, name=None
+)
+",tf.raw_ops.SparseSplit
+"tf.raw_ops.Dequantize(
+    input,
+    min_range,
+    max_range,
+    mode='MIN_COMBINED',
+    narrow_range=False,
+    axis=-1,
+    dtype=tf.dtypes.float32,
+    name=None
+)
+",tf.raw_ops.Dequantize
+"tf.raw_ops.CTCBeamSearchDecoder(
+    inputs,
+    sequence_length,
+    beam_width,
+    top_paths,
+    merge_repeated=True,
+    name=None
+)
+",tf.raw_ops.CTCBeamSearchDecoder
+"tf.raw_ops.FractionalAvgPoolGrad(
+    orig_input_tensor_shape,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPoolGrad
+"tf.raw_ops.FractionalMaxPoolGrad(
+    orig_input,
+    orig_output,
+    out_backprop,
+    row_pooling_sequence,
+    col_pooling_sequence,
+    overlapping=False,
+    name=None
+)
+",tf.raw_ops.FractionalMaxPoolGrad
+"tf.raw_ops.AvgPool3DGrad(
+    orig_input_shape,
+    grad,
+    ksize,
+    strides,
+    padding,
+    data_format='NDHWC',
+    name=None
+)
+",tf.raw_ops.AvgPool3DGrad
+"tf.raw_ops.MaxPool3DGradGrad(
+    orig_input,
+    orig_output,
+    grad,
+    ksize,
+    strides,
+    padding,
+    data_format='NDHWC',
+    name=None
+)
+",tf.raw_ops.MaxPool3DGradGrad
+"tf.raw_ops.MaxPool3DGradGrad(
+    orig_input,
+    orig_output,
+    grad,
+    ksize,
+    strides,
+    padding,
+    data_format='NDHWC',
+    name=None
+)
+",tf.raw_ops.MaxPool3DGradGrad
+"tf.raw_ops.MaxPoolGradWithArgmax(
+    input,
+    grad,
+    argmax,
+    ksize,
+    strides,
+    padding,
+    include_batch_in_index=False,
+    name=None
+)
+",tf.raw_ops.MaxPoolGradWithArgmax
+"tf.raw_ops.ReverseSequence(
+    input, seq_lengths, seq_dim, batch_dim=0, name=None
+)
+",tf.raw_ops.ReverseSequence
+"tf.raw_ops.ReverseSequence(
+    input, seq_lengths, seq_dim, batch_dim=0, name=None
+)
+",tf.raw_ops.ReverseSequence
+"tf.raw_ops.SdcaOptimizer(
+    sparse_example_indices,
+    sparse_feature_indices,
+    sparse_feature_values,
+    dense_features,
+    example_weights,
+    example_labels,
+    sparse_indices,
+    sparse_weights,
+    dense_weights,
+    example_state_data,
+    loss_type,
+    l1,
+    l2,
+    num_loss_partitions,
+    num_inner_iterations,
+    adaptative=True,
+    name=None
+)
+",tf.raw_ops.SdcaOptimizer
+"tf.raw_ops.SdcaOptimizer(
+    sparse_example_indices,
+    sparse_feature_indices,
+    sparse_feature_values,
+    dense_features,
+    example_weights,
+    example_labels,
+    sparse_indices,
+    sparse_weights,
+    dense_weights,
+    example_state_data,
+    loss_type,
+    l1,
+    l2,
+    num_loss_partitions,
+    num_inner_iterations,
+    adaptative=True,
+    name=None
+)
+",tf.raw_ops.SdcaOptimizer
+"tf.raw_ops.DrawBoundingBoxesV2(
+    images, boxes, colors, name=None
+)
+",tf.raw_ops.DrawBoundingBoxesV2
+"tf.raw_ops.RequantizationRange(
+    input, input_min, input_max, name=None
+)
+",tf.raw_ops.RequantizationRange
+"tf.raw_ops.MaxPoolGradWithArgmax(
+    input,
+    grad,
+    argmax,
+    ksize,
+    strides,
+    padding,
+    include_batch_in_index=False,
+    name=None
+)
+",tf.raw_ops.MaxPoolGradWithArgmax
+"tf.raw_ops.SparseDenseCwiseMul(
+    sp_indices, sp_values, sp_shape, dense, name=None
+)
+",tf.raw_ops.SparseDenseCwiseMul
+"tf.raw_ops.ParameterizedTruncatedNormal(
+    shape, means, stdevs, minvals, maxvals, seed=0, seed2=0, name=None
+)
+",tf.raw_ops.ParameterizedTruncatedNormal
+"tf.raw_ops.SparseFillEmptyRows(
+    indices, values, dense_shape, default_value, name=None
+)
+",tf.raw_ops.SparseFillEmptyRows
+"tf.raw_ops.EditDistance(
+    hypothesis_indices,
+    hypothesis_values,
+    hypothesis_shape,
+    truth_indices,
+    truth_values,
+    truth_shape,
+    normalize=True,
+    name=None
+)
+",tf.raw_ops.EditDistance
+"tf.raw_ops.EditDistance(
+    hypothesis_indices,
+    hypothesis_values,
+    hypothesis_shape,
+    truth_indices,
+    truth_values,
+    truth_shape,
+    normalize=True,
+    name=None
+)
+",tf.raw_ops.EditDistance
+"tf.raw_ops.RFFT(
+    input,
+    fft_length,
+    Tcomplex=tf.dtypes.complex64,
+    name=None
+)
+",tf.raw_ops.RFFT
+"tf.raw_ops.IRFFT(
+    input,
+    fft_length,
+    Treal=tf.dtypes.float32,
+    name=None
+)
+",tf.raw_ops.IRFFT
+"tf.raw_ops.LoadAndRemapMatrix(
+    ckpt_path,
+    old_tensor_name,
+    row_remapping,
+    col_remapping,
+    initializing_values,
+    num_rows,
+    num_cols,
+    max_rows_in_memory=-1,
+    name=None
+)
+",tf.raw_ops.LoadAndRemapMatrix
+"tf.raw_ops.UnicodeEncode(
+    input_values,
+    input_splits,
+    output_encoding,
+    errors='replace',
+    replacement_char=65533,
+    name=None
+)
+",tf.raw_ops.UnicodeEncode
+"tf.raw_ops.UnicodeEncode(
+    input_values,
+    input_splits,
+    output_encoding,
+    errors='replace',
+    replacement_char=65533,
+    name=None
+)
+",tf.raw_ops.UnicodeEncode
+"tf.raw_ops.SparseSplit(
+    split_dim, indices, values, shape, num_split, name=None
+)
+",tf.raw_ops.SparseSplit
+"tf.raw_ops.Reverse(
+    tensor, dims, name=None
+)
+",tf.raw_ops.Reverse
+"tf.raw_ops.SparseMatMul(
+    a,
+    b,
+    transpose_a=False,
+    transpose_b=False,
+    a_is_sparse=False,
+    b_is_sparse=False,
+    name=None
+)
+",tf.raw_ops.SparseMatMul
+"tf.raw_ops.FusedBatchNorm(
+    x,
+    scale,
+    offset,
+    mean,
+    variance,
+    epsilon=0.0001,
+    exponential_avg_factor=1,
+    data_format='NHWC',
+    is_training=True,
+    name=None
+)
+",tf.raw_ops.FusedBatchNorm
+"tf.raw_ops.DenseCountSparseOutput(
+    values, weights, binary_output, minlength=-1, maxlength=-1, name=None
+)
+",tf.raw_ops.DenseCountSparseOutput
+"tf.raw_ops.UnsortedSegmentJoin(
+    inputs, segment_ids, num_segments, separator='', name=None
+)
+",tf.raw_ops.UnsortedSegmentJoin
+"tf.raw_ops.QuantizeAndDequantizeV3(
+    input,
+    input_min,
+    input_max,
+    num_bits,
+    signed_input=True,
+    range_given=True,
+    narrow_range=False,
+    axis=-1,
+    name=None
+)
+",tf.raw_ops.QuantizeAndDequantizeV3
+"tf.raw_ops.MatrixTriangularSolve(
+    matrix, rhs, lower=True, adjoint=False, name=None
+)
+",tf.raw_ops.MatrixTriangularSolve
+"tf.raw_ops.FractionalAvgPool(
+    value,
+    pooling_ratio,
+    pseudo_random=False,
+    overlapping=False,
+    deterministic=False,
+    seed=0,
+    seed2=0,
+    name=None
+)
+",tf.raw_ops.FractionalAvgPool
+"tf.raw_ops.QuantizedAdd(
+    x,
+    y,
+    min_x,
+    max_x,
+    min_y,
+    max_y,
+    Toutput=tf.dtypes.qint32,
+    name=None
+)
+",tf.raw_ops.QuantizedAdd
+"tf.raw_ops.QuantizedBatchNormWithGlobalNormalization(
+    t,
+    t_min,
+    t_max,
+    m,
+    m_min,
+    m_max,
+    v,
+    v_min,
+    v_max,
+    beta,
+    beta_min,
+    beta_max,
+    gamma,
+    gamma_min,
+    gamma_max,
+    out_type,
+    variance_epsilon,
+    scale_after_normalization,
+    name=None
+)
+",tf.raw_ops.QuantizedBatchNormWithGlobalNormalization
+"tf.raw_ops.QuantizedBatchNormWithGlobalNormalization(
+    t,
+    t_min,
+    t_max,
+    m,
+    m_min,
+    m_max,
+    v,
+    v_min,
+    v_max,
+    beta,
+    beta_min,
+    beta_max,
+    gamma,
+    gamma_min,
+    gamma_max,
+    out_type,
+    variance_epsilon,
+    scale_after_normalization,
+    name=None
+)
+",tf.raw_ops.QuantizedBatchNormWithGlobalNormalization
+"tf.raw_ops.QuantizedBatchNormWithGlobalNormalization(
+    t,
+    t_min,
+    t_max,
+    m,
+    m_min,
+    m_max,
+    v,
+    v_min,
+    v_max,
+    beta,
+    beta_min,
+    beta_max,
+    gamma,
+    gamma_min,
+    gamma_max,
+    out_type,
+    variance_epsilon,
+    scale_after_normalization,
+    name=None
+)
+",tf.raw_ops.QuantizedBatchNormWithGlobalNormalization
+"tf.raw_ops.QuantizedBiasAdd(
+    input, bias, min_input, max_input, min_bias, max_bias, out_type, name=None
+)
+",tf.raw_ops.QuantizedBiasAdd
+"tf.raw_ops.CTCGreedyDecoder(
+    inputs, sequence_length, merge_repeated=False, blank_index=-1, name=None
+)
+",tf.raw_ops.CTCGreedyDecoder
+"tf.raw_ops.QuantizeAndDequantizeV4Grad(
+    gradients, input, input_min, input_max, axis=-1, name=None
+)
+",tf.raw_ops.QuantizeAndDequantizeV4Grad
+"tf.raw_ops.Conv2DBackpropFilter(
+    input,
+    filter_sizes,
+    out_backprop,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2DBackpropFilter
+"tf.raw_ops.Conv2DBackpropFilter(
+    input,
+    filter_sizes,
+    out_backprop,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2DBackpropFilter
+"tf.raw_ops.QuantizedReshape(
+    tensor, shape, input_min, input_max, name=None
+)
+",tf.raw_ops.QuantizedReshape
+"tf.raw_ops.QuantizedResizeBilinear(
+    images,
+    size,
+    min,
+    max,
+    align_corners=False,
+    half_pixel_centers=False,
+    name=None
+)
+",tf.raw_ops.QuantizedResizeBilinear
+"tf.raw_ops.SparseConcat(
+    indices, values, shapes, concat_dim, name=None
+)
+",tf.raw_ops.SparseConcat
+"tf.raw_ops.QuantizedMul(
+    x,
+    y,
+    min_x,
+    max_x,
+    min_y,
+    max_y,
+    Toutput=tf.dtypes.qint32,
+    name=None
+)
+",tf.raw_ops.QuantizedMul
+"tf.raw_ops.DrawBoundingBoxes(
+    images, boxes, name=None
+)
+",tf.raw_ops.DrawBoundingBoxes
+"tf.raw_ops.RaggedCross(
+    ragged_values,
+    ragged_row_splits,
+    sparse_indices,
+    sparse_values,
+    sparse_shape,
+    dense_inputs,
+    input_order,
+    hashed_output,
+    num_buckets,
+    hash_key,
+    out_values_type,
+    out_row_splits_type,
+    name=None
+)
+",tf.raw_ops.RaggedCross
+"tf.raw_ops.EncodePng(
+    image, compression=-1, name=None
+)
+",tf.raw_ops.EncodePng
+"tf.raw_ops.SparseMatrixSparseCholesky(
+    input, permutation, type, name=None
+)
+",tf.raw_ops.SparseMatrixSparseCholesky
+"tf.raw_ops.QuantizedMul(
+    x,
+    y,
+    min_x,
+    max_x,
+    min_y,
+    max_y,
+    Toutput=tf.dtypes.qint32,
+    name=None
+)
+",tf.raw_ops.QuantizedMul
+"tf.raw_ops.QuantizedConv2D(
+    input,
+    filter,
+    min_input,
+    max_input,
+    min_filter,
+    max_filter,
+    strides,
+    padding,
+    out_type=tf.dtypes.qint32,
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.QuantizedConv2D
+"tf.raw_ops.QuantizedConv2D(
+    input,
+    filter,
+    min_input,
+    max_input,
+    min_filter,
+    max_filter,
+    strides,
+    padding,
+    out_type=tf.dtypes.qint32,
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.QuantizedConv2D
+"tf.raw_ops.Conv2D(
+    input,
+    filter,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2D
+"tf.raw_ops.Conv2DBackpropInput(
+    input_sizes,
+    filter,
+    out_backprop,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2DBackpropInput
+"tf.raw_ops.Conv2DBackpropFilter(
+    input,
+    filter_sizes,
+    out_backprop,
+    strides,
+    padding,
+    use_cudnn_on_gpu=True,
+    explicit_paddings=[],
+    data_format='NHWC',
+    dilations=[1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv2DBackpropFilter
+"tf.raw_ops.AddManySparseToTensorsMap(
+    sparse_indices,
+    sparse_values,
+    sparse_shape,
+    container='',
+    shared_name='',
+    name=None
+)
+",tf.raw_ops.AddManySparseToTensorsMap
+"tf.raw_ops.Conv3DBackpropFilterV2(
+    input,
+    filter_sizes,
+    out_backprop,
+    strides,
+    padding,
+    data_format='NDHWC',
+    dilations=[1, 1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv3DBackpropFilterV2
+"tf.raw_ops.Conv3DBackpropInputV2(
+    input_sizes,
+    filter,
+    out_backprop,
+    strides,
+    padding,
+    data_format='NDHWC',
+    dilations=[1, 1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv3DBackpropInputV2
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.SparseCross(
+    indices,
+    values,
+    shapes,
+    dense_inputs,
+    hashed_output,
+    num_buckets,
+    hash_key,
+    out_type,
+    internal_type,
+    name=None
+)
+",tf.raw_ops.SparseCross
+"tf.raw_ops.GetSessionTensor(
+    handle, dtype, name=None
+)
+",tf.raw_ops.GetSessionTensor
+"tf.raw_ops.Conv3D(
+    input,
+    filter,
+    strides,
+    padding,
+    data_format='NDHWC',
+    dilations=[1, 1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv3D
+"tf.raw_ops.Conv3D(
+    input,
+    filter,
+    strides,
+    padding,
+    data_format='NDHWC',
+    dilations=[1, 1, 1, 1, 1],
+    name=None
+)
+",tf.raw_ops.Conv3D
+"tf.raw_ops.MatrixDiagV2(
+    diagonal, k, num_rows, num_cols, padding_value, name=None
+)
+",tf.raw_ops.MatrixDiagV2
+"tf.raw_ops.RaggedBincount(
+    splits, values, size, weights, binary_output=False, name=None
+)
+",tf.raw_ops.RaggedBincount
+"tf.raw_ops.ImmutableConst(
+    dtype, shape, memory_region_name, name=None
+)
+",tf.raw_ops.ImmutableConst
+"tf.raw_ops.ImmutableConst(
+    dtype, shape, memory_region_name, name=None
+)
+",tf.raw_ops.ImmutableConst
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.raw_ops.DataFormatVecPermute(
+    x, src_format='NHWC', dst_format='NCHW', name=None
+)
+",tf.raw_ops.DataFormatVecPermute
+"tf.image.crop_and_resize(
+    image,
+    boxes,
+    box_indices,
+    crop_size,
+    method='bilinear',
+    extrapolation_value=0.0,
+    name=None
+)
+",tf.image.crop_and_resize
+"tf.random.truncated_normal(
+    shape,
+    mean=0.0,
+    stddev=1.0,
+    dtype=tf.dtypes.float32,
+    seed=None,
+    name=None
+)
+",tf.random.truncated_normal
+"tf.quantization.quantize_and_dequantize(
+    input,
+    input_min,
+    input_max,
+    signed_input=True,
+    num_bits=8,
+    range_given=False,
+    round_mode='HALF_TO_EVEN',
+    name=None,
+    narrow_range=False,
+    axis=None
+)
+",tf.quantization.quantize_and_dequantize
+"tf.experimental.dlpack.to_dlpack(
+    tf_tensor
+)
+",tf.experimental.dlpack.to_dlpack
+"tf.experimental.dlpack.to_dlpack(
+    tf_tensor
+)
+",tf.experimental.dlpack.to_dlpack
+"tf.raw_ops.SparseFillEmptyRowsGrad(
+    reverse_index_map, grad_values, name=None
+)
+",tf.raw_ops.SparseFillEmptyRowsGrad
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.SparseCountSparseOutput(
+    indices,
+    values,
+    dense_shape,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.SparseCountSparseOutput
+"tf.raw_ops.RaggedCountSparseOutput(
+    splits,
+    values,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.RaggedCountSparseOutput
+"tf.raw_ops.RaggedCountSparseOutput(
+    splits,
+    values,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.RaggedCountSparseOutput
+"tf.raw_ops.RaggedCountSparseOutput(
+    splits,
+    values,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.RaggedCountSparseOutput
+"tf.raw_ops.RaggedCountSparseOutput(
+    splits,
+    values,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.RaggedCountSparseOutput
+"tf.raw_ops.RaggedCountSparseOutput(
+    splits,
+    values,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.RaggedCountSparseOutput
+"tf.raw_ops.RaggedCountSparseOutput(
+    splits,
+    values,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.RaggedCountSparseOutput
+"tf.raw_ops.RaggedCountSparseOutput(
+    splits,
+    values,
+    weights,
+    binary_output,
+    minlength=-1,
+    maxlength=-1,
+    name=None
+)
+",tf.raw_ops.RaggedCountSparseOutput
+"tf.raw_ops.StringNGrams(
+    data,
+    data_splits,
+    separator,
+    ngram_widths,
+    left_pad,
+    right_pad,
+    pad_width,
+    preserve_short_sequences,
+    name=None
+)
+",tf.raw_ops.StringNGrams

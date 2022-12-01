@@ -1,0 +1,54 @@
+RootAPI,Link
+torch,https://pytorch.org/docs/stable/torch.html#
+torch.nn,https://pytorch.org/docs/stable/nn.html
+torch.nn.functional,https://pytorch.org/docs/stable/nn.functional.html
+torch.Tensor,https://pytorch.org/docs/stable/tensors.html
+Tensor Attributes,https://pytorch.org/docs/stable/tensor_attributes.html
+Tensor Views,https://pytorch.org/docs/stable/tensor_view.html
+torch.amp,https://pytorch.org/docs/stable/amp.html
+torch.autograd,https://pytorch.org/docs/stable/autograd.html
+torch.library,https://pytorch.org/docs/stable/library.html
+torch.cuda,https://pytorch.org/docs/stable/cuda.html
+torch.backends,https://pytorch.org/docs/stable/backends.html
+torch.distributed,https://pytorch.org/docs/stable/distributed.html
+torch.distributed.algorithms.join,https://pytorch.org/docs/stable/distributed.algorithms.join.html
+torch.distributed.elastic,https://pytorch.org/docs/stable/distributed.elastic.html
+torch.distributed.fsdp,https://pytorch.org/docs/stable/fsdp.html
+torch.distributed.optim,https://pytorch.org/docs/stable/distributed.optim.html
+torch.distributions,https://pytorch.org/docs/stable/distributions.html
+torch.fft,https://pytorch.org/docs/stable/fft.html
+torch.futures,https://pytorch.org/docs/stable/futures.html
+torch.fx,https://pytorch.org/docs/stable/fx.html
+torch.hub,https://pytorch.org/docs/stable/hub.html
+torch.jit,https://pytorch.org/docs/stable/jit.html
+torch.linalg,https://pytorch.org/docs/stable/linalg.html
+torch.monitor,https://pytorch.org/docs/stable/monitor.html
+torch.special,https://pytorch.org/docs/stable/special.html
+torch.overrides,https://pytorch.org/docs/stable/torch.overrides.html
+torch.package,https://pytorch.org/docs/stable/package.html
+torch.profiler,https://pytorch.org/docs/stable/profiler.html
+torch.nn.init,https://pytorch.org/docs/stable/nn.init.html
+torch.onnx,https://pytorch.org/docs/stable/onnx.html
+torch.optim,https://pytorch.org/docs/stable/optim.html
+Complex Numbers,https://pytorch.org/docs/stable/complex_numbers.html
+DDP Communication Hooks,https://pytorch.org/docs/stable/ddp_comm_hooks.html
+Pipeline Parallelism,https://pytorch.org/docs/stable/pipeline.html
+Quantization,https://pytorch.org/docs/stable/quantization.html
+Distributed RPC Framework,https://pytorch.org/docs/stable/rpc.html
+torch.random,https://pytorch.org/docs/stable/random.html
+torch.nested,https://pytorch.org/docs/stable/nested.html
+torch.sparse,https://pytorch.org/docs/stable/sparse.html
+torch.Storage,https://pytorch.org/docs/stable/storage.html
+torch.testing,https://pytorch.org/docs/stable/testing.html
+torch.utils.benchmark,https://pytorch.org/docs/stable/benchmark_utils.html
+torch.utils.bottleneck,https://pytorch.org/docs/stable/bottleneck.html
+torch.utils.checkpoint,https://pytorch.org/docs/stable/checkpoint.html
+torch.utils.cpp_extension,https://pytorch.org/docs/stable/cpp_extension.html
+torch.utils.data,https://pytorch.org/docs/stable/data.html
+torch.utils.dlpack,https://pytorch.org/docs/stable/dlpack.html
+torch.utils.mobile_optimizer,https://pytorch.org/docs/stable/mobile_optimizer.html
+torch.utils.model_zoo,https://pytorch.org/docs/stable/model_zoo.html
+torch.utils.tensorboard,https://pytorch.org/docs/stable/tensorboard.html
+Type Info,https://pytorch.org/docs/stable/type_info.html
+Named Tensors,https://pytorch.org/docs/stable/named_tensor.html
+Named Tensors operator coverage,https://pytorch.org/docs/stable/name_inference.html

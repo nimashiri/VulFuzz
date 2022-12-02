@@ -122,7 +122,7 @@ def run_torch_tests(data):
             logging.info(f'Current test is: {t}: {i}/{len(data)} test files has been executed!')
             logging.info('###############################################')
 
-            status = subprocess.run(['nc', '-zvv', 'localhost', '27017'],stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            status = subprocess.run(['nc', '-zvv', 'localhost', '27017'], stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
             if re.findall(r'(succeeded!)', status.stderr):
                 try:
                     subprocess.run(['python3', t])

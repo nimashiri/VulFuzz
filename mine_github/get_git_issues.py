@@ -10,11 +10,11 @@ from urllib3.util import Retry
 from csv import writer
 
 # (0, nimashiri2012@gmail.com, 1, cse19922021@gmail.com, 2, nshiri@yorku.ca, 3, nshiri@cse.yorku.ca)
-tokens = {0: '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', 1: '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',
-          2: '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', 3: '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'}
+tokens = {0: '', 1: '',
+          2: '', 3: ''}
 
-tokens_status = {'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': True, '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': True,
-                 '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': True, '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': True}
+tokens_status = {'': True, '': True,
+                 '': True, '': True}
 
 
 def requests_retry_session(

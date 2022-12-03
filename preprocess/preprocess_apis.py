@@ -229,10 +229,39 @@ def get_apis_raw_symbols(data):
                 writer_object = writer(fd)
                 writer_object.writerow(mydata)                
 
+
+def remove_dup_torch():
+    data_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_apis/torch_apis_no_dup1.csv'
+    data_tensors_add = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_apis/torch_tensors1.csv'
+
+    data_tensors = pd.read_csv(data_tensors_add, sep=',', encoding='utf-8')
+    data_normal = pd.read_csv(data_addr, sep=',', encoding='utf-8')
+
+    root_apis = list(data_normal['API'])
+    for idx, row in data_tensors.iterrows():
+        q_api = row['API'].split('.')[-1]
+        if q_api not in root_apis:
+            mydata = [row['API'], row['Status']]
+            with open('/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_apis/pure_tensors.csv', mode='a', newline='\n') as fd:
+                writer_object = writer(fd)
+                writer_object.writerow(mydata)        
+
+    # data = pd.read_csv(data_tensors, sep=',', encoding='utf-8')
+    # d = data[data['API'].str.match(r'(Tensor\.)')]
+    # d.to_csv('/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_apis/torch_tensors1.csv')
+
+    # patternDel = "(Tensor\.)"
+    # filter = data['API'].str.contains(patternDel)
+    # data = data[~filter]
+    # data.to_csv('/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_apis/torch_apis_no_dup1.csv')
+    
+    
+
 if __name__ == '__main__':
-    lib_name = 'torch'
-    data = pd.read_csv(f'/media/nimashiri/DATA/vsprojects/FSE23_2/data/{lib_name}/{lib_name}_apis/APIs_validation_status.csv')
-    get_torch_apis_raw_symbols_v2(data)
+    remove_dup_torch()
+    # lib_name = 'torch'
+    # data = pd.read_csv(f'/media/nimashiri/DATA/vsprojects/FSE23_2/data/{lib_name}/{lib_name}_apis/APIs_validation_status.csv')
+    # get_torch_apis_raw_symbols_v2(data)
     
     
     # if lib_name == 'torch':

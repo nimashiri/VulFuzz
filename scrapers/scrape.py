@@ -12,6 +12,7 @@ import subprocess
 import json
 import requests
 import os
+import numpy as np
 
 ROOT_MODULES = ['tf', 'tf.compat.v1']
 ROOT_DIR = os.getcwd()
@@ -117,95 +118,105 @@ def recursive_parse_api_sequence(data):
             return recursive_parse_api_sequence(elem)
 
 def scrape_torch_v2():
-    data = pd.read_csv('data/api_root_torch.csv')
+    data = pd.read_csv('/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/api_root_torch.csv')
+
+    history_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/history_torch.txt'
+
+    if not os.path.exists(history_addr):
+        f1 = open(history_addr, 'a') 
+
+    hist = read_txt(history_addr)
+    history = []
     for i in range(len(data)):
+
         sub_content = requests.get(data.iloc[i, 1])
         page_soup2 = soup(sub_content.text, "html.parser")
         x = page_soup2.prettify()
         list_of_apis = re.findall(r'href\=\"generated((.|\n)*?)\.html', x)
         list_of_apis = [item[0] for item in list_of_apis]
-        list_of_apis = set(list_of_apis)
+        list_of_apis = list(dict.fromkeys(list_of_apis))
 
         for api_ in list_of_apis:
-            api_link = 'https://pytorch.org/docs/stable/generated{0}.{1}'.format(
-                api_, 'html')
-            sub_content2 = requests.get(api_link)
-            page_soup3 = soup(sub_content2.text, "html.parser")
-            content3 = page_soup3.contents[7]
-            current_api_detailed = content3.contents[7].contents[5].contents[
-                3].contents[1].contents[1].contents[1].contents[1].contents[1]
+            if api_ not in history:
+                write_list_to_txt4(api_, history_addr)
+                history.append(api_)
+                api_link = 'https://pytorch.org/docs/stable/generated{0}.{1}'.format(api_, 'html')
+                sub_content2 = requests.get(api_link)
+                page_soup3 = soup(sub_content2.text, "html.parser")
+                content3 = page_soup3.contents[7]
+                current_api_detailed = content3.contents[7].contents[5].contents[
+                    3].contents[1].contents[1].contents[1].contents[1].contents[1]
 
-            # API sequence
-            token_sequence_api = []
-            for elem in current_api_detailed.contents[3].contents[1].contents:
-                if isinstance(elem, str):
-                    token_sequence_api.append(elem)
-                else:
+                # API sequence
+                token_sequence_api = []
+                for elem in current_api_detailed.contents[3].contents[1].contents:
+                    if isinstance(elem, str):
+                        token_sequence_api.append(elem)
+                    else:
+                        if not isinstance(elem, str):
+                            api_token = recursive_parse_api_sequence(elem)
+                            token_sequence_api.append(api_token)
+
+                token_sequence_api = " ".join(token_sequence_api)
+
+                print('{0}'.format(token_sequence_api))
+
+                # API example
+                global_example = []
+                for counter, elem in enumerate(current_api_detailed.contents[3].contents[3].contents):
                     if not isinstance(elem, str):
-                        api_token = recursive_parse_api_sequence(elem)
-                        token_sequence_api.append(api_token)
+                        if not bool(elem.attr):
+                            out_temp = recursive_parse_api_description(elem)
+                            if 'Example' in out_temp or 'Example:' in out_temp:
+                                all_examples = []
+                                for h in current_api_detailed.contents[3].contents[3].contents[counter+2:-1]:
+                                    if not isinstance(h, str):
+                                        if bool(h.attrs) and h.attrs['class'][0] == 'highlight-default':
+                                            all_examples.append(h)
 
-            # token_sequence_api = token_sequence_api[: len(token_sequence_api) - 2]
-            token_sequence_api = " ".join(token_sequence_api)
+                                for sub_elem in all_examples:
+                                    example_store = []
+                                    if not isinstance(sub_elem, str):
+                                        for e in sub_elem.contents[0].contents[0].contents:
+                                            if e == '\n':
+                                                example_store.append('\n')
+                                            else:
+                                                if not isinstance(e, str):
+                                                    example_code = recursive_parse_api_description(
+                                                        e)
+                                                    example_store.append(
+                                                        example_code)
 
-            print('{0}'.format(token_sequence_api))
+                                        global_example.append(example_store)
+                                break
+                temp = []
+                for item in global_example:
+                    t = []
+                    for sub_item in item:
+                        if sub_item:
+                            t.append(sub_item[0])
+                    t = "".join(t)
+                    temp.append(t)
 
-            # API example
-            global_example = []
-            for counter, elem in enumerate(current_api_detailed.contents[3].contents[3].contents):
-                if not isinstance(elem, str):
-                    if not bool(elem.attr):
-                        out_temp = recursive_parse_api_description(elem)
-                        if 'Example' in out_temp or 'Example:' in out_temp:
-                            all_examples = []
-                            for h in current_api_detailed.contents[3].contents[3].contents[counter+2:-1]:
-                                if not isinstance(h, str):
-                                    if bool(h.attrs) and h.attrs['class'][0] == 'highlight-default':
-                                        all_examples.append(h)
+                # API description
+                token_sequence_descp = []
+                for i in range(len(current_api_detailed.contents[3].contents[3].contents)):
+                    if not isinstance(current_api_detailed.contents[3].contents[3].contents[i], str):
+                        desc_token = recursive_parse_api_description(
+                            current_api_detailed.contents[3].contents[3].contents[i])
+                        token_sequence_descp.append(desc_token)
 
-                            for sub_elem in all_examples:
-                                example_store = []
-                                if not isinstance(sub_elem, str):
-                                    for e in sub_elem.contents[0].contents[0].contents:
-                                        if e == '\n':
-                                            example_store.append('\n')
-                                        else:
-                                            if not isinstance(e, str):
-                                                example_code = recursive_parse_api_description(
-                                                    e)
-                                                example_store.append(
-                                                    example_code)
+                token_sequence_descp = [j for i in token_sequence_descp for j in i]
+                token_sequence_descp = [
+                    i for i in token_sequence_descp if i is not None]
+                token_sequence_descp = " ".join(token_sequence_descp)
 
-                                    global_example.append(example_store)
-                            break
-            temp = []
-            for item in global_example:
-                t = []
-                for sub_item in item:
-                    if sub_item:
-                        t.append(sub_item[0])
-                t = "".join(t)
-                temp.append(t)
+                my_data = [token_sequence_api, token_sequence_descp]
+                my_data = my_data + temp
 
-            # API description
-            token_sequence_descp = []
-            for i in range(len(current_api_detailed.contents[3].contents[3].contents)):
-                if not isinstance(current_api_detailed.contents[3].contents[3].contents[i], str):
-                    desc_token = recursive_parse_api_description(
-                        current_api_detailed.contents[3].contents[3].contents[i])
-                    token_sequence_descp.append(desc_token)
-
-            token_sequence_descp = [j for i in token_sequence_descp for j in i]
-            token_sequence_descp = [
-                i for i in token_sequence_descp if i is not None]
-            token_sequence_descp = " ".join(token_sequence_descp)
-
-            my_data = [token_sequence_api, token_sequence_descp]
-            my_data = my_data + temp
-
-            with open('scrapers/pytorch_APIs_signatures.csv', 'a', newline='\n') as fd:
-                writer_object = writer(fd)
-                writer_object.writerow(my_data)
+                with open('/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/torch_APIs_signatures.csv', 'a', newline='\n') as fd:
+                    writer_object = writer(fd)
+                    writer_object.writerow(my_data)
 
 
 def scrape_torch_v1():
@@ -325,87 +336,92 @@ def search_dict(d, q):
 
 def scrape_tensorflow_symbols(all_symbols_link):
     tf_data = pd.read_csv('/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/tf_symbols.csv', sep=',', encoding='utf-8')
-    # content = requests.get(all_symbols_link)
-    # page_soup = soup(content.text, "html.parser")
 
-    # content_ = page_soup.contents[2].contents[3].contents[3].contents[4].contents[1].contents[3].contents[1]
+    history_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/history_tf.txt'
 
-    # primary_symbols_2 = content_.contents[11].contents[11].contents
-    # compat_v1_symbols_2 = content_.contents[11].contents[11].contents
+    if not os.path.exists(history_addr):
+        f1 = open(history_addr, 'a') 
+
+    hist = read_txt(history_addr)
+    
 
     for idx, api in tf_data.iterrows():
-                    print(api['API'])
-                    split_apit_name = api['API'].split('.')
-                    split_apit_name = "/".join(split_apit_name)
-                    link_ = os.path.join('https://www.tensorflow.org/api_docs/python', split_apit_name)
-                    content = requests.get(link_)
-                    page_soup2 = soup(content.text, "html.parser")
-                    content_2 = page_soup2.contents[2].contents[3].contents[
-                        3].contents[4].contents[1].contents[3].contents[1]
+                    if api['API'] not in hist:
+                        write_list_to_txt4(api['API'], history_addr)
+                        print(api['API'])
+                        split_apit_name = api['API'].split('.')
+                        split_apit_name = "/".join(split_apit_name)
+                        link_ = os.path.join('https://www.tensorflow.org/api_docs/python', split_apit_name)
+                        content = requests.get(link_)
+                        page_soup2 = soup(content.text, "html.parser")
+                        content_2 = page_soup2.contents[2].contents[3].contents[
+                            3].contents[4].contents[1].contents[3].contents[1]
 
-                    try:
-                        d = content_2.contents[11].contents
+                        try:
+                            d = content_2.contents[11].contents
 
-                        token_sequence_descp = []
-                        i_found_api_sig = False
-                        for i, item in enumerate(d):
-                            if not isinstance(item, str):
-                                if 'class' in item.attrs and 'devsite-click-to-copy' in item.attrs['class']:
-                                    signature_ = recursive_parse_item(item)
-                                    if signature_ is not None:
-                                        i_found_api_sig = True
-                                        for elem in range(1, i-1):
-                                            if not isinstance(d[elem], str):
-                                                description = recursive_parse_api_description(
-                                                    d[elem])
-                                                if bool(description):
-                                                    token_sequence_descp.append(
-                                                        description)
-
-                                        token_sequence_descp = [
-                                            i for i in token_sequence_descp if i is not None]
-                                        token_sequence_descp = [
-                                            item for item in token_sequence_descp if not ckeckList(item)]
-                                        token_sequence_descp = [
-                                            item for item in token_sequence_descp if 'View aliases' not in item]
-                                        break
-
-                        if i_found_api_sig:
-                            all_examples = []
-
+                            token_sequence_descp = []
+                            i_found_api_sig = False
                             for i, item in enumerate(d):
                                 if not isinstance(item, str):
-                                    if 'class' in item.attrs and 'prettyprint' in item.attrs['class']:
-                                        local_code_area = []
-                                        for sub_e in item:
-                                            if sub_e == '\n':
-                                                local_code_area.append(sub_e)
-                                            else:
-                                                if not isinstance(sub_e, str):
-                                                    example_i = recursive_parse_api_description(sub_e)
-                                                    if example_i:
-                                                        local_code_area.append(example_i[0])
-                                                    else:
-                                                        local_code_area.append(example_i)
-                                        all_examples.append(local_code_area)
-                            
-                            temp = []
-                            if len(all_examples) > 1:
-                                for sub_item in all_examples[1]:
+                                    if 'class' in item.attrs and 'devsite-click-to-copy' in item.attrs['class']:
+                                        signature_ = recursive_parse_item(item)
+                                        if signature_ is not None:
+                                            i_found_api_sig = True
+                                            for elem in range(1, i-1):
+                                                if not isinstance(d[elem], str):
+                                                    description = recursive_parse_api_description(
+                                                        d[elem])
+                                                    if bool(description):
+                                                        token_sequence_descp.append(
+                                                            description)
 
-                                    if bool(sub_item) == True and sub_item != '\n':
-                                        temp.append(sub_item)
-                                if temp:
-                                    temp = "\n".join(temp)
+                                            token_sequence_descp = [
+                                                i for i in token_sequence_descp if i is not None]
+                                            token_sequence_descp = [
+                                                item for item in token_sequence_descp if not ckeckList(item)]
+                                            token_sequence_descp = [
+                                                item for item in token_sequence_descp if 'View aliases' not in item]
+                                            break
 
-                        if i_found_api_sig:
-                            my_data = [signature_, token_sequence_descp, temp]
-                            with open('/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/tf_APIs_signatures.csv', 'a', newline='\n') as fd:
-                                writer_object = writer(fd)
+                            if i_found_api_sig:
+                                all_examples = []
 
-                                writer_object.writerow(my_data)
-                    except Exception as e:
-                        print(e)
+                                for i, item in enumerate(d):
+                                    if not isinstance(item, str):
+                                        if 'class' in item.attrs and 'prettyprint' in item.attrs['class']:
+                                            local_code_area = []
+                                            for sub_e in item:
+                                                if sub_e == '\n':
+                                                    local_code_area.append(sub_e)
+                                                else:
+                                                    if not isinstance(sub_e, str):
+                                                        example_i = recursive_parse_api_description(sub_e)
+                                                        if example_i:
+                                                            local_code_area.append(example_i[0])
+                                                        else:
+                                                            local_code_area.append(example_i)
+                                            all_examples.append(local_code_area)
+                                
+                                temp = []
+                                if len(all_examples) > 1:
+                                    for sub_item in all_examples[1]:
+
+                                        if bool(sub_item) == True and sub_item != '\n':
+                                            temp.append(sub_item)
+                                    if temp:
+                                        temp = "\n".join(temp)
+
+                            if i_found_api_sig:
+                                my_data = [signature_, token_sequence_descp, temp]
+                                with open('/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/tf_APIs_signatures.csv', 'a', newline='\n') as fd:
+                                    writer_object = writer(fd)
+
+                                    writer_object.writerow(my_data)
+                        except Exception as e:
+                            print(e)
+                    else:
+                        print('Already processed!')
 
 
 def scrape_mxnet():
@@ -530,7 +546,7 @@ def main():
 
     if code == 'tf':
         scrape_tensorflow_symbols(all_symbols_link)
-    elif code == 'pytorch':
+    elif code == 'torch':
         scrape_torch_v2()
     else:
         scrape_mxnet()

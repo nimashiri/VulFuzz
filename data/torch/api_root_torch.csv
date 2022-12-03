@@ -1,5 +1,5 @@
 RootAPI,Link
-torch,https://pytorch.org/docs/stable/torch.html#
+torch,https://pytorch.org/docs/stable/torch.html
 torch.nn,https://pytorch.org/docs/stable/nn.html
 torch.nn.functional,https://pytorch.org/docs/stable/nn.functional.html
 torch.Tensor,https://pytorch.org/docs/stable/tensors.html

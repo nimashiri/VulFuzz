@@ -3,7 +3,7 @@ import pymongo
 """
 You should configure the database
 """
-torch_db = pymongo.MongoClient(host="localhost", port=27017)["Torch"]
+torch_db = pymongo.MongoClient(host="localhost", port=27017)["Torch-VulFuzz"]
 
 def write_fn(func_name, params, input_signature, output_signature):
     params = dict(params)

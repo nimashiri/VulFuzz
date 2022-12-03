@@ -1246,3 +1246,95 @@ IndentationError: unexpected indent
                                                                      ^
 SyntaxError: invalid syntax
 "
+"tf.DeviceSpec(
+    job=None, replica=None, task=None, device_type=None, device_index=None
+)
+","2022-12-02 10:33:20.629192: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-12-02 10:33:22.877586: I tensorflow/compiler/jit/xla_cpu_device.cc:41] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-12-02 10:33:22.878078: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcuda.so.1
+2022-12-02 10:33:22.912986: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:22.913131: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1660 Ti computeCapability: 7.5
+coreClock: 1.77GHz coreCount: 24 deviceMemorySize: 5.80GiB deviceMemoryBandwidth: 268.26GiB/s
+2022-12-02 10:33:22.913148: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-12-02 10:33:22.915176: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2022-12-02 10:33:22.915218: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2022-12-02 10:33:22.916043: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-12-02 10:33:22.916218: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-12-02 10:33:22.918214: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-12-02 10:33:22.918651: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2022-12-02 10:33:22.918741: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2022-12-02 10:33:22.918823: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:22.918978: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:22.919072: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2022-12-02 10:33:22.920271: I tensorflow/compiler/jit/xla_gpu_device.cc:99] Not creating XLA devices, tf_xla_enable_xla_devices not set
+2022-12-02 10:33:22.920353: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:22.920478: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1720] Found device 0 with properties: 
+pciBusID: 0000:01:00.0 name: NVIDIA GeForce GTX 1660 Ti computeCapability: 7.5
+coreClock: 1.77GHz coreCount: 24 deviceMemorySize: 5.80GiB deviceMemoryBandwidth: 268.26GiB/s
+2022-12-02 10:33:22.920491: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-12-02 10:33:22.920503: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublas.so.11
+2022-12-02 10:33:22.920513: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcublasLt.so.11
+2022-12-02 10:33:22.920522: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcufft.so.10
+2022-12-02 10:33:22.920531: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcurand.so.10
+2022-12-02 10:33:22.920540: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusolver.so.10
+2022-12-02 10:33:22.920549: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcusparse.so.11
+2022-12-02 10:33:22.920558: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudnn.so.8
+2022-12-02 10:33:22.920599: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:22.920710: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:22.920788: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1862] Adding visible gpu devices: 0
+2022-12-02 10:33:22.920806: I tensorflow/stream_executor/platform/default/dso_loader.cc:49] Successfully opened dynamic library libcudart.so.11.0
+2022-12-02 10:33:23.251557: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1261] Device interconnect StreamExecutor with strength 1 edge matrix:
+2022-12-02 10:33:23.251579: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1267]      0 
+2022-12-02 10:33:23.251585: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1280] 0:   N 
+2022-12-02 10:33:23.251731: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:23.251851: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:23.251940: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:941] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2022-12-02 10:33:23.252014: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1406] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 4805 MB memory) -> physical GPU (device: 0, name: NVIDIA GeForce GTX 1660 Ti, pci bus id: 0000:01:00.0, compute capability: 7.5)
+Traceback (most recent call last):
+  File ""/home/nimashiri/.vscode/extensions/ms-python.python-2022.18.2/pythonFiles/lib/python/debugpy/_vendored/pydevd/pydevd.py"", line 3433, in <module>
+    main()
+  File ""/home/nimashiri/.vscode/extensions/ms-python.python-2022.18.2/pythonFiles/lib/python/debugpy/_vendored/pydevd/pydevd.py"", line 3426, in main
+    globals = debugger.run(setup['file'], None, None, is_module)
+  File ""/home/nimashiri/.vscode/extensions/ms-python.python-2022.18.2/pythonFiles/lib/python/debugpy/_vendored/pydevd/pydevd.py"", line 2502, in run
+    return self._exec(is_module, entry_point_fn, module_name, file, globals, locals)
+  File ""/home/nimashiri/.vscode/extensions/ms-python.python-2022.18.2/pythonFiles/lib/python/debugpy/_vendored/pydevd/pydevd.py"", line 2509, in _exec
+    globals = pydevd_runpy.run_path(file, globals, '__main__')
+  File ""/home/nimashiri/.vscode/extensions/ms-python.python-2022.18.2/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydevd_bundle/pydevd_runpy.py"", line 321, in run_path
+    return _run_module_code(code, init_globals, run_name,
+  File ""/home/nimashiri/.vscode/extensions/ms-python.python-2022.18.2/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydevd_bundle/pydevd_runpy.py"", line 135, in _run_module_code
+    _run_code(code, mod_globals, init_globals,
+  File ""/home/nimashiri/.vscode/extensions/ms-python.python-2022.18.2/pythonFiles/lib/python/debugpy/_vendored/pydevd/_pydevd_bundle/pydevd_runpy.py"", line 124, in _run_code
+    exec(code, run_globals)
+  File ""example.py"", line 5, in <module>
+    my_var = tf.Variable(..., name=""my_variable"")
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/ops/variables.py"", line 262, in __call__
+    return cls._variable_v2_call(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/ops/variables.py"", line 244, in _variable_v2_call
+    return previous_getter(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/ops/variables.py"", line 237, in <lambda>
+    previous_getter = lambda **kws: default_variable_creator_v2(None, **kws)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/ops/variable_scope.py"", line 2654, in default_variable_creator_v2
+    return resource_variable_ops.ResourceVariable(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/ops/variables.py"", line 264, in __call__
+    return super(VariableMetaclass, cls).__call__(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py"", line 1574, in __init__
+    self._init_from_args(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/ops/resource_variable_ops.py"", line 1717, in _init_from_args
+    initial_value = ops.convert_to_tensor(initial_value,
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/profiler/trace.py"", line 163, in wrapped
+    return func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/framework/ops.py"", line 1540, in convert_to_tensor
+    ret = conversion_func(value, dtype=dtype, name=name, as_ref=as_ref)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py"", line 339, in _constant_tensor_conversion_function
+    return constant(v, dtype=dtype, name=name)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py"", line 264, in constant
+    return _constant_impl(value, dtype, shape, name, verify_shape=False,
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py"", line 276, in _constant_impl
+    return _constant_eager_impl(ctx, value, dtype, shape, verify_shape)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py"", line 301, in _constant_eager_impl
+    t = convert_to_eager_tensor(value, ctx, dtype)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/python/framework/constant_op.py"", line 98, in convert_to_eager_tensor
+    return ops.EagerTensor(value, ctx.device_name, dtype)
+ValueError: Attempt to convert a value (Ellipsis) with an unsupported type (<class 'ellipsis'>) to a Tensor.
+"

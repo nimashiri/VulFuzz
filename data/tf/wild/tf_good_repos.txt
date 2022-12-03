@@ -1,8 +1,10 @@
 https://github.com/tensorflow/docs/blob/master/site/en/tutorials/generative/adversarial_fgsm.ipynb
-https://github.com/TensorSpeech/TensorFlowTTS/blob/master/notebooks/fastspeech2_inference.ipynb
+https://github.com/TensorSpeech/TensorFlowTTS
 https://www.tensorflow.org/tutorials/generative/adversarial_fgsm
+https://keras.io/examples/vision/captcha_ocr/
+https://github.com/microsoft/tf2-gnn
+https://keras.io/examples/audio/speaker_recognition_using_cnn/
 
-https://github.com/TensorSpeech/TensorFlowTTS.git
 https://github.com/huggingface/datasets.git
 https://github.com/DeepWisdom/AutoDL.git
 https://github.com/Tencent/TNN.git

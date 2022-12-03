@@ -1,68 +1,58 @@
-
-import pandas as pd
-from csv import writer
-from sentence_transformers import SentenceTransformer
-from sklearn.metrics.pairwise import cosine_similarity
-import json
-
-model = SentenceTransformer('bert-base-nli-mean-tokens', device='cuda')
+import tensorflow as tf
 
 
-def make_api_raw():
-    data = pd.read_csv('scrapers/tf_APIs_signature3.csv', sep=',', encoding='utf-8')
+x = tf.constant(3.0)
+with tf.GradientTape() as g:
+  g.watch(x)
+  y = x * x
+dy_dx = g.gradient(y, x)
+print(dy_dx)
+tf.Tensor(6.0, shape=(), dtype=float32)
+x = tf.constant(5.0)
+with tf.GradientTape() as g:
+  g.watch(x)
+  with tf.GradientTape() as gg:
+    gg.watch(x)
+    y = x * x
+  dy_dx = gg.gradient(y, x)  # dy_dx = 2 * x
+d2y_dx2 = g.gradient(dy_dx, x)  # d2y_dx2 = 2
+print(dy_dx)
+tf.Tensor(10.0, shape=(), dtype=float32)
+print(d2y_dx2)
+tf.Tensor(2.0, shape=(), dtype=float32)
+x = tf.constant(3.0)
 
-    x = []
-    for i in range(len(data)):
-        api_ = []
-        for c in data.iloc[i, 0]:
-            if c == '(':
-                break
-            else:
-                api_.append(c)
-        api_ = "".join(api_)
-        
-        with open('scrapers/d.csv', 'a', newline='\n') as fd:
-            writer_object = writer(fd)
-            writer_object.writerow([api_, data.iloc[i, 0], data.iloc[i, 1]])
-
-def match_source_target():
-    target_APIs = pd.read_csv('scrapers/d.csv', sep=',', encoding='utf-8')
-    source_APIs = pd.read_csv('scrapers/securityData.csv', sep=',', encoding='utf-8')
-    
-    for s in source_APIs['API']:
-        i=target_APIs[target_APIs['Raw_API']==s]
-        if not i.empty:
-            with open('scrapers/final_data.csv', 'a', newline='\n') as fd:
-                writer_object = writer(fd)
-                writer_object.writerow([i.iloc[0, 1], i.iloc[0, 0]])
-
-def calculate_similarity():
-    target_APIs = pd.read_csv('scrapers/d.csv', sep=',', encoding='utf-8')
-    source_APIs = pd.read_csv('scrapers/final_data.csv', sep=',', encoding='utf-8')
-
-    # if not os.path.isfile('model/t_encode.pkl'):
-    #     os.mkdir('model')
-    #     t_encode = model.encode(f_api)
-    #     with open('model/t_encode.pkl','wb') as f:
-    #         pickle.dump(t_encode, f)
-    # else:
-    #     with open('model/t_encode.pkl','rb') as f:
-    #         t_encode = pickle.load(f)     
-
-    for j in range(len(source_APIs)):
-        for i in range(len(target_APIs)):
-            print('Source/Target: {}/{}'.format(j, i))
-            s_encode = model.encode(source_APIs.iloc[j, 0])
-            t_encode = model.encode(target_APIs.iloc[i, 1])
-
-            x = cosine_similarity([s_encode], [t_encode])
-            # df = pd.DataFrame(x, index=None)
-            # final_df = pd.concat((final_df, df), axis=0)
-            my_data = [target_APIs.iloc[i, 0], str(x[0][0])]
-            with open('data/tf_match/'+source_APIs.iloc[j, 1]+'.json', 'a') as f:
-                json.dump(my_data, f)
-                f.write('\n')
+with tf.GradientTape(persistent=True) as g:
+  g.watch(x)
+  y = x * x
+  z = y * y
+dz_dx = g.gradient(z, x)  # (4*x^3 at x = 3)
+print(dz_dx)
+tf.Tensor(108.0, shape=(), dtype=float32)
+dy_dx = g.gradient(y, x)
+print(dy_dx)
+tf.Tensor(6.0, shape=(), dtype=float32)
+x = tf.Variable(2.0)
+w = tf.Variable(5.0)
+with tf.GradientTape(
+    watch_accessed_variables=False, persistent=True) as tape:
+  tape.watch(x)
+  y = x ** 2  # Gradients will be available for `x`.
+  z = w ** 3  # No gradients will be available as `w` isn't being watched.
+dy_dx = tape.gradient(y, x)
+print(dy_dx)
+tf.Tensor(4.0, shape=(), dtype=float32)
+# No gradients will be available as `w` isn't being watched.
+dz_dw = tape.gradient(z, w)
+print(dz_dw)
+None
+a = tf.keras.layers.Dense(32)
+b = tf.keras.layers.Dense(32)
 
 
-if __name__ == '__main__':
-    calculate_similarity()
+with tf.GradientTape() as g:
+  x = tf.constant([[1., 2.], [3., 4.]], dtype=tf.float32)
+  g.watch(x)
+  y = x * x
+
+batch_jacobian = g.batch_jacobian(y, x)

@@ -8,7 +8,7 @@ for name in DB.list_collection_names():
 
 from csv import writer
 
-misc_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/misc/torch_queried_apis.txt'
+misc_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/misc/tf_queried_apis.txt'
 
 def write_list_to_txt4(data, filename):
     with open(filename, "a", encoding='utf-8') as file:
@@ -23,9 +23,9 @@ def getstat(dbname):
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient[dbname]
     counter = 0
-
+    
     if not os.path.exists(misc_addr):
-            f1 = open(misc_addr, 'a') 
+        f1 = open(misc_addr, 'a') 
 
     hist = read_txt(misc_addr)
 

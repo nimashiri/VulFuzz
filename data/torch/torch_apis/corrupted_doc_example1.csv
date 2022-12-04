@@ -1,0 +1,1608 @@
+API,Example,Bug
+"
+ torch. set_default_tensor_type ( t ) [source] ¶","import numpy as np
+import numpy
+import torch
+torch.tensor([1.2,3]).dtype
+torch.set_default_tensor_type(torch.DoubleTensor)
+","Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 13, in json_serialize
+    json.dumps(v)
+  File ""/usr/lib/python3.8/json/__init__.py"", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 257, in iterencode
+    return _iterencode(o, 0)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type tensortype is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 56, in get_var_shape
+    return list(s)  # convert torch.Size to list
+TypeError: 'getset_descriptor' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    torch.set_default_tensor_type(torch.DoubleTensor)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 102, in wrapper
+    param_dict = build_param_dict(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 42, in build_param_dict
+    param_dict['parameter:%d' % ind] = json_serialize(arg)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 17, in json_serialize
+    return get_var_signature(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 88, in get_var_signature
+    s['shape'] = get_var_shape(var)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 58, in get_var_shape
+    print(e.message)
+AttributeError: 'TypeError' object has no attribute 'message'
+"
+"
+ torch. randint ( low=0 ,  high ,  size ,  \* ,  generator=None ,  out=None ,  dtype=None ,  layout=torch.strided ,  device=None ,  requires_grad=False )   → ¶","import numpy as np
+import numpy
+import torch
+torch.randint(3,5,(3,))
+torch.randint(10,(2,2))
+torch.randint(3,10,(2,2))","  File ""example.py"", line 3
+    tensor([4, 3, 4])torch.randint(10,(2,2))
+                     ^
+SyntaxError: invalid syntax
+"
+"
+ torch. tensor ( data ,  * ,  dtype ,  device ,  requires_grad ,  pin_memory )   → ¶","import numpy as np
+import numpy
+import torch
+torch.tensor([[0.1,1.2],[2.2,3.1],[4.9,5.2]])
+torch.tensor([0,1])# Type inference on data
+torch.tensor([[0.11111,0.222222,0.3333333]], dtype=torch.float64, device=torch.device('cuda:0'))
+torch.tensor(3.14159)
+","  File ""example.py"", line 3
+    [ 4.9000,  5.2000]])torch.tensor([0,1])# Type inference on data
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. sparse_coo_tensor ( indices ,  values ,  size ,  * ,  dtype ,  device ,  requires_grad )   → ¶","import numpy as np
+import numpy
+import torch
+i=torch.tensor([[0,1,1],[2,0,2]])
+v=torch.tensor([3,4,5],dtype=torch.float32)
+torch.sparse_coo_tensor(i,v,[2,4])
+torch.sparse_coo_tensor(i,v)
+torch.sparse_coo_tensor(i,v,[2,4],dtype=torch.float64,device=torch.device('cuda:0'))
+S=torch.sparse_coo_tensor(torch.empty([1,0]),[],[1])
+
+S=torch.sparse_coo_tensor(torch.empty([1,0]),torch.empty([0,2]),[1,2])
+","  File ""example.py"", line 3
+    v=torch.tensor([3,4,5],dtype=torch.float32)
+     ^
+SyntaxError: invalid syntax
+"
+"
+ torch. asarray ( obj ,  * ,  dtype ,  device ,  copy ,  requires_grad )   → ¶","import numpy as np
+import numpy
+import torch
+
+a=torch.tensor([1,2,3])
+b=torch.asarray(a)
+a.data_ptr()==b.data_ptr()
+c=torch.asarray(a,copy=True)
+a=torch.tensor([1,2,3],requires_grad=True).float()
+c=torch.asarray(b)
+d=torch.asarray(b,requires_grad=True)
+array=numpy.array([1,2,3])
+t1=torch.asarray(array)
+array.__array_interface__['data'][0]==t1.data_ptr()
+t2=torch.asarray(array,dtype=torch.float32)
+array.__array_interface__['data'][0]==t1.data_ptr()
+","  File ""example.py"", line 18
+    tensor([1., 2., 3.], grad_fn=<AddBackward0>)array=numpy.array([1,2,3])
+                                 ^
+SyntaxError: invalid syntax
+"
+"
+ torch. as_tensor ( data ,  dtype ,  device )   → ¶","import numpy as np
+import numpy
+import torch
+a=numpy.array([1,2,3])
+t=torch.as_tensor(a)
+a=numpy.array([1,2,3])
+t=torch.as_tensor(a,device=torch.device('cuda'))
+","  File ""example.py"", line 7
+    array([-1,  2,  3])a=numpy.array([1,2,3])
+                       ^
+SyntaxError: invalid syntax
+"
+"
+ torch. from_numpy ( ndarray )   → ¶","import numpy as np
+import numpy
+import torch
+a=numpy.array([1,2,3])
+t=torch.from_numpy(a)","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    a=numpy.array([1,2,3])
+NameError: name 'numpy' is not defined
+"
+"
+ torch. frombuffer ( buffer ,  * ,  dtype ,  count ,  offset ,  requires_grad )   → ¶","import numpy as np
+import numpy
+import torch
+import array
+a=array.array('i',[1,2,3])
+t=torch.frombuffer(a,dtype=torch.int32)
+
+import array
+a=array.array('b',[-1,0,0,0])
+torch.frombuffer(a,dtype=torch.int32)
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    importarray
+NameError: name 'importarray' is not defined
+"
+"
+ torch. zeros ( *size ,  * ,  out=None ,  dtype=None ,  layout=torch.strided ,  device=None ,  requires_grad=False )   → ¶","import numpy as np
+import numpy
+import torch
+torch.zeros(2,3)
+torch.zeros(5)
+","  File ""example.py"", line 3
+    [ 0.,  0.,  0.]])torch.zeros(5)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. ones ( *size ,  * ,  out=None ,  dtype=None ,  layout=torch.strided ,  device=None ,  requires_grad=False )   → ¶","
+import numpy as np
+import numpy
+import torch
+torch.ones(2,3)
+torch.ones(5)
+","  File ""example.py"", line 3
+    [ 1.,  1.,  1.]])torch.ones(5)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. range ( start=0 ,  end ,  step=1 ,  * ,  out=None ,  dtype=None ,  layout=torch.strided ,  device=None ,  requires_grad=False )   → ¶","import numpy as np
+import numpy
+import torch
+torch.range(1,4)
+torch.range(1,4,0.5)","/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py:99: UserWarning: torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+  outputs = func(*args, **kwargs)
+"
+"
+ torch. polar ( abs ,  angle ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+
+abs=torch.tensor([1,2],dtype=torch.float64)
+angle=torch.tensor([np.pi/2,5*np.pi/4],dtype=torch.float64)
+z=torch.polar(abs,angle)","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    importnumpyasnp
+NameError: name 'importnumpyasnp' is not defined
+"
+"
+ torch. argwhere ( input )   → ¶","import numpy as np
+import numpy
+import torch
+t=torch.tensor([1,0,1])
+torch.argwhere(t)
+t=torch.tensor([[1,0,1],[0,1,1]])
+torch.argwhere(t)
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    torch.argwhere(t)
+AttributeError: module 'torch' has no attribute 'argwhere'
+"
+"
+ torch. conj ( input )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([-1+1j,-2+2j,3-3j])
+x.is_conj()
+y=torch.conj(x)
+y.is_conj()
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    x.is_conj()
+AttributeError: 'Tensor' object has no attribute 'is_conj'
+"
+"
+ Tensor. index_add_ ( dim ,  index ,  source ,  * ,  alpha )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.ones(5,3)
+t=torch.tensor([[1,2,3],[4,5,6],[7,8,9]],dtype=torch.float)
+index=torch.tensor([0,4,2])
+x.index_add_(0,index,t)
+x.index_add_(0,index,t,alpha=-1)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 6, in <module>
+    x.index_add_(0,index,t,alpha=-1)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: index_add_() got an unexpected keyword argument 'alpha'
+"
+"
+ Tensor. index_reduce_ ( dim ,  index ,  source ,  reduce ,  * ,  include_self )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.empty(5,3).fill_(2)
+t=torch.tensor([[1,2,3],[4,5,6],[7,8,9],[10,11,12]],dtype=torch.float)
+index=torch.tensor([0,4,2,0])
+x.index_reduce_(0,index,t,'prod')
+
+x=torch.empty(5,3).fill_(2)
+x.index_reduce_(0,index,t,'prod',include_self=False)
+
+
+","Traceback (most recent call last):
+  File ""example.py"", line 5, in <module>
+    x.index_reduce_(0,index,t,'prod')
+AttributeError: 'Tensor' object has no attribute 'index_reduce_'
+"
+"
+ torch. nonzero ( input ,  * ,  out ,  as_tuple )   → ¶","import numpy as np
+import numpy
+import torch
+torch.nonzero(torch.tensor([1,1,1,0,1]))
+torch.nonzero(torch.tensor([[0.6,0.0,0.0,0.0], [0.0,0.4,0.0,0.0], [0.0,0.0,1.2,0.0], [0.0,0.0,0.0,-0.4]]))
+torch.nonzero(torch.tensor([1,1,1,0,1]),as_tuple=True)
+
+torch.nonzero(torch.tensor([[0.6,0.0,0.0,0.0], [0.0,0.4,0.0,0.0], [0.0,0.0,1.2,0.0],[0.0,0.0,0.0,-0.4]]),as_tuple=True)
+
+torch.nonzero(torch.tensor(5),as_tuple=True)
+","  File ""example.py"", line 5
+    torch.nonzero(torch.tensor([[0.6,0.0,0.0,0.0],
+    ^
+SyntaxError: invalid syntax
+"
+"
+ Tensor. scatter_ ( dim ,  index ,  src ,  reduce )   → ¶","import numpy as np
+import numpy
+import torch
+src=torch.arange(1,11).reshape((2,5))
+index=torch.tensor([[0,1,2,0]])
+torch.zeros(3,5,dtype=src.dtype).scatter_(0,index,src)
+
+index=torch.tensor([[0,1,2],[0,1,4]])
+torch.zeros(3,5,dtype=src.dtype).scatter_(1,index,src)
+
+torch.full((2,4),2.).scatter_(1,torch.tensor([[2],[3]]),1.23,reduce='multiply')
+
+torch.full((2,4),2.).scatter_(1,torch.tensor([[2],[3]]), 1.23,reduce='add')
+","  File ""example.py"", line 8
+    [0, 0, 0, 0, 0]])torch.full((2,4),2.).scatter_(1,torch.tensor([[2],[3]]),
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. select_scatter ( input ,  src ,  dim ,  index )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.zeros(2,2)
+b=torch.ones(2)
+a.select_scatter(b,0,0)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 4, in <module>
+    a.select_scatter(b,0,0)
+AttributeError: 'Tensor' object has no attribute 'select_scatter'
+"
+"
+ torch. slice_scatter ( input ,  src ,  dim ,  start ,  end ,  step )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.zeros(8,8)
+b=torch.ones(8)
+a.slice_scatter(b,start=6)
+
+b=torch.ones(2)
+a.slice_scatter(b,dim=1,start=2,end=6,step=2)
+
+
+","  File ""example.py"", line 5
+    [1., 1., 1., 1., 1., 1., 1., 1.]])b=torch.ones(2)
+    ^
+IndentationError: unexpected indent
+"
+"
+ Tensor. scatter_reduce_ ( dim ,  index ,  src ,  reduce ,  * ,  include_self )   → ¶","import numpy as np
+import numpy
+import torch
+src=torch.tensor([1.,2.,3.,4.,5.,6.])
+index=torch.tensor([0,1,0,1,2,1])
+input1=torch.tensor([1.,2.,3.,4.])
+input1.scatter_reduce(0,index,src,reduce=""sum"")
+
+input1.scatter_reduce(0,index,src,reduce=""sum"",include_self=False)
+
+input2=torch.tensor([5.,4.,3.,2.])
+input2.scatter_reduce(0,index,src,reduce=""amax"")
+
+input2.scatter_reduce(0,index,src,reduce=""amax"",include_self=False)
+","Traceback (most recent call last):
+  File ""example.py"", line 5, in <module>
+    input.scatter_reduce(0,index,src,reduce=""sum"")
+AttributeError: 'Tensor' object has no attribute 'scatter_reduce'
+"
+"
+ torch. take ( input ,  index )   → ¶","import numpy as np
+import numpy
+import torch
+src=torch.tensor([[4,3,5],[6,7,8]])
+torch.take(src,torch.tensor([0,2,5]))
+","  File ""example.py"", line 4
+    
+                                         ^
+SyntaxError: unexpected EOF while parsing
+"
+"
+ torch. take_along_dim ( input ,  indices ,  dim ,  * ,  out )   → ¶","
+import numpy as np
+import numpy
+import torch
+t=torch.tensor([[10,30,20],[60,40,50]])
+max_idx=torch.argmax(t)
+torch.take_along_dim(t,max_idx)
+
+sorted_idx=torch.argsort(t,dim=1)
+torch.take_along_dim(t,sorted_idx,dim=1)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 4, in <module>
+    torch.take_along_dim(t,max_idx)
+AttributeError: module 'torch' has no attribute 'take_along_dim'
+"
+"
+ torch. tensor_split ( input ,  indices_or_sections ,  dim )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.arange(8)
+torch.tensor_split(x,3)
+x=torch.arange(7)
+torch.tensor_split(x,3)
+
+torch.tensor_split(x,(1,6))
+x=torch.arange(14).reshape(2,7)
+
+
+torch.tensor_split(x,3,dim=1)
+
+torch.tensor_split(x,(1,6),dim=1)
+
+
+","  File ""example.py"", line 4
+    (tensor([0, 1, 2]), tensor([3, 4, 5]), tensor([6, 7]))x=torch.arange(7)
+                                                          ^
+SyntaxError: invalid syntax
+"
+"
+ torch. bernoulli ( input ,  * ,  generator ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.empty(3,3).uniform_(0,1)# generate a uniform random matrix with range [0, 1]
+
+torch.bernoulli(a)
+
+a=torch.ones(3,3)# probability of drawing ""1"" is 1
+torch.bernoulli(a)
+
+a=torch.zeros(3,3)# probability of drawing ""1"" is 0
+torch.bernoulli(a)
+","  File ""example.py"", line 5
+    [ 1.,  1.,  1.]])a=torch.ones(3,3)# probability of drawing ""1"" is 1
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. clamp ( input ,  min ,  max ,  * ,  out )   → ¶","
+import numpy as np
+import numpy
+import torch
+a=torch.randn(4)
+
+torch.clamp(a,min=-0.5,max=0.5)
+min=torch.linspace(-1,1,steps=4)
+torch.clamp(a,min=min)
+","  File ""example.py"", line 5
+    tensor([-0.5000,  0.1734, -0.0478, -0.0922])min=torch.linspace(-1,1,steps=4)
+                                                ^
+SyntaxError: invalid syntax
+"
+"
+ torch. conj_physical ( input ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+torch.conj_physical(torch.tensor([-1+1j,-2+2j,3-3j]))
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.conj_physical(torch.tensor([-1+1j,-2+2j,3-3j]))
+AttributeError: module 'torch' has no attribute 'conj_physical'
+"
+"
+ torch. exp ( input ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+torch.exp(torch.tensor([0,math.log(2.)]))
+
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.exp(torch.tensor([0,math.log(2.)]))
+NameError: name 'math' is not defined
+"
+"
+ torch. fake_quantize_per_channel_affine ( input ,  scale ,  zero_point ,  quant_min ,  quant_max )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.randn(2,2,2)
+
+scales=(torch.randn(2)+1)*0.05
+
+zero_points=torch.zeros(2).to(torch.int32)
+
+torch.fake_quantize_per_channel_affine(x,scales,zero_points,1,0,255)
+","Traceback (most recent call last):
+  File ""example.py"", line 8, in <module>
+    torch.fake_quantize_per_channel_affine(x,scales,zero_points,1,0,255)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: Zero-point must be Long, found Int
+"
+"
+ torch. float_power ( input ,  exponent ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randint(10,(4,))
+
+torch.float_power(a,2)
+a=torch.arange(1,5)
+
+exp=torch.tensor([2,-3,4,-5])
+
+torch.float_power(a,exp)
+
+","  File ""example.py"", line 5
+    tensor([36., 16., 49.,  1.], dtype=torch.float64)a=torch.arange(1,5)
+                                                     ^
+SyntaxError: invalid syntax
+"
+"
+ torch. frexp ( input ,  * ,  out=None) ,  Tensor ) ¶","import numpy as np
+import numpy
+import torch
+x=torch.arange(9.)
+mantissa,exponent=torch.frexp(x)
+torch.ldexp(mantissa,exponent)
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    mantissa,exponent=torch.frexp(x)
+AttributeError: module 'torch' has no attribute 'frexp'
+"
+"
+ torch. log10 ( input ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.rand(5)
+torch.log10(a)
+
+","  File ""example.py"", line 4
+    tensor([ 0.5224,  0.9354,  0.7257,  0.1301,  0.2251])torch.log10(a)
+                                                         ^
+SyntaxError: invalid syntax
+"
+"
+ torch. log2 ( input ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.rand(5)
+torch.log2(a)
+
+","  File ""example.py"", line 4
+    tensor([ 0.8419,  0.8003,  0.9971,  0.5287,  0.0490])torch.log2(a)
+                                                         ^
+SyntaxError: invalid syntax
+"
+"
+ torch. positive ( input )   → ¶","import numpy as np
+import numpy
+import torch
+t=torch.randn(5)
+
+torch.positive(t)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 4, in <module>
+    torch.positive(t)
+AttributeError: module 'torch' has no attribute 'positive'
+"
+"
+ torch. pow ( input ,  exponent ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(4)
+
+tensor([ 0.4331,  1.2475,  0.6834, -0.2791])
+torch.pow(a,2)
+tensor([ 0.1875,  1.5561,  0.4670,  0.0779])
+exp=torch.arange(1.,5.)a=torch.arange(1.,5.)
+
+torch.pow(a,exp)
+
+","  File ""example.py"", line 5
+    exp=torch.arange(1.,5.)a=torch.arange(1.,5.)
+                           ^
+SyntaxError: invalid syntax
+"
+"
+ torch. round ( input ,  * ,  decimals ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+torch.round(torch.tensor((4.7,-2.3,9.1,-7.7)))
+# Values equidistant from two integers are rounded towards the
+#   the nearest even value (zero is treated as even)
+torch.round(torch.tensor([-0.5,0.5,1.5,2.5]))
+# A positive decimals argument rounds to the to that decimal place
+torch.round(torch.tensor([0.1234567]),decimals=3)
+# A negative decimals argument rounds to the left of the decimal
+torch.round(torch.tensor([1200.1234567]),decimals=-3)
+
+
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    tensor([ 5.,  -2.,  9., -8.])# Values equidistant from two integers are rounded towards the
+NameError: name 'tensor' is not defined
+"
+"
+ torch. aminmax ( input ,  * ,  dim=None ,  keepdim=False ,  out=None) ,  Tensor ) ¶","import numpy as np
+import numpy
+import torch
+torch.aminmax(torch.tensor([1,-3,5]))
+","  File ""example.py"", line 3
+    max=tensor(5))# aminmax propagates NaNs
+                 ^
+SyntaxError: unmatched ')'
+"
+"
+ torch. nanmean ( input ,  dim ,  keepdim ,  * ,  dtype ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([[torch.nan,1,2],[1,2,3]])
+x.mean()
+
+x.nanmean()
+
+x.mean(dim=0)
+
+x.nanmean(dim=0)
+
+torch.tensor([torch.nan]).nanmean()
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    x=torch.tensor([[torch.nan,1,2],[1,2,3]])
+AttributeError: module 'torch' has no attribute 'nan'
+"
+"
+ torch. norm ( input ,  p ,  dim ,  keepdim ,  out ,  dtype ) [source] ¶","import numpy as np
+import numpy
+import torch
+import torch
+a=torch.arange(9,dtype=torch.float)-4
+b=a.reshape((3,3))
+torch.norm(a)
+
+torch.norm(b)
+
+torch.norm(a,float('inf'))
+
+torch.norm(b,float('inf'))
+
+c=torch.tensor([[1,2,3],[-1,1,4]],dtype=torch.float)
+torch.norm(c,dim=0)
+
+torch.norm(c,dim=1)
+
+torch.norm(c,p=1,dim=1)
+
+d=torch.arange(8,dtype=torch.float).reshape(2,2,2)
+torch.norm(d,dim=(1,2))
+
+torch.norm(d[0,:,:]),torch.norm(d[1,:,:])
+
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    importtorch
+NameError: name 'importtorch' is not defined
+"
+"
+ torch. quantile ( input ,  q ,  dim ,  keepdim ,  * ,  interpolation ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(2,3)
+
+q=torch.tensor([0.25,0.5,0.75])
+torch.quantile(a,q,dim=1,keepdim=True)
+
+torch.quantile(a,q,dim=1,keepdim=True).shape
+torch.Size([3, 2, 1])
+a=torch.arange(4.)
+
+torch.quantile(a,0.6,interpolation='linear')
+
+torch.quantile(a,0.6,interpolation='lower')
+
+torch.quantile(a,0.6,interpolation='higher')
+
+torch.quantile(a,0.6,interpolation='midpoint')
+
+torch.quantile(a,0.6,interpolation='nearest')
+
+torch.quantile(a,0.4,interpolation='nearest')
+
+","Traceback (most recent call last):
+  File ""example.py"", line 9, in <module>
+    torch.quantile(a,0.6,interpolation='linear')
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: quantile() received an invalid combination of arguments - got (Tensor, float, interpolation=str), but expected one of:
+ * (Tensor input, Tensor q, int dim, bool keepdim, *, Tensor out)
+ * (Tensor input, float q, int dim, bool keepdim, *, Tensor out)
+
+"
+"
+ torch. unique ( input ,  sorted ,  return_inverse ,  return_counts ,  dim )   → ¶","import numpy as np
+import numpy
+import torch
+output=torch.unique(torch.tensor([1,3,2,3],dtype=torch.long))
+
+output,inverse_indices=torch.unique(torch.tensor([1,3,2,3],dtype=torch.long),sorted=True,return_inverse=True)
+
+output,inverse_indices=torch.unique(torch.tensor([[1,3],[2,3]],dtype=torch.long),sorted=True,return_inverse=True)
+","  File ""example.py"", line 4
+    tensor([1, 2, 3])output,inverse_indices=torch.unique(
+                     ^
+SyntaxError: invalid syntax
+"
+"
+ torch. unique_consecutive ( * ,  ** ) ¶","
+import numpy as np
+import numpy
+import torch
+x=torch.tensor([1,1,2,2,3,1,1,2])
+output=torch.unique_consecutive(x)
+
+output,inverse_indices=torch.unique_consecutive(x,return_inverse=True)
+
+output,counts=torch.unique_consecutive(x,return_counts=True)
+","  File ""example.py"", line 5
+    tensor([1, 2, 3, 1, 2])output,inverse_indices=torch.unique_consecutive(x,return_inverse=True)
+                           ^
+SyntaxError: invalid syntax
+"
+"
+ torch. argsort ( input ,  dim ,  descending ,  stable )   → ¶","import numpy as np
+import numpy
+import torch
+
+a = torch.randn(4, 4)
+torch.argsort(a, dim=1)
+","  File ""example.py"", line 4
+    [ 0.0669, -0.2318, -0.8229, -0.9280]])torch.argsort(a,dim=1)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. kthvalue ( input ,  k ,  dim ,  keepdim ,  * ,  out ) ¶","import numpy as np
+import numpy
+import torch
+x=torch.arange(1.,6.)
+
+torch.kthvalue(x,4)
+x=torch.arange(1.,7.).resize_(2,3)
+
+torch.kthvalue(x,2,0,True)
+","  File ""example.py"", line 5
+    torch.return_types.kthvalue(values=tensor(4.), indices=tensor(3))x=torch.arange(1.,7.).resize_(2,3)
+                                                                     ^
+SyntaxError: invalid syntax
+"
+"
+ torch. sort ( input ,  dim ,  descending ,  stable ,  * ,  out ) ¶","
+import numpy as np
+import numpy
+import torch
+x=torch.randn(3,4)
+sorted,indices=torch.sort(x)
+
+sorted,indices=torch.sort(x,0)
+
+
+","  File ""example.py"", line 6
+    [ 0,  3,  1,  2]])sorted,indices=torch.sort(x,0)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. bincount ( input ,  weights ,  minlength )   → ¶","
+import numpy as np
+import numpy
+import torch
+input1=torch.randint(0,8,(5,),dtype=torch.int64)
+weights=torch.linspace(0,1,steps=5)
+torch.bincount(input1)
+input1.bincount(weights)
+","  File ""example.py"", line 5
+    tensor([ 0.0000,  0.2500,  0.5000,  0.7500,  1.0000])torch.bincount(input)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. block_diag ( * ) [source] ¶","import numpy as np
+import numpy
+import torch
+
+A=torch.tensor([[0,1],[1,0]])
+B=torch.tensor([[3,4,5],[6,7,8]])
+C=torch.tensor(7)
+D=torch.tensor([1,2,3])
+E=torch.tensor([[4],[5],[6]])
+torch.block_diag(A,B,C,D,E)
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    importtorch
+NameError: name 'importtorch' is not defined
+"
+"
+ torch. cartesian_prod ( * ) [source] ¶","import numpy as np
+import numpy
+import torch
+import itertools
+a=[1,2,3]
+b=[4,5]
+list(itertools.product(a,b))
+[(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)]
+tensor_a=torch.tensor(a)
+tensor_b=torch.tensor(b)
+torch.cartesian_prod(tensor_a,tensor_b)
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    importitertools
+NameError: name 'importitertools' is not defined
+"
+"
+ torch. combinations ( input ,  r ,  with_replacement )   → ¶","import numpy as np
+import numpy
+import torch
+a=[1,2,3]
+
+tensor_a=torch.tensor(a)
+torch.combinations(tensor_a)
+
+torch.combinations(tensor_a,r=3)
+
+torch.combinations(tensor_a,with_replacement=True)","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    list(itertools.combinations(a,r=2))
+NameError: name 'itertools' is not defined
+"
+"
+ torch. corrcoef ( input )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([[0,1,2],[2,1,0]])
+torch.corrcoef(x)
+
+x=torch.randn(2,4)
+
+torch.corrcoef(x)
+
+torch.corrcoef(x[0])
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    torch.corrcoef(x)
+AttributeError: module 'torch' has no attribute 'corrcoef'
+"
+"
+ torch. cumprod ( input ,  dim ,  * ,  dtype ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(10)
+
+torch.cumprod(a,dim=0)
+
+torch.cumprod(a,dim=0)
+
+","  File ""example.py"", line 5
+    0.0014, -0.0006, -0.0001])a[5]=0.0
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. diag_embed ( input ,  offset ,  dim1 ,  dim2 )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(2,3)
+torch.diag_embed(a)
+
+torch.diag_embed(a,offset=1,dim1=0,dim2=2)
+","  File ""example.py"", line 4
+    [ 0.0000,  0.0000, -1.3986]]])torch.diag_embed(a,offset=1,dim1=0,dim2=2)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. flatten ( input ,  start_dim ,  end_dim )   → ¶","import numpy as np
+import numpy
+import torch
+t=torch.tensor([[[1,2],[3,4]],[[5,6],[7,8]]])
+torch.flatten(t)
+
+torch.flatten(t,start_dim=1)
+","  File ""example.py"", line 4
+    torch.flatten(t,start_dim=1)
+    ^
+SyntaxError: invalid syntax
+"
+"
+ torch. rot90 ( input ,  k ,  dims )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.arange(4).view(2,2)
+
+torch.rot90(x,1,[0,1])
+tensor([[1, 3],
+x=torch.arange(8).view(2,2,2)
+
+torch.rot90(x,1,[1,2])
+","  File ""example.py"", line 5
+    [0, 2]])x=torch.arange(8).view(2,2,2)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. histogram ( input ,  bins ,  * ,  range ,  weight ,  density ,  out ) ¶","import numpy as np
+import numpy
+import torch
+torch.histogram(torch.tensor([1.,2,1]),bins=4,range=(0.,3.),weight=torch.tensor([1.,2.,4.]))
+
+torch.histogram(torch.tensor([1.,2,1]),bins=4,range=(0.,3.),weight=torch.tensor([1.,2.,4.]),density=True)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.histogram(torch.tensor([1.,2,1]),bins=4,range=(0.,3.),weight=torch.tensor([1.,2.,4.]))
+AttributeError: module 'torch' has no attribute 'histogram'
+"
+"
+ torch. meshgrid ( * ,  indexing ) [source] ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([1,2,3])
+y=torch.tensor([4,5,6])
+
+grid_x,grid_y=torch.meshgrid(x,y,indexing='ij')
+
+
+torch.equal(torch.cat(tuple(torch.dstack([grid_x,grid_y]))),torch.cartesian_prod(x,y))
+
+xs=torch.linspace(-5,5,steps=100)
+ys=torch.linspace(-5,5,steps=100)
+x,y=torch.meshgrid(xs,ys,indexing='xy')
+z=torch.sin(torch.sqrt(x*x+y*y))
+
+","  File ""example.py"", line 3
+    y=torch.tensor([4,5,6])Observe the element-wise pairings across the grid, (1, 4),
+                           ^
+SyntaxError: invalid syntax
+"
+"
+ torch. ravel ( input )   → ¶","
+import numpy as np
+import numpy
+import torch
+t=torch.tensor([[[1,2],[3,4]],[[5,6],[7,8]]])
+torch.ravel(t)
+","  File ""example.py"", line 4
+    
+                  ^
+SyntaxError: unexpected EOF while parsing
+"
+"
+ torch. repeat_interleave ( input ,  repeats ,  dim ,  * ,  output_size )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([1,2,3])
+x.repeat_interleave(2)
+
+y=torch.tensor([[1,2],[3,4]])
+torch.repeat_interleave(y,2)
+
+torch.repeat_interleave(y,3,dim=1)
+
+torch.repeat_interleave(y,torch.tensor([1,2]),dim=0)
+
+torch.repeat_interleave(y,torch.tensor([1,2]),dim=0,output_size=3)
+
+
+","Traceback (most recent call last):
+  File ""example.py"", line 8, in <module>
+    torch.repeat_interleave(y,torch.tensor([1,2]),dim=0,output_size=3)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: repeat_interleave() received an invalid combination of arguments - got (Tensor, Tensor, output_size=int, dim=int), but expected one of:
+ * (Tensor input, Tensor repeats, int dim)
+ * (Tensor input, int repeats, int dim)
+ * (Tensor repeats)
+
+"
+"
+ torch. searchsorted ( sorted_sequence ,  values ,  * ,  out_int32 ,  right ,  side ,  out ,  sorter )   → ¶","import numpy as np
+import numpy
+import torch
+sorted_sequence=torch.tensor([[1,3,5,7,9],[2,4,6,8,10]])
+sorted_sequence
+
+values=torch.tensor([[3,6,9],[3,6,9]])
+
+torch.searchsorted(sorted_sequence,values)
+
+torch.searchsorted(sorted_sequence,values,side='right')
+
+sorted_sequence_1d=torch.tensor([1,3,5,7,9])
+
+torch.searchsorted(sorted_sequence_1d,values)
+","  File ""example.py"", line 8
+    [1, 3, 4]])sorted_sequence_1d=torch.tensor([1,3,5,7,9])
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. tril ( input ,  diagonal ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(3,3)
+
+torch.tril(a)
+
+b=torch.randn(4,6)
+
+torch.tril(b,diagonal=1)
+
+torch.tril(b,diagonal=-1)
+
+","  File ""example.py"", line 5
+    [-0.3409, -0.9828,  0.0289]])b=torch.randn(4,6)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. tril_indices ( row ,  col ,  offset ,  * ,  dtype ,  device ,  layout )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.tril_indices(3,3)
+
+a=torch.tril_indices(4,3,-1)
+
+a=torch.tril_indices(4,3,1)
+
+","  File ""example.py"", line 4
+    [0, 0, 1, 0, 1, 2]])a=torch.tril_indices(4,3,-1)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. triu ( input ,  diagonal ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(3,3)
+
+torch.triu(a)
+
+torch.triu(a,diagonal=1)
+
+torch.triu(a,diagonal=-1)
+
+b=torch.randn(4,6)
+
+torch.triu(b,diagonal=1)
+
+torch.triu(b,diagonal=-1)
+
+","  File ""example.py"", line 7
+    [ 0.0000, -0.5211, -0.4573]])b=torch.randn(4,6)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. triu_indices ( row ,  col ,  offset ,  * ,  dtype ,  device ,  layout )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.triu_indices(3,3)
+
+a=torch.triu_indices(4,3,-1)
+
+a=torch.triu_indices(4,3,1)
+
+","  File ""example.py"", line 4
+    [0, 1, 2, 1, 2, 2]])a=torch.triu_indices(4,3,-1)
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. resolve_conj ( input )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([-1+1j,-2+2j,3-3j])
+y=x.conj()
+y.is_conj()
+
+z=y.resolve_conj()
+
+z.is_conj()
+","Traceback (most recent call last):
+  File ""example.py"", line 4, in <module>
+    y.is_conj()
+AttributeError: 'Tensor' object has no attribute 'is_conj'
+"
+"
+ torch. resolve_neg ( input )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([-1+1j,-2+2j,3-3j])
+y=x.conj()
+z=y.imag
+z.is_neg()
+
+out=y.resolve_neg()
+
+out.is_neg()
+
+","Traceback (most recent call last):
+  File ""example.py"", line 5, in <module>
+    z.is_neg()
+AttributeError: 'Tensor' object has no attribute 'is_neg'
+"
+"
+ torch. cholesky ( input ,  upper ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(3,3)
+a=a@a.mT+1e-3
+l=torch.cholesky(a)
+
+a=torch.randn(3,2,2)
+a=a@a.mT+1e-03
+l=torch.cholesky(a)
+z=l@l.mT
+torch.dist(z,a)
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    a=a@a.mT+1e-3# make symmetric positive-definite
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+"
+ torch. cholesky_inverse ( input ,  upper ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(3,3)
+a=torch.mm(a,a.t())+1e-05*torch.eye(3)# make symmetric positive definite
+u=torch.linalg.cholesky(a)
+
+torch.cholesky_inverse(u)
+
+a.inverse()
+
+a=torch.randn(3,2,2
+a=a@a.mT+1e-03
+l=torch.linalg.cholesky(a)
+z=l@l.mT
+torch.dist(z,a)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 9, in <module>
+    a=a@a.mT+1e-03# make symmetric positive-definite
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+"
+ torch. inner ( input ,  other ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+
+torch.inner(torch.tensor([1,2,3]),torch.tensor([0,2,1]))
+
+a=torch.randn(2,3)
+
+b=torch.randn(2,4,3)
+
+torch.inner(a,b)
+
+Torch.inner(a,torch.tensor(2))
+
+","  File ""example.py"", line 2
+    >>>torch.inner(torch.tensor([1,2,3]),torch.tensor([0,2,1]))
+    ^
+SyntaxError: invalid syntax
+"
+"
+ torch. lu ( * ,  ** ) ¶","import numpy as np
+import numpy
+import torch
+A=torch.randn(2,3,3)
+A_LU,pivots=torch.lu(A)
+
+
+A_LU,pivots,info=torch.lu(A,get_infos=True)
+
+
+","  File ""example.py"", line 7
+    ifinfo.nonzero().size(0)==0:
+                               ^
+SyntaxError: invalid syntax
+"
+"
+ torch. lu_solve ( b ,  LU_data ,  LU_pivots ,  * ,  out )   → ¶","import numpy as np
+import numpy
+import torch
+A=torch.randn(2,3,3)
+b=torch.randn(2,3,1)
+LU,pivots=torch.linalg.lu_factor(A)
+x=torch.lu_solve(b,LU,pivots)
+torch.dist(A@x,b)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 4, in <module>
+    LU,pivots=torch.linalg.lu_factor(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu_factor'
+"
+"
+ torch.linalg. matrix_exp ( A )   → ¶","import numpy as np
+import numpy
+import torch
+A=torch.empty(2,2,2)
+A[0,:,:]=torch.eye(2,2)
+A[1,:,:]=2*torch.eye(2,2)
+
+torch.linalg.matrix_exp(A)
+
+import math
+A=torch.tensor([[0,math.pi/3],[-math.pi/3,0]])
+torch.linalg.matrix_exp(A)
+","  File ""example.py"", line 7
+    [0.0000, 7.3891]]])importmath
+    ^
+IndentationError: unexpected indent
+"
+"
+ torch. qr ( input ,  some ,  * ,  out ) ¶","import numpy as np
+import numpy
+import torch
+a=torch.tensor([[12.,-51,4],[6,167,-68],[-4,24,-41]])
+q,r=torch.qr(a)
+
+torch.mm(q,r).round()
+
+torch.mm(q.t(),q).round()
+
+a=torch.randn(3,4,5)
+q,r=torch.qr(a,some=False)
+torch.allclose(torch.matmul(q,r),a)
+
+torch.allclose(torch.matmul(q.mT,q),torch.eye(5))
+","Traceback (most recent call last):
+  File ""example.py"", line 11, in <module>
+    torch.allclose(torch.matmul(q.mT,q),torch.eye(5))
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+"
+ torch. svd ( input ,  some ,  compute_uv ,  * ,  out ) ¶","import numpy as np
+import numpy
+import torch
+a=torch.randn(5,3)
+
+u,s,v=torch.svd(a)
+
+torch.dist(a,torch.mm(torch.mm(u,torch.diag(s)),v.t()))
+
+a_big=torch.randn(7,5,3)
+u,s,v=torch.svd(a_big)
+torch.dist(a_big,torch.matmul(torch.matmul(u,torch.diag_embed(s)),v.mT))","Traceback (most recent call last):
+  File ""example.py"", line 11, in <module>
+    torch.dist(a_big,torch.matmul(torch.matmul(u,torch.diag_embed(s)),v.mT))
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+"
+ torch. use_deterministic_algorithms ( mode ,  * ,  warn_only ) [source] ¶","import numpy as np
+import numpy
+import torch
+torch.use_deterministic_algorithms(True)
+torch.randn(10,device='cuda').kthvalue(0)","[W Context.cpp:70] Warning: torch.use_deterministic_algorithms is in beta, and its design and functionality may change in the future. (function operator())
+Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    torch.randn(10,device='cuda').kthvalue(0)
+RuntimeError: kthvalue CUDA does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.
+"
+"
+ class torch.nn. MaxUnpool1d ( kernel_size ,  stride ,  padding ) [source] ¶","import numpy as np
+import numpy
+from torch import nn
+import torch
+
+pool=nn.MaxPool1d(2,stride=2,return_indices=True)
+unpool=nn.MaxUnpool1d(2,stride=2)
+input1=torch.tensor([[[1.,2,3,4,5,6,7,8]]])
+output,indices=pool(input1)
+unpool(output,indices)
+
+input1=torch.tensor([[[1.,2,3,4,5,6,7,8,9]]])
+output,indices=pool(input1)
+unpool(output,indices,output_size=input1.size())
+unpool(output,indices)","  File ""example.py"", line 11
+    tensor([[[ 0.,  2.,  0.,  4.,  0.,  6.,  0., 8.,  0.]]])unpool(output,indices)
+                                                            ^
+SyntaxError: invalid syntax
+"
+"
+ class torch.nn. MaxUnpool2d ( kernel_size ,  stride ,  padding ) [source] ¶","import numpy as np
+import numpy
+import torch
+from torch import nn
+
+pool=nn.MaxPool2d(2,stride=2,return_indices=True)
+unpool=nn.MaxUnpool2d(2,stride=2)
+input=torch.tensor([[[[1.,2.,3.,4.],
+                            [ 5.,  6.,  7.,  8.],
+                            [ 9., 10., 11., 12.],
+                            [13., 14., 15., 16.]]]])
+output,indices=pool(input)
+unpool(output,indices)
+
+
+input=torch.torch.tensor([[[[1.,2.,3.,4.,5.],
+                                  [ 6.,  7.,  8., 9., 10.],
+                                  [11., 12., 13., 14., 15.],
+                                  [16., 17., 18., 19., 20.]]]])
+output,indices=pool(input)
+
+unpool(output,indices,output_size=input.size())
+","  File ""example.py"", line 5
+    output,indices=pool(input)
+                  ^
+SyntaxError: invalid syntax
+"
+"
+ class torch.nn. MaxUnpool3d ( kernel_size ,  stride ,  padding ) [source] ¶","import numpy as np
+import numpy
+import torch
+from torch import nn
+
+pool=nn.MaxPool3d(3,stride=2,return_indices=True)
+unpool=nn.MaxUnpool3d(3,stride=2)
+output,indices=pool(torch.randn(20,16,51,33,15))
+unpooled_output=unpool(output,indices)
+unpooled_output.size()
+torch.Size([20, 16, 51, 33, 15])
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    pool=nn.MaxPool3d(3,stride=2,return_indices=True)
+NameError: name 'nn' is not defined
+"
+"
+ class torch.nn. DataParallel ( module ,  device_ids ,  output_device ,  dim ) [source] ¶","import numpy as np
+import numpy
+import torch
+net=torch.nn.DataParallel(model,device_ids=[0,1,2])
+output=net(input_var)
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    net=torch.nn.DataParallel(model,device_ids=[0,1,2])
+NameError: name 'model' is not defined
+"
+"
+ torch.nn.utils. weight_norm ( module ,  name ,  dim ) [source] ¶","import numpy as np
+import numpy
+import torch
+from torch import nn
+m=nn.utils.weight_norm(nn.Linear(20,40),name='weight')
+m.weight_g.size()
+torch.Size([40, 1])
+m.weight_v.size()
+torch.Size([40, 20])","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    m=weight_norm(nn.Linear(20,40),name='weight')
+NameError: name 'weight_norm' is not defined
+"
+"
+ torch.nn.utils. spectral_norm ( module ,  name ,  n_power_iterations ,  eps ,  dim ) [source] ¶","import numpy as np
+import numpy
+import torch
+from torch import nn
+
+m=nn.utils.spectral_norm(nn.Linear(20,40))
+
+nn.Linear(in_features=20, out_features=40, bias=True)
+m.weight_u.size()
+torch.Size([40])","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    m=spectral_norm(nn.Linear(20,40))
+NameError: name 'spectral_norm' is not defined
+"
+"
+ torch.nn.utils. skip_init ( module_cls ,  * ,  ** ) [source] ¶","import numpy as np
+import numpy
+import torch
+
+m=torch.nn.utils.skip_init(torch.nn.Linear,5,1)
+
+m2=torch.nn.utils.skip_init(torch.nn.Linear,in_features=6,out_features=1)
+
+
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    importtorch
+NameError: name 'importtorch' is not defined
+"
+"
+ torch.nn.utils.parametrizations. orthogonal ( module ,  name ,  orthogonal_map ,  * ,  use_trivialization ) [source] ¶","
+import numpy as np
+import numpy
+import torch
+import torch.nn.functional as F
+
+orth_linear=F.parametrizations(F.Linear(20,40))
+
+Q=orth_linear.weight
+torch.dist(Q.T@Q,torch.eye(20))
+
+","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    orth_linear=orthogonal(nn.Linear(20,40))
+NameError: name 'orthogonal' is not defined
+"
+"
+ torch.nn.utils.parametrizations. spectral_norm ( module ,  name ,  n_power_iterations ,  eps ,  dim ) [source] ¶","import numpy as np
+import numpy
+import torch
+from torch import nn
+snm=nn.utils.spectral_norm(nn.Linear(20,40))
+
+torch.linalg.matrix_norm(snm.weight,2)","Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    snm=spectral_norm(nn.Linear(20,40))
+NameError: name 'spectral_norm' is not defined
+"
+"
+ torch.nn.functional. cosine_similarity ( x1 ,  x2 ,  dim ,  eps )   → ¶","
+import numpy as np
+import numpy
+import torch
+from torch import nn
+import torch.nn.functional as F
+input1=torch.randn(100,128)
+input2=torch.randn(100,128)
+output=F.cosine_similarity(input1,input2)","Traceback (most recent call last):
+  File ""example.py"", line 4, in <module>
+    output=F.cosine_similarity(input1,input2)
+NameError: name 'F' is not defined
+"
+"
+ torch.nn.functional. ctc_loss ( log_probs ,  targets ,  input_lengths ,  target_lengths ,  blank ,  reduction ,  zero_infinity ) [source] ¶","import numpy as np
+import numpy
+import torch
+import torch.nn.functional as F
+
+log_probs=torch.randn(50,16,20).log_softmax(2).detach().requires_grad_()
+targets=torch.randint(1,20,(16,30),dtype=torch.long)
+input_lengths=torch.full((16,),50,dtype=torch.long)
+target_lengths=torch.randint(10,30,(16,),dtype=torch.long)
+loss=F.ctc_loss(log_probs,targets,input_lengths,target_lengths)
+loss.backward()","Traceback (most recent call last):
+  File ""example.py"", line 6, in <module>
+    loss=F.ctc_loss(log_probs,targets,input_lengths,target_lengths)
+NameError: name 'F' is not defined
+"
+"
+ torch.nn.functional. nll_loss ( input ,  target ,  weight ,  size_average ,  ignore_index ,  reduce ,  reduction ) [source] ¶","import numpy as np
+import numpy
+import torch
+import torch.nn.functional as F
+
+input=torch.randn(3,5,requires_grad=True)
+
+target=torch.tensor([1,0,4])
+output= F.nll_loss(F.log_softmax(input,dim=1),target)
+
+","Traceback (most recent call last):
+  File ""example.py"", line 6, in <module>
+    output=F.nll_loss(F.log_softmax(input,dim=1),target)
+NameError: name 'F' is not defined
+"
+"
+ Tensor. to ( * ,  ** )   → ¶","import numpy as np
+import numpy
+import torch
+tensor=torch.randn(2,2)
+tensor.to(torch.float64)
+
+cuda0=torch.device('cuda:0')
+tensor.to(cuda0)
+
+tensor.to(cuda0,dtype=torch.float64)
+
+other=torch.randn((),dtype=torch.float64,device=cuda0)
+tensor.to(other,non_blocking=True)
+","  File ""example.py"", line 4
+    [ 0.3310, -0.0584]], dtype=torch.float64)cuda0=torch.device('cuda:0')
+    ^
+IndentationError: unexpected indent
+"
+"
+ Tensor. put_ ( index ,  source ,  accumulate )   → ¶","
+import numpy as np
+import numpy
+import torch
+src=torch.tensor([[4,3,5],[6,7,8]])
+src.put_(torch.tensor([1,3]),torch.tensor([9,10]))","  File ""example.py"", line 4
+    
+                                                      ^
+SyntaxError: unexpected EOF while parsing
+"
+"
+ Tensor. register_hook ( hook ) [source] ¶","import numpy as np
+import numpy
+import torch
+v=torch.tensor([0.,0.,0.],requires_grad=True)
+h=v.register_hook(lambda grad:grad*2)
+v.backward(torch.tensor([1.,2.,3.]))
+","  File ""example.py"", line 3
+    h=v.register_hook(lambdagrad:grad*2)# double the gradient
+                                ^
+SyntaxError: invalid syntax
+"
+"
+ Tensor. sparse_mask ( mask )   → ¶","import numpy as np
+import numpy
+import torch
+nse=5
+dims=(5,5,2,2)
+I=torch.cat([torch.randint(0,dims[0],size=(nse,)),torch.randint(0,dims[1],size=(nse,))],0).reshape(2,nse)
+V=torch.randn(nse,dims[2],dims[3])
+S=torch.sparse_coo_tensor(I,V,dims).coalesce()
+D=torch.randn(dims)
+D.sparse_mask(S)
+","  File ""example.py"", line 5
+    V=torch.randn(nse,dims[2],dims[3])
+     ^
+SyntaxError: invalid syntax
+"
+"
+ Tensor. to_dense ( )   → ¶","import numpy as np
+import numpy
+import torch
+s=torch.sparse_coo_tensor(torch.tensor([[1,1],[0,2]]),torch.tensor([9,10]),size=(3,3))
+
+
+","  File ""example.py"", line 4
+    
+                ^
+SyntaxError: unexpected EOF while parsing
+"
+"
+ Tensor. to_sparse_csr ( )   → ¶","import numpy as np
+import numpy
+import torch
+dense=torch.randn(5,5)
+sparse=dense.to_sparse_csr()
+
+
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    sparse=dense.to_sparse_csr()
+AttributeError: 'Tensor' object has no attribute 'to_sparse_csr'
+"
+"
+ Tensor. to_sparse_csc ( )   → ¶","import numpy as np
+import numpy
+import torch
+dense=torch.randn(5,5)
+sparse=dense.to_sparse_csc()
+
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    sparse=dense.to_sparse_csc()
+AttributeError: 'Tensor' object has no attribute 'to_sparse_csc'
+"
+"
+ Tensor. to_sparse_bsr ( blocksize )   → ¶","import numpy as np
+import numpy
+import torch
+dense=torch.randn(10,10)
+sparse=dense.to_sparse_csr()
+sparse_bsr=sparse.to_sparse_bsr((5,5))
+
+
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    sparse=dense.to_sparse_csr()
+AttributeError: 'Tensor' object has no attribute 'to_sparse_csr'
+"
+"
+ Tensor. to_sparse_bsc ( blocksize )   → ¶","import numpy as np
+import numpy
+import torch
+dense=torch.randn(10,10)
+sparse=dense.to_sparse_csr()
+sparse_bsc=sparse.to_sparse_bsc((5,5))
+
+","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    sparse=dense.to_sparse_csr()
+AttributeError: 'Tensor' object has no attribute 'to_sparse_csr'
+"
+"
+ Tensor. view ( * )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.randn(4,4)
+
+torch.Size([4, 4])
+y=x.view(16)
+
+torch.Size([16])
+z=x.view(-1,8)# the size -1 is inferred from other dimensions
+
+a=torch.randn(1,2,3,4)
+
+torch.Size([1, 2, 3, 4])
+b=a.transpose(1,2)# Swaps 2nd and 3rd dimension
+
+torch.Size([1, 3, 2, 4])
+c=a.view(1,3,2,4)# Does not change tensor layout in memory
+
+torch.Size([1, 3, 2, 4])
+torch.equal(b,c)
+","  File ""example.py"", line 8
+    torch.Size([2, 8])a=torch.randn(1,2,3,4)
+                      ^
+SyntaxError: invalid syntax
+"
+"
+ torch.linalg. vander ( x ,  N )   → ¶","import numpy as np
+import numpy
+import torch
+x=torch.tensor([1,2,3,5])
+torch.linalg.vander(x)
+
+torch.linalg.vander(x,N=3)","Traceback (most recent call last):
+  File ""example.py"", line 3, in <module>
+    linalg.vander(x)
+NameError: name 'linalg' is not defined
+"
+"
+ torch.sparse. sum ( input ,  dim ,  dtype ) [source] ¶","import numpy as np
+import numpy
+import torch
+nnz=3
+dims=[5,5,2,3]
+I=torch.cat([torch.randint(0,dims[0],size=(nnz,)),
+                   torch.randint(0, dims[1], size=(nnz,))], 0).reshape(2, nnz)
+V=torch.randn(nnz,dims[2],dims[3])
+size=torch.Size(dims)
+S=torch.sparse_coo_tensor(I,V,size)
+
+torch.sparse.sum(S,[1,3])
+
+torch.sparse.sum(S,[0,1,3])
+
+
+
+","  File ""example.py"", line 5
+    V=torch.randn(nnz,dims[2],dims[3])
+     ^
+SyntaxError: invalid syntax
+"

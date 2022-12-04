@@ -88,7 +88,7 @@ def decorate_function(func, hint):
             s['shape'] = get_var_shape(var)
             s['dtype'] = get_var_dtype(var)
             return s
-
+    
         def get_signature_for_tensors(t):
             if isinstance(t, list):
                 signatures = [get_var_signature(i) for i in t]

@@ -76,31 +76,8 @@ class RunTestFiles():
         with Pool(10) as p:
             p.map(process_prerun, self.test_files)
 
-def run_torch_tests():
-    for t in data:
-        try:
-            subprocess.run(['python3', t])
-        except Exception as e:
-            print(e)
 
-if __name__ == '__main__':
-    torch_tests = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_test_files/torch.txt'
-    data = read_txt(torch_tests)
-
-    obj_ = RunTestFiles(data)
-
-    obj_.pre_run_test_files()
-
-    obj_.pre_run_test_files()
-
-    def pre_run_test_files(self):
-        self.p = multiprocessing.Pool(2)
-        m = multiprocessing.Manager()
-        self.event = m.Event()
-        status = self.p.apply_async(process_prerun, (self.test_files, ))
-        print('')
-
-def run_torch_tests(data):
+def run_torch_tests_db_reconnect(data):
     import os
 
     _path_clean_tests = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_test_files/history.txt'
@@ -133,10 +110,8 @@ def run_torch_tests(data):
                 subprocess.run(['mongod', '--dbpath', '/media/nimashiri/DATA/mongodata/', '--logpath', '/media/nimashiri/DATA/mongolog/mongo.log', '--fork'])
 
 if __name__ == '__main__':
-    subprocess.call('cp -r /media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_test_files/write_tools.py /home/nimashiri/.local/lib/python3.8/site-packages/torch/', shell=True)
+    # subprocess.call('cp -r /media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_test_files/write_tools.py /home/nimashiri/.local/lib/python3.8/site-packages/torch/', shell=True)
 
     torch_tests = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/torch/torch_test_files/torch.txt'
     data = read_txt(torch_tests)
-    run_torch_tests(data)
-    #obj_ = RunTestFiles(data)
-    #obj_.pre_run_test_files()
+    run_torch_tests_db_reconnect(data)

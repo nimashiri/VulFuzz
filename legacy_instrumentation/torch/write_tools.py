@@ -10,4 +10,7 @@ def write_fn(func_name, params, input_signature, output_signature):
     out_fname = "torch." + func_name
     params['input_signature'] = input_signature
     params['output_signature'] = output_signature
+    params['source'] = 'docs'
     torch_db[out_fname].insert_one(params)
+   
+	

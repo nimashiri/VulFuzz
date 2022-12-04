@@ -1,6 +1,6 @@
 import pymongo, os
 
-DB = pymongo.MongoClient(host='localhost', port=27017)['Torch']
+DB = pymongo.MongoClient(host='localhost', port=27017)['Torch-VulFuzz']
 
 counter = 0
 for name in DB.list_collection_names():
@@ -8,7 +8,7 @@ for name in DB.list_collection_names():
 
 from csv import writer
 
-misc_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/misc/tf_queried_apis.txt'
+misc_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/misc/torch_queried_apis.txt'
 
 def write_list_to_txt4(data, filename):
     with open(filename, "a", encoding='utf-8') as file:
@@ -18,8 +18,17 @@ def read_txt(fname):
     with open(fname, 'r') as fileReader:
         data = fileReader.read().splitlines()
     return data
-    
-def getstat(dbname):
+
+
+def delete_document(dbname):
+    myclient = pymongo.MongoClient("mongodb://localhost:27017/")
+    mydb = myclient[dbname]
+    for name in mydb.list_collection_names():
+        print(name)
+        mycol = mydb[name]
+        mycol.delete_many({"source": "tests" })
+
+def retrieve_source(dbname):
     myclient = pymongo.MongoClient("mongodb://localhost:27017/")
     mydb = myclient[dbname]
     counter = 0
@@ -55,4 +64,4 @@ def countall(dbname):
     print(counter)
 
 if __name__ == '__main__':
-    countall('tf')
+    countall('Torch-VulFuzz')

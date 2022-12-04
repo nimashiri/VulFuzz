@@ -58629,3 +58629,1185 @@ example.features.feature['my_feature'].int64_list.value
     save_graph_def=True
 )
 ","[['Creates a ', 'MonitoredSession', ' for training.']]",[]
+"tf.estimator.NanTensorHook(
+    loss_tensor, fail_on_nan_loss=True
+)
+","[['Inherits From: ', 'SessionRunHook']]","after_create_session(
+    session, coord
+)
+"
+"tf.compat.v1.train.NewCheckpointReader(
+    filepattern
+)
+",[],[]
+"tf.compat.v1.train.Optimizer(
+    use_locking, name
+)
+",[],"sgd_op = tf.compat.v1.train.GradientDescentOptimizer(3.0)
+opt_op = sgd_op.minimize(cost, global_step, [var0, var1])
+opt_op.run(session=session)
+"
+"tf.estimator.ProfilerHook(
+    save_steps=None,
+    save_secs=None,
+    output_dir='',
+    show_dataflow=True,
+    show_memory=False
+)
+","[['Inherits From: ', 'SessionRunHook']]","after_create_session(
+    session, coord
+)
+"
+"tf.compat.v1.train.ProximalAdagradOptimizer(
+    learning_rate,
+    initial_accumulator_value=0.1,
+    l1_regularization_strength=0.0,
+    l2_regularization_strength=0.0,
+    use_locking=False,
+    name='ProximalAdagrad'
+)
+","[['Inherits From: ', 'Optimizer']]","apply_gradients(
+    grads_and_vars, global_step=None, name=None
+)
+"
+"tf.compat.v1.train.ProximalGradientDescentOptimizer(
+    learning_rate,
+    l1_regularization_strength=0.0,
+    l2_regularization_strength=0.0,
+    use_locking=False,
+    name='ProximalGradientDescent'
+)
+","[['Inherits From: ', 'Optimizer']]","apply_gradients(
+    grads_and_vars, global_step=None, name=None
+)
+"
+"tf.compat.v1.train.QueueRunner(
+    queue=None,
+    enqueue_ops=None,
+    close_op=None,
+    cancel_op=None,
+    queue_closed_exception_types=None,
+    queue_runner_def=None,
+    import_scope=None
+)
+",[],[]
+"tf.compat.v1.train.RMSPropOptimizer(
+    learning_rate,
+    decay=0.9,
+    momentum=0.0,
+    epsilon=1e-10,
+    use_locking=False,
+    centered=False,
+    name='RMSProp'
+)
+","[['Inherits From: ', 'Optimizer']]","optimizer = tf.compat.v1.train.RMSPropOptimizer(
+  learning_rate=learning_rate,
+  decay=decay,
+  momentum=momentum,
+  epsilon=epsilon)
+"
+"tf.compat.v1.train.Saver(
+    var_list=None,
+    reshape=False,
+    sharded=False,
+    max_to_keep=5,
+    keep_checkpoint_every_n_hours=10000.0,
+    name=None,
+    restore_sequentially=False,
+    saver_def=None,
+    builder=None,
+    defer_build=False,
+    allow_empty=False,
+    write_version=saver_pb2.SaverDef.V2,
+    pad_step_number=False,
+    save_relative_paths=False,
+    filename=None
+)
+",[],"{
+    'sequential/dense/bias': model.variables[0],
+    'sequential/dense/kernel': model.variables[1]
+}
+"
+"tf.compat.v1.train.Scaffold(
+    init_op=None,
+    init_feed_dict=None,
+    init_fn=None,
+    ready_op=None,
+    ready_for_local_init_op=None,
+    local_init_op=None,
+    summary_op=None,
+    saver=None,
+    copy_from_scaffold=None,
+    local_init_feed_dict=None
+)
+",[],"@staticmethod
+default_local_init_op()
+"
+"tf.estimator.SecondOrStepTimer(
+    every_secs=None, every_steps=None
+)
+",[],"last_triggered_step()
+"
+"tf.distribute.Server(
+    server_or_cluster_def,
+    job_name=None,
+    task_index=None,
+    protocol=None,
+    config=None,
+    start=True
+)
+",[],"server = tf.distribute.Server(...)
+with tf.compat.v1.Session(server.target):
+  # ...
+"
+"tf.compat.v1.train.SessionManager(
+    local_init_op=None,
+    ready_op=None,
+    ready_for_local_init_op=None,
+    graph=None,
+    recovery_wait_secs=30,
+    local_init_run_options=None,
+    local_init_feed_dict=None
+)
+",[],"with tf.Graph().as_default():
+   ...add operations to the graph...
+  # Create a SessionManager that will checkpoint the model in '/tmp/mydir'.
+  sm = SessionManager()
+  sess = sm.prepare_session(master, init_op, saver, checkpoint_dir)
+  # Use the session to train the graph.
+  while True:
+    sess.run(<my_train_op>)
+"
+"tf.estimator.SessionRunArgs(
+    fetches, feed_dict=None, options=None
+)
+","[['Represents arguments to be added to a ', 'Session.run()', ' call.']]",[]
+"tf.estimator.SessionRunContext(
+    original_args, session
+)
+","[['Provides information about the ', 'session.run()', ' call being made.']]","request_stop()
+"
+"tf.estimator.SessionRunValues(
+    results, options, run_metadata
+)
+","[['Contains the results of ', 'Session.run()', '.']]",[]
+"tf.compat.v1.train.SingularMonitoredSession(
+    hooks=None,
+    scaffold=None,
+    master='',
+    config=None,
+    checkpoint_dir=None,
+    stop_grace_period_secs=120,
+    checkpoint_filename_with_path=None
+)
+",[],[]
+"tf.compat.v1.train.MonitoredSession.StepContext(
+    session, run_with_hooks_fn
+)
+","[['Control flow instrument for the ', 'step_fn', ' from ', 'run_step_fn()', '.']]","request_stop()
+"
+"tf.estimator.StepCounterHook(
+    every_n_steps=100, every_n_secs=None, output_dir=None, summary_writer=None
+)
+","[['Inherits From: ', 'SessionRunHook']]","after_create_session(
+    session, coord
+)
+"
+"tf.estimator.StopAtStepHook(
+    num_steps=None, last_step=None
+)
+","[['Inherits From: ', 'SessionRunHook']]",[]
+"tf.estimator.SummarySaverHook(
+    save_steps=None,
+    save_secs=None,
+    output_dir=None,
+    summary_writer=None,
+    scaffold=None,
+    summary_op=None
+)
+","[['Inherits From: ', 'SessionRunHook']]","after_create_session(
+    session, coord
+)
+"
+"tf.compat.v1.train.Supervisor(
+    graph=None,
+    ready_op=USE_DEFAULT,
+    ready_for_local_init_op=USE_DEFAULT,
+    is_chief=True,
+    init_op=USE_DEFAULT,
+    init_feed_dict=None,
+    local_init_op=USE_DEFAULT,
+    logdir=None,
+    summary_op=USE_DEFAULT,
+    saver=USE_DEFAULT,
+    global_step=USE_DEFAULT,
+    save_summaries_secs=120,
+    save_model_secs=600,
+    recovery_wait_secs=30,
+    stop_grace_secs=120,
+    checkpoint_basename='model.ckpt',
+    session_manager=None,
+    summary_writer=USE_DEFAULT,
+    init_fn=None,
+    local_init_run_options=None
+)
+",[],"with tf.Graph().as_default():
+  ...add operations to the graph...
+  # Create a Supervisor that will checkpoint the model in '/tmp/mydir'.
+  sv = Supervisor(logdir='/tmp/mydir')
+  # Get a TensorFlow session managed by the supervisor.
+  with sv.managed_session(FLAGS.master) as sess:
+    # Use the session to train the graph.
+    while not sv.should_stop():
+      sess.run(<my_train_op>)
+"
+"tf.compat.v1.train.SyncReplicasOptimizer(
+    opt,
+    replicas_to_aggregate,
+    total_num_replicas=None,
+    variable_averages=None,
+    variables_to_average=None,
+    use_locking=False,
+    name='sync_replicas'
+)
+","[['Inherits From: ', 'Optimizer']]","# Create any optimizer to update the variables, say a simple SGD:
+opt = GradientDescentOptimizer(learning_rate=0.1)
+
+# Wrap the optimizer with sync_replicas_optimizer with 50 replicas: at each
+# step the optimizer collects 50 gradients before applying to variables.
+# Note that if you want to have 2 backup replicas, you can change
+# total_num_replicas=52 and make sure this number matches how many physical
+# replicas you started in your job.
+opt = tf.compat.v1.train.SyncReplicasOptimizer(opt, replicas_to_aggregate=50,
+                               total_num_replicas=50)
+
+# Some models have startup_delays to help stabilize the model but when using
+# sync_replicas training, set it to 0.
+
+# Now you can call `minimize()` or `compute_gradients()` and
+# `apply_gradients()` normally
+training_op = opt.minimize(total_loss, global_step=self.global_step)
+
+
+# You can create the hook which handles initialization and queues.
+sync_replicas_hook = opt.make_session_run_hook(is_chief)
+"
+"tf.compat.v1.train.WorkerSessionCreator(
+    scaffold=None, master='', config=None, max_wait_secs=(30 * 60)
+)
+","[['Inherits From: ', 'SessionCreator']]","create_session()
+"
+"tf.compat.v1.train.add_queue_runner(
+    qr, collection=ops.GraphKeys.QUEUE_RUNNERS
+)
+","[['Adds a ', 'QueueRunner', ' to a collection in the graph. (deprecated)']]",[]
+"tf.compat.v1.train.assert_global_step(
+    global_step_tensor
+)
+","[['Asserts ', 'global_step_tensor', ' is a scalar int ', 'Variable', ' or ', 'Tensor', '.']]",[]
+"tf.compat.v1.train.basic_train_loop(
+    supervisor, train_step_fn, args=None, kwargs=None, master=''
+)
+",[],"train_step_fn(session, *args, **kwargs)
+"
+"tf.compat.v1.train.batch(
+    tensors,
+    batch_size,
+    num_threads=1,
+    capacity=32,
+    enqueue_many=False,
+    shapes=None,
+    dynamic_pad=False,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+","[['Creates batches of tensors in ', 'tensors', '. (deprecated)']]",[]
+"tf.compat.v1.train.batch_join(
+    tensors_list,
+    batch_size,
+    capacity=32,
+    enqueue_many=False,
+    shapes=None,
+    dynamic_pad=False,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+",[],[]
+"tf.compat.v1.train.checkpoint_exists(
+    checkpoint_prefix
+)
+",[],[]
+"tf.train.checkpoints_iterator(
+    checkpoint_dir, min_interval_secs=0, timeout=None, timeout_fn=None
+)
+",[],[]
+"tf.compat.v1.train.cosine_decay(
+    learning_rate, global_step, decay_steps, alpha=0.0, name=None
+)
+",[],"global_step = min(global_step, decay_steps)
+cosine_decay = 0.5 * (1 + cos(pi * global_step / decay_steps))
+decayed = (1 - alpha) * cosine_decay + alpha
+decayed_learning_rate = learning_rate * decayed
+"
+"tf.compat.v1.train.cosine_decay_restarts(
+    learning_rate,
+    global_step,
+    first_decay_steps,
+    t_mul=2.0,
+    m_mul=1.0,
+    alpha=0.0,
+    name=None
+)
+",[],"first_decay_steps = 1000
+lr_decayed = cosine_decay_restarts(learning_rate, global_step,
+                                   first_decay_steps)
+"
+"tf.compat.v1.train.create_global_step(
+    graph=None
+)
+",[],"def compute_loss(x):
+  v = tf.Variable(3.0)
+  y = x * v
+  loss = x * 5 - x * v
+  return loss, [v]"
+"tf.compat.v1.train.do_quantize_training_on_graphdef(
+    input_graph, num_bits
+)
+","[['A general quantization scheme is being developed in ', 'tf.contrib.quantize', '. (deprecated)']]",[]
+"tf.compat.v1.mixed_precision.DynamicLossScale(
+    initial_loss_scale=(2 ** 15), increment_period=2000, multiplier=2.0
+)
+","[['Inherits From: ', 'LossScale']]","@classmethod
+from_config(
+    config
+)
+"
+"tf.compat.v1.mixed_precision.FixedLossScale(
+    loss_scale_value
+)
+","[['Inherits From: ', 'LossScale']]","@classmethod
+from_config(
+    config
+)
+"
+"tf.compat.v1.mixed_precision.MixedPrecisionLossScaleOptimizer(
+    opt, loss_scale
+)
+","[['Inherits From: ', 'Optimizer']]","loss = ...
+loss *= loss_scale
+grads = gradients(loss, vars)
+grads /= loss_scale
+"
+"tf.compat.v1.mixed_precision.enable_mixed_precision_graph_rewrite(
+    opt, loss_scale='dynamic'
+)
+",[],"model = tf.keras.models.Sequential([
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(64, activation='softmax'),
+])
+
+opt = tf.keras.optimizers.SGD()
+opt = tf.train.experimental.enable_mixed_precision_graph_rewrite(opt)
+model.compile(loss=""mse"", optimizer=opt)
+
+x_train = np.random.random((1024, 64))
+y_train = np.random.random((1024, 64))
+model.fit(x_train, y_train)
+"
+"tf.compat.v1.train.exponential_decay(
+    learning_rate,
+    global_step,
+    decay_steps,
+    decay_rate,
+    staircase=False,
+    name=None
+)
+",[],"decayed_learning_rate = learning_rate *
+                        decay_rate ^ (global_step / decay_steps)
+"
+"tf.compat.v1.train.export_meta_graph(
+    filename=None,
+    meta_info_def=None,
+    graph_def=None,
+    saver_def=None,
+    collection_list=None,
+    as_text=False,
+    graph=None,
+    export_scope=None,
+    clear_devices=False,
+    clear_extraneous_savers=False,
+    strip_default_attrs=False,
+    save_debug_info=False,
+    **kwargs
+)
+","[['Returns ', 'MetaGraphDef', ' proto.']]",[]
+"tf.compat.v1.train.generate_checkpoint_state_proto(
+    save_dir,
+    model_checkpoint_path,
+    all_model_checkpoint_paths=None,
+    all_model_checkpoint_timestamps=None,
+    last_preserved_timestamp=None
+)
+",[],[]
+"tf.compat.v1.train.get_checkpoint_mtimes(
+    checkpoint_prefixes
+)
+",[],[]
+"tf.train.get_checkpoint_state(
+    checkpoint_dir, latest_filename=None
+)
+",[],[]
+"tf.compat.v1.train.get_global_step(
+    graph=None
+)
+",[],"def compute_loss(x):
+  v = tf.Variable(3.0)
+  y = x * v
+  loss = x * 5 - x * v
+  return loss, [v]"
+"tf.compat.v1.train.get_or_create_global_step(
+    graph=None
+)
+",[],"def compute_loss(x):
+  v = tf.Variable(3.0)
+  y = x * v
+  loss = x * 5 - x * v
+  return loss, [v]"
+"tf.compat.v1.train.global_step(
+    sess, global_step_tensor
+)
+",[],"# Create a variable to hold the global_step.
+global_step_tensor = tf.Variable(10, trainable=False, name='global_step')
+# Create a session.
+sess = tf.compat.v1.Session()
+# Initialize the variable
+sess.run(global_step_tensor.initializer)
+# Get the variable value.
+print('global_step: %s' % tf.compat.v1.train.global_step(sess,
+global_step_tensor))
+
+global_step: 10
+"
+"tf.compat.v1.train.import_meta_graph(
+    meta_graph_or_file, clear_devices=False, import_scope=None, **kwargs
+)
+","[['Recreates a Graph saved in a ', 'MetaGraphDef', ' proto.']]","...
+# Create a saver.
+saver = tf.compat.v1.train.Saver(...variables...)
+# Remember the training_op we want to run by adding it to a collection.
+tf.compat.v1.add_to_collection('train_op', train_op)
+sess = tf.compat.v1.Session()
+for step in range(1000000):
+    sess.run(train_op)
+    if step % 1000 == 0:
+        # Saves checkpoint, which by default also exports a meta_graph
+        # named 'my-model-global_step.meta'.
+        saver.save(sess, 'my-model', global_step=step)
+"
+"tf.compat.v1.train.init_from_checkpoint(
+    ckpt_dir_or_file, assignment_map
+)
+","[['Replaces ', 'tf.Variable', ' initializers so they load from a checkpoint file.']]","{
+    'sequential/dense/bias': model.variables[0],
+    'sequential/dense/kernel': model.variables[1]
+}
+"
+"tf.compat.v1.train.input_producer(
+    input_tensor,
+    element_shape=None,
+    num_epochs=None,
+    shuffle=True,
+    seed=None,
+    capacity=32,
+    shared_name=None,
+    summary_name=None,
+    name=None,
+    cancel_op=None
+)
+","[['Output the rows of ', 'input_tensor', ' to a queue for an input pipeline. (deprecated)']]",[]
+"tf.compat.v1.train.inverse_time_decay(
+    learning_rate,
+    global_step,
+    decay_steps,
+    decay_rate,
+    staircase=False,
+    name=None
+)
+",[],"decayed_learning_rate = learning_rate / (1 + decay_rate * global_step /
+decay_step)
+"
+"tf.train.latest_checkpoint(
+    checkpoint_dir, latest_filename=None
+)
+",[],[]
+"tf.compat.v1.train.limit_epochs(
+    tensor, num_epochs=None, name=None
+)
+","[['Returns tensor ', 'num_epochs', ' times and then raises an ', 'OutOfRange', ' error. (deprecated)']]",[]
+"tf.compat.v1.train.linear_cosine_decay(
+    learning_rate,
+    global_step,
+    decay_steps,
+    num_periods=0.5,
+    alpha=0.0,
+    beta=0.001,
+    name=None
+)
+",[],"global_step = min(global_step, decay_steps)
+linear_decay = (decay_steps - global_step) / decay_steps)
+cosine_decay = 0.5 * (
+    1 + cos(pi * 2 * num_periods * global_step / decay_steps))
+decayed = (alpha + linear_decay) * cosine_decay + beta
+decayed_learning_rate = learning_rate * decayed
+"
+"tf.train.list_variables(
+    ckpt_dir_or_file
+)
+",[],"</td>
+</tr>
+
+</table>
+
+
+import tensorflow as tf
+import os
+ckpt_directory = ""/tmp/training_checkpoints/ckpt""
+ckpt = tf.train.Checkpoint(optimizer=optimizer, model=model)
+manager = tf.train.CheckpointManager(ckpt, ckpt_directory, max_to_keep=3)
+train_and_checkpoint(model, manager)
+tf.train.list_variables(manager.latest_checkpoint)
+"
+"tf.train.load_checkpoint(
+    ckpt_dir_or_file
+)
+","[['Returns ', 'CheckpointReader', ' for checkpoint found in ', 'ckpt_dir_or_file', '.']]",[]
+"tf.train.load_variable(
+    ckpt_dir_or_file, name
+)
+",[],[]
+"tf.io.match_filenames_once(
+    pattern, name=None
+)
+",[],[]
+"tf.compat.v1.train.maybe_batch(
+    tensors,
+    keep_input,
+    batch_size,
+    num_threads=1,
+    capacity=32,
+    enqueue_many=False,
+    shapes=None,
+    dynamic_pad=False,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+","[['Conditionally creates batches of tensors based on ', 'keep_input', '. (deprecated)']]",[]
+"tf.compat.v1.train.maybe_batch_join(
+    tensors_list,
+    keep_input,
+    batch_size,
+    capacity=32,
+    enqueue_many=False,
+    shapes=None,
+    dynamic_pad=False,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+",[],[]
+"tf.compat.v1.train.maybe_shuffle_batch(
+    tensors,
+    batch_size,
+    capacity,
+    min_after_dequeue,
+    keep_input,
+    num_threads=1,
+    seed=None,
+    enqueue_many=False,
+    shapes=None,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+",[],[]
+"tf.compat.v1.train.maybe_shuffle_batch_join(
+    tensors_list,
+    batch_size,
+    capacity,
+    min_after_dequeue,
+    keep_input,
+    seed=None,
+    enqueue_many=False,
+    shapes=None,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+",[],[]
+"tf.compat.v1.train.natural_exp_decay(
+    learning_rate,
+    global_step,
+    decay_steps,
+    decay_rate,
+    staircase=False,
+    name=None
+)
+",[],"decayed_learning_rate = learning_rate * exp(-decay_rate * global_step /
+decay_step)
+"
+"tf.compat.v1.train.noisy_linear_cosine_decay(
+    learning_rate,
+    global_step,
+    decay_steps,
+    initial_variance=1.0,
+    variance_decay=0.55,
+    num_periods=0.5,
+    alpha=0.0,
+    beta=0.001,
+    name=None
+)
+",[],"global_step = min(global_step, decay_steps)
+linear_decay = (decay_steps - global_step) / decay_steps)
+cosine_decay = 0.5 * (
+    1 + cos(pi * 2 * num_periods * global_step / decay_steps))
+decayed = (alpha + linear_decay + eps_t) * cosine_decay + beta
+decayed_learning_rate = learning_rate * decayed
+"
+"tf.compat.v1.train.piecewise_constant(
+    x, boundaries, values, name=None
+)
+",[],"global_step = tf.Variable(0, trainable=False)
+boundaries = [100000, 110000]
+values = [1.0, 0.5, 0.1]
+learning_rate = tf.compat.v1.train.piecewise_constant(global_step, boundaries,
+values)
+
+# Later, whenever we perform an optimization step, we increment global_step.
+"
+"tf.compat.v1.train.piecewise_constant(
+    x, boundaries, values, name=None
+)
+",[],"global_step = tf.Variable(0, trainable=False)
+boundaries = [100000, 110000]
+values = [1.0, 0.5, 0.1]
+learning_rate = tf.compat.v1.train.piecewise_constant(global_step, boundaries,
+values)
+
+# Later, whenever we perform an optimization step, we increment global_step.
+"
+"tf.compat.v1.train.polynomial_decay(
+    learning_rate,
+    global_step,
+    decay_steps,
+    end_learning_rate=0.0001,
+    power=1.0,
+    cycle=False,
+    name=None
+)
+",[],"global_step = min(global_step, decay_steps)
+decayed_learning_rate = (learning_rate - end_learning_rate) *
+                        (1 - global_step / decay_steps) ^ (power) +
+                        end_learning_rate
+
+"
+"tf.compat.v1.train.QueueRunner(
+    queue=None,
+    enqueue_ops=None,
+    close_op=None,
+    cancel_op=None,
+    queue_closed_exception_types=None,
+    queue_runner_def=None,
+    import_scope=None
+)
+",[],[]
+"tf.compat.v1.train.add_queue_runner(
+    qr, collection=ops.GraphKeys.QUEUE_RUNNERS
+)
+","[['Adds a ', 'QueueRunner', ' to a collection in the graph. (deprecated)']]",[]
+"tf.compat.v1.train.start_queue_runners(
+    sess=None,
+    coord=None,
+    daemon=True,
+    start=True,
+    collection=ops.GraphKeys.QUEUE_RUNNERS
+)
+",[],[]
+"tf.compat.v1.train.range_input_producer(
+    limit,
+    num_epochs=None,
+    shuffle=True,
+    seed=None,
+    capacity=32,
+    shared_name=None,
+    name=None
+)
+",[],[]
+"tf.compat.v1.train.remove_checkpoint(
+    checkpoint_prefix,
+    checkpoint_format_version=saver_pb2.SaverDef.V2,
+    meta_graph_suffix='meta'
+)
+","[['Removes a checkpoint given by ', 'checkpoint_prefix', '. (deprecated)']]",[]
+"tf.compat.v1.train.replica_device_setter(
+    ps_tasks=0,
+    ps_device='/job:ps',
+    worker_device='/job:worker',
+    merge_devices=True,
+    cluster=None,
+    ps_ops=None,
+    ps_strategy=None
+)
+","[['Return a ', 'device function', ' to use when building a Graph for replicas.']]","# To build a cluster with two ps jobs on hosts ps0 and ps1, and 3 worker
+# jobs on hosts worker0, worker1 and worker2.
+cluster_spec = {
+    ""ps"": [""ps0:2222"", ""ps1:2222""],
+    ""worker"": [""worker0:2222"", ""worker1:2222"", ""worker2:2222""]}
+with
+tf.compat.v1.device(tf.compat.v1.train.replica_device_setter(cluster=cluster_spec)):
+  # Build your graph
+  v1 = tf.Variable(...)  # assigned to /job:ps/task:0
+  v2 = tf.Variable(...)  # assigned to /job:ps/task:1
+  v3 = tf.Variable(...)  # assigned to /job:ps/task:0
+# Run compute
+"
+"tf.compat.v1.train.sdca_fprint(
+    input, name=None
+)
+",[],[]
+"tf.compat.v1.train.sdca_optimizer(
+    sparse_example_indices,
+    sparse_feature_indices,
+    sparse_feature_values,
+    dense_features,
+    example_weights,
+    example_labels,
+    sparse_indices,
+    sparse_weights,
+    dense_weights,
+    example_state_data,
+    loss_type,
+    l1,
+    l2,
+    num_loss_partitions,
+    num_inner_iterations,
+    adaptative=True,
+    name=None
+)
+","[[None, '\n']]",[]
+"tf.compat.v1.train.sdca_shrink_l1(
+    weights, l1, l2, name=None
+)
+",[],[]
+"tf.compat.v1.train.shuffle_batch(
+    tensors,
+    batch_size,
+    capacity,
+    min_after_dequeue,
+    num_threads=1,
+    seed=None,
+    enqueue_many=False,
+    shapes=None,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+",[],"# Creates batches of 32 images and 32 labels.
+image_batch, label_batch = tf.compat.v1.train.shuffle_batch(
+      [single_image, single_label],
+      batch_size=32,
+      num_threads=4,
+      capacity=50000,
+      min_after_dequeue=10000)
+"
+"tf.compat.v1.train.shuffle_batch_join(
+    tensors_list,
+    batch_size,
+    capacity,
+    min_after_dequeue,
+    seed=None,
+    enqueue_many=False,
+    shapes=None,
+    allow_smaller_final_batch=False,
+    shared_name=None,
+    name=None
+)
+",[],[]
+"tf.compat.v1.train.slice_input_producer(
+    tensor_list,
+    num_epochs=None,
+    shuffle=True,
+    seed=None,
+    capacity=32,
+    shared_name=None,
+    name=None
+)
+","[['Produces a slice of each ', 'Tensor', ' in ', 'tensor_list', '. (deprecated)']]",[]
+"tf.compat.v1.train.start_queue_runners(
+    sess=None,
+    coord=None,
+    daemon=True,
+    start=True,
+    collection=ops.GraphKeys.QUEUE_RUNNERS
+)
+",[],[]
+"tf.compat.v1.train.string_input_producer(
+    string_tensor,
+    num_epochs=None,
+    shuffle=True,
+    seed=None,
+    capacity=32,
+    shared_name=None,
+    name=None,
+    cancel_op=None
+)
+",[],[]
+"tf.compat.v1.train.summary_iterator(
+    path
+)
+","[['Returns a iterator for reading ', 'Event', ' protocol buffers from an event file.']]","for e in tf.compat.v1.train.summary_iterator(path to events file):
+    print(e)
+"
+"tf.compat.v1.train.update_checkpoint_state(
+    save_dir,
+    model_checkpoint_path,
+    all_model_checkpoint_paths=None,
+    latest_filename=None,
+    all_model_checkpoint_timestamps=None,
+    last_preserved_timestamp=None
+)
+",[],[]
+"tf.compat.v1.train.warm_start(
+    ckpt_to_initialize_from,
+    vars_to_warm_start='.*',
+    var_name_to_vocab_info=None,
+    var_name_to_prev_var_name=None
+)
+",[],[]
+"tf.io.write_graph(
+    graph_or_graph_def, logdir, name, as_text=True
+)
+",[],"v = tf.Variable(0, name='my_variable')
+sess = tf.compat.v1.Session()
+tf.io.write_graph(sess.graph_def, '/tmp/my-model', 'train.pbtxt')
+"
+"tf.compat.v1.trainable_variables(
+    scope=None
+)
+","[['Returns all variables created with ', 'trainable=True', '.']]",[]
+"tf.compat.v1.transpose(
+    a, perm=None, name='transpose', conjugate=False
+)
+","[['Transposes ', 'a', '.']]","x = tf.constant([[1, 2, 3], [4, 5, 6]])
+tf.transpose(x)  # [[1, 4]
+                 #  [2, 5]
+                 #  [3, 6]]
+
+# Equivalently
+tf.transpose(x, perm=[1, 0])  # [[1, 4]
+                              #  [2, 5]
+                              #  [3, 6]]
+
+# If x is complex, setting conjugate=True gives the conjugate transpose
+x = tf.constant([[1 + 1j, 2 + 2j, 3 + 3j],
+                 [4 + 4j, 5 + 5j, 6 + 6j]])
+tf.transpose(x, conjugate=True)  # [[1 - 1j, 4 - 4j],
+                                 #  [2 - 2j, 5 - 5j],
+                                 #  [3 - 3j, 6 - 6j]]
+
+# 'perm' is more useful for n-dimensional tensors, for n > 2
+x = tf.constant([[[ 1,  2,  3],
+                  [ 4,  5,  6]],
+                 [[ 7,  8,  9],
+                  [10, 11, 12]]])
+
+# Take the transpose of the matrices in dimension-0
+# (this common operation has a shorthand `linalg.matrix_transpose`)
+tf.transpose(x, perm=[0, 2, 1])  # [[[1,  4],
+                                 #   [2,  5],
+                                 #   [3,  6]],
+                                 #  [[7, 10],
+                                 #   [8, 11],
+                                 #   [9, 12]]]
+"
+"tf.math.truediv(
+    x, y, name=None
+)
+",[],[]
+"tf.random.truncated_normal(
+    shape,
+    mean=0.0,
+    stddev=1.0,
+    dtype=tf.dtypes.float32,
+    seed=None,
+    name=None
+)
+",[],"tf.random.truncated_normal(shape=[2])
+<tf.Tensor: shape=(2,), dtype=float32, numpy=array([..., ...], dtype=float32)>"
+"tf.compat.v1.truncated_normal_initializer(
+    mean=0.0,
+    stddev=1.0,
+    seed=None,
+    dtype=tf.dtypes.float32
+)
+",[],"initializer = tf.compat.v1.truncated_normal_initializer(
+  mean=mean,
+  stddev=stddev,
+  seed=seed,
+  dtype=dtype)
+
+weight_one = tf.Variable(initializer(shape_one))
+weight_two = tf.Variable(initializer(shape_two))
+"
+"tf.truncatediv(
+    x, y, name=None
+)
+",[],[]
+"tf.truncatemod(
+    x, y, name=None
+)
+",[],[]
+"tf.compat.v1.tuple(
+    tensors, name=None, control_inputs=None
+)
+",[],[]
+"tf.type_spec_from_value(
+    value
+) -> tf.TypeSpec
+","[['Returns a ', 'tf.TypeSpec', ' that represents the given ', 'value', '.']]",">>> tf.type_spec_from_value(tf.constant([1, 2, 3]))
+TensorSpec(shape=(3,), dtype=tf.int32, name=None)
+>>> tf.type_spec_from_value(np.array([4.0, 5.0], np.float64))
+TensorSpec(shape=(2,), dtype=tf.float64, name=None)
+>>> tf.type_spec_from_value(tf.ragged.constant([[1, 2], [3, 4, 5]]))
+RaggedTensorSpec(TensorShape([2, None]), tf.int32, 1, tf.int64)
+"
+"tf.compat.v1.uniform_unit_scaling_initializer(
+    factor=1.0,
+    seed=None,
+    dtype=tf.dtypes.float32
+)
+",[],"[-sqrt(3) / sqrt(dim), sqrt(3) / sqrt(dim)]
+"
+"tf.unique(
+    x,
+    out_idx=tf.dtypes.int32,
+    name=None
+)
+",[],"# tensor 'x' is [1, 1, 2, 4, 4, 4, 7, 8, 8]
+y, idx = unique(x)
+y ==> [1, 2, 4, 7, 8]
+idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
+"
+"tf.unique_with_counts(
+    x,
+    out_idx=tf.dtypes.int32,
+    name=None
+)
+",[],"# tensor 'x' is [1, 1, 2, 4, 4, 4, 7, 8, 8]
+y, idx, count = unique_with_counts(x)
+y ==> [1, 2, 4, 7, 8]
+idx ==> [0, 0, 1, 2, 2, 2, 3, 4, 4]
+count ==> [2, 1, 3, 1, 2]
+"
+"tf.unravel_index(
+    indices, dims, name=None
+)
+",[],"y = tf.unravel_index(indices=[2, 5, 7], dims=[3, 3])
+# 'dims' represent a hypothetical (3, 3) tensor of indices:
+# [[0, 1, *2*],
+#  [3, 4, *5*],
+#  [6, *7*, 8]]
+# For each entry from 'indices', this operation returns
+# its coordinates (marked with '*'), such as
+# 2 ==> (0, 2)
+# 5 ==> (1, 2)
+# 7 ==> (2, 1)
+y ==> [[0, 1, 2], [2, 2, 1]]
+"
+"tf.math.unsorted_segment_max(
+    data, segment_ids, num_segments, name=None
+)
+","[[None, '\n']]","c = tf.constant([[1,2,3,4], [5,6,7,8], [4,3,2,1]])
+tf.math.unsorted_segment_max(c, tf.constant([0, 1, 0]), num_segments=2).numpy()
+array([[4, 3, 3, 4],
+       [5,  6, 7, 8]], dtype=int32)"
+"tf.math.unsorted_segment_mean(
+    data, segment_ids, num_segments, name=None
+)
+","[[None, '\n']]",[]
+"tf.math.unsorted_segment_min(
+    data, segment_ids, num_segments, name=None
+)
+","[[None, '\n']]","c = tf.constant([[1,2,3,4], [5,6,7,8], [4,3,2,1]])
+tf.math.unsorted_segment_min(c, tf.constant([0, 1, 0]), num_segments=2).numpy()
+array([[1, 2, 2, 1],
+       [5, 6, 7, 8]], dtype=int32)"
+"tf.math.unsorted_segment_prod(
+    data, segment_ids, num_segments, name=None
+)
+","[[None, '\n']]","c = tf.constant([[1,2,3,4], [5,6,7,8], [4,3,2,1]])
+tf.math.unsorted_segment_prod(c, tf.constant([0, 1, 0]), num_segments=2).numpy()
+array([[4, 6, 6, 4],
+       [5, 6, 7, 8]], dtype=int32)"
+"tf.math.unsorted_segment_sqrt_n(
+    data, segment_ids, num_segments, name=None
+)
+","[[None, '\n']]",[]
+"tf.math.unsorted_segment_sum(
+    data, segment_ids, num_segments, name=None
+)
+","[[None, '\n']]","c = [[1,2,3,4], [5,6,7,8], [4,3,2,1]]
+tf.math.unsorted_segment_sum(c, [0, 1, 0], num_segments=2).numpy()
+array([[5, 5, 5, 5],
+       [5, 6, 7, 8]], dtype=int32)"
+"tf.unstack(
+    value, num=None, axis=0, name='unstack'
+)
+","[['Unpacks the given dimension of a rank-', 'R', ' tensor into rank-', '(R-1)', ' tensors.']]","x = tf.reshape(tf.range(12), (3,4))
+p, q, r = tf.unstack(x)
+p.shape.as_list()
+[4]"
+"tf.compat.v1.variable_axis_size_partitioner(
+    max_shard_bytes, axis=0, bytes_per_string_element=16, max_shards=None
+)
+","[['Get a partitioner for VariableScope to keep shards below ', 'max_shard_bytes', '.']]",[]
+"tf.compat.v1.variable_scope(
+    name_or_scope,
+    default_name=None,
+    values=None,
+    initializer=None,
+    regularizer=None,
+    caching_device=None,
+    partitioner=None,
+    custom_getter=None,
+    reuse=None,
+    dtype=None,
+    use_resource=None,
+    constraint=None,
+    auxiliary_name_scope=True
+)
+",[],[]
+"tf.compat.v1.variables_initializer(
+    var_list, name='init'
+)
+",[],[]
+"tf.compat.v1.keras.initializers.VarianceScaling(
+    scale=1.0,
+    mode='fan_in',
+    distribution='truncated_normal',
+    seed=None,
+    dtype=tf.dtypes.float32
+)
+",[],"initializer = tf.compat.v1.variance_scaling_initializer(
+  scale=scale,
+  mode=mode,
+  distribution=distribution
+  seed=seed,
+  dtype=dtype)
+
+weight_one = tf.Variable(initializer(shape_one))
+weight_two = tf.Variable(initializer(shape_two))
+"
+"tf.vectorized_map(
+    fn, elems, fallback_to_while_loop=True, warn=True
+)
+","[['Parallel map on the list of tensors unpacked from ', 'elems', ' on dimension 0.']]","def outer_product(a):
+  return tf.tensordot(a, a, 0)
+
+batch_size = 100
+a = tf.ones((batch_size, 32, 32))
+c = tf.vectorized_map(outer_product, a)
+assert c.shape == (batch_size, 32, 32, 32, 32)
+"
+"tf.compat.v1.verify_tensor_all_finite(
+    t=None, msg=None, name=None, x=None, message=None
+)
+",[],[]
+"tf.compat.v1.where(
+    condition, x=None, y=None, name=None
+)
+","[['Return the elements, either from ', 'x', ' or ', 'y', ', depending on the ', 'condition', '.']]","tf.where([True, False, False, True], [1,2,3,4], [100])
+<tf.Tensor: shape=(4,), dtype=int32, numpy=array([  1, 100, 100,   4],
+dtype=int32)>"
+"tf.where(
+    condition, x=None, y=None, name=None
+)
+","[['Returns the indices of non-zero elements, or multiplexes ', 'x', ' and ', 'y', '.']]","tf.where([True, False, False, True]).numpy()
+array([[0],
+       [3]])"
+"tf.compat.v1.while_loop(
+    cond,
+    body,
+    loop_vars,
+    shape_invariants=None,
+    parallel_iterations=10,
+    back_prop=True,
+    swap_memory=False,
+    name=None,
+    maximum_iterations=None,
+    return_same_structure=False
+)
+","[['Repeat ', 'body', ' while the condition ', 'cond', ' is true.']]","i = tf.constant(0)
+c = lambda i: tf.less(i, 10)
+b = lambda i: tf.add(i, 1)
+r = tf.while_loop(c, b, [i])
+"
+"tf.compat.v1.wrap_function(
+    fn, signature, name=None
+)
+",[],"def f(x, do_add):
+  v = tf.Variable(5.0)
+  if do_add:
+    op = v.assign_add(x)
+  else:
+    op = v.assign_sub(x)
+  with tf.control_dependencies([op]):
+    return v.read_value()
+
+f_add = tf.compat.v1.wrap_function(f, [tf.TensorSpec((), tf.float32), True])
+
+assert float(f_add(1.0)) == 6.0
+assert float(f_add(1.0)) == 7.0
+
+# Can call tf.compat.v1.wrap_function again to get a new trace, a new set
+# of variables, and possibly different non-template arguments.
+f_sub= tf.compat.v1.wrap_function(f, [tf.TensorSpec((), tf.float32), False])
+
+assert float(f_sub(1.0)) == 4.0
+assert float(f_sub(1.0)) == 3.0
+"
+"tf.io.write_file(
+    filename, contents, name=None
+)
+","[['Writes ', 'contents', ' to the file at input ', 'filename', '.']]",[]
+"tf.zeros(
+    shape,
+    dtype=tf.dtypes.float32,
+    name=None
+)
+",[],"tf.zeros([3, 4], tf.int32)
+<tf.Tensor: shape=(3, 4), dtype=int32, numpy=
+array([[0, 0, 0, 0],
+       [0, 0, 0, 0],
+       [0, 0, 0, 0]], dtype=int32)>"
+"tf.compat.v1.keras.initializers.Zeros(
+    dtype=tf.dtypes.float32
+)
+",[],"initializer = tf.compat.v1.zeros_initializer(dtype=tf.float32)
+variable = tf.Variable(initializer(shape=[3, 3]))
+"
+"tf.compat.v1.zeros_like(
+    tensor, dtype=None, name=None, optimize=True
+)
+",[],">>> tensor = tf.constant([[1, 2, 3], [4, 5, 6]])
+>>> tf.zeros_like(tensor)
+<tf.Tensor: shape=(2, 3), dtype=int32, numpy=
+array([[0, 0, 0],
+       [0, 0, 0]], dtype=int32)>
+"
+"tf.math.zeta(
+    x, q, name=None
+)
+","[[None, '\n']]",[]

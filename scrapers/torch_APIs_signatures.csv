@@ -42,6 +42,22 @@ of sparse tensors).
  Parameters 
  input 
  Examples: 
+",">>> torch.is_nonzero(torch.tensor([0.]))
+False
+>>> torch.is_nonzero(torch.tensor([1.5]))
+True
+>>> torch.is_nonzero(torch.tensor([False]))
+False
+>>> torch.is_nonzero(torch.tensor([3]))
+True
+>>> torch.is_nonzero(torch.tensor([1,3,5]))
+Traceback (most recent call last):
+...
+RuntimeErrorbool value of Tensor with more than one value is ambiguous
+>>> torch.is_nonzero(torch.tensor([]))
+Traceback (most recent call last):
+...
+RuntimeErrorbool value of Tensor with no values is ambiguous
 "
 "
  torch. set_default_dtype ( d ) [source] ¶","Sets the default floating point dtype to  d . Supports torch.float32
@@ -461,6 +477,27 @@ for sure that this is fine.
  Return type 
  Tensor 
  Examples: 
+",">>> importtorch.utils.dlpack
+>>> t=torch.arange(4)# Convert a tensor directly (supported in PyTorch >= 1.10)
+>>> t2=torch.from_dlpack(t)
+>>> t2[:2]=-1# show that memory is shared
+>>> t2
+tensor([-1, -1,  2,  3])
+>>> t
+tensor([-1, -1,  2,  3])# The old-style DLPack usage, with an intermediate capsule object
+>>> capsule=torch.utils.dlpack.to_dlpack(t)
+>>> capsule
+<capsule object ""dltensor"" at ...>
+>>> t3=torch.from_dlpack(capsule)
+>>> t3
+tensor([-1, -1,  2,  3])
+>>> t3[0]=-9# now we're sharing memory between 3 tensors
+>>> t3
+tensor([-9, -1,  2,  3])
+>>> t2
+tensor([-9, -1,  2,  3])
+>>> t
+tensor([-9, -1,  2,  3])
 "
 "
  torch. frombuffer ( buffer ,  * ,  dtype ,  count ,  offset ,  requires_grad )   → ¶","Creates a 1-dimensional  Tensor  from an object that implements
@@ -1256,9 +1293,45 @@ their original order and appear at the positions not specified in  destination .
  
  
  Examples: 
+",">>> t=torch.randn(3,2,1)
+>>> t
+tensor([[[-0.3362],
+        [-0.8437]],        [[-0.9627],
+        [ 0.1727]],        [[ 0.5173],
+        [-0.1398]]])
+>>> torch.movedim(t,1,0).shape
+torch.Size([2, 3, 1])
+>>> torch.movedim(t,1,0)
+tensor([[[-0.3362],
+        [-0.9627],
+        [ 0.5173]],        [[-0.8437],
+        [ 0.1727],
+        [-0.1398]]])
+>>> torch.movedim(t,(1,2),(0,1)).shape
+torch.Size([2, 1, 3])
+>>> torch.movedim(t,(1,2),(0,1))
+tensor([[[-0.3362, -0.9627,  0.5173]],        [[-0.8437,  0.1727, -0.1398]]])
 "
 "
  torch. moveaxis ( input ,  source ,  destination )   → ¶","Alias for  torch.movedim() . This function is equivalent to NumPy’s moveaxis function. Examples: 
+",">>> t=torch.randn(3,2,1)
+>>> t
+tensor([[[-0.3362],
+        [-0.8437]],        [[-0.9627],
+        [ 0.1727]],        [[ 0.5173],
+        [-0.1398]]])
+>>> torch.moveaxis(t,1,0).shape
+torch.Size([2, 3, 1])
+>>> torch.moveaxis(t,1,0)
+tensor([[[-0.3362],
+        [-0.9627],
+        [ 0.5173]],        [[-0.8437],
+        [ 0.1727],
+        [-0.1398]]])
+>>> torch.moveaxis(t,(1,2),(0,1)).shape
+torch.Size([2, 1, 3])
+>>> torch.moveaxis(t,(1,2),(0,1))
+tensor([[[-0.3362, -0.9627,  0.5173]],        [[-0.8437,  0.1727, -0.1398]]])
 "
 "
  torch. narrow ( input ,  dim ,  start ,  length )   → ¶","Returns a new tensor that is a narrowed version of  input  tensor. The
@@ -1458,6 +1531,17 @@ return a view. The argument  offset  controls which diagonal to consider:
  Note 
  src 
  Examples: 
+",">>> a=torch.zeros(3,3)
+>>> a
+tensor([[0., 0., 0.],
+        [0., 0., 0.],
+        [0., 0., 0.]])>>> torch.diagonal_scatter(a,torch.ones(3),0)
+tensor([[1., 0., 0.],
+        [0., 1., 0.],
+        [0., 0., 1.]])>>> torch.diagonal_scatter(a,torch.ones(2),1)
+tensor([[0., 1., 0.],
+        [0., 0., 1.],
+        [0., 0., 0.]])
 "
 "
  torch. select_scatter ( input ,  src ,  dim ,  index )   → ¶","Embeds the values of the  src  tensor into  input  at the given index.
@@ -1656,6 +1740,19 @@ torch.Size([2, 2, 1, 2])
 "
 "
  torch. swapaxes ( input ,  axis0 ,  axis1 )   → ¶","Alias for  torch.transpose() . This function is equivalent to NumPy’s swapaxes function. Examples: 
+",">>> x=torch.tensor([[[0,1],[2,3]],[[4,5],[6,7]]])
+>>> x
+tensor([[[0, 1],
+        [2, 3]],        [[4, 5],
+        [6, 7]]])
+>>> torch.swapaxes(x,0,1)
+tensor([[[0, 1],
+        [4, 5]],        [[2, 3],
+        [6, 7]]])
+>>> torch.swapaxes(x,0,2)
+tensor([[[0, 4],
+        [2, 6]],        [[1, 5],
+        [3, 7]]])
 "
 "
  torch. transpose ( input ,  dim0 ,  dim1 )   → ¶","Returns a tensor that is a transposed version of  input .
@@ -1686,6 +1783,19 @@ tensor([[ 1.0028, -0.1669],
 "
 "
  torch. swapdims ( input ,  dim0 ,  dim1 )   → ¶","Alias for  torch.transpose() . This function is equivalent to NumPy’s swapaxes function. Examples: 
+",">>> x=torch.tensor([[[0,1],[2,3]],[[4,5],[6,7]]])
+>>> x
+tensor([[[0, 1],
+        [2, 3]],        [[4, 5],
+        [6, 7]]])
+>>> torch.swapdims(x,0,1)
+tensor([[[0, 1],
+        [4, 5]],        [[2, 3],
+        [6, 7]]])
+>>> torch.swapdims(x,0,2)
+tensor([[[0, 4],
+        [2, 6]],        [[1, 5],
+        [3, 7]]])
 "
 "
  torch. t ( input )   → ¶","Expects  input  to be <= 2-D tensor and transposes dimensions 0
@@ -2164,7 +2274,12 @@ Zh. Vychisl. Mat. i Mat. Phys., 7:784-802, 1967.
  Function to fast-forward the state of the  
  
  
- Function to reset the "
+ Function to reset the ",">>> soboleng=torch.quasirandom.SobolEngine(dimension=5)
+>>> soboleng.draw(3)
+tensor([[0.0000, 0.0000, 0.0000, 0.0000, 0.0000],
+        [0.5000, 0.5000, 0.5000, 0.5000, 0.5000],
+        [0.7500, 0.2500, 0.2500, 0.2500, 0.7500]])
+"
 "
  torch. save ( obj ,  f ,  pickle_module ,  pickle_protocol ,  _use_new_zipfile_serialization ) [source] ¶","Saves an object to a disk file. See also:  Saving and loading tensors 
  Parameters 
@@ -2351,6 +2466,24 @@ tensor([ 0.7791, 1.3120, 1.2979, 1.1341 ])
  
  
  Examples: 
+",">>> a=torch.randn(4)
+>>> a
+tensor([ 0.0202,  1.0985,  1.3506, -0.6056])
+>>> torch.add(a,20)
+tensor([ 20.0202,  21.0985,  21.3506,  19.3944])>>> b=torch.randn(4)
+>>> b
+tensor([-0.9732, -0.3497,  0.6245,  0.4022])
+>>> c=torch.randn(4,1)
+>>> c
+tensor([[ 0.3743],
+        [-1.7724],
+        [-0.5811],
+        [-0.8017]])
+>>> torch.add(b,c,alpha=10)
+tensor([[  2.7695,   3.3930,   4.3672,   4.1450],
+        [-18.6971, -18.0736, -17.0994, -17.3216],
+        [ -6.7845,  -6.1610,  -5.1868,  -5.4090],
+        [ -8.9902,  -8.3667,  -7.3925,  -7.6147]])
 "
 "
  torch. addcdiv ( input ,  tensor1 ,  tensor2 ,  * ,  value ,  out )   → ¶","Performs the element-wise division of  tensor1  by  tensor2 ,
@@ -2806,6 +2939,26 @@ Always promotes integer types to the default scalar type.
  
  
  Examples: 
+",">>> x=torch.tensor([0.3810,1.2774,-0.2972,-0.3719,0.4637])
+>>> torch.div(x,0.5)
+tensor([ 0.7620,  2.5548, -0.5944, -0.7438,  0.9274])>>> a=torch.tensor([[-0.3711,-1.9353,-0.4605,-0.2917],
+... [0.1815,-1.0111,0.9805,-1.5923],
+... [0.1062,1.4581,0.7759,-1.2344],
+... [-0.1830,-0.0313,1.1908,-1.4757]])
+>>> b=torch.tensor([0.8032,0.2930,-0.8113,-0.2308])
+>>> torch.div(a,b)
+tensor([[-0.4620, -6.6051,  0.5676,  1.2639],
+        [ 0.2260, -3.4509, -1.2086,  6.8990],
+        [ 0.1322,  4.9764, -0.9564,  5.3484],
+        [-0.2278, -0.1068, -1.4678,  6.3938]])>>> torch.div(a,b,rounding_mode='trunc')
+tensor([[-0., -6.,  0.,  1.],
+        [ 0., -3., -1.,  6.],
+        [ 0.,  4., -0.,  5.],
+        [-0., -0., -1.,  6.]])>>> torch.div(a,b,rounding_mode='floor')
+tensor([[-1., -7.,  0.,  1.],
+        [ 0., -4., -2.,  6.],
+        [ 0.,  4., -1.,  5.],
+        [-1., -1., -2.,  6.]])
 "
 "
  torch. divide ( input ,  other ,  * ,  rounding_mode ,  out )   → ¶",Alias for  torch.div() .
@@ -3036,6 +3189,50 @@ we derive :
  
  
  Examples: 
+",">>> # Estimates the gradient of f(x)=x^2 at points [-2, -1, 2, 4]
+>>> coordinates=(torch.tensor([-2.,-1.,1.,4.]),)
+>>> values=torch.tensor([4.,1.,1.,16.],)
+>>> torch.gradient(values,spacing=coordinates)
+(tensor([-3., -2., 2., 5.]),)>>> # Estimates the gradient of the R^2 -> R function whose samples are
+>>> # described by the tensor t. Implicit coordinates are [0, 1] for the outermost
+>>> # dimension and [0, 1, 2, 3] for the innermost dimension, and function estimates
+>>> # partial derivative for both dimensions.
+>>> t=torch.tensor([[1,2,4,8],[10,20,40,80]])
+>>> torch.gradient(t)
+(tensor([[ 9., 18., 36., 72.],
+         [ 9., 18., 36., 72.]]),
+ tensor([[ 1.0000, 1.5000, 3.0000, 4.0000],
+         [10.0000, 15.0000, 30.0000, 40.0000]]))>>> # A scalar value for spacing modifies the relationship between tensor indices
+>>> # and input coordinates by multiplying the indices to find the
+>>> # coordinates. For example, below the indices of the innermost
+>>> # 0, 1, 2, 3 translate to coordinates of [0, 2, 4, 6], and the indices of
+>>> # the outermost dimension 0, 1 translate to coordinates of [0, 2].
+>>> torch.gradient(t,spacing=2.0)# dim = None (implicitly [0, 1])
+(tensor([[ 4.5000, 9.0000, 18.0000, 36.0000],
+          [ 4.5000, 9.0000, 18.0000, 36.0000]]),
+ tensor([[ 0.5000, 0.7500, 1.5000, 2.0000],
+          [ 5.0000, 7.5000, 15.0000, 20.0000]]))
+>>> # doubling the spacing between samples halves the estimated partial gradients.>>>
+>>> # Estimates only the partial derivative for dimension 1
+>>> torch.gradient(t,dim=1)# spacing = None (implicitly 1.)
+(tensor([[ 1.0000, 1.5000, 3.0000, 4.0000],
+         [10.0000, 15.0000, 30.0000, 40.0000]]),)>>> # When spacing is a list of scalars, the relationship between the tensor
+>>> # indices and input coordinates changes based on dimension.
+>>> # For example, below, the indices of the innermost dimension 0, 1, 2, 3 translate
+>>> # to coordinates of [0, 3, 6, 9], and the indices of the outermost dimension
+>>> # 0, 1 translate to coordinates of [0, 2].
+>>> torch.gradient(t,spacing=[3.,2.])
+(tensor([[ 4.5000, 9.0000, 18.0000, 36.0000],
+         [ 4.5000, 9.0000, 18.0000, 36.0000]]),
+ tensor([[ 0.3333, 0.5000, 1.0000, 1.3333],
+         [ 3.3333, 5.0000, 10.0000, 13.3333]]))>>> # The following example is a replication of the previous one with explicit
+>>> # coordinates.
+>>> coords=(torch.tensor([0,2]),torch.tensor([0,3,6,9]))
+>>> torch.gradient(t,spacing=coords)
+(tensor([[ 4.5000, 9.0000, 18.0000, 36.0000],
+         [ 4.5000, 9.0000, 18.0000, 36.0000]]),
+ tensor([[ 0.3333, 0.5000, 1.0000, 1.3333],
+         [ 3.3333, 5.0000, 10.0000, 13.3333]]))
 "
 "
  torch. ldexp ( input ,  other ,  * ,  out )   → ¶","Multiplies  input  by 2**:attr: other . 
@@ -3291,6 +3488,24 @@ tensor([5.0000, 5.6569, 6.4031])
  Keyword Arguments 
  out 
  Examples: 
+",">>> a=torch.randn(3)
+>>> a
+tensor([ 0.2015, -0.4255,  2.6087])
+>>> torch.mul(a,100)
+tensor([  20.1494,  -42.5491,  260.8663])>>> b=torch.randn(4,1)
+>>> b
+tensor([[ 1.1207],
+        [-0.3137],
+        [ 0.0700],
+        [ 0.8378]])
+>>> c=torch.randn(1,4)
+>>> c
+tensor([[ 0.5146,  0.1216, -0.5244,  2.2382]])
+>>> torch.mul(b,c)
+tensor([[ 0.5767,  0.1363, -0.5877,  2.5083],
+        [-0.1614, -0.0382,  0.1645, -0.7021],
+        [ 0.0360,  0.0085, -0.0367,  0.1567],
+        [ 0.4312,  0.1019, -0.4394,  1.8753]])
 "
 "
  torch. multiply ( input ,  other ,  * ,  out ) ¶",Alias for  torch.mul() .
@@ -4667,6 +4882,10 @@ they are equal, with NaNs being considered equal to each other when
  
  
  Examples: 
+",">>> torch.isclose(torch.tensor((1.,2,3)),torch.tensor((1+1e-10,3,4)))
+tensor([ True, False, False])
+>>> torch.isclose(torch.tensor((float('inf'),4)),torch.tensor((float('inf'),6)),rtol=.5)
+tensor([True, True])
 "
 "
  torch. isfinite ( input )   → ¶","Returns a new tensor with boolean elements representing if each element is  finite  or not. Real values are finite when they are not NaN, negative infinity, or infinity.
@@ -5638,6 +5857,27 @@ tensor([-0.8286, -1.3175, -0.8020,  0.0423,  0.2289,  0.0537, -2.0058,
  torch.diagflat() 
  Examples: Get the square matrix where the input vector is the diagonal: 
  Get the k-th diagonal of a given matrix: 
+",">>> a=torch.randn(3)
+>>> a
+tensor([ 0.5950,-0.0872, 2.3298])
+>>> torch.diag(a)
+tensor([[ 0.5950, 0.0000, 0.0000],
+        [ 0.0000,-0.0872, 0.0000],
+        [ 0.0000, 0.0000, 2.3298]])
+>>> torch.diag(a,1)
+tensor([[ 0.0000, 0.5950, 0.0000, 0.0000],
+        [ 0.0000, 0.0000,-0.0872, 0.0000],
+        [ 0.0000, 0.0000, 0.0000, 2.3298],
+        [ 0.0000, 0.0000, 0.0000, 0.0000]])
+",">>> a=torch.randn(3,3)
+>>> a
+tensor([[-0.4264, 0.0255,-0.1064],
+        [ 0.8795,-0.2429, 0.1374],
+        [ 0.1029,-0.6482,-1.6300]])
+>>> torch.diag(a,0)
+tensor([-0.4264,-0.2429,-1.6300])
+>>> torch.diag(a,1)
+tensor([ 0.0255, 0.1374])
 "
 "
  torch. diag_embed ( input ,  offset ,  dim1 ,  dim2 )   → ¶","Creates a tensor whose diagonals of certain 2D planes (specified by
@@ -5685,6 +5925,26 @@ tensor([[[ 0.0000,  1.5410,  0.0000,  0.0000],
  
  
  Examples: 
+",">>> a=torch.randn(3)
+>>> a
+tensor([-0.2956, -0.9068,  0.1695])
+>>> torch.diagflat(a)
+tensor([[-0.2956,  0.0000,  0.0000],
+        [ 0.0000, -0.9068,  0.0000],
+        [ 0.0000,  0.0000,  0.1695]])
+>>> torch.diagflat(a,1)
+tensor([[ 0.0000, -0.2956,  0.0000,  0.0000],
+        [ 0.0000,  0.0000, -0.9068,  0.0000],
+        [ 0.0000,  0.0000,  0.0000,  0.1695],
+        [ 0.0000,  0.0000,  0.0000,  0.0000]])>>> a=torch.randn(2,2)
+>>> a
+tensor([[ 0.2094, -0.3018],
+        [-0.1516,  1.9342]])
+>>> torch.diagflat(a)
+tensor([[ 0.2094,  0.0000,  0.0000,  0.0000],
+        [ 0.0000, -0.3018,  0.0000,  0.0000],
+        [ 0.0000,  0.0000, -0.1516,  0.0000],
+        [ 0.0000,  0.0000,  0.0000,  1.9342]])
 "
 "
  torch. diagonal ( input ,  offset ,  dim1 ,  dim2 )   → ¶","Returns a partial view of  input  with the its diagonal elements
@@ -5704,6 +5964,17 @@ dimensions, so those need to be explicitly specified.
  Note 
  To take a batch diagonal, pass in dim1=-2, dim2=-1. 
  Examples: 
+",">>> a=torch.randn(3,3)
+>>> a
+tensor([[-1.0854,  1.1431, -0.1752],
+        [ 0.8536, -0.0905,  0.0360],
+        [ 0.6927, -0.3735, -0.4945]])>>> torch.diagonal(a,0)
+tensor([-1.0854, -0.0905, -0.4945])>>> torch.diagonal(a,1)
+tensor([ 1.1431,  0.0360])>>> x=torch.randn(2,5,4,2)
+>>> torch.diagonal(x,offset=-1,dim1=1,dim2=2)
+tensor([[[-1.2631,  0.3755, -1.5977, -1.8172],
+         [-1.1065,  1.0401, -0.2235, -0.7938]],        [[-1.7325, -0.3081,  0.6166,  0.2335],
+         [ 1.0500,  0.7336, -0.3836, -1.1015]]])
 "
 "
  torch. diff ( input ,  n ,  dim ,  prepend ,  append )   → ¶","Computes the n-th forward difference along the given dimension. The first-order differences are given by  out[i] = input[i + 1] - input[i] . Higher-order
@@ -5756,6 +6027,40 @@ calculation:
  Return type 
  Tensor 
  Examples: 
+",">>> # trace
+>>> torch.einsum('ii',torch.randn(4,4))
+tensor(-1.2104)>>> # diagonal
+>>> torch.einsum('ii->i',torch.randn(4,4))
+tensor([-0.1034,  0.7952, -0.2433,  0.4545])>>> # outer product
+>>> x=torch.randn(5)
+>>> y=torch.randn(4)
+>>> torch.einsum('i,j->ij',x,y)
+tensor([[ 0.1156, -0.2897, -0.3918,  0.4963],
+        [-0.3744,  0.9381,  1.2685, -1.6070],
+        [ 0.7208, -1.8058, -2.4419,  3.0936],
+        [ 0.1713, -0.4291, -0.5802,  0.7350],
+        [ 0.5704, -1.4290, -1.9323,  2.4480]])>>> # batch matrix multiplication
+>>> As=torch.randn(3,2,5)
+>>> Bs=torch.randn(3,5,4)
+>>> torch.einsum('bij,bjk->bik',As,Bs)
+tensor([[[-1.0564, -1.5904,  3.2023,  3.1271],
+        [-1.6706, -0.8097, -0.8025, -2.1183]],        [[ 4.2239,  0.3107, -0.5756, -0.2354],
+        [-1.4558, -0.3460,  1.5087, -0.8530]],        [[ 2.8153,  1.8787, -4.3839, -1.2112],
+        [ 0.3728, -2.1131,  0.0921,  0.8305]]])>>> # with sublist format and ellipsis
+>>> torch.einsum(As,[...,0,1],Bs,[...,1,2],[...,0,2])
+tensor([[[-1.0564, -1.5904,  3.2023,  3.1271],
+        [-1.6706, -0.8097, -0.8025, -2.1183]],        [[ 4.2239,  0.3107, -0.5756, -0.2354],
+        [-1.4558, -0.3460,  1.5087, -0.8530]],        [[ 2.8153,  1.8787, -4.3839, -1.2112],
+        [ 0.3728, -2.1131,  0.0921,  0.8305]]])>>> # batch permute
+>>> A=torch.randn(2,3,4,5)
+>>> torch.einsum('...ij->...ji',A).shape
+torch.Size([2, 3, 5, 4])>>> # equivalent to torch.nn.functional.bilinear
+>>> A=torch.randn(3,5,4)
+>>> l=torch.randn(2,5)
+>>> r=torch.randn(2,4)
+>>> torch.einsum('bn,anm,bm->ba',l,A,r)
+tensor([[-0.3430, -5.2405,  0.4494],
+        [ 0.3311,  5.5201, -3.0356]])
 "
 "
  torch. flatten ( input ,  start_dim ,  end_dim )   → ¶","Flattens  input  by reshaping it into a one-dimensional tensor. If  start_dim  or  end_dim 
@@ -5858,6 +6163,19 @@ as described above. When
  Keyword Arguments 
  out 
  Examples: 
+",">>> mat1=torch.eye(2)
+>>> mat2=torch.ones(2,2)
+>>> torch.kron(mat1,mat2)
+tensor([[1., 1., 0., 0.],
+        [1., 1., 0., 0.],
+        [0., 0., 1., 1.],
+        [0., 0., 1., 1.]])>>> mat1=torch.eye(2)
+>>> mat2=torch.arange(1,5).reshape(2,2)
+>>> torch.kron(mat1,mat2)
+tensor([[1., 2., 0., 0.],
+        [3., 4., 0., 0.],
+        [0., 0., 1., 2.],
+        [0., 0., 3., 4.]])
 "
 "
  torch. rot90 ( input ,  k ,  dims )   → ¶","Rotate a n-D tensor by 90 degrees in the plane specified by dims axis.
@@ -6234,6 +6552,24 @@ respectively,  tensordot()  computes
 in place of the last  d  of  a  and the first  d  of  b . The sizes
 in these dimensions must match, but  tensordot()  will deal with broadcasted
 dimensions. Examples: 
+",">>> a=torch.arange(60.).reshape(3,4,5)
+>>> b=torch.arange(24.).reshape(4,3,2)
+>>> torch.tensordot(a,b,dims=([1,0],[0,1]))
+tensor([[4400., 4730.],
+        [4532., 4874.],
+        [4664., 5018.],
+        [4796., 5162.],
+        [4928., 5306.]])>>> a=torch.randn(3,4,5,device='cuda')
+>>> b=torch.randn(4,5,6,device='cuda')
+>>> c=torch.tensordot(a,b,dims=2).cpu()
+tensor([[ 8.3504, -2.5436,  6.2922,  2.7556, -1.0732,  3.2741],
+        [ 3.3161,  0.0704,  5.0187, -0.4079, -4.3126,  4.8744],
+        [ 0.8223,  3.9445,  3.2168, -0.2400,  3.4117,  1.7780]])>>> a=torch.randn(3,5,4,6)
+>>> b=torch.randn(6,4,5,3)
+>>> torch.tensordot(a,b,dims=([2,1,3],[1,2,0]))
+tensor([[  7.7193,  -2.4867, -10.3204],
+        [  1.5513, -14.4737,  -6.5113],
+        [ -0.2850,   4.2573,  -3.5997]])
 "
 "
  torch. trace ( input )   → ¶","Returns the sum of the elements of the diagonal of the input 2-D matrix. Example: 
@@ -6939,6 +7275,16 @@ then the output has the same batch dimensions.
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.randn(4,4)
+>>> Ainv=torch.linalg.inv(A)
+>>> torch.dist(A@Ainv,torch.eye(4))
+tensor(1.1921e-07)>>> A=torch.randn(2,3,4,4)# Batch of matrices
+>>> Ainv=torch.linalg.inv(A)
+>>> torch.dist(A@Ainv,torch.eye(4))
+tensor(1.9073e-06)>>> A=torch.randn(4,4,dtype=torch.complex128)# Complex matrix
+>>> Ainv=torch.linalg.inv(A)
+>>> torch.dist(A@Ainv,torch.eye(4))
+tensor(7.5107e-16, dtype=torch.float64)
 "
 "
  torch. det ( input )   → ¶",Alias for  torch.linalg.det()
@@ -6954,6 +7300,11 @@ the output has the same batch dimensions.
  Keyword Arguments 
  out 
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> torch.linalg.det(A)
+tensor(0.0934)>>> A=torch.randn(3,2,2)
+>>> torch.linalg.det(A)
+tensor([1.1990, 0.4099, 0.7386])
 "
 "
  torch. logdet ( input )   → ¶","Calculates log determinant of a square matrix or batches of square matrices. It returns  -inf  if the input has a determinant of zero, and  NaN  if it has
@@ -7000,6 +7351,17 @@ the output has the same batch dimensions.
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> A
+tensor([[ 0.0032, -0.2239, -1.1219],
+        [-0.6690,  0.1161,  0.4053],
+        [-1.6218, -0.9273, -0.0082]])
+>>> torch.linalg.det(A)
+tensor(-0.7576)
+>>> torch.logdet(A)
+tensor(nan)
+>>> torch.linalg.slogdet(A)
+torch.return_types.linalg_slogdet(sign=tensor(-1.), logabsdet=tensor(-0.2776))
 "
 "
  torch. lu ( * ,  ** ) ¶","Computes the LU factorization of a matrix or batches of matrices
@@ -7102,6 +7464,16 @@ This is because the LU decomposition with pivoting is not differentiable at thes
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.randn(2,3,3)
+>>> B1=torch.randn(2,3,4)
+>>> B2=torch.randn(2,3,7)
+>>> A_factor=torch.linalg.lu_factor(A)
+>>> X1=torch.linalg.lu_solve(A_factor,B1)
+>>> X2=torch.linalg.lu_solve(A_factor,B2)
+>>> torch.allclose(A@X1,B1)
+True
+>>> torch.allclose(A@X2,B2)
+True
 "
 "
  torch. lu_unpack ( LU_data ,  LU_pivots ,  unpack_data ,  unpack_pivots ,  * ,  out ) ¶","Unpacks the LU decomposition returned by  lu_factor()  into the  P, L, U  matrices. 
@@ -7116,6 +7488,20 @@ This is because the LU decomposition with pivoting is not differentiable at thes
  Returns 
  A namedtuple  
  Examples: 
+",">>> A=torch.randn(2,3,3)
+>>> LU,pivots=torch.linalg.lu_factor(A)
+>>> P,L,U=torch.lu_unpack(LU,pivots)
+>>> # We can recover A from the factorization
+>>> A_=P@L@U
+>>> torch.allclose(A,A_)
+True>>> # LU factorization of a rectangular matrix:
+>>> A=torch.randn(2,3,2)
+>>> LU,pivots=torch.linalg.lu_factor(A)
+>>> P,L,U=torch.lu_unpack(LU,pivots)
+>>> # P, L, U are the same as returned by linalg.lu
+>>> P_,L_,U_=torch.linalg.lu(A)
+>>> torch.allclose(P,P_)andtorch.allclose(L,L_)andtorch.allclose(U,U_)
+True
 "
 "
  torch. matmul ( input ,  other ,  * ,  out )   → ¶","Matrix product of two tensors. The behavior depends on the dimensionality of the tensors as follows: 
@@ -7199,6 +7585,22 @@ as  A . If  n  is negative, it returns the inverse of each matrix
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> torch.linalg.matrix_power(A,0)
+tensor([[1., 0., 0.],
+        [0., 1., 0.],
+        [0., 0., 1.]])
+>>> torch.linalg.matrix_power(A,3)
+tensor([[ 1.0756,  0.4980,  0.0100],
+        [-1.6617,  1.4994, -1.9980],
+        [-0.4509,  0.2731,  0.8001]])
+>>> torch.linalg.matrix_power(A.expand(2,-1,-1),-2)
+tensor([[[ 0.2640,  0.4571, -0.5511],
+        [-1.0163,  0.3491, -1.5292],
+        [-0.4899,  0.0822,  0.2773]],
+        [[ 0.2640,  0.4571, -0.5511],
+        [-1.0163,  0.3491, -1.5292],
+        [-0.4899,  0.0822,  0.2773]]])
 "
 "
  torch. matrix_exp ( A )   → ¶",Alias for  torch.linalg.matrix_exp() .
@@ -7301,6 +7703,18 @@ the output has the same batch dimensions.
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.randn(2,2)
+>>> h,tau=torch.geqrf(A)
+>>> Q=torch.linalg.householder_product(h,tau)
+>>> torch.dist(Q,torch.linalg.qr(A).Q)
+tensor(0.)>>> h=torch.randn(3,2,2,dtype=torch.complex128)
+>>> tau=torch.randn(3,1,dtype=torch.complex128)
+>>> Q=torch.linalg.householder_product(h,tau)
+>>> Q
+tensor([[[ 1.8034+0.4184j,  0.2588-1.0174j],
+        [-0.6853+0.7953j,  2.0790+0.5620j]],        [[ 1.4581+1.6989j, -1.5360+0.1193j],
+        [ 1.3877-0.6691j,  1.3512+1.3024j]],        [[ 1.4766+0.5783j,  0.0361+0.6587j],
+        [ 0.6396+0.1612j,  1.3693+0.4481j]]], dtype=torch.complex128)
 "
 "
  torch. ormqr ( input ,  tau ,  other ,  left ,  transpose ,  * ,  out )   → ¶","Computes the matrix-matrix multiplication of a product of Householder matrices with a general matrix. Multiplies a  m  matrix  C  (given by  other ) with a matrix  Q ,
@@ -7361,6 +7775,24 @@ of the singular values of  A  as returned by  torch.linalg.svd() .
  
  
  Examples: 
+",">>> A=torch.randn(3,5)
+>>> A
+tensor([[ 0.5495,  0.0979, -1.4092, -0.1128,  0.4132],
+        [-1.1143, -0.3662,  0.3042,  1.6374, -0.9294],
+        [-0.3269, -0.5745, -0.0382, -0.5922, -0.6759]])
+>>> torch.linalg.pinv(A)
+tensor([[ 0.0600, -0.1933, -0.2090],
+        [-0.0903, -0.0817, -0.4752],
+        [-0.7124, -0.1631, -0.2272],
+        [ 0.1356,  0.3933, -0.5023],
+        [-0.0308, -0.1725, -0.5216]])>>> A=torch.randn(2,6,3)
+>>> Apinv=torch.linalg.pinv(A)
+>>> torch.dist(Apinv@A,torch.eye(3))
+tensor(8.5633e-07)>>> A=torch.randn(3,3,dtype=torch.complex64)
+>>> A=A+A.T.conj()# creates a Hermitian matrix
+>>> Apinv=torch.linalg.pinv(A,hermitian=True)
+>>> torch.dist(Apinv@A,torch.eye(3))
+tensor(1.0830e-06)
 "
 "
  torch. qr ( input ,  some ,  * ,  out ) ¶","Computes the QR decomposition of a matrix or a batch of matrices  input ,
@@ -7592,6 +8024,28 @@ less stable the smaller
  Return type 
  ( 
  Examples: 
+",">>> a=torch.randn(5,5)
+>>> a=a+a.t()# To make a symmetric
+>>> a
+tensor([[-5.7827,  4.4559, -0.2344, -1.7123, -1.8330],
+        [ 4.4559,  1.4250, -2.8636, -3.2100, -0.1798],
+        [-0.2344, -2.8636,  1.7112, -5.5785,  7.1988],
+        [-1.7123, -3.2100, -5.5785, -2.6227,  3.1036],
+        [-1.8330, -0.1798,  7.1988,  3.1036, -5.1453]])
+>>> e,v=torch.symeig(a,eigenvectors=True)
+>>> e
+tensor([-13.7012,  -7.7497,  -2.3163,   5.2477,   8.1050])
+>>> v
+tensor([[ 0.1643,  0.9034, -0.0291,  0.3508,  0.1817],
+        [-0.2417, -0.3071, -0.5081,  0.6534,  0.4026],
+        [-0.5176,  0.1223, -0.0220,  0.3295, -0.7798],
+        [-0.4850,  0.2695, -0.5773, -0.5840,  0.1337],
+        [ 0.6415, -0.0447, -0.6381, -0.0193, -0.4230]])
+>>> a_big=torch.randn(5,2,2)
+>>> a_big=a_big+a_big.mT# To make a_big symmetric
+>>> e,v=a_big.symeig(eigenvectors=True)
+>>> torch.allclose(torch.matmul(v,torch.matmul(e.diag_embed(),v.mT)),a_big)
+True
 "
 "
  torch. lobpcg ( A ,  k ,  B ,  X ,  n ,  iK ,  niter ,  tol ,  largest ,  method ,  tracker ,  ortho_iparams ,  ortho_fparams ,  ortho_bparams ) [source] ¶","Find the k largest (or smallest) eigenvalues and the corresponding
@@ -7663,6 +8117,38 @@ the resolution of the partition increases.
  
  
  Examples: 
+",">>> # Computes the trapezoidal rule in 1D, spacing is implicitly 1
+>>> y=torch.tensor([1,5,10])
+>>> torch.trapezoid(y)
+tensor(10.5)>>> # Computes the same trapezoidal rule directly to verify
+>>> (1+10+10)/2
+10.5>>> # Computes the trapezoidal rule in 1D with constant spacing of 2
+>>> # NOTE: the result is the same as before, but multiplied by 2
+>>> torch.trapezoid(y,dx=2)
+21.0>>> # Computes the trapezoidal rule in 1D with arbitrary spacing
+>>> x=torch.tensor([1,3,6])
+>>> torch.trapezoid(y,x)
+28.5>>> # Computes the same trapezoidal rule directly to verify
+>>> ((3-1)*(1+5)+(6-3)*(5+10))/2
+28.5>>> # Computes the trapezoidal rule for each row of a 3x3 matrix
+>>> y=torch.arange(9).reshape(3,3)
+tensor([[0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8]])
+>>> torch.trapezoid(y)
+tensor([ 2., 8., 14.])>>> # Computes the trapezoidal rule for each column of the matrix
+>>> torch.trapezoid(y,dim=0)
+tensor([ 6., 8., 10.])>>> # Computes the trapezoidal rule for each row of a 3x3 ones matrix
+>>> #   with the same arbitrary spacing
+>>> y=torch.ones(3,3)
+>>> x=torch.tensor([1,3,6])
+>>> torch.trapezoid(y,x)
+array([5., 5., 5.])>>> # Computes the trapezoidal rule for each row of a 3x3 ones matrix
+>>> #   with different arbitrary spacing per row
+>>> y=torch.ones(3,3)
+>>> x=torch.tensor([[1,2,3],[1,3,5],[1,4,7]])
+>>> torch.trapezoid(y,x)
+array([2., 4., 6.])
 "
 "
  torch. cumulative_trapezoid ( y ,  x ,  * ,  dx ,  dim )   → ¶","Cumulatively computes the  trapezoidal rule 
@@ -7679,6 +8165,49 @@ is analogous to how  .sum  returns a value and  .cumsum  returns a cumulative su
  
  
  Examples: 
+",">>> # Cumulatively computes the trapezoidal rule in 1D, spacing is implicitly 1.
+>>> y=torch.tensor([1,5,10])
+>>> torch.cumulative_trapezoid(y)
+tensor([3., 10.5])>>> # Computes the same trapezoidal rule directly up to each element to verify
+>>> (1+5)/2
+3.0
+>>> (1+10+10)/2
+10.5>>> # Cumulatively computes the trapezoidal rule in 1D with constant spacing of 2
+>>> # NOTE: the result is the same as before, but multiplied by 2
+>>> torch.cumulative_trapezoid(y,dx=2)
+tensor([6., 21.])>>> # Cumulatively computes the trapezoidal rule in 1D with arbitrary spacing
+>>> x=torch.tensor([1,3,6])
+>>> torch.cumulative_trapezoid(y,x)
+tensor([6., 28.5])>>> # Computes the same trapezoidal rule directly up to each element to verify
+>>> ((3-1)*(1+5))/2
+6.0
+>>> ((3-1)*(1+5)+(6-3)*(5+10))/2
+28.5>>> # Cumulatively computes the trapezoidal rule for each row of a 3x3 matrix
+>>> y=torch.arange(9).reshape(3,3)
+tensor([[0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8]])
+>>> torch.cumulative_trapezoid(y)
+tensor([[ 0.5,  2.],
+        [ 3.5,  8.],
+        [ 6.5, 14.]])>>> # Cumulatively computes the trapezoidal rule for each column of the matrix
+>>> torch.cumulative_trapezoid(y,dim=0)
+tensor([[ 1.5,  2.5,  3.5],
+        [ 6.0,  8.0, 10.0]])>>> # Cumulatively computes the trapezoidal rule for each row of a 3x3 ones matrix
+>>> #   with the same arbitrary spacing
+>>> y=torch.ones(3,3)
+>>> x=torch.tensor([1,3,6])
+>>> torch.cumulative_trapezoid(y,x)
+tensor([[2., 5.],
+        [2., 5.],
+        [2., 5.]])>>> # Cumulatively computes the trapezoidal rule for each row of a 3x3 ones matrix
+>>> #   with different arbitrary spacing per row
+>>> y=torch.ones(3,3)
+>>> x=torch.tensor([[1,2,3],[1,3,5],[1,4,7]])
+>>> torch.cumulative_trapezoid(y,x)
+tensor([[1., 2.],
+        [2., 4.],
+        [3., 6.]])
 "
 "
  torch. triangular_solve ( b ,  A ,  upper ,  transpose ,  unitriangular ,  * ,  out ) ¶","Solves a system of equations with a square upper or lower triangular invertible matrix  A 
@@ -7701,6 +8230,20 @@ the result may contain  NaN  s. Supports input of float, double, cfloat and cdou
  Returns 
  A namedtuple  
  Examples: 
+",">>> A=torch.randn(2,2).triu()
+>>> A
+tensor([[ 1.1527, -1.0753],
+        [ 0.0000,  0.7986]])
+>>> b=torch.randn(2,3)
+>>> b
+tensor([[-0.0210,  2.3513, -1.5492],
+        [ 1.5429,  0.7403, -1.0243]])
+>>> torch.triangular_solve(b,A)
+torch.return_types.triangular_solve(
+solution=tensor([[ 1.7841,  2.9046, -2.5405],
+        [ 1.9320,  0.9270, -1.2826]]),
+cloned_coefficient=tensor([[ 1.1527, -1.0753],
+        [ 0.0000,  0.7986]]))
 "
 "
  torch. vdot ( input ,  other ,  * ,  out )   → ¶","Computes the dot product of two 1D vectors along a dimension. In symbols, this function computes 
@@ -8290,6 +8833,9 @@ precisely described as:
  
  
  Examples: 
+",">>> m=nn.Conv1d(16,33,3,stride=2)
+>>> input=torch.randn(20,16,50)
+>>> output=m(input)
 "
 "
  class torch.nn. Conv2d ( in_channels ,  out_channels ,  kernel_size ,  stride ,  padding ,  dilation ,  groups ,  bias ,  padding_mode ,  device ,  dtype ) [source] ¶","Applies a 2D convolution over an input signal composed of several input
@@ -8368,6 +8914,12 @@ and output  (  can be precisely described as:
  
  
  Examples: 
+",">>> # With square kernels and equal stride
+>>> m=nn.Conv3d(16,33,3,stride=2)
+>>> # non-square kernels and unequal stride and with padding
+>>> m=nn.Conv3d(16,33,(3,5,2),stride=(2,1,1),padding=(4,2,0))
+>>> input=torch.randn(20,16,10,50,100)
+>>> output=m(input)
 "
 "
  class torch.nn. ConvTranspose1d ( in_channels ,  out_channels ,  kernel_size ,  stride ,  padding ,  output_padding ,  groups ,  bias ,  dilation ,  padding_mode ,  device ,  dtype ) [source] ¶","Applies a 1D transposed convolution operator over an input image
@@ -8435,6 +8987,22 @@ can either be:
  
  
  Examples: 
+",">>> # With square kernels and equal stride
+>>> m=nn.ConvTranspose2d(16,33,3,stride=2)
+>>> # non-square kernels and unequal stride and with padding
+>>> m=nn.ConvTranspose2d(16,33,(3,5),stride=(2,1),padding=(4,2))
+>>> input=torch.randn(20,16,50,100)
+>>> output=m(input)
+>>> # exact output size can be also specified as an argument
+>>> input=torch.randn(1,16,12,12)
+>>> downsample=nn.Conv2d(16,16,3,stride=2,padding=1)
+>>> upsample=nn.ConvTranspose2d(16,16,3,stride=2,padding=1)
+>>> h=downsample(input)
+>>> h.size()
+torch.Size([1, 16, 6, 6])
+>>> output=upsample(h,output_size=input.size())
+>>> output.size()
+torch.Size([1, 16, 12, 12])
 "
 "
  class torch.nn. ConvTranspose3d ( in_channels ,  out_channels ,  kernel_size ,  stride ,  padding ,  output_padding ,  groups ,  bias ,  dilation ,  padding_mode ,  device ,  dtype ) [source] ¶","Applies a 3D transposed convolution operator over an input image composed of several input
@@ -8471,6 +9039,12 @@ can either be:
  
  
  Examples: 
+",">>> # With square kernels and equal stride
+>>> m=nn.ConvTranspose3d(16,33,3,stride=2)
+>>> # non-square kernels and unequal stride and with padding
+>>> m=nn.ConvTranspose3d(16,33,(3,5,2),stride=(2,1,1),padding=(0,4,2))
+>>> input=torch.randn(20,16,10,50,100)
+>>> output=m(input)
 "
 "
  class torch.nn. LazyConv1d ( out_channels ,  kernel_size ,  stride ,  padding ,  dilation ,  groups ,  bias ,  padding_mode ,  device ,  dtype ) [source] ¶","A  torch.nn.Conv1d  module with lazy initialization of
@@ -8614,6 +9188,22 @@ supported.
  Shape: 
  
  Examples: 
+",">>> unfold=nn.Unfold(kernel_size=(2,3))
+>>> input=torch.randn(2,5,3,4)
+>>> output=unfold(input)
+>>> # each patch contains 30 values (2x3=6 vectors, each of 5 channels)
+>>> # 4 blocks (2x3 kernels) in total in the 3x4 input
+>>> output.size()
+torch.Size([2, 30, 4])>>> # Convolution is equivalent with Unfold + Matrix Multiplication + Fold (or view to output shape)
+>>> inp=torch.randn(1,3,10,12)
+>>> w=torch.randn(2,3,4,5)
+>>> inp_unf=torch.nn.functional.unfold(inp,(4,5))
+>>> out_unf=inp_unf.transpose(1,2).matmul(w.view(w.size(0),-1).t()).transpose(1,2)
+>>> out=torch.nn.functional.fold(out_unf,(7,8),(1,1))
+>>> # or equivalently (and avoiding a copy),
+>>> # out = out_unf.view(1, 2, 7, 8)
+>>> (torch.nn.functional.conv2d(inp,w)-out).abs().max()
+tensor(1.9073e-06)
 "
 "
  class torch.nn. Fold ( output_size ,  kernel_size ,  dilation ,  padding ,  stride ) [source] ¶","Combines an array of sliding local blocks into a large containing
@@ -8661,6 +9251,11 @@ follows. Consider
  Shape: 
  
  Examples: 
+",">>> fold=nn.Fold(output_size=(4,5),kernel_size=(2,2))
+>>> input=torch.randn(1,3*2*2,12)
+>>> output=fold(input)
+>>> output.size()
+torch.Size([1, 3, 4, 5])
 "
 "
  class torch.nn. MaxPool1d ( kernel_size ,  stride ,  padding ,  dilation ,  return_indices ,  ceil_mode ) [source] ¶","Applies a 1D max pooling over an input signal composed of several input
@@ -8680,6 +9275,10 @@ or the input. Sliding windows that would start in the right padded region are ig
  Shape: 
  
  Examples: 
+",">>> # pool of size=3, stride=2
+>>> m=nn.MaxPool1d(3,stride=2)
+>>> input=torch.randn(20,16,50)
+>>> output=m(input)
 "
 "
  class torch.nn. MaxPool2d ( kernel_size ,  stride ,  padding ,  dilation ,  return_indices ,  ceil_mode ) [source] ¶","Applies a 2D max pooling over an input signal composed of several input
@@ -8702,6 +9301,12 @@ or the input. Sliding windows that would start in the right padded region are ig
  Shape: 
  
  Examples: 
+",">>> # pool of square window of size=3, stride=2
+>>> m=nn.MaxPool2d(3,stride=2)
+>>> # pool of non-square window
+>>> m=nn.MaxPool2d((3,2),stride=(2,1))
+>>> input=torch.randn(20,16,50,32)
+>>> output=m(input)
 "
 "
  class torch.nn. MaxPool3d ( kernel_size ,  stride ,  padding ,  dilation ,  return_indices ,  ceil_mode ) [source] ¶","Applies a 3D max pooling over an input signal composed of several input
@@ -8724,6 +9329,12 @@ or the input. Sliding windows that would start in the right padded region are ig
  Shape: 
  
  Examples: 
+",">>> # pool of square window of size=3, stride=2
+>>> m=nn.MaxPool3d(3,stride=2)
+>>> # pool of non-square window
+>>> m=nn.MaxPool3d((3,2,2),stride=(2,1,2))
+>>> input=torch.randn(20,16,50,44,31)
+>>> output=m(input)
 "
 "
  class torch.nn. MaxUnpool1d ( kernel_size ,  stride ,  padding ) [source] ¶","Computes a partial inverse of  MaxPool1d . MaxPool1d  is not fully invertible, since the non-maximal values are lost. MaxUnpool1d  takes in as input the output of  MaxPool1d 
@@ -8838,6 +9449,10 @@ an  int  or a one-element tuple.
  Shape: 
  
  Examples: 
+",">>> # pool with window of size=3, stride=2
+>>> m=nn.AvgPool1d(3,stride=2)
+>>> m(torch.tensor([[[1.,2,3,4,5,6,7]]]))
+tensor([[[2., 4., 6.]]])
 "
 "
  class torch.nn. AvgPool2d ( kernel_size ,  stride ,  padding ,  ceil_mode ,  count_include_pad ,  divisor_override ) [source] ¶","Applies a 2D average pooling over an input signal composed of several input
@@ -8859,6 +9474,12 @@ or the input. Sliding windows that would start in the right padded region are ig
  Shape: 
  
  Examples: 
+",">>> # pool of square window of size=3, stride=2
+>>> m=nn.AvgPool2d(3,stride=2)
+>>> # pool of non-square window
+>>> m=nn.AvgPool2d((3,2),stride=(2,1))
+>>> input=torch.randn(20,16,50,32)
+>>> output=m(input)
 "
 "
  class torch.nn. AvgPool3d ( kernel_size ,  stride ,  padding ,  ceil_mode ,  count_include_pad ,  divisor_override ) [source] ¶","Applies a 3D average pooling over an input signal composed of several input
@@ -8880,6 +9501,12 @@ or the input. Sliding windows that would start in the right padded region are ig
  Shape: 
  
  Examples: 
+",">>> # pool of square window of size=3, stride=2
+>>> m=nn.AvgPool3d(3,stride=2)
+>>> # pool of non-square window
+>>> m=nn.AvgPool3d((3,2,2),stride=(2,1,2))
+>>> input=torch.randn(20,16,50,44,31)
+>>> output=m(input)
 "
 "
  class torch.nn. FractionalMaxPool2d ( kernel_size ,  output_size ,  output_ratio ,  return_indices ,  _random_samples ) [source] ¶","Applies a 2D fractional max pooling over an input signal composed of several input planes. Fractional MaxPooling is described in detail in the paper  Fractional MaxPooling  by Ben Graham The max-pooling operation is applied in  k  regions by a stochastic
@@ -8942,6 +9569,12 @@ planes. On each window, the function computed is:
  Shape: 
  
  Examples: 
+",">>> # power-2 pool of square window of size=3, stride=2
+>>> m=nn.LPPool2d(2,3,stride=2)
+>>> # pool of non-square window of power 1.2
+>>> m=nn.LPPool2d(1.2,(3,2),stride=(2,1))
+>>> input=torch.randn(20,16,50,32)
+>>> output=m(input)
 "
 "
  class torch.nn. AdaptiveMaxPool1d ( output_size ,  return_indices ) [source] ¶","Applies a 1D adaptive max pooling over an input signal composed of several input planes. The output size is  L , for any input size.
@@ -9014,6 +9647,19 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ReflectionPad1d(2)
+>>> input=torch.arange(8,dtype=torch.float).reshape(1,2,4)
+>>> input
+tensor([[[0., 1., 2., 3.],
+         [4., 5., 6., 7.]]])
+>>> m(input)
+tensor([[[2., 1., 0., 1., 2., 3., 2., 1.],
+         [6., 5., 4., 5., 6., 7., 6., 5.]]])
+>>> # using different paddings for different sides
+>>> m=nn.ReflectionPad1d((3,1))
+>>> m(input)
+tensor([[[3., 2., 1., 0., 1., 2., 3., 2.],
+         [7., 6., 5., 4., 5., 6., 7., 6.]]])
 "
 "
  class torch.nn. ReflectionPad2d ( padding ) [source] ¶","Pads the input tensor using the reflection of the input boundary. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9023,6 +9669,28 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ReflectionPad2d(2)
+>>> input=torch.arange(9,dtype=torch.float).reshape(1,1,3,3)
+>>> input
+tensor([[[[0., 1., 2.],
+          [3., 4., 5.],
+          [6., 7., 8.]]]])
+>>> m(input)
+tensor([[[[8., 7., 6., 7., 8., 7., 6.],
+          [5., 4., 3., 4., 5., 4., 3.],
+          [2., 1., 0., 1., 2., 1., 0.],
+          [5., 4., 3., 4., 5., 4., 3.],
+          [8., 7., 6., 7., 8., 7., 6.],
+          [5., 4., 3., 4., 5., 4., 3.],
+          [2., 1., 0., 1., 2., 1., 0.]]]])
+>>> # using different paddings for different sides
+>>> m=nn.ReflectionPad2d((1,1,2,0))
+>>> m(input)
+tensor([[[[7., 6., 7., 8., 7.],
+          [4., 3., 4., 5., 4.],
+          [1., 0., 1., 2., 1.],
+          [4., 3., 4., 5., 4.],
+          [7., 6., 7., 8., 7.]]]])
 "
 "
  class torch.nn. ReflectionPad3d ( padding ) [source] ¶","Pads the input tensor using the reflection of the input boundary. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9032,6 +9700,25 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ReflectionPad3d(1)
+>>> input=torch.arange(8,dtype=torch.float).reshape(1,1,2,2,2)
+>>> m(input)
+tensor([[[[[7., 6., 7., 6.],
+           [5., 4., 5., 4.],
+           [7., 6., 7., 6.],
+           [5., 4., 5., 4.]],
+          [[3., 2., 3., 2.],
+           [1., 0., 1., 0.],
+           [3., 2., 3., 2.],
+           [1., 0., 1., 0.]],
+          [[7., 6., 7., 6.],
+           [5., 4., 5., 4.],
+           [7., 6., 7., 6.],
+           [5., 4., 5., 4.]],
+          [[3., 2., 3., 2.],
+           [1., 0., 1., 0.],
+           [3., 2., 3., 2.],
+           [1., 0., 1., 0.]]]]])
 "
 "
  class torch.nn. ReplicationPad1d ( padding ) [source] ¶","Pads the input tensor using replication of the input boundary. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9041,6 +9728,19 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ReplicationPad1d(2)
+>>> input=torch.arange(8,dtype=torch.float).reshape(1,2,4)
+>>> input
+tensor([[[0., 1., 2., 3.],
+         [4., 5., 6., 7.]]])
+>>> m(input)
+tensor([[[0., 0., 0., 1., 2., 3., 3., 3.],
+         [4., 4., 4., 5., 6., 7., 7., 7.]]])
+>>> # using different paddings for different sides
+>>> m=nn.ReplicationPad1d((3,1))
+>>> m(input)
+tensor([[[0., 0., 0., 0., 1., 2., 3., 3.],
+         [4., 4., 4., 4., 5., 6., 7., 7.]]])
 "
 "
  class torch.nn. ReplicationPad2d ( padding ) [source] ¶","Pads the input tensor using replication of the input boundary. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9050,6 +9750,28 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ReplicationPad2d(2)
+>>> input=torch.arange(9,dtype=torch.float).reshape(1,1,3,3)
+>>> input
+tensor([[[[0., 1., 2.],
+          [3., 4., 5.],
+          [6., 7., 8.]]]])
+>>> m(input)
+tensor([[[[0., 0., 0., 1., 2., 2., 2.],
+          [0., 0., 0., 1., 2., 2., 2.],
+          [0., 0., 0., 1., 2., 2., 2.],
+          [3., 3., 3., 4., 5., 5., 5.],
+          [6., 6., 6., 7., 8., 8., 8.],
+          [6., 6., 6., 7., 8., 8., 8.],
+          [6., 6., 6., 7., 8., 8., 8.]]]])
+>>> # using different paddings for different sides
+>>> m=nn.ReplicationPad2d((1,1,2,0))
+>>> m(input)
+tensor([[[[0., 0., 1., 2., 2.],
+          [0., 0., 1., 2., 2.],
+          [0., 0., 1., 2., 2.],
+          [3., 3., 4., 5., 5.],
+          [6., 6., 7., 8., 8.]]]])
 "
 "
  class torch.nn. ReplicationPad3d ( padding ) [source] ¶","Pads the input tensor using replication of the input boundary. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9059,6 +9781,12 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ReplicationPad3d(3)
+>>> input=torch.randn(16,3,8,320,480)
+>>> output=m(input)
+>>> # using different paddings for different sides
+>>> m=nn.ReplicationPad3d((3,3,6,6,1,1))
+>>> output=m(input)
 "
 "
  class torch.nn. ZeroPad2d ( padding ) [source] ¶","Pads the input tensor boundaries with zero. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9068,6 +9796,28 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ZeroPad2d(2)
+>>> input=torch.randn(1,1,3,3)
+>>> input
+tensor([[[[-0.1678, -0.4418,  1.9466],
+          [ 0.9604, -0.4219, -0.5241],
+          [-0.9162, -0.5436, -0.6446]]]])
+>>> m(input)
+tensor([[[[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+          [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+          [ 0.0000,  0.0000, -0.1678, -0.4418,  1.9466,  0.0000,  0.0000],
+          [ 0.0000,  0.0000,  0.9604, -0.4219, -0.5241,  0.0000,  0.0000],
+          [ 0.0000,  0.0000, -0.9162, -0.5436, -0.6446,  0.0000,  0.0000],
+          [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+          [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000,  0.0000]]]])
+>>> # using different paddings for different sides
+>>> m=nn.ZeroPad2d((1,1,2,0))
+>>> m(input)
+tensor([[[[ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+          [ 0.0000,  0.0000,  0.0000,  0.0000,  0.0000],
+          [ 0.0000, -0.1678, -0.4418,  1.9466,  0.0000],
+          [ 0.0000,  0.9604, -0.4219, -0.5241,  0.0000],
+          [ 0.0000, -0.9162, -0.5436, -0.6446,  0.0000]]]])
 "
 "
  class torch.nn. ConstantPad1d ( padding ,  value ) [source] ¶","Pads the input tensor boundaries with a constant value. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9077,6 +9827,29 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ConstantPad1d(2,3.5)
+>>> input=torch.randn(1,2,4)
+>>> input
+tensor([[[-1.0491, -0.7152, -0.0749,  0.8530],
+         [-1.3287,  1.8966,  0.1466, -0.2771]]])
+>>> m(input)
+tensor([[[ 3.5000,  3.5000, -1.0491, -0.7152, -0.0749,  0.8530,  3.5000,
+           3.5000],
+         [ 3.5000,  3.5000, -1.3287,  1.8966,  0.1466, -0.2771,  3.5000,
+           3.5000]]])
+>>> m=nn.ConstantPad1d(2,3.5)
+>>> input=torch.randn(1,2,3)
+>>> input
+tensor([[[ 1.6616,  1.4523, -1.1255],
+         [-3.6372,  0.1182, -1.8652]]])
+>>> m(input)
+tensor([[[ 3.5000,  3.5000,  1.6616,  1.4523, -1.1255,  3.5000,  3.5000],
+         [ 3.5000,  3.5000, -3.6372,  0.1182, -1.8652,  3.5000,  3.5000]]])
+>>> # using different paddings for different sides
+>>> m=nn.ConstantPad1d((3,1),3.5)
+>>> m(input)
+tensor([[[ 3.5000,  3.5000,  3.5000,  1.6616,  1.4523, -1.1255,  3.5000],
+         [ 3.5000,  3.5000,  3.5000, -3.6372,  0.1182, -1.8652,  3.5000]]])
 "
 "
  class torch.nn. ConstantPad2d ( padding ,  value ) [source] ¶","Pads the input tensor boundaries with a constant value. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9086,6 +9859,26 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ConstantPad2d(2,3.5)
+>>> input=torch.randn(1,2,2)
+>>> input
+tensor([[[ 1.6585,  0.4320],
+         [-0.8701, -0.4649]]])
+>>> m(input)
+tensor([[[ 3.5000,  3.5000,  3.5000,  3.5000,  3.5000,  3.5000],
+         [ 3.5000,  3.5000,  3.5000,  3.5000,  3.5000,  3.5000],
+         [ 3.5000,  3.5000,  1.6585,  0.4320,  3.5000,  3.5000],
+         [ 3.5000,  3.5000, -0.8701, -0.4649,  3.5000,  3.5000],
+         [ 3.5000,  3.5000,  3.5000,  3.5000,  3.5000,  3.5000],
+         [ 3.5000,  3.5000,  3.5000,  3.5000,  3.5000,  3.5000]]])
+>>> # using different paddings for different sides
+>>> m=nn.ConstantPad2d((3,0,2,1),3.5)
+>>> m(input)
+tensor([[[ 3.5000,  3.5000,  3.5000,  3.5000,  3.5000],
+         [ 3.5000,  3.5000,  3.5000,  3.5000,  3.5000],
+         [ 3.5000,  3.5000,  3.5000,  1.6585,  0.4320],
+         [ 3.5000,  3.5000,  3.5000, -0.8701, -0.4649],
+         [ 3.5000,  3.5000,  3.5000,  3.5000,  3.5000]]])
 "
 "
  class torch.nn. ConstantPad3d ( padding ,  value ) [source] ¶","Pads the input tensor boundaries with a constant value. For  N -dimensional padding, use  torch.nn.functional.pad() . 
@@ -9095,6 +9888,12 @@ The number of output features is equal to the number of input planes.
  Shape: 
  
  Examples: 
+",">>> m=nn.ConstantPad3d(3,3.5)
+>>> input=torch.randn(16,3,10,20,30)
+>>> output=m(input)
+>>> # using different paddings for different sides
+>>> m=nn.ConstantPad3d((3,3,6,6,0,1),3.5)
+>>> output=m(input)
 "
 "
  class torch.nn. ELU ( alpha ,  inplace ) [source] ¶","Applies the Exponential Linear Unit (ELU) function, element-wise, as described
@@ -9217,6 +10016,8 @@ that is padding can be expected.
  
  
  
+",">>> multihead_attn=nn.MultiheadAttention(embed_dim,num_heads)
+>>> attn_output,attn_output_weights=multihead_attn(query,key,value)
 "
 "
  class torch.nn. PReLU ( num_parameters ,  init ,  device ,  dtype ) [source] ¶","Applies the element-wise function: 
@@ -9435,6 +10236,9 @@ when  i .
  Shape: 
  
  Examples: 
+",">>> m=nn.Threshold(0.1,20)
+>>> input=torch.randn(2)
+>>> output=m(input)
 "
 "
  class torch.nn. GLU ( dim ) [source] ¶","Applies the gated linear unit function
@@ -9446,6 +10250,9 @@ of the input matrices and  b  is the second half.
  Shape: 
  
  Examples: 
+",">>> m=nn.GLU()
+>>> input=torch.randn(4,2)
+>>> output=m(input)
 "
 "
  class torch.nn. Softmin ( dim ) [source] ¶","Applies the Softmin function to an n-dimensional input Tensor
@@ -9463,6 +10270,9 @@ values in the range [0, 1]
  Return type 
  None 
  Examples: 
+",">>> m=nn.Softmin(dim=1)
+>>> input=torch.randn(2,3)
+>>> output=m(input)
 "
 "
  class torch.nn. Softmax ( dim ) [source] ¶","Applies the Softmax function to an n-dimensional input Tensor
@@ -9486,6 +10296,9 @@ values in the range [0, 1]
 which expects the Log to be computed between the Softmax and itself.
 Use  
  Examples: 
+",">>> m=nn.Softmax(dim=1)
+>>> input=torch.randn(2,3)
+>>> output=m(input)
 "
 "
  class torch.nn. Softmax2d [source] ¶","Applies SoftMax over features to each spatial location. When given an image of  Channels , it will
@@ -9499,6 +10312,10 @@ values in the range [0, 1]
  Return type 
  None 
  Examples: 
+",">>> m=nn.Softmax2d()
+>>> # you softmax over the 2nd dimension
+>>> input=torch.randn(2,3,12,13)
+>>> output=m(input)
 "
 "
  class torch.nn. LogSoftmax ( dim ) [source] ¶","Applies the  log  function to an n-dimensional
@@ -9515,6 +10332,9 @@ values in the range [-inf, 0)
  Return type 
  None 
  Examples: 
+",">>> m=nn.LogSoftmax(dim=1)
+>>> input=torch.randn(2,3)
+>>> output=m(input)
 "
 "
  class torch.nn. AdaptiveLogSoftmaxWithLoss ( in_features ,  n_classes ,  cutoffs ,  div_value ,  head_bias ,  device ,  dtype ) [source] ¶","Efficient softmax approximation as described in
@@ -9589,6 +10409,12 @@ on  (N, L)  slices, it’s common terminology to call this Temporal Batch Normal
  Shape: 
  
  Examples: 
+",">>> # With Learnable Parameters
+>>> m=nn.BatchNorm1d(100)
+>>> # Without Learnable Parameters
+>>> m=nn.BatchNorm1d(100,affine=False)
+>>> input=torch.randn(20,100)
+>>> output=m(input)
 "
 "
  class torch.nn. BatchNorm2d ( num_features ,  eps ,  momentum ,  affine ,  track_running_stats ,  device ,  dtype ) [source] ¶","Applies Batch Normalization over a 4D input (a mini-batch of 2D inputs
@@ -9616,6 +10442,12 @@ on  (N, H, W)  slices, it’s common terminology to call this Spatial Batch Norm
  Shape: 
  
  Examples: 
+",">>> # With Learnable Parameters
+>>> m=nn.BatchNorm2d(100)
+>>> # Without Learnable Parameters
+>>> m=nn.BatchNorm2d(100,affine=False)
+>>> input=torch.randn(20,100,35,45)
+>>> output=m(input)
 "
 "
  class torch.nn. BatchNorm3d ( num_features ,  eps ,  momentum ,  affine ,  track_running_stats ,  device ,  dtype ) [source] ¶","Applies Batch Normalization over a 5D input (a mini-batch of 3D inputs
@@ -9644,6 +10476,12 @@ or Spatio-temporal Batch Normalization.
  Shape: 
  
  Examples: 
+",">>> # With Learnable Parameters
+>>> m=nn.BatchNorm3d(100)
+>>> # Without Learnable Parameters
+>>> m=nn.BatchNorm3d(100,affine=False)
+>>> input=torch.randn(20,100,35,45,10)
+>>> output=m(input)
 "
 "
  class torch.nn. LazyBatchNorm1d ( eps ,  momentum ,  affine ,  track_running_stats ,  device ,  dtype ) [source] ¶","A  torch.nn.BatchNorm1d  module with lazy initialization of
@@ -9706,6 +10544,15 @@ evaluation modes.
  Shape: 
  
  Examples: 
+",">>> input=torch.randn(20,6,10,10)
+>>> # Separate 6 channels into 3 groups
+>>> m=nn.GroupNorm(3,6)
+>>> # Separate 6 channels into 6 groups (equivalent with InstanceNorm)
+>>> m=nn.GroupNorm(6,6)
+>>> # Put all 6 channels into a single group (equivalent with LayerNorm)
+>>> m=nn.GroupNorm(1,6)
+>>> # Activating the module
+>>> output=m(input)
 "
 "
  class torch.nn. SyncBatchNorm ( num_features ,  eps ,  momentum ,  affine ,  track_running_stats ,  process_group ,  device ,  dtype ) [source] ¶","Applies Batch Normalization over a N-Dimensional input (a mini-batch of [N-2]D inputs
@@ -9747,7 +10594,28 @@ synchronization is disabled when
  
  
  
- Helper function to convert all "
+ Helper function to convert all ",">>> # With Learnable Parameters
+>>> m=nn.SyncBatchNorm(100)
+>>> # creating process group (optional)
+>>> # ranks is a list of int identifying rank ids.
+>>> ranks=list(range(8))
+>>> r1,r2=ranks[:4],ranks[4:]
+>>> # Note: every rank calls into new_group for every
+>>> # process group created, even if that rank is not
+>>> # part of the group.
+>>> process_groups=[torch.distributed.new_group(pids)forpidsin[r1,r2]]
+>>> process_group=process_groups[0ifdist.get_rank()<=3else1]
+>>> # Without Learnable Parameters
+>>> m=nn.BatchNorm3d(100,affine=False,process_group=process_group)
+>>> input=torch.randn(20,100,35,45,10)
+>>> output=m(input)>>> # network is nn.BatchNorm layer
+>>> sync_bn_network=nn.SyncBatchNorm.convert_sync_batchnorm(network,process_group)
+>>> # only single gpu per process is currently supported
+>>> ddp_sync_bn_network=torch.nn.parallel.DistributedDataParallel(
+>>> sync_bn_network,
+>>> device_ids=[args.local_rank],
+>>> output_device=args.local_rank)
+"
 "
  class torch.nn. InstanceNorm1d ( num_features ,  eps ,  momentum ,  affine ,  track_running_stats ,  device ,  dtype ) [source] ¶","Applies Instance Normalization over a 2D (unbatched) or 3D (batched) input
 as described in the paper
@@ -9774,6 +10642,12 @@ kept with a default  momentum  of 0.1.
  Shape: 
  
  Examples: 
+",">>> # Without Learnable Parameters
+>>> m=nn.InstanceNorm1d(100)
+>>> # With Learnable Parameters
+>>> m=nn.InstanceNorm1d(100,affine=True)
+>>> input=torch.randn(20,100,40)
+>>> output=m(input)
 "
 "
  class torch.nn. InstanceNorm2d ( num_features ,  eps ,  momentum ,  affine ,  track_running_stats ,  device ,  dtype ) [source] ¶","Applies Instance Normalization over a 4D input (a mini-batch of 2D inputs
@@ -9801,6 +10675,12 @@ kept with a default  momentum  of 0.1.
  Shape: 
  
  Examples: 
+",">>> # Without Learnable Parameters
+>>> m=nn.InstanceNorm2d(100)
+>>> # With Learnable Parameters
+>>> m=nn.InstanceNorm2d(100,affine=True)
+>>> input=torch.randn(20,100,35,45)
+>>> output=m(input)
 "
 "
  class torch.nn. InstanceNorm3d ( num_features ,  eps ,  momentum ,  affine ,  track_running_stats ,  device ,  dtype ) [source] ¶","Applies Instance Normalization over a 5D input (a mini-batch of 3D inputs
@@ -9828,6 +10708,12 @@ kept with a default  momentum  of 0.1.
  Shape: 
  
  Examples: 
+",">>> # Without Learnable Parameters
+>>> m=nn.InstanceNorm3d(100)
+>>> # With Learnable Parameters
+>>> m=nn.InstanceNorm3d(100,affine=True)
+>>> input=torch.randn(20,100,35,45,10)
+>>> output=m(input)
 "
 "
  class torch.nn. LazyInstanceNorm1d ( eps ,  momentum ,  affine ,  track_running_stats ,  device ,  dtype ) [source] ¶","A  torch.nn.InstanceNorm1d  module with lazy initialization of
@@ -9907,6 +10793,20 @@ evaluation modes.
  Shape: 
  
  Examples: 
+",">>> # NLP Example
+>>> batch,sentence_length,embedding_dim=20,5,10
+>>> embedding=torch.randn(batch,sentence_length,embedding_dim)
+>>> layer_norm=nn.LayerNorm(embedding_dim)
+>>> # Activate module
+>>> layer_norm(embedding)
+>>>
+>>> # Image Example
+>>> N,C,H,W=20,5,10,10
+>>> input=torch.randn(N,C,H,W)
+>>> # Normalize over the last three dimensions (i.e. the channel and spatial dimensions)
+>>> # as shown in the image below
+>>> layer_norm=nn.LayerNorm([C,H,W])
+>>> output=layer_norm(input)
 "
 "
  class torch.nn. LocalResponseNorm ( size ,  alpha ,  beta ,  k ) [source] ¶","Applies local response normalization over an input signal composed
@@ -9920,6 +10820,11 @@ Applies normalization across channels.
  Shape: 
  
  Examples: 
+",">>> lrn=nn.LocalResponseNorm(2)
+>>> signal_2d=torch.randn(32,5,24,24)
+>>> signal_4d=torch.randn(16,5,7,7,7,7)
+>>> output_2d=lrn(signal_2d)
+>>> output_4d=lrn(signal_4d)
 "
 "
  class torch.nn. RNNBase ( mode ,  input_size ,  hidden_size ,  num_layers ,  bias ,  batch_first ,  dropout ,  bidirectional ,  proj_size ,  device ,  dtype ) [source] ¶","
@@ -9973,6 +10878,10 @@ You can enforce deterministic behavior by setting the following environment vari
 2) input data is on the GPU
 3) input data has dtype  
  Examples: 
+",">>> rnn=nn.RNN(10,20,2)
+>>> input=torch.randn(5,3,10)
+>>> h0=torch.randn(2,3,20)
+>>> output,hn=rnn(input,h0)
 "
 "
  class torch.nn. LSTM ( * ,  ** ) [source] ¶","Applies a multi-layer long short-term memory (LSTM) RNN to an input
@@ -10034,6 +10943,11 @@ You can enforce deterministic behavior by setting the following environment vari
 2) input data is on the GPU
 3) input data has dtype  
  Examples: 
+",">>> rnn=nn.LSTM(10,20,2)
+>>> input=torch.randn(5,3,10)
+>>> h0=torch.randn(2,3,20)
+>>> c0=torch.randn(2,3,20)
+>>> output,(hn,cn)=rnn(input,(h0,c0))
 "
 "
  class torch.nn. GRU ( * ,  ** ) [source] ¶","Applies a multi-layer gated recurrent unit (GRU) RNN to an input sequence. For each element in the input sequence, each layer computes the following
@@ -10075,6 +10989,10 @@ Example of splitting the output layers when
 2) input data is on the GPU
 3) input data has dtype  
  Examples: 
+",">>> rnn=nn.GRU(10,20,2)
+>>> input=torch.randn(5,3,10)
+>>> h0=torch.randn(2,3,20)
+>>> output,hn=rnn(input,h0)
 "
 "
  class torch.nn. RNNCell ( input_size ,  hidden_size ,  bias ,  nonlinearity ,  device ,  dtype ) [source] ¶","An Elman RNN cell with tanh or ReLU non-linearity. 
@@ -10097,6 +11015,13 @@ Example of splitting the output layers when
  Note 
  All the weights and biases are initialized from  
  Examples: 
+",">>> rnn=nn.RNNCell(10,20)
+>>> input=torch.randn(6,3,10)
+>>> hx=torch.randn(3,20)
+>>> output=[]
+>>> foriinrange(6):
+... hx=rnn(input[i],hx)
+... output.append(hx)
 "
 "
  class torch.nn. LSTMCell ( input_size ,  hidden_size ,  bias ,  device ,  dtype ) [source] ¶","A long short-term memory (LSTM) cell. 
@@ -10117,6 +11042,15 @@ Example of splitting the output layers when
  Note 
  All the weights and biases are initialized from  
  On certain ROCm devices, when using float16 inputs this module will use  different precision  for backward. Examples: 
+",">>> rnn=nn.LSTMCell(10,20)# (input_size, hidden_size)
+>>> input=torch.randn(2,3,10)# (time_steps, batch, input_size)
+>>> hx=torch.randn(3,20)# (batch, hidden_size)
+>>> cx=torch.randn(3,20)
+>>> output=[]
+>>> foriinrange(input.size()[0]):
+... hx,cx=rnn(input[i],(hx,cx))
+... output.append(hx)
+>>> output=torch.stack(output,dim=0)
 "
 "
  class torch.nn. GRUCell ( input_size ,  hidden_size ,  bias ,  device ,  dtype ) [source] ¶","A gated recurrent unit (GRU) cell 
@@ -10139,6 +11073,13 @@ Example of splitting the output layers when
  Note 
  All the weights and biases are initialized from  
  On certain ROCm devices, when using float16 inputs this module will use  different precision  for backward. Examples: 
+",">>> rnn=nn.GRUCell(10,20)
+>>> input=torch.randn(6,3,10)
+>>> hx=torch.randn(3,20)
+>>> output=[]
+>>> foriinrange(6):
+... hx=rnn(input[i],hx)
+... output.append(hx)
 "
 "
  class torch.nn. Transformer ( d_model=512 ,  nhead=8 ,  num_encoder_layers=6 ,  num_decoder_layers=6 ,  dim_feedforward=2048 ,  dropout=0.1 ,  activation=<function ,  custom_encoder=None ,  custom_decoder=None ,  layer_norm_eps=1e-05 ,  batch_first=False ,  norm_first=False ,  device=None ,  dtype=None ) [source] ¶","A transformer model. User is able to modify the attributes as needed. The architecture
@@ -10228,6 +11169,11 @@ in a different way during application.
  Shape: 
  
  Examples: 
+",">>> m=nn.Identity(54,unused_argument1=0.1,unused_argument2=False)
+>>> input=torch.randn(128,20)
+>>> output=m(input)
+>>> print(output.size())
+torch.Size([128, 20])
 "
 "
  class torch.nn. Linear ( in_features ,  out_features ,  bias ,  device ,  dtype ) [source] ¶","Applies a linear transformation to the incoming data:  y This module supports  TensorFloat32 . On certain ROCm devices, when using float16 inputs this module will use  different precision  for backward. 
@@ -10242,6 +11188,11 @@ in a different way during application.
  
  
  Examples: 
+",">>> m=nn.Linear(20,30)
+>>> input=torch.randn(128,20)
+>>> output=m(input)
+>>> print(output.size())
+torch.Size([128, 30])
 "
 "
  class torch.nn. Bilinear ( in1_features ,  in2_features ,  out_features ,  bias ,  device ,  dtype ) [source] ¶","Applies a bilinear transformation to the incoming data:
@@ -10257,6 +11208,12 @@ in a different way during application.
  
  
  Examples: 
+",">>> m=nn.Bilinear(20,30,40)
+>>> input1=torch.randn(128,20)
+>>> input2=torch.randn(128,30)
+>>> output=m(input1,input2)
+>>> print(output.size())
+torch.Size([128, 40])
 "
 "
  class torch.nn. LazyLinear ( out_features ,  bias ,  device ,  dtype ) [source] ¶","A  torch.nn.Linear  module where  in_features  is inferred. In this module, the  weight  and  bias  are of  torch.nn.UninitializedParameter 
@@ -10291,6 +11248,9 @@ identity function.
  Shape: 
  
  Examples: 
+",">>> m=nn.Dropout(p=0.2)
+>>> input=torch.randn(20,16)
+>>> output=m(input)
 "
 "
  class torch.nn. Dropout1d ( p ,  inplace ) [source] ¶","Randomly zero out entire channels (a channel is a 1D feature map,
@@ -10311,6 +11271,9 @@ feature maps and should be used instead.
  Shape: 
  
  Examples: 
+",">>> m=nn.Dropout1d(p=0.2)
+>>> input=torch.randn(20,16,32)
+>>> output=m(input)
 "
 "
  class torch.nn. Dropout2d ( p ,  inplace ) [source] ¶","Randomly zero out entire channels (a channel is a 2D feature map,
@@ -10335,6 +11298,9 @@ for 3D inputs (as done by
  Shape: 
  
  Examples: 
+",">>> m=nn.Dropout2d(p=0.2)
+>>> input=torch.randn(20,16,32,32)
+>>> output=m(input)
 "
 "
  class torch.nn. Dropout3d ( p ,  inplace ) [source] ¶","Randomly zero out entire channels (a channel is a 3D feature map,
@@ -10355,6 +11321,9 @@ feature maps and should be used instead.
  Shape: 
  
  Examples: 
+",">>> m=nn.Dropout3d(p=0.2)
+>>> input=torch.randn(20,16,4,32,32)
+>>> output=m(input)
 "
 "
  class torch.nn. AlphaDropout ( p ,  inplace ) [source] ¶","Applies Alpha Dropout over the input. Alpha Dropout is a type of Dropout that maintains the self-normalizing
@@ -10374,6 +11343,9 @@ and shifted to maintain zero mean and unit standard deviation. During evaluation
  Shape: 
  
  Examples: 
+",">>> m=nn.AlphaDropout(p=0.2)
+>>> input=torch.randn(20,16)
+>>> output=m(input)
 "
 "
  class torch.nn. FeatureAlphaDropout ( p ,  inplace ) [source] ¶","Randomly masks out entire channels (a channel is a feature map,
@@ -10398,6 +11370,9 @@ feature maps and should be used instead.
  Shape: 
  
  Examples: 
+",">>> m=nn.FeatureAlphaDropout(p=0.2)
+>>> input=torch.randn(20,16,4,32,32)
+>>> output=m(input)
 "
 "
  class torch.nn. Embedding ( num_embeddings ,  embedding_dim ,  padding_idx ,  max_norm ,  norm_type ,  scale_grad_by_freq ,  sparse ,  _weight ,  device ,  dtype ) [source] ¶","A simple lookup table that stores embeddings of a fixed dictionary and size. This module is often used to store word embeddings and retrieve them using indices.
@@ -10423,7 +11398,40 @@ sparse gradients: currently it’s
  
  
  
- Creates Embedding instance from given 2-dimensional FloatTensor."
+ Creates Embedding instance from given 2-dimensional FloatTensor.",">>> # an Embedding module containing 10 tensors of size 3
+>>> embedding=nn.Embedding(10,3)
+>>> # a batch of 2 samples of 4 indices each
+>>> input=torch.LongTensor([[1,2,4,5],[4,3,2,9]])
+>>> embedding(input)
+tensor([[[-0.0251, -1.6902,  0.7172],
+         [-0.6431,  0.0748,  0.6969],
+         [ 1.4970,  1.3448, -0.9685],
+         [-0.3677, -2.7265, -0.1685]],        [[ 1.4970,  1.3448, -0.9685],
+         [ 0.4362, -0.4004,  0.9400],
+         [-0.6431,  0.0748,  0.6969],
+         [ 0.9124, -2.3616,  1.1151]]])>>> # example with padding_idx
+>>> embedding=nn.Embedding(10,3,padding_idx=0)
+>>> input=torch.LongTensor([[0,2,0,5]])
+>>> embedding(input)
+tensor([[[ 0.0000,  0.0000,  0.0000],
+         [ 0.1535, -2.0309,  0.9315],
+         [ 0.0000,  0.0000,  0.0000],
+         [-0.1655,  0.9897,  0.0635]]])>>> # example of changing `pad` vector
+>>> padding_idx=0
+>>> embedding=nn.Embedding(3,3,padding_idx=padding_idx)
+>>> embedding.weight
+Parameter containing:
+tensor([[ 0.0000,  0.0000,  0.0000],
+        [-0.7895, -0.7089, -0.0364],
+        [ 0.6778,  0.5803,  0.2678]], requires_grad=True)
+>>> withtorch.no_grad():
+... embedding.weight[padding_idx]=torch.ones(3)
+>>> embedding.weight
+Parameter containing:
+tensor([[ 1.0000,  1.0000,  1.0000],
+        [-0.7895, -0.7089, -0.0364],
+        [ 0.6778,  0.5803,  0.2678]], requires_grad=True)
+"
 "
  class torch.nn. EmbeddingBag ( num_embeddings ,  embedding_dim ,  max_norm ,  norm_type ,  scale_grad_by_freq ,  mode ,  sparse ,  _weight ,  include_last_offset ,  padding_idx ,  device ,  dtype ) [source] ¶","Computes sums or means of ‘bags’ of embeddings, without instantiating the
 intermediate embeddings. For bags of constant length, no  per_sample_weights , no indices equal to  padding_idx ,
@@ -10447,7 +11455,26 @@ only supported  mode  is  ""sum"" , which computes a weighted sum according to
  Forward pass of EmbeddingBag. 
  
  
- Creates EmbeddingBag instance from given 2-dimensional FloatTensor."
+ Creates EmbeddingBag instance from given 2-dimensional FloatTensor.",">>> # an EmbeddingBag module containing 10 tensors of size 3
+>>> embedding_sum=nn.EmbeddingBag(10,3,mode='sum')
+>>> # a batch of 2 samples of 4 indices each
+>>> input=torch.tensor([1,2,4,5,4,3,2,9],dtype=torch.long)
+>>> offsets=torch.tensor([0,4],dtype=torch.long)
+>>> embedding_sum(input,offsets)
+tensor([[-0.8861, -5.4350, -0.0523],
+        [ 1.1306, -2.5798, -1.0044]])>>> # Example with padding_idx
+>>> embedding_sum=nn.EmbeddingBag(10,3,mode='sum',padding_idx=2)
+>>> input=torch.tensor([2,2,2,2,4,3,2,9],dtype=torch.long)
+>>> offsets=torch.tensor([0,4],dtype=torch.long)
+>>> embedding_sum(input,offsets)
+tensor([[ 0.0000,  0.0000,  0.0000],
+        [-0.7082,  3.2145, -2.6251]])>>> # An EmbeddingBag can be loaded from an Embedding like so
+>>> embedding=nn.Embedding(10,3,padding_idx=2)
+>>> embedding_sum=nn.EmbeddingBag.from_pretrained(
+        embedding.weight,
+        padding_idx=embedding.padding_idx,
+        mode='sum')
+"
 "
  class torch.nn. CosineSimilarity ( dim ,  eps ) [source] ¶","Returns cosine similarity between  x  and  x , computed along  dim . 
  similarity 
@@ -10486,6 +11513,11 @@ of  n  elements each. The sum operation still operates over all the elements, an
  Shape: 
  
  Examples: 
+",">>> loss=nn.L1Loss()
+>>> input=torch.randn(3,5,requires_grad=True)
+>>> target=torch.randn(3,5)
+>>> output=loss(input,target)
+>>> output.backward()
 "
 "
  class torch.nn. MSELoss ( size_average ,  reduce ,  reduction ) [source] ¶","Creates a criterion that measures the mean squared error (squared L2 norm) between
@@ -10501,6 +11533,11 @@ of  n  elements each. The mean operation still operates over all the elements, a
  Shape: 
  
  Examples: 
+",">>> loss=nn.MSELoss()
+>>> input=torch.randn(3,5,requires_grad=True)
+>>> target=torch.randn(3,5)
+>>> output=loss(input,target)
+>>> output.backward()
 "
 "
  class torch.nn. CrossEntropyLoss ( weight ,  size_average ,  ignore_index ,  reduce ,  reduction ,  label_smoothing ) [source] ¶","This criterion computes the cross entropy loss between input logits
@@ -10528,6 +11565,18 @@ are required, such as for blended labels, label smoothing, etc. The unreduced (i
  Shape: 
  
  Examples: 
+",">>> # Example of target with class indices
+>>> loss=nn.CrossEntropyLoss()
+>>> input=torch.randn(3,5,requires_grad=True)
+>>> target=torch.empty(3,dtype=torch.long).random_(5)
+>>> output=loss(input,target)
+>>> output.backward()
+>>>
+>>> # Example of target with class probabilities
+>>> input=torch.randn(3,5,requires_grad=True)
+>>> target=torch.randn(3,5).softmax(dim=1)
+>>> output=loss(input,target)
+>>> output.backward()
 "
 "
  class torch.nn. CTCLoss ( blank ,  reduction ,  zero_infinity ) [source] ¶","The Connectionist Temporal Classification loss. Calculates loss between a continuous (unsegmented) time series and a target sequence. CTCLoss sums over the
@@ -10555,6 +11604,57 @@ Labelling Unsegmented Sequence Data with Recurrent Neural Networks:
 may select a nondeterministic algorithm to increase performance. If this is
 undesirable, you can try to make the operation deterministic (potentially at
 a performance cost) by setting  
+",">>> # Target are to be padded
+>>> T=50# Input sequence length
+>>> C=20# Number of classes (including blank)
+>>> N=16# Batch size
+>>> S=30# Target sequence length of longest target in batch (padding length)
+>>> S_min=10# Minimum target length, for demonstration purposes
+>>>
+>>> # Initialize random batch of input vectors, for *size = (T,N,C)
+>>> input=torch.randn(T,N,C).log_softmax(2).detach().requires_grad_()
+>>>
+>>> # Initialize random batch of targets (0 = blank, 1:C = classes)
+>>> target=torch.randint(low=1,high=C,size=(N,S),dtype=torch.long)
+>>>
+>>> input_lengths=torch.full(size=(N,),fill_value=T,dtype=torch.long)
+>>> target_lengths=torch.randint(low=S_min,high=S,size=(N,),dtype=torch.long)
+>>> ctc_loss=nn.CTCLoss()
+>>> loss=ctc_loss(input,target,input_lengths,target_lengths)
+>>> loss.backward()
+>>>
+>>>
+>>> # Target are to be un-padded
+>>> T=50# Input sequence length
+>>> C=20# Number of classes (including blank)
+>>> N=16# Batch size
+>>>
+>>> # Initialize random batch of input vectors, for *size = (T,N,C)
+>>> input=torch.randn(T,N,C).log_softmax(2).detach().requires_grad_()
+>>> input_lengths=torch.full(size=(N,),fill_value=T,dtype=torch.long)
+>>>
+>>> # Initialize random batch of targets (0 = blank, 1:C = classes)
+>>> target_lengths=torch.randint(low=1,high=T,size=(N,),dtype=torch.long)
+>>> target=torch.randint(low=1,high=C,size=(sum(target_lengths),),dtype=torch.long)
+>>> ctc_loss=nn.CTCLoss()
+>>> loss=ctc_loss(input,target,input_lengths,target_lengths)
+>>> loss.backward()
+>>>
+>>>
+>>> # Target are to be un-padded and unbatched (effectively N=1)
+>>> T=50# Input sequence length
+>>> C=20# Number of classes (including blank)
+>>>
+>>> # Initialize random batch of input vectors, for *size = (T,C)
+>>> input=torch.randn(T,C).log_softmax(2).detach().requires_grad_()
+>>> input_lengths=torch.tensor(T,dtype=torch.long)
+>>>
+>>> # Initialize random batch of targets (0 = blank, 1:C = classes)
+>>> target_lengths=torch.randint(low=1,high=T,size=(),dtype=torch.long)
+>>> target=torch.randint(low=1,high=C,size=(target_lengths,),dtype=torch.long)
+>>> ctc_loss=nn.CTCLoss()
+>>> loss=ctc_loss(input,target,input_lengths,target_lengths)
+>>> loss.backward()
 "
 "
  class torch.nn. NLLLoss ( weight ,  size_average ,  ignore_index ,  reduce ,  reduction ) [source] ¶","The negative log likelihood loss. It is useful to train a classification
@@ -10581,6 +11681,27 @@ this class index (this index may not necessarily be in the class range). The unr
  Shape: 
  
  Examples: 
+",">>> m=nn.LogSoftmax(dim=1)
+>>> loss=nn.NLLLoss()
+>>> # input is of size N x C = 3 x 5
+>>> input=torch.randn(3,5,requires_grad=True)
+>>> # each element in target has to have 0 <= value < C
+>>> target=torch.tensor([1,0,4])
+>>> output=loss(m(input),target)
+>>> output.backward()
+>>>
+>>>
+>>> # 2D loss example (used, for example, with image inputs)
+>>> N,C=5,4
+>>> loss=nn.NLLLoss()
+>>> # input is of size N x C x height x width
+>>> data=torch.randn(N,16,10,10)
+>>> conv=nn.Conv2d(16,C,(3,3))
+>>> m=nn.LogSoftmax(dim=1)
+>>> # each element in target has to have 0 <= value < C
+>>> target=torch.empty(N,8,8,dtype=torch.long).random_(0,C)
+>>> output=loss(m(conv(data)),target)
+>>> output.backward()
 "
 "
  class torch.nn. PoissonNLLLoss ( log_input ,  full ,  size_average ,  eps ,  reduce ,  reduction ) [source] ¶","Negative log likelihood loss with Poisson distribution of target. The loss can be described as: 
@@ -10594,6 +11715,11 @@ equal to 1 zeros are added to the loss.
  
  Shape: 
  
+",">>> loss=nn.PoissonNLLLoss()
+>>> log_input=torch.randn(5,2,requires_grad=True)
+>>> target=torch.randn(5,2)
+>>> output=loss(log_input,target)
+>>> output.backward()
 "
 "
  class torch.nn. GaussianNLLLoss ( * ,  full ,  eps ,  reduction ) [source] ¶","Gaussian negative log likelihood loss. The targets are treated as samples from Gaussian distributions with
@@ -10643,6 +11769,15 @@ log-space if  log_target = True . To summarise, this function is roughly equival
  Shape: 
  
  Examples: 
+",">>> importtorch.nn.functionalasF
+>>> kl_loss=nn.KLDivLoss(reduction=""batchmean"")
+>>> # input should be a distribution in the log space
+>>> input=F.log_softmax(torch.randn(3,5,requires_grad=True),dim=1)
+>>> # Sample a batch of distributions. Usually this would come from the dataset
+>>> target=F.softmax(torch.rand(3,5),dim=1)
+>>> output=kl_loss(input,target)>>> kl_loss=nn.KLDivLoss(reduction=""batchmean"",log_target=True)
+>>> log_target=F.log_softmax(torch.rand(3,5),dim=1)
+>>> output=kl_loss(input,log_target)
 "
 "
  class torch.nn. BCELoss ( weight ,  size_average ,  reduce ,  reduction ) [source] ¶","Creates a criterion that measures the Binary Cross Entropy between the target and
@@ -10669,6 +11804,12 @@ backward method.
  Shape: 
  
  Examples: 
+",">>> m=nn.Sigmoid()
+>>> loss=nn.BCELoss()
+>>> input=torch.randn(3,requires_grad=True)
+>>> target=torch.empty(3).random_(2)
+>>> output=loss(m(input),target)
+>>> output.backward()
 "
 "
  class torch.nn. BCEWithLogitsLoss ( weight ,  size_average ,  reduce ,  reduction ,  pos_weight ) [source] ¶","This loss combines a  Sigmoid  layer and the  BCELoss  in one single
@@ -10694,6 +11835,12 @@ The loss would act as if the dataset contains  3  positive examples. Examples:
  
  Shape: 
  
+",">>> target=torch.ones([10,64],dtype=torch.float32)# 64 classes, batch size = 10
+>>> output=torch.full([10,64],1.5)# A prediction (logit)
+>>> pos_weight=torch.ones([64])# All weights are equal to 1
+>>> criterion=torch.nn.BCEWithLogitsLoss(pos_weight=pos_weight)
+>>> criterion(output,target)# -log(sigmoid(1.5))
+tensor(0.20...)
 "
 "
  class torch.nn. MarginRankingLoss ( margin ,  size_average ,  reduce ,  reduction ) [source] ¶","Creates a criterion that measures the loss given
@@ -10708,6 +11855,12 @@ and a label 1D mini-batch or 0D  Tensor   y  (containing 1 or -1). If  y  then i
  Shape: 
  
  Examples: 
+",">>> loss=nn.MarginRankingLoss()
+>>> input1=torch.randn(3,requires_grad=True)
+>>> input2=torch.randn(3,requires_grad=True)
+>>> target=torch.randn(3).sign()
+>>> output=loss(input1,input2,target)
+>>> output.backward()
 "
 "
  class torch.nn. HingeEmbeddingLoss ( margin ,  size_average ,  reduce ,  reduction ) [source] ¶","Measures the loss given an input tensor  x  and a labels tensor  y 
@@ -10738,6 +11891,13 @@ starts at the front. This allows for different samples to have variable amounts 
  Shape: 
  
  Examples: 
+",">>> loss=nn.MultiLabelMarginLoss()
+>>> x=torch.FloatTensor([[0.1,0.2,0.4,0.8]])
+>>> # for target y, only consider labels 3 and 0, not after label -1
+>>> y=torch.LongTensor([[3,0,-1,1]])
+>>> # 0.25 * ((1-(0.1-0.2)) + (1-(0.1-0.4)) + (1-(0.8-0.2)) + (1-(0.8-0.4)))
+>>> loss(x,y)
+tensor(0.85...)
 "
 "
  class torch.nn. HuberLoss ( reduction ,  delta ) [source] ¶","Creates a criterion that uses a squared term if the absolute
@@ -10839,6 +11999,12 @@ a 1D  weight  tensor into the constructor. The loss function then becomes:
  Shape: 
  
  Examples: 
+",">>> loss=nn.MultiMarginLoss()
+>>> x=torch.tensor([[0.1,0.2,0.4,0.8]])
+>>> y=torch.tensor([3])
+>>> # 0.25 * ((1-(0.8-0.1)) + (1-(0.8-0.2)) + (1-(0.8-0.4)))
+>>> loss(x,y)
+tensor(0.32...)
 "
 "
  class torch.nn. TripletMarginLoss ( margin ,  p ,  eps ,  swap ,  size_average ,  reduce ,  reduction ) [source] ¶","Creates a criterion that measures the triplet loss given an input
@@ -10859,6 +12025,12 @@ triplet margin loss for input tensors using a custom distance function.
  Shape: 
  
  Examples: 
+",">>> triplet_loss=nn.TripletMarginLoss(margin=1.0,p=2)
+>>> anchor=torch.randn(100,128,requires_grad=True)
+>>> positive=torch.randn(100,128,requires_grad=True)
+>>> negative=torch.randn(100,128,requires_grad=True)
+>>> output=triplet_loss(anchor,positive,negative)
+>>> output.backward()
 "
 "
  class torch.nn. TripletMarginWithDistanceLoss ( * ,  distance_function ,  margin ,  swap ,  reduction ) [source] ¶","Creates a criterion that measures the triplet loss given input
@@ -10887,6 +12059,35 @@ loss for input tensors using the  l  distance as the distance function.
  
  Reference: V. Balntas, et al.: Learning shallow convolutional feature descriptors with triplet losses:
  
+",">>> # Initialize embeddings
+>>> embedding=nn.Embedding(1000,128)
+>>> anchor_ids=torch.randint(0,1000,(1,))
+>>> positive_ids=torch.randint(0,1000,(1,))
+>>> negative_ids=torch.randint(0,1000,(1,))
+>>> anchor=embedding(anchor_ids)
+>>> positive=embedding(positive_ids)
+>>> negative=embedding(negative_ids)
+>>>
+>>> # Built-in Distance Function
+>>> triplet_loss=>>> nn.TripletMarginWithDistanceLoss(distance_function=nn.PairwiseDistance())
+>>> output=triplet_loss(anchor,positive,negative)
+>>> output.backward()
+>>>
+>>> # Custom Distance Function
+>>> defl_infinity(x1,x2):
+>>> returntorch.max(torch.abs(x1-x2),dim=1).values
+>>>
+>>> triplet_loss=(
+>>> nn.TripletMarginWithDistanceLoss(distance_function=l_infinity,margin=1.5))
+>>> output=triplet_loss(anchor,positive,negative)
+>>> output.backward()
+>>>
+>>> # Custom Distance Function (Lambda)
+>>> triplet_loss=(
+>>> nn.TripletMarginWithDistanceLoss(
+>>> distance_function=lambdax,y:1.0-F.cosine_similarity(x,y)))
+>>> output=triplet_loss(anchor,positive,negative)
+>>> output.backward()
 "
 "
  class torch.nn. PixelShuffle ( upscale_factor ) [source] ¶","Rearranges elements in a tensor of shape  ( 
@@ -10903,6 +12104,11 @@ by Shi et. al (2016) for more details.
  C 
  H 
  W Examples: 
+",">>> pixel_shuffle=nn.PixelShuffle(3)
+>>> input=torch.randn(1,9,4,4)
+>>> output=pixel_shuffle(input)
+>>> print(output.size())
+torch.Size([1, 1, 12, 12])
 "
 "
  class torch.nn. PixelUnshuffle ( downscale_factor ) [source] ¶","Reverses the  PixelShuffle  operation by rearranging elements
@@ -10919,6 +12125,11 @@ by Shi et. al (2016) for more details.
  C 
  H 
  W Examples: 
+",">>> pixel_unshuffle=nn.PixelUnshuffle(3)
+>>> input=torch.randn(1,1,12,12)
+>>> output=pixel_unshuffle(input)
+>>> print(output.size())
+torch.Size([1, 9, 4, 4])
 "
 "
  class torch.nn. Upsample ( size ,  scale_factor ,  mode ,  align_corners ,  recompute_scale_factor ) [source] ¶","Upsamples a given multi-channel 1D (temporal), 2D (spatial) or 3D (volumetric) data. The input data is assumed to be of the form
@@ -10943,6 +12154,49 @@ calculate the output size. (You cannot give both, as it is ambiguous)
  Note 
  If you want downsampling/general resizing, you should use  
  Examples: 
+",">>> input=torch.arange(1,5,dtype=torch.float32).view(1,1,2,2)
+>>> input
+tensor([[[[1., 2.],
+          [3., 4.]]]])>>> m=nn.Upsample(scale_factor=2,mode='nearest')
+>>> m(input)
+tensor([[[[1., 1., 2., 2.],
+          [1., 1., 2., 2.],
+          [3., 3., 4., 4.],
+          [3., 3., 4., 4.]]]])>>> m=nn.Upsample(scale_factor=2,mode='bilinear')# align_corners=False
+>>> m(input)
+tensor([[[[1.0000, 1.2500, 1.7500, 2.0000],
+          [1.5000, 1.7500, 2.2500, 2.5000],
+          [2.5000, 2.7500, 3.2500, 3.5000],
+          [3.0000, 3.2500, 3.7500, 4.0000]]]])>>> m=nn.Upsample(scale_factor=2,mode='bilinear',align_corners=True)
+>>> m(input)
+tensor([[[[1.0000, 1.3333, 1.6667, 2.0000],
+          [1.6667, 2.0000, 2.3333, 2.6667],
+          [2.3333, 2.6667, 3.0000, 3.3333],
+          [3.0000, 3.3333, 3.6667, 4.0000]]]])>>> # Try scaling the same data in a larger tensor
+>>> input_3x3=torch.zeros(3,3).view(1,1,3,3)
+>>> input_3x3[:,:,:2,:2].copy_(input)
+tensor([[[[1., 2.],
+          [3., 4.]]]])
+>>> input_3x3
+tensor([[[[1., 2., 0.],
+          [3., 4., 0.],
+          [0., 0., 0.]]]])>>> m=nn.Upsample(scale_factor=2,mode='bilinear')# align_corners=False
+>>> # Notice that values in top left corner are the same with the small input (except at boundary)
+>>> m(input_3x3)
+tensor([[[[1.0000, 1.2500, 1.7500, 1.5000, 0.5000, 0.0000],
+          [1.5000, 1.7500, 2.2500, 1.8750, 0.6250, 0.0000],
+          [2.5000, 2.7500, 3.2500, 2.6250, 0.8750, 0.0000],
+          [2.2500, 2.4375, 2.8125, 2.2500, 0.7500, 0.0000],
+          [0.7500, 0.8125, 0.9375, 0.7500, 0.2500, 0.0000],
+          [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000]]]])>>> m=nn.Upsample(scale_factor=2,mode='bilinear',align_corners=True)
+>>> # Notice that values in top left corner are now changed
+>>> m(input_3x3)
+tensor([[[[1.0000, 1.4000, 1.8000, 1.6000, 0.8000, 0.0000],
+          [1.8000, 2.2000, 2.6000, 2.2400, 1.1200, 0.0000],
+          [2.6000, 3.0000, 3.4000, 2.8800, 1.4400, 0.0000],
+          [2.4000, 2.7200, 3.0400, 2.5600, 1.2800, 0.0000],
+          [1.2000, 1.3600, 1.5200, 1.2800, 0.6400, 0.0000],
+          [0.0000, 0.0000, 0.0000, 0.0000, 0.0000, 0.0000]]]])
 "
 "
  class torch.nn. UpsamplingNearest2d ( size ,  scale_factor ) [source] ¶","Applies a 2D nearest neighbor upsampling to an input signal composed of several input
@@ -10960,6 +12214,15 @@ as it’s constructor argument. When  size  is given, it is the output size of t
  
  H 
  W Examples: 
+",">>> input=torch.arange(1,5,dtype=torch.float32).view(1,1,2,2)
+>>> input
+tensor([[[[1., 2.],
+          [3., 4.]]]])>>> m=nn.UpsamplingNearest2d(scale_factor=2)
+>>> m(input)
+tensor([[[[1., 1., 2., 2.],
+          [1., 1., 2., 2.],
+          [3., 3., 4., 4.],
+          [3., 3., 4., 4.]]]])
 "
 "
  class torch.nn. UpsamplingBilinear2d ( size ,  scale_factor ) [source] ¶","Applies a 2D bilinear upsampling to an input signal composed of several input
@@ -10977,6 +12240,15 @@ as it’s constructor argument. When  size  is given, it is the output size of t
  
  H 
  W Examples: 
+",">>> input=torch.arange(1,5,dtype=torch.float32).view(1,1,2,2)
+>>> input
+tensor([[[[1., 2.],
+          [3., 4.]]]])>>> m=nn.UpsamplingBilinear2d(scale_factor=2)
+>>> m(input)
+tensor([[[[1.0000, 1.3333, 1.6667, 2.0000],
+          [1.6667, 2.0000, 2.3333, 2.6667],
+          [2.3333, 2.6667, 3.0000, 3.3333],
+          [3.0000, 3.3333, 3.6667, 4.0000]]]])
 "
 "
  class torch.nn. ChannelShuffle ( groups ) [source] ¶","Divide the channels in a tensor of shape  ( 
@@ -10985,6 +12257,29 @@ while keeping the original tensor shape.
  Parameters 
  groups 
  Examples: 
+",">>> channel_shuffle=nn.ChannelShuffle(2)
+>>> input=torch.randn(1,4,2,2)
+>>> print(input)
+[[[[1, 2],
+   [3, 4]],
+  [[5, 6],
+   [7, 8]],
+  [[9, 10],
+   [11, 12]],
+  [[13, 14],
+   [15, 16]],
+ ]]
+>>> output=channel_shuffle(input)
+>>> print(output)
+[[[[1, 2],
+   [3, 4]],
+  [[9, 10],
+   [11, 12]],
+  [[5, 6],
+   [7, 8]],
+  [[13, 14],
+   [15, 16]],
+ ]]
 "
 "
  class torch.nn. DataParallel ( module ,  device_ids ,  output_device ,  dim ) [source] ¶","Implements data parallelism at the module level. This container parallelizes the application of the given  module  by
@@ -12027,6 +13322,9 @@ planes. This operator supports  TensorFloat32 . See  Conv1d  for details and out
  
  
  Examples: 
+",">>> inputs=torch.randn(33,16,30)
+>>> filters=torch.randn(20,16,5)
+>>> F.conv1d(inputs,filters)
 "
 "
  torch.nn.functional. conv2d ( input ,  weight ,  bias ,  stride ,  padding ,  dilation ,  groups )   → ¶","Applies a 2D convolution over an input image composed of several input
@@ -12041,6 +13339,10 @@ planes. This operator supports  TensorFloat32 . See  Conv2d  for details and out
  
  
  Examples: 
+",">>> # With square kernels and equal stride
+>>> filters=torch.randn(8,4,3,3)
+>>> inputs=torch.randn(1,4,5,5)
+>>> F.conv2d(inputs,filters,padding=1)
 "
 "
  torch.nn.functional. conv3d ( input ,  weight ,  bias ,  stride ,  padding ,  dilation ,  groups )   → ¶","Applies a 3D convolution over an input image composed of several input
@@ -12055,6 +13357,9 @@ planes. This operator supports  TensorFloat32 . See  Conv3d  for details and out
  
  
  Examples: 
+",">>> filters=torch.randn(33,16,3,3,3)
+>>> inputs=torch.randn(20,16,50,10,20)
+>>> F.conv3d(inputs,filters)
 "
 "
  torch.nn.functional. conv_transpose1d ( input ,  weight ,  bias ,  stride ,  padding ,  output_padding ,  groups ,  dilation )   → ¶","Applies a 1D transposed convolution operator over an input signal
@@ -12066,6 +13371,9 @@ composed of several input planes, sometimes also called “deconvolution”. Thi
  
  
  Examples: 
+",">>> inputs=torch.randn(20,16,50)
+>>> weights=torch.randn(16,33,5)
+>>> F.conv_transpose1d(inputs,weights)
 "
 "
  torch.nn.functional. conv_transpose2d ( input ,  weight ,  bias ,  stride ,  padding ,  output_padding ,  groups ,  dilation )   → ¶","Applies a 2D transposed convolution operator over an input image
@@ -12077,6 +13385,10 @@ composed of several input planes, sometimes also called “deconvolution”. Thi
  
  
  Examples: 
+",">>> # With square kernels and equal stride
+>>> inputs=torch.randn(1,4,5,5)
+>>> weights=torch.randn(4,8,3,3)
+>>> F.conv_transpose2d(inputs,weights,padding=1)
 "
 "
  torch.nn.functional. conv_transpose3d ( input ,  weight ,  bias ,  stride ,  padding ,  output_padding ,  groups ,  dilation )   → ¶","Applies a 3D transposed convolution operator over an input image
@@ -12088,6 +13400,9 @@ composed of several input planes, sometimes also called “deconvolution” This
  
  
  Examples: 
+",">>> inputs=torch.randn(20,16,50,10,20)
+>>> weights=torch.randn(16,33,3,3,3)
+>>> F.conv_transpose3d(inputs,weights)
 "
 "
  torch.nn.functional. unfold ( input ,  kernel_size ,  dilation ,  padding ,  stride ) [source] ¶","Extracts sliding local blocks from a batched input tensor. 
@@ -12120,6 +13435,10 @@ input planes. See  AvgPool1d  for details and output shape.
  
  
  Examples: 
+",">>> # pool of square window of size=3, stride=2
+>>> input=torch.tensor([[[1,2,3,4,5,6,7]]],dtype=torch.float32)
+>>> F.avg_pool1d(input,kernel_size=3,stride=2)
+tensor([[[ 2.,  4.,  6.]]])
 "
 "
  torch.nn.functional. avg_pool2d ( input ,  kernel_size ,  stride ,  padding ,  ceil_mode ,  count_include_pad ,  divisor_override )   → ¶","Applies 2D average-pooling operation in  k  regions by step size
@@ -12588,6 +13907,27 @@ and the output is the corresponding word embeddings. See  torch.nn.Embedding  fo
  Shape: 
  
  Examples: 
+",">>> # a batch of 2 samples of 4 indices each
+>>> input=torch.tensor([[1,2,4,5],[4,3,2,9]])
+>>> # an embedding matrix containing 10 tensors of size 3
+>>> embedding_matrix=torch.rand(10,3)
+>>> F.embedding(input,embedding_matrix)
+tensor([[[ 0.8490,  0.9625,  0.6753],
+         [ 0.9666,  0.7761,  0.6108],
+         [ 0.6246,  0.9751,  0.3618],
+         [ 0.4161,  0.2419,  0.7383]],        [[ 0.6246,  0.9751,  0.3618],
+         [ 0.0237,  0.7794,  0.0528],
+         [ 0.9666,  0.7761,  0.6108],
+         [ 0.3385,  0.8612,  0.1867]]])>>> # example with padding_idx
+>>> weights=torch.rand(10,3)
+>>> weights[0,:].zero_()
+>>> embedding_matrix=weights
+>>> input=torch.tensor([[0,2,0,5]])
+>>> F.embedding(input,embedding_matrix,padding_idx=0)
+tensor([[[ 0.0000,  0.0000,  0.0000],
+         [ 0.5609,  0.5384,  0.8720],
+         [ 0.0000,  0.0000,  0.0000],
+         [ 0.6262,  0.2438,  0.7471]]])
 "
 "
  torch.nn.functional. embedding_bag ( input ,  weight ,  offsets ,  max_norm ,  norm_type ,  scale_grad_by_freq ,  mode ,  sparse ,  per_sample_weights ,  include_last_offset ,  padding_idx ) [source] ¶","Computes sums, means or maxes of  bags  of embeddings, without instantiating the
@@ -12604,6 +13944,20 @@ intermediate embeddings. See  torch.nn.EmbeddingBag  for more details.
  Shape: 
  
  Examples: 
+",">>> # an Embedding module containing 10 tensors of size 3
+>>> embedding_matrix=torch.rand(10,3)
+>>> # a batch of 2 samples of 4 indices each
+>>> input=torch.tensor([1,2,4,5,4,3,2,9])
+>>> offsets=torch.tensor([0,4])
+>>> F.embedding_bag(input,embedding_matrix,offsets)
+tensor([[ 0.3397,  0.3552,  0.5545],
+        [ 0.5893,  0.4386,  0.5882]])>>> # example with padding_idx
+>>> embedding_matrix=torch.rand(10,3)
+>>> input=torch.tensor([2,2,2,2,4,3,2,9])
+>>> offsets=torch.tensor([0,4])
+>>> F.embedding_bag(input,embedding_matrix,offsets,padding_idx=2,mode='sum')
+tensor([[ 0.0000,  0.0000,  0.0000],
+        [-0.7082,  3.2145, -2.6251]])
 "
 "
  torch.nn.functional. one_hot ( tensor ,  num_classes )   → ¶","Takes LongTensor with index values of shape  (*)  and returns a tensor
@@ -12658,6 +14012,10 @@ probabilities. See  BCELoss  for details.
  Return type 
  Tensor 
  Examples: 
+",">>> input=torch.randn(3,2,requires_grad=True)
+>>> target=torch.rand(3,2,requires_grad=False)
+>>> loss=F.binary_cross_entropy(torch.sigmoid(input),target)
+>>> loss.backward()
 "
 "
  torch.nn.functional. binary_cross_entropy_with_logits ( input ,  target ,  weight ,  size_average ,  reduce ,  reduction ,  pos_weight ) [source] ¶","Function that measures Binary Cross Entropy between target and input
@@ -12668,6 +14026,10 @@ logits. See  BCEWithLogitsLoss  for details.
  Return type 
  Tensor 
  Examples: 
+",">>> input=torch.randn(3,requires_grad=True)
+>>> target=torch.empty(3).random_(2)
+>>> loss=F.binary_cross_entropy_with_logits(input,target)
+>>> loss.backward()
 "
 "
  torch.nn.functional. poisson_nll_loss ( input ,  target ,  log_input ,  full ,  size_average ,  eps ,  reduce ,  reduction ) [source] ¶","Poisson negative log likelihood loss. See  PoissonNLLLoss  for details. 
@@ -12693,6 +14055,17 @@ logits. See  BCEWithLogitsLoss  for details.
  Shape: 
  
  Examples: 
+",">>> # Example of target with class indices
+>>> input=torch.randn(3,5,requires_grad=True)
+>>> target=torch.randint(5,(3,),dtype=torch.int64)
+>>> loss=F.cross_entropy(input,target)
+>>> loss.backward()
+>>>
+>>> # Example of target with class probabilities
+>>> input=torch.randn(3,5,requires_grad=True)
+>>> target=torch.randn(3,5).softmax(dim=1)
+>>> loss=F.cross_entropy(input,target)
+>>> loss.backward()
 "
 "
  torch.nn.functional. ctc_loss ( log_probs ,  targets ,  input_lengths ,  target_lengths ,  blank ,  reduction ,  zero_infinity ) [source] ¶","The Connectionist Temporal Classification loss. See  CTCLoss  for details. 
@@ -12821,6 +14194,10 @@ tensor of shape  ( , where r is the  upscale_factor . See  PixelShuffle  for det
  
  
  Examples: 
+",">>> input=torch.randn(1,9,4,4)
+>>> output=torch.nn.functional.pixel_shuffle(input,3)
+>>> print(output.size())
+torch.Size([1, 1, 12, 12])
 "
 "
  torch.nn.functional. pixel_unshuffle ( input ,  downscale_factor )   → ¶","Reverses the  PixelShuffle  operation by rearranging elements in a
@@ -12830,6 +14207,10 @@ tensor of shape  (  to a tensor of shape
  
  
  Examples: 
+",">>> input=torch.randn(1,1,12,12)
+>>> output=torch.nn.functional.pixel_unshuffle(input,3)
+>>> print(output.size())
+torch.Size([1, 9, 4, 4])
 "
 "
  torch.nn.functional. pad ( input ,  pad ,  mode ,  value )   → ¶","Pads tensor. 
@@ -12845,6 +14226,20 @@ Please see the notes on
  
  
  Examples: 
+",">>> t4d=torch.empty(3,3,4,2)
+>>> p1d=(1,1)# pad last dim by 1 on each side
+>>> out=F.pad(t4d,p1d,""constant"",0)# effectively zero padding
+>>> print(out.size())
+torch.Size([3, 3, 4, 4])
+>>> p2d=(1,1,2,2)# pad last dim by (1, 1) and 2nd to last by (2, 2)
+>>> out=F.pad(t4d,p2d,""constant"",0)
+>>> print(out.size())
+torch.Size([3, 3, 8, 4])
+>>> t4d=torch.empty(3,3,4,2)
+>>> p3d=(0,1,2,1,3,3)# pad by (0, 1), (2, 1), and (3, 3)
+>>> out=F.pad(t4d,p3d,""constant"",0)
+>>> print(out.size())
+torch.Size([3, 9, 7, 3])
 "
 "
  torch.nn.functional. interpolate ( input ,  size ,  scale_factor ,  mode ,  align_corners ,  recompute_scale_factor ,  antialias ) [source] ¶","Down/up samples the input to either the given  size  or the given
@@ -14571,6 +15966,12 @@ the particular dimension  dim .
  Tensor. tolist ( )   → ¶","Returns the tensor as a (nested) list. For scalars, a standard
 Python number is returned, just like with  item() .
 Tensors are automatically moved to the CPU first if necessary. This operation is not differentiable. Examples: 
+",">>> a=torch.randn(2,2)
+>>> a.tolist()
+[[0.012766935862600803, 0.5415473580360413],
+ [-0.08909505605697632, 0.7729271650314331]]
+>>> a[0,0].tolist()
+0.012766935862600803
 "
 "
  Tensor. topk ( k ,  dim ,  largest ,  sorted ) ¶",See  torch.topk()
@@ -15990,6 +17391,12 @@ the output has the same batch dimensions.
  Keyword Arguments 
  out 
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> Ainv,info=torch.linalg.inv_ex(A)
+>>> torch.dist(torch.linalg.inv(A),Ainv)
+tensor(0.)
+>>> info
+tensor(0, dtype=torch.int32)
 "
 "
  torch.linalg. cholesky ( A ,  * ,  upper ,  out )   → ¶","Computes the Cholesky decomposition of a complex Hermitian or real symmetric positive-definite matrix. Letting  K  be  R  or  C ,
@@ -16014,6 +17421,21 @@ the output has the same batch dimensions.
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.randn(2,2,dtype=torch.complex128)
+>>> A=A@A.T.conj()+torch.eye(2)# creates a Hermitian positive-definite matrix
+>>> A
+tensor([[2.5266+0.0000j, 1.9586-2.0626j],
+        [1.9586+2.0626j, 9.4160+0.0000j]], dtype=torch.complex128)
+>>> L=torch.linalg.cholesky(A)
+>>> L
+tensor([[1.5895+0.0000j, 0.0000+0.0000j],
+        [1.2322+1.2976j, 2.4928+0.0000j]], dtype=torch.complex128)
+>>> torch.dist(L@L.T.conj(),A)
+tensor(4.4692e-16, dtype=torch.float64)>>> A=torch.randn(3,2,2,dtype=torch.float64)
+>>> A=A@A.mT+torch.eye(2)# batch of symmetric positive-definite matrices
+>>> L=torch.linalg.cholesky(A)
+>>> torch.dist(L@L.mT,A)
+tensor(5.8747e-16, dtype=torch.float64)
 "
 "
  torch.linalg. cholesky_ex ( A ,  * ,  upper ,  check_errors ,  out ) ¶","Computes the Cholesky decomposition of a complex Hermitian or real
@@ -16046,6 +17468,17 @@ If  check_errors=True  and  info  contains positive integers, then a RuntimeErro
  
  
  Examples: 
+",">>> A=torch.randn(2,2,dtype=torch.complex128)
+>>> A=A@A.t().conj()# creates a Hermitian positive-definite matrix
+>>> L,info=torch.linalg.cholesky_ex(A)
+>>> A
+tensor([[ 2.3792+0.0000j, -0.9023+0.9831j],
+        [-0.9023-0.9831j,  0.8757+0.0000j]], dtype=torch.complex128)
+>>> L
+tensor([[ 1.5425+0.0000j,  0.0000+0.0000j],
+        [-0.5850-0.6374j,  0.3567+0.0000j]], dtype=torch.complex128)
+>>> info
+tensor(0, dtype=torch.int32)
 "
 "
  torch.linalg. lu ( A ,  * ,  pivot ,  out ) ¶","Computes the LU decomposition with partial pivoting of a matrix. Letting  K  be  R  or  C ,
@@ -16081,6 +17514,26 @@ This is because the LU decomposition with pivoting is not differentiable at thes
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.randn(3,2)
+>>> P,L,U=torch.linalg.lu(A)
+>>> P
+tensor([[0., 1., 0.],
+        [0., 0., 1.],
+        [1., 0., 0.]])
+>>> L
+tensor([[1.0000, 0.0000],
+        [0.5007, 1.0000],
+        [0.0633, 0.9755]])
+>>> U
+tensor([[0.3771, 0.0489],
+        [0.0000, 0.9644]])
+>>> torch.dist(A,P@L@U)
+tensor(5.9605e-08)>>> A=torch.randn(2,5,7,device=""cuda"")
+>>> P,L,U=torch.linalg.lu(A,pivot=False)
+>>> P
+tensor([], device='cuda:0')
+>>> torch.dist(A,L@U)
+tensor(1.0376e-06, device='cuda:0')
 "
 "
  torch.linalg. lu_solve ( LU ,  pivots ,  B ,  * ,  left ,  adjoint ,  out )   → ¶","Computes the solution of a square system of linear equations with a unique solution given an LU decomposition. Letting  K  be  R  or  C ,
@@ -16100,6 +17553,21 @@ the output has the same batch dimensions.
  
  
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> LU,pivots=torch.linalg.lu_factor(A)
+>>> B=torch.randn(3,2)
+>>> X=torch.linalg.lu_solve(LU,pivots,B)
+>>> torch.allclose(A@X,B)
+True>>> B=torch.randn(3,3,2)# Broadcasting rules apply: A is broadcasted
+>>> X=torch.linalg.lu_solve(LU,pivots,B)
+>>> torch.allclose(A@X,B)
+True>>> B=torch.randn(3,5,3)
+>>> X=torch.linalg.lu_solve(LU,pivots,B,left=False)
+>>> torch.allclose(X@A,B)
+True>>> B=torch.randn(3,3,4)# Now solve for A^T
+>>> X=torch.linalg.lu_solve(LU,pivots,B,adjoint=True)
+>>> torch.allclose(A.mT@X,B)
+True
 "
 "
  torch.linalg. qr ( A ,  mode ,  * ,  out ) ¶","Computes the QR decomposition of a matrix. Letting  K  be  R  or  C ,
@@ -16134,6 +17602,35 @@ If  A  has shape  (*, m, n) , denoting  k = min(m, n)
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.tensor([[12.,-51,4],[6,167,-68],[-4,24,-41]])
+>>> Q,R=torch.linalg.qr(A)
+>>> Q
+tensor([[-0.8571,  0.3943,  0.3314],
+        [-0.4286, -0.9029, -0.0343],
+        [ 0.2857, -0.1714,  0.9429]])
+>>> R
+tensor([[ -14.0000,  -21.0000,   14.0000],
+        [   0.0000, -175.0000,   70.0000],
+        [   0.0000,    0.0000,  -35.0000]])
+>>> (Q@R).round()
+tensor([[  12.,  -51.,    4.],
+        [   6.,  167.,  -68.],
+        [  -4.,   24.,  -41.]])
+>>> (Q.T@Q).round()
+tensor([[ 1.,  0.,  0.],
+        [ 0.,  1., -0.],
+        [ 0., -0.,  1.]])
+>>> Q2,R2=torch.linalg.qr(A,mode='r')
+>>> Q2
+tensor([])
+>>> torch.equal(R,R2)
+True
+>>> A=torch.randn(3,4,5)
+>>> Q,R=torch.linalg.qr(A,mode='complete')
+>>> torch.dist(Q@R,A)
+tensor(1.6099e-06)
+>>> torch.dist(Q.mT@Q,torch.eye(4))
+tensor(6.2158e-07)
 "
 "
  torch.linalg. eigh ( A ,  UPLO ,  * ,  out ) ¶","Computes the eigenvalue decomposition of a complex Hermitian or real symmetric matrix. Letting  K  be  R  or  C ,
@@ -16222,6 +17719,19 @@ vectors
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.randn(5,3)
+>>> U,S,Vh=torch.linalg.svd(A,full_matrices=False)
+>>> U.shape,S.shape,Vh.shape
+(torch.Size([5, 3]), torch.Size([3]), torch.Size([3, 3]))
+>>> torch.dist(A,U@torch.diag(S)@Vh)
+tensor(1.0486e-06)>>> U,S,Vh=torch.linalg.svd(A)
+>>> U.shape,S.shape,Vh.shape
+(torch.Size([5, 5]), torch.Size([3]), torch.Size([3, 3]))
+>>> torch.dist(A,U[:,:3]@torch.diag(S)@Vh)
+tensor(1.0486e-06)>>> A=torch.randn(7,5,3)
+>>> U,S,Vh=torch.linalg.svd(A,full_matrices=False)
+>>> torch.dist(A,U@torch.diag_embed(S)@Vh)
+tensor(3.0957e-06)
 "
 "
  torch.linalg. svdvals ( A ,  * ,  driver ,  out )   → ¶","Computes the singular values of a matrix. Supports input of float, double, cfloat and cdouble dtypes.
@@ -16244,6 +17754,11 @@ the output has the same batch dimensions. The singular values are returned in de
  Returns 
  A real-valued tensor, even when  
  Examples: 
+",">>> A=torch.randn(5,3)
+>>> S=torch.linalg.svdvals(A)
+>>> S
+tensor([2.5139, 2.1087, 1.1066])>>> torch.dist(S,torch.linalg.svd(A,full_matrices=False).S)
+tensor(2.4576e-07)
 "
 "
  Optimizer. state_dict ( ) [source] ¶","Returns the state of the optimizer as a  dict . It contains two entries: 
@@ -17252,6 +18767,59 @@ use  Annotate()  instead. Example:
  Examples: 
  Using the  dim  argument to compute vector norms: 
  Using the  dim  argument to compute matrix norms: 
+",">>> fromtorchimportlinalgasLA
+>>> a=torch.arange(9,dtype=torch.float)-4
+>>> a
+tensor([-4., -3., -2., -1.,  0.,  1.,  2.,  3.,  4.])
+>>> B=a.reshape((3,3))
+>>> B
+tensor([[-4., -3., -2.],
+        [-1.,  0.,  1.],
+        [ 2.,  3.,  4.]])>>> LA.norm(a)
+tensor(7.7460)
+>>> LA.norm(B)
+tensor(7.7460)
+>>> LA.norm(B,'fro')
+tensor(7.7460)
+>>> LA.norm(a,float('inf'))
+tensor(4.)
+>>> LA.norm(B,float('inf'))
+tensor(9.)
+>>> LA.norm(a,-float('inf'))
+tensor(0.)
+>>> LA.norm(B,-float('inf'))
+tensor(2.)>>> LA.norm(a,1)
+tensor(20.)
+>>> LA.norm(B,1)
+tensor(7.)
+>>> LA.norm(a,-1)
+tensor(0.)
+>>> LA.norm(B,-1)
+tensor(6.)
+>>> LA.norm(a,2)
+tensor(7.7460)
+>>> LA.norm(B,2)
+tensor(7.3485)>>> LA.norm(a,-2)
+tensor(0.)
+>>> LA.norm(B.double(),-2)
+tensor(1.8570e-16, dtype=torch.float64)
+>>> LA.norm(a,3)
+tensor(5.8480)
+>>> LA.norm(a,-3)
+tensor(0.)
+",">>> c=torch.tensor([[1.,2.,3.],
+... [-1,1,4]])
+>>> LA.norm(c,dim=0)
+tensor([1.4142, 2.2361, 5.0000])
+>>> LA.norm(c,dim=1)
+tensor([3.7417, 4.2426])
+>>> LA.norm(c,ord=1,dim=1)
+tensor([6., 6.])
+",">>> A=torch.arange(8,dtype=torch.float).reshape(2,2,2)
+>>> LA.norm(A,dim=(1,2))
+tensor([ 3.7417, 11.2250])
+>>> LA.norm(A[0,:,:]),LA.norm(A[1,:,:])
+(tensor(3.7417), tensor(11.2250))
 "
 "
  torch.linalg. vector_norm ( x ,  ord ,  dim ,  keepdim ,  * ,  dtype ,  out )   → ¶","Computes a vector norm. If  x  is complex valued, it computes the norm of  x .abs() Supports input of float, double, cfloat and cdouble dtypes. This function does not necessarily treat multidimensonal  x  as a batch of
@@ -17278,6 +18846,19 @@ but it is faster in some cases.
  Returns 
  A real-valued tensor, even when  
  Examples: 
+",">>> fromtorchimportlinalgasLA
+>>> a=torch.arange(9,dtype=torch.float)-4
+>>> a
+tensor([-4., -3., -2., -1.,  0.,  1.,  2.,  3.,  4.])
+>>> B=a.reshape((3,3))
+>>> B
+tensor([[-4., -3., -2.],
+        [-1.,  0.,  1.],
+        [ 2.,  3.,  4.]])
+>>> LA.vector_norm(a,ord=3.5)
+tensor(5.4345)
+>>> LA.vector_norm(B,ord=3.5)
+tensor(5.4345)
 "
 "
  torch.linalg. matrix_norm ( A ,  ord ,  dim ,  keepdim ,  * ,  dtype ,  out )   → ¶","Computes a matrix norm. If  A  is complex valued, it computes the norm of  A .abs() Support input of float, double, cfloat and cdouble dtypes.
@@ -17298,6 +18879,27 @@ be treated as batch dimensions. The output will have the same batch dimensions. 
  Returns 
  A real-valued tensor, even when  
  Examples: 
+",">>> fromtorchimportlinalgasLA
+>>> A=torch.arange(9,dtype=torch.float).reshape(3,3)
+>>> A
+tensor([[0., 1., 2.],
+        [3., 4., 5.],
+        [6., 7., 8.]])
+>>> LA.matrix_norm(A)
+tensor(14.2829)
+>>> LA.matrix_norm(A,ord=-1)
+tensor(9.)
+>>> B=A.expand(2,-1,-1)
+>>> B
+tensor([[[0., 1., 2.],
+        [3., 4., 5.],
+        [6., 7., 8.]],        [[0., 1., 2.],
+        [3., 4., 5.],
+        [6., 7., 8.]]])
+>>> LA.matrix_norm(B)
+tensor([14.2829, 14.2829])
+>>> LA.matrix_norm(B,dim=(0,2))
+tensor([ 3.1623, 10.0000, 17.2627])
 "
 "
  torch.linalg. diagonal ( A ,  * ,  offset ,  dim1 ,  dim2 )   → ¶","Alias for  torch.diagonal()  with defaults  dim1 = -2 ,  dim2 = -1 ."
@@ -17338,6 +18940,34 @@ if
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.randn(3,4,4,dtype=torch.complex64)
+>>> torch.linalg.cond(A)
+>>> A=torch.tensor([[1.,0,-1],[0,1,0],[1,0,1]])
+>>> torch.linalg.cond(A)
+tensor([1.4142])
+>>> torch.linalg.cond(A,'fro')
+tensor(3.1623)
+>>> torch.linalg.cond(A,'nuc')
+tensor(9.2426)
+>>> torch.linalg.cond(A,float('inf'))
+tensor(2.)
+>>> torch.linalg.cond(A,float('-inf'))
+tensor(1.)
+>>> torch.linalg.cond(A,1)
+tensor(2.)
+>>> torch.linalg.cond(A,-1)
+tensor(1.)
+>>> torch.linalg.cond(A,2)
+tensor([1.4142])
+>>> torch.linalg.cond(A,-2)
+tensor([0.7071])>>> A=torch.randn(2,3,3)
+>>> torch.linalg.cond(A)
+tensor([[9.5917],
+        [3.2538]])
+>>> A=torch.randn(2,3,3,dtype=torch.complex64)
+>>> torch.linalg.cond(A)
+tensor([[4.6245],
+        [4.5671]])
 "
 "
  torch.linalg. matrix_rank ( A ,  * ,  atol ,  rtol ,  hermitian ,  out )   → ¶","Computes the numerical rank of a matrix. The matrix rank is computed as the number of singular values
@@ -17367,6 +18997,30 @@ of the singular values of  A  as returned by  torch.linalg.svdvals() .
  
  
  Examples: 
+",">>> A=torch.eye(10)
+>>> torch.linalg.matrix_rank(A)
+tensor(10)
+>>> B=torch.eye(10)
+>>> B[0,0]=0
+>>> torch.linalg.matrix_rank(B)
+tensor(9)>>> A=torch.randn(4,3,2)
+>>> torch.linalg.matrix_rank(A)
+tensor([2, 2, 2, 2])>>> A=torch.randn(2,4,2,3)
+>>> torch.linalg.matrix_rank(A)
+tensor([[2, 2, 2, 2],
+        [2, 2, 2, 2]])>>> A=torch.randn(2,4,3,3,dtype=torch.complex64)
+>>> torch.linalg.matrix_rank(A)
+tensor([[3, 3, 3, 3],
+        [3, 3, 3, 3]])
+>>> torch.linalg.matrix_rank(A,hermitian=True)
+tensor([[3, 3, 3, 3],
+        [3, 3, 3, 3]])
+>>> torch.linalg.matrix_rank(A,atol=1.0,rtol=0.0)
+tensor([[3, 2, 2, 2],
+        [1, 2, 1, 2]])
+>>> torch.linalg.matrix_rank(A,atol=1.0,rtol=0.0,hermitian=True)
+tensor([[2, 2, 2, 1],
+        [1, 2, 2, 2]])
 "
 "
  torch.linalg. eig ( A ,  * ,  out ) ¶","Computes the eigenvalue decomposition of a square matrix if it exists. Letting  K  be  R  or  C ,
@@ -17406,6 +19060,21 @@ by
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.randn(2,2,dtype=torch.complex128)
+>>> A
+tensor([[ 0.9828+0.3889j, -0.4617+0.3010j],
+        [ 0.1662-0.7435j, -0.6139+0.0562j]], dtype=torch.complex128)
+>>> L,V=torch.linalg.eig(A)
+>>> L
+tensor([ 1.1226+0.5738j, -0.7537-0.1286j], dtype=torch.complex128)
+>>> V
+tensor([[ 0.9218+0.0000j,  0.1882-0.2220j],
+        [-0.0270-0.3867j,  0.9567+0.0000j]], dtype=torch.complex128)
+>>> torch.dist(V@torch.diag(L)@torch.linalg.inv(V),A)
+tensor(7.7119e-16, dtype=torch.float64)>>> A=torch.randn(3,2,2,dtype=torch.float64)
+>>> L,V=torch.linalg.eig(A)
+>>> torch.dist(V@torch.diag_embed(L)@torch.linalg.inv(V),A)
+tensor(3.2841e-16, dtype=torch.float64)
 "
 "
  torch.linalg. eigvals ( A ,  * ,  out )   → ¶","Computes the eigenvalues of a square matrix. Letting  K  be  R  or  C ,
@@ -17431,6 +19100,11 @@ the output has the same batch dimensions.
  Returns 
  A complex-valued tensor cointaining the eigenvalues even when  
  Examples: 
+",">>> A=torch.randn(2,2,dtype=torch.complex128)
+>>> L=torch.linalg.eigvals(A)
+>>> L
+tensor([ 1.1226+0.5738j, -0.7537-0.1286j], dtype=torch.complex128)>>> torch.dist(L,torch.linalg.eig(A).eigenvalues)
+tensor(2.4576e-07)
 "
 "
  torch.linalg. eigvalsh ( A ,  UPLO ,  * ,  out )   → ¶","Computes the eigenvalues of a complex Hermitian or real symmetric matrix. Letting  K  be  R  or  C ,
@@ -17457,6 +19131,18 @@ the output has the same batch dimensions. The eigenvalues are returned in ascend
  Returns 
  A real-valued tensor cointaining the eigenvalues even when  
  Examples: 
+",">>> A=torch.randn(2,2,dtype=torch.complex128)
+>>> A=A+A.T.conj()# creates a Hermitian matrix
+>>> A
+tensor([[2.9228+0.0000j, 0.2029-0.0862j],
+        [0.2029+0.0862j, 0.3464+0.0000j]], dtype=torch.complex128)
+>>> torch.linalg.eigvalsh(A)
+tensor([0.3277, 2.9415], dtype=torch.float64)>>> A=torch.randn(3,2,2,dtype=torch.float64)
+>>> A=A+A.mT# creates a batch of symmetric matrices
+>>> torch.linalg.eigvalsh(A)
+tensor([[ 2.5797,  3.4629],
+        [-4.1605,  1.3780],
+        [-3.1113,  2.7381]], dtype=torch.float64)
 "
 "
  torch.linalg. solve ( A ,  B ,  * ,  left ,  out )   → ¶","Computes the solution of a square system of linear equations with a unique solution. Letting  K  be  R  or  C ,
@@ -17491,6 +19177,31 @@ the output has the same batch dimensions. Letting  *  be zero or more batch dime
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> b=torch.randn(3)
+>>> x=torch.linalg.solve(A,b)
+>>> torch.allclose(A@x,b)
+True
+>>> A=torch.randn(2,3,3)
+>>> B=torch.randn(2,3,4)
+>>> X=torch.linalg.solve(A,B)
+>>> X.shape
+torch.Size([2, 3, 4])
+>>> torch.allclose(A@X,B)
+True>>> A=torch.randn(2,3,3)
+>>> b=torch.randn(3,1)
+>>> x=torch.linalg.solve(A,b)# b is broadcasted to size (2, 3, 1)
+>>> x.shape
+torch.Size([2, 3, 1])
+>>> torch.allclose(A@x,b)
+True
+>>> b=torch.randn(3)
+>>> x=torch.linalg.solve(A,b)# b is broadcasted to size (2, 3)
+>>> x.shape
+torch.Size([2, 3])
+>>> Ax=A@x.unsqueeze(-1)
+>>> torch.allclose(Ax,b.unsqueeze(-1).expand_as(Ax))
+True
 "
 "
  torch.linalg. solve_triangular ( A ,  B ,  * ,  upper ,  left ,  unitriangular ,  out )   → ¶","Computes the solution of a triangular system of linear equations with a unique solution. Letting  K  be  R  or  C ,
@@ -17516,6 +19227,19 @@ the output has the same batch dimensions.
  
  
  Examples: 
+",">>> A=torch.randn(3,3).triu_()
+>>> b=torch.randn(3,4)
+>>> X=torch.linalg.solve_triangular(A,B,upper=True)
+>>> torch.allclose(A@X,B)
+True>>> A=torch.randn(2,3,3).tril_()
+>>> B=torch.randn(2,3,4)
+>>> X=torch.linalg.solve_triangular(A,B,upper=False)
+>>> torch.allclose(A@X,B)
+True>>> A=torch.randn(2,4,4).tril_()
+>>> B=torch.randn(2,3,4)
+>>> X=torch.linalg.solve_triangular(A,B,upper=False,left=False)
+>>> torch.allclose(X@A,B)
+True
 "
 "
  torch.linalg. lstsq ( A ,  B ,  rcond ,  * ,  driver ) ¶","Computes a solution to the least squares problem of a system of linear equations. Letting  K  be  R  or  C ,
@@ -17555,6 +19279,17 @@ of shape  (*, m, n) ,  (*, m, k)  respectively, it cointains
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.tensor([[[10,2,3],[3,10,5],[5,6,12]]],dtype=torch.float)# shape (1, 3, 3)
+>>> B=torch.tensor([[[2,5,1],[3,2,1],[5,1,9]],
+                      [[4, 2, 9], [2, 0, 3], [2, 5, 3]]], dtype=torch.float) # shape (2, 3, 3)
+>>> X=torch.linalg.lstsq(A,B).solution# A is broadcasted to shape (2, 3, 3)
+>>> torch.dist(X,torch.linalg.pinv(A)@B)
+tensor(2.0862e-07)>>> S=torch.linalg.lstsq(A,B,driver='gelsd').singular_values
+>>> torch.dist(S,torch.linalg.svdvals(A))
+tensor(5.7220e-06)>>> A[:,0].zero_()# Decrease the rank of A
+>>> rank=torch.linalg.lstsq(A,B).rank
+>>> rank
+tensor([2])
 "
 "
  torch.linalg. cross ( input ,  other ,  * ,  dim ,  out )   → ¶","Computes the cross product of two 3-dimensional vectors. Supports input of float, double, cfloat and cdouble dtypes. Also supports batches
@@ -17581,6 +19316,12 @@ It also supports broadcasting.
  
  
  Examples: 
+",">>> v1=torch.randn(3,2)
+>>> v2=torch.randn(3,2)
+>>> linalg.vecdot(v1,v2)
+tensor([ 0.3223,  0.2815, -0.1944])
+>>> torch.vdot(v1[0],v2[0])
+tensor(0.3223)
 "
 "
  torch.linalg. multi_dot ( tensors ,  * ,  out ) ¶","Efficiently multiplies two or more matrices by reordering the multiplications so that
@@ -17608,6 +19349,17 @@ However, if either is a 1D vector, then the output will be a 1D vector. Differen
  Keyword Arguments 
  out 
  Examples: 
+",">>> fromtorch.linalgimportmulti_dot>>> multi_dot([torch.tensor([1,2]),torch.tensor([2,3])])
+tensor(8)
+>>> multi_dot([torch.tensor([[1,2]]),torch.tensor([2,3])])
+tensor([8])
+>>> multi_dot([torch.tensor([[1,2]]),torch.tensor([[2],[3]])])
+tensor([[8]])>>> A=torch.arange(2*3).view(2,3)
+>>> B=torch.arange(3*2).view(3,2)
+>>> C=torch.arange(2*2).view(2,2)
+>>> multi_dot((A,B,C))
+tensor([[ 26,  49],
+        [ 80, 148]])
 "
 "
  torch.linalg. tensorinv ( A ,  ind ,  * ,  out )   → ¶","Computes the multiplicative inverse of  torch.tensordot() . If  m  is the product of the first  ind  dimensions of  A  and  n  is the product of
@@ -17635,6 +19387,17 @@ If this is the case, it computes a tensor  X  such that
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.eye(4*6).reshape((4,6,8,3))
+>>> Ainv=torch.linalg.tensorinv(A,ind=2)
+>>> Ainv.shape
+torch.Size([8, 3, 4, 6])
+>>> B=torch.randn(4,6)
+>>> torch.allclose(torch.tensordot(Ainv,B),torch.linalg.tensorsolve(A,B))
+True>>> A=torch.randn(4,4)
+>>> Atensorinv=torch.linalg.tensorinv(A,ind=1)
+>>> Ainv=torch.linalg.inverse(A)
+>>> torch.allclose(Atensorinv,Ainv)
+True
 "
 "
  torch.linalg. tensorsolve ( A ,  B ,  dims ,  * ,  out )   → ¶","Computes the solution  X  to the system  torch.tensordot(A, X) = B . If  m  is the product of the first  B .ndim   dimensions of  A  and
@@ -17653,6 +19416,22 @@ If this is the case, it computes a tensor  X  such that
  Raises 
  RuntimeError 
  Examples: 
+",">>> A=torch.eye(2*3*4).reshape((2*3,4,2,3,4))
+>>> B=torch.randn(2*3,4)
+>>> X=torch.linalg.tensorsolve(A,B)
+>>> X.shape
+torch.Size([2, 3, 4])
+>>> torch.allclose(torch.tensordot(A,X,dims=X.ndim),B)
+True>>> A=torch.randn(6,4,4,3,2)
+>>> B=torch.randn(4,3,2)
+>>> X=torch.linalg.tensorsolve(A,B,dims=(0,2))
+>>> X.shape
+torch.Size([6, 4])
+>>> A=A.permute(1,3,4,0,2)
+>>> A.shape[B.ndim:]
+torch.Size([6, 4])
+>>> torch.allclose(torch.tensordot(A,X,dims=X.ndim),B,atol=1e-6)
+True
 "
 "
  torch.linalg. vander ( x ,  N )   → ¶","Generates a Vandermonde matrix. Returns the Vandermonde matrix  V 
@@ -17696,6 +19475,12 @@ It also returns the  info  tensor returned by  LAPACK’s getrf .
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> Ainv,info=torch.linalg.solve_ex(A)
+>>> torch.dist(torch.linalg.inv(A),Ainv)
+tensor(0.)
+>>> info
+tensor(0, dtype=torch.int32)
 "
 "
  torch.linalg. lu_factor_ex ( A ,  * ,  pivot ,  check_errors ,  out ) ¶","This is a version of  lu_factor()  that does not perform error checks unless  check_errors = True .
@@ -17733,6 +19518,19 @@ the output has the same batch dimensions.
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> A=A@A.mT# make symmetric
+>>> A
+tensor([[7.2079, 4.2414, 1.9428],
+        [4.2414, 3.4554, 0.3264],
+        [1.9428, 0.3264, 1.3823]])
+>>> LD,pivots=torch.linalg.ldl_factor(A)
+>>> LD
+tensor([[ 7.2079,  0.0000,  0.0000],
+        [ 0.5884,  0.9595,  0.0000],
+        [ 0.2695, -0.8513,  0.1633]])
+>>> pivots
+tensor([1, 2, 3], dtype=torch.int32)
 "
 "
  torch.linalg. ldl_factor_ex ( A ,  * ,  hermitian ,  check_errors ,  out ) ¶","This is a version of  ldl_factor()  that does not perform error checks unless  check_errors = True .
@@ -17756,6 +19554,21 @@ If  check_errors=True  and  info  contains positive integers, then a  RuntimeErr
  Returns 
  A named tuple  
  Examples: 
+",">>> A=torch.randn(3,3)
+>>> A=A@A.mT# make symmetric
+>>> A
+tensor([[7.2079, 4.2414, 1.9428],
+        [4.2414, 3.4554, 0.3264],
+        [1.9428, 0.3264, 1.3823]])
+>>> LD,pivots,info=torch.linalg.ldl_factor_ex(A)
+>>> LD
+tensor([[ 7.2079,  0.0000,  0.0000],
+        [ 0.5884,  0.9595,  0.0000],
+        [ 0.2695, -0.8513,  0.1633]])
+>>> pivots
+tensor([1, 2, 3], dtype=torch.int32)
+>>> info
+tensor(0, dtype=torch.int32)
 "
 "
  torch.linalg. ldl_solve ( LD ,  pivots ,  B ,  * ,  hermitian ,  out )   → ¶","Computes the solution of a system of linear equations using the LDL factorization. LD  and  pivots  are the compact representation of the LDL factorization and
@@ -17774,6 +19587,13 @@ the output has the same batch dimensions.
  
  
  Examples: 
+",">>> A=torch.randn(2,3,3)
+>>> A=A@A.mT# make symmetric
+>>> LD,pivots,info=torch.linalg.ldl_factor_ex(A)
+>>> B=torch.randn(2,3,4)
+>>> X=torch.linalg.ldl_solve(LD,pivots,B)
+>>> torch.linalg.norm(A@X-B)
+>>> tensor(0.0001)
 "
 "
  class torch.onnx. JitScalarType ( value ) ¶","Scalar types defined in torch. Use  JitScalarType  to convert from torch and JIT scalar types to ONNX scalar types. 
@@ -18478,6 +20298,10 @@ some operations. See example usage below.
  
  Valid operation names: 
  
+",">>> f_add=FloatFunctional()
+>>> a=torch.tensor(3.0)
+>>> b=torch.tensor(4.0)
+>>> f_add.add(a,b)# Equivalent to ``torch.add(a, b)``
 "
 "
  Tensor. is_sparse_csr ¶","Is  True  if the Tensor uses sparse CSR storage layout,  False  otherwise."
@@ -18611,6 +20435,10 @@ When inputs are COO tensors, this function also supports backward for both input
 "
 "
  Tensor. to_sparse_coo ( ) [source] ¶","Convert a tensor to  coordinate format . Examples: 
+",">>> dense=torch.randn(5,5)
+>>> sparse=dense.to_sparse_coo()
+>>> sparse._nnz()
+25
 "
 "
  Tensor. sparse_resize_ ( size ,  sparse_dim ,  dense_dim )   → ¶","Resizes  self   sparse tensor  to the desired
@@ -18709,6 +20537,23 @@ and  beta  are the scaling factors.
  
  
  Examples: 
+",">>> input=torch.eye(3,device='cuda').to_sparse_csr()
+>>> mat1=torch.randn(3,5,device='cuda')
+>>> mat2=torch.randn(5,3,device='cuda')
+>>> torch.sparse.sampled_addmm(input,mat1,mat2)
+tensor(crow_indices=tensor([0, 1, 2, 3]),
+    col_indices=tensor([0, 1, 2]),
+    values=tensor([ 0.2847, -0.7805, -0.1900]), device='cuda:0',
+    size=(3, 3), nnz=3, layout=torch.sparse_csr)
+>>> torch.sparse.sampled_addmm(input,mat1,mat2).to_dense()
+tensor([[ 0.2847,  0.0000,  0.0000],
+    [ 0.0000, -0.7805,  0.0000],
+    [ 0.0000,  0.0000, -0.1900]], device='cuda:0')
+>>> torch.sparse.sampled_addmm(input,mat1,mat2,beta=0.5,alpha=0.5)
+tensor(crow_indices=tensor([0, 1, 2, 3]),
+    col_indices=tensor([0, 1, 2]),
+    values=tensor([ 0.1423, -0.3903, -0.0950]), device='cuda:0',
+    size=(3, 3), nnz=3, layout=torch.sparse_csr)
 "
 "
  torch.sparse. log_softmax ( input ,  dim ,  * ,  dtype )   → ¶","Applies a softmax function followed by logarithm. See  softmax  for more details. 
@@ -18737,4 +20582,47 @@ and an offset may not be repeated.
  When setting the values along a given diagonal the index into the diagonal
 and the index into the row of  
  Specifying a positive offset: 
+",">>> diags=torch.arange(9).reshape(3,3)
+>>> diags
+tensor([[0, 1, 2],
+        [3, 4, 5],
+        [6, 7, 8]])
+>>> s=torch.sparse.spdiags(diags,torch.tensor([0,-1,-2]),(3,3))
+>>> s
+tensor(indices=tensor([[0, 1, 2, 1, 2, 2],
+                       [0, 1, 2, 0, 1, 0]]),
+       values=tensor([0, 1, 2, 3, 4, 6]),
+       size=(3, 3), nnz=6, layout=torch.sparse_coo)
+>>> s.to_dense()
+tensor([[0, 0, 0],
+        [3, 1, 0],
+        [6, 4, 2]])
+",">>> diags=torch.arange(9).reshape(3,3)
+>>> diags
+tensor([[0, 1, 2],[3, 4, 5], [6, 7, 8])
+>>> s=torch.sparse.spdiags(diags,torch.tensor([0,-1,-2]),(3,3),layout=torch.sparse_csr)
+>>> s
+tensor(crow_indices=tensor([0, 1, 3, 6]),
+       col_indices=tensor([0, 0, 1, 0, 1, 2]),
+       values=tensor([0, 3, 1, 6, 4, 2]), size=(3, 3), nnz=6,
+       layout=torch.sparse_csr)
+>>> s.to_dense()
+tensor([[0, 0, 0],
+        [3, 1, 0],
+        [6, 4, 2]])
+",">>> diags=torch.tensor([[1,2],[3,4]])
+>>> offsets=torch.tensor([0,-1])
+>>> torch.sparse.spdiags(diags,offsets,(5,5)).to_dense()
+tensor([[1, 0, 0, 0, 0],
+        [3, 2, 0, 0, 0],
+        [0, 4, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]])
+",">>> diags=torch.tensor([[1,2,3],[1,2,3],[1,2,3]])
+>>> torch.sparse.spdiags(diags,torch.tensor([0,1,2]),(5,5)).to_dense()
+tensor([[1, 2, 3, 0, 0],
+        [0, 2, 3, 0, 0],
+        [0, 0, 3, 0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0]])
 "

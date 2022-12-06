@@ -60,7 +60,6 @@ def dump_signature_of_function(func, hint, output_dir):
         import json
         import os
 
-
         outputs = func(*args, **kwargs)
         output_signature = get_signature_for_tensors(outputs)
         param_dict = build_param_dict(*args, **kwargs)

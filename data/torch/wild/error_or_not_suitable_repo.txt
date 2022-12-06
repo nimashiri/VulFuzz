@@ -8,3 +8,7 @@ https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Text-Classification
 https://github.com/DuanYiqun/pytorch_implementation_of_Yolov1
 https://github.com/sgrvinod/a-PyTorch-Tutorial-to-Machine-Translation
 https://github.com/harskish/ganspace
+
+### Freefuzz
+https://github.com/wvangansbeke/LaneDetection_End2End
+https://github.com/cgraber/cvpr_dNRI

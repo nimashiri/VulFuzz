@@ -141,6 +141,7 @@ def scrape_torch_v2():
                 write_list_to_txt4(api_, history_addr)
                 history.append(api_)
                 api_link = 'https://pytorch.org/docs/stable/generated{0}.{1}'.format(api_, 'html')
+                # api_link = 'https://pytorch.org/docs/stable/generated/torch.nn.InstanceNorm2d.html'
                 sub_content2 = requests.get(api_link)
                 page_soup3 = soup(sub_content2.text, "html.parser")
                 content3 = page_soup3.contents[7]
@@ -163,13 +164,14 @@ def scrape_torch_v2():
 
                 # API example
                 global_example = []
-                for counter, elem in enumerate(current_api_detailed.contents[3].contents[3].contents):
+                target = current_api_detailed.contents[3].contents[3].contents
+                for counter, elem in enumerate(target):
                     if not isinstance(elem, str):
                         if not bool(elem.attr):
                             out_temp = recursive_parse_api_description(elem)
-                            if 'Example' in out_temp or 'Example:' in out_temp:
+                            if 'Example' in out_temp or 'Example:' in out_temp or 'Examples:' in out_temp or 'Examples::' in out_temp or 'Examples' in out_temp:
                                 all_examples = []
-                                for h in current_api_detailed.contents[3].contents[3].contents[counter+2:-1]:
+                                for h in target[counter+2:-1]:
                                     if not isinstance(h, str):
                                         if bool(h.attrs) and h.attrs['class'][0] == 'highlight-default':
                                             all_examples.append(h)
@@ -542,7 +544,7 @@ def scrape_mxnet():
 def main():
     all_symbols_link = 'https://www.tensorflow.org/api_docs/python/tf/all_symbols'
 
-    code = 'tf'
+    code = 'torch'
 
     if code == 'tf':
         scrape_tensorflow_symbols(all_symbols_link)

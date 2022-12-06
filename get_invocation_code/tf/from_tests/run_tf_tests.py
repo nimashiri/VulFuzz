@@ -94,7 +94,7 @@ def run_tf_tests(data):
         subprocess.call('find . -name "*.saver" -type f -delete', shell=True)
 
 if __name__ == '__main__':
-    subprocess.call('cp -r /media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/write_tools.py /home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/instrumentation/', shell=True)
+    # subprocess.call('cp -r /media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/write_tools.py /home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/instrumentation/', shell=True)
 
     tf_tests = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/kernel_tests.txt'
     data = read_txt(tf_tests)

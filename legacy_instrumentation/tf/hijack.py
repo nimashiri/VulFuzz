@@ -1,4 +1,5 @@
 import os
+from csv import writer
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 import tensorflow as tf
 tf.compat.v1.logging.set_verbosity(tf.compat.v1.logging.ERROR)
@@ -28,6 +29,8 @@ def hijack_api(obj, func_name_str, output_dir):
     
     func_name = func_name_list[-1]
     
+    
+    
     # Get the module object and the api object.
     module_obj = obj
     if len(func_name_list) > 1:
@@ -50,7 +53,13 @@ def hijack_api(obj, func_name_str, output_dir):
       return False
     if is_class(orig_func):
         if hasattr(orig_func, '__slots__'):
+            # with open('/media/nimashiri/DATA/vsprojects/FSE23_2/slot_apis.csv', 'a', newline='\n') as fd:
+            #     writer_object = writer(fd)
+            #     writer_object.writerow([orig_func])
             return False
+        # with open('/media/nimashiri/DATA/vsprojects/FSE23_2/allowed_apis.csv', 'a', newline='\n') as fd:
+        #     writer_object = writer(fd)
+        #     writer_object.writerow([orig_func])
         wrapped_func = dump_signature_of_class(orig_func, func_name_str, output_dir=output_dir)
         setattr(module_obj, func_name, wrapped_func)
         return True 
@@ -76,7 +85,6 @@ def should_skip(api):
         'tf.compat.v1.flags.EnumClassSerializer',
         'tf.init_scope',
         'tf.TensorShape',
-        'tf.Variable',
         'tf.compat.v1.Variable',
         'tf.ResourceVariable',
         'tf.Tensor',
@@ -99,7 +107,6 @@ def should_skip(api):
 
     ]
     skip_key_word = [
-        'tf.compat.v1',
         'tf.debugging',
         'tf.distribute',
         'tf.errors',
@@ -133,7 +140,7 @@ def hijack_all(output_dir, verbose=False):
     failed_list = []
     skip_list = []
     import os
-    api_file = __file__.replace("hijack.py", "tf_valid_APIs.txt")
+    api_file = __file__.replace("hijack.py", "tf_valid_APIs_new.txt")
     with open(api_file, 'r') as fr:
         apis = fr.readlines()
     # print('Number of total apis: ', len(apis)) 

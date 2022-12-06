@@ -31,8 +31,8 @@ def filter_python_tests(target_files):
     return filtered
 
 def main():
-    target_path = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/tf_tests.txt'
-    tf_root_path = '/media/nimashiri/SSD1/tensorflow/tensorflow'
+    target_path = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/tf_tests_v2.4.0.txt'
+    tf_root_path = '/media/nimashiri/DATA/tensorflow/tensorflow'
     if not os.path.isfile(tf_root_path):
         # get list of all files
         _files = getListOfFiles(tf_root_path)

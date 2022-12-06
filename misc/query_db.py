@@ -39,21 +39,24 @@ def retrieve_source(dbname):
     hist = read_txt(misc_addr)
 
     for name in mydb.list_collection_names():
-        if name not in hist:
-            print("{}:{}".format(name, counter))
-            write_list_to_txt4(name, misc_addr)
-            counter = counter + 1
-            mycol = mydb[name]
-            source_dict = {}
-            for source in ['docs', 'tests', 'models']:
-                source_dict[source] = mycol.find({"source": source}).count()
+        with open(f'/media/nimashiri/DATA/vsprojects/FSE23_2/statistics/{dbname}_all_apis.csv', 'a', newline='\n') as fd:
+            writer_object = writer(fd)
+            writer_object.writerow([name])
+        # if name not in hist:
+        #     print("{}:{}".format(name, counter))
+        #     write_list_to_txt4(name, misc_addr)
+        #     counter = counter + 1
+        #     mycol = mydb[name]
+        #     source_dict = {}
+        #     for source in ['docs', 'tests', 'models']:
+        #         source_dict[source] = mycol.count_documents({"source": source})
 
-            for k,v in source_dict.items():
-                if v != 0:
-                    mydata = [name, k]
-                    with open(f'/media/nimashiri/DATA/vsprojects/FSE23_2/statistics/{dbname}_api_coverage.csv', 'a', newline='\n') as fd:
-                        writer_object = writer(fd)
-                        writer_object.writerow(mydata)
+        #     for k,v in source_dict.items():
+        #         if v != 0:
+        #             mydata = [name, k]
+        #             with open(f'/media/nimashiri/DATA/vsprojects/FSE23_2/statistics/{dbname}_api_coverage.csv', 'a', newline='\n') as fd:
+        #                 writer_object = writer(fd)
+        #                 writer_object.writerow(mydata)
 
 def countall(dbname):
     DB = pymongo.MongoClient(host='localhost', port=27017)[dbname]

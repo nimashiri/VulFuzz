@@ -1,5 +1,379 @@
+Path, Error
+/media/nimashiri/SSD1/torch_api_examples/3180.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3180.py"", line 5, in <module>
+    torch.corrcoef(x)
+AttributeError: module 'torch' has no attribute 'corrcoef'
 "
- torch. set_default_tensor_type ( t ) [source] ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.tensor([1.2,3]).dtype', 'torch.set_default_tensor_type(torch.DoubleTensor)', '']","Traceback (most recent call last):
+/media/nimashiri/SSD1/torch_api_examples/5790.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5790.py"", line 5, in <module>
+    net=torch.nn.DataParallel(model,device_ids=[0,1,2])
+NameError: name 'model' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/5800.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5800.py"", line 5, in <module>
+    torch.distributed.init_process_group(backend='nccl',world_size=4,init_method='...')
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py"", line 497, in init_process_group
+    rendezvous_iterator = rendezvous(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/distributed/rendezvous.py"", line 82, in rendezvous
+    raise RuntimeError(""No rendezvous handler for {}://"".format(result.scheme))
+RuntimeError: No rendezvous handler for ://
+"
+/media/nimashiri/SSD1/torch_api_examples/60.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/60.py"", line 8, in <module>
+    torch.is_nonzero(torch.tensor([1,3,5]))
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: Boolean value of Tensor with more than one value is ambiguous
+"
+/media/nimashiri/SSD1/torch_api_examples/6060.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6060.py"", line 5, in <module>
+    m=torch.nn.utils.skip_init(torch.nn.Linear,5,1)
+AttributeError: module 'torch.nn.utils' has no attribute 'skip_init'
+"
+/media/nimashiri/SSD1/torch_api_examples/6070.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6070.py"", line 5, in <module>
+    orth_linear=torch.nn.utils.parametrizations.orthogonal(nn.Linear(20,40))
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrizations'
+"
+/media/nimashiri/SSD1/torch_api_examples/6080.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6080.py"", line 7, in <module>
+    torch.linalg.matrix_norm(snm.weight,2)
+AttributeError: module 'torch.linalg' has no attribute 'matrix_norm'
+"
+/media/nimashiri/SSD1/torch_api_examples/14490.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14490.py"", line 4, in <module>
+    f_add=torch.ao.nn.quantized.FloatFunctional()
+AttributeError: module 'torch' has no attribute 'ao'
+"
+/media/nimashiri/SSD1/torch_api_examples/14620.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14620.py"", line 5, in <module>
+    sparse=dense.to_sparse_coo()
+AttributeError: 'Tensor' object has no attribute 'to_sparse_coo'
+"
+/media/nimashiri/SSD1/torch_api_examples/14690.py,"  File ""/media/nimashiri/SSD1/torch_api_examples/14690.py"", line 7
+    V=torch.randn(nnz,dims[2],dims[3])
+     ^
+SyntaxError: invalid syntax
+"
+/media/nimashiri/SSD1/torch_api_examples/14700.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14700.py"", line 4, in <module>
+    input=torch.eye(3,device='cuda').to_sparse_csr()
+AttributeError: 'Tensor' object has no attribute 'to_sparse_csr'
+"
+/media/nimashiri/SSD1/torch_api_examples/14720.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14720.py"", line 6, in <module>
+    s=torch.sparse.spdiags(diags,torch.tensor([0,-1,-2]),(3,3))
+AttributeError: module 'torch.sparse' has no attribute 'spdiags'
+"
+/media/nimashiri/SSD1/torch_api_examples/14721.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14721.py"", line 6, in <module>
+    s=torch.sparse.spdiags(diags,torch.tensor([0,-1,-2]),(3,3),layout=torch.sparse_csr)
+AttributeError: module 'torch.sparse' has no attribute 'spdiags'
+"
+/media/nimashiri/SSD1/torch_api_examples/1610.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/1610.py"", line 8, in <module>
+    torch.clamp(a,min=min)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: clamp(): argument 'min' must be Number, not Tensor
+"
+/media/nimashiri/SSD1/torch_api_examples/1650.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/1650.py"", line 4, in <module>
+    torch.conj_physical(torch.tensor([-1+1j,-2+2j,3-3j]))
+AttributeError: module 'torch' has no attribute 'conj_physical'
+"
+/media/nimashiri/SSD1/torch_api_examples/1790.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/1790.py"", line 10, in <module>
+    torch.fake_quantize_per_channel_affine(x,scales,zero_points,1,0,255)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: Zero-point must be Long, found Int
+"
+/media/nimashiri/SSD1/torch_api_examples/1880.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/1880.py"", line 5, in <module>
+    mantissa,exponent=torch.frexp(x)
+AttributeError: module 'torch' has no attribute 'frexp'
+"
+/media/nimashiri/SSD1/torch_api_examples/1890.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/1890.py"", line 7, in <module>
+    torch.gradient(values,spacing=coordinates)
+AttributeError: module 'torch' has no attribute 'gradient'
+"
+/media/nimashiri/SSD1/torch_api_examples/2160.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2160.py"", line 6, in <module>
+    torch.positive(t)
+AttributeError: module 'torch' has no attribute 'positive'
+"
+/media/nimashiri/SSD1/torch_api_examples/2240.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2240.py"", line 9, in <module>
+    torch.round(torch.tensor([0.1234567]),decimals=3)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: round() got an unexpected keyword argument 'decimals'
+"
+/media/nimashiri/SSD1/torch_api_examples/230.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/230.py"", line 6, in <module>
+    b=torch.asarray(a)
+AttributeError: module 'torch' has no attribute 'asarray'
+"
+/media/nimashiri/SSD1/torch_api_examples/2450.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2450.py"", line 4, in <module>
+    torch.aminmax(torch.tensor([1,-3,5]))
+AttributeError: module 'torch' has no attribute 'aminmax'
+"
+/media/nimashiri/SSD1/torch_api_examples/2510.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2510.py"", line 4, in <module>
+    x=torch.tensor([[torch.nan,1,2],[1,2,3]])
+AttributeError: module 'torch' has no attribute 'nan'
+"
+/media/nimashiri/SSD1/torch_api_examples/2550.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2550.py"", line 4, in <module>
+    importtorch
+NameError: name 'importtorch' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/2580.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2580.py"", line 11, in <module>
+    torch.quantile(a,0.6,interpolation='linear')
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: quantile() received an invalid combination of arguments - got (Tensor, float, interpolation=str), but expected one of:
+ * (Tensor input, Tensor q, int dim, bool keepdim, *, Tensor out)
+ * (Tensor input, float q, int dim, bool keepdim, *, Tensor out)
+
+"
+/media/nimashiri/SSD1/torch_api_examples/270.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/270.py"", line 6, in <module>
+    t2=torch.from_dlpack(t)
+AttributeError: module 'torch' has no attribute 'from_dlpack'
+"
+/media/nimashiri/SSD1/torch_api_examples/280.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/280.py"", line 6, in <module>
+    t=torch.frombuffer(a,dtype=torch.int32)
+AttributeError: module 'torch' has no attribute 'frombuffer'
+"
+/media/nimashiri/SSD1/torch_api_examples/2950.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2950.py"", line 9, in <module>
+    x.sort(stable=True)
+TypeError: sort() received an invalid combination of arguments - got (stable=bool, ), but expected one of:
+ * (name dim, bool descending)
+ * (int dim, bool descending)
+
+"
+/media/nimashiri/SSD1/torch_api_examples/13390.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13390.py"", line 5, in <module>
+    Ainv,info=torch.linalg.inv_ex(A)
+AttributeError: module 'torch.linalg' has no attribute 'inv_ex'
+"
+/media/nimashiri/SSD1/torch_api_examples/1760.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/1760.py"", line 4, in <module>
+    torch.exp(torch.tensor([0,math.log(2.)]))
+NameError: name 'math' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/3300.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3300.py"", line 17, in <module>
+    torch.einsum(As,[...,0,1],Bs,[...,1,2],[...,0,2])
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/functional.py"", line 408, in einsum
+    return _VF.einsum(equation, operands)  # type: ignore
+TypeError: einsum(): argument 'equation' (position 1) must be str, not Tensor
+"
+/media/nimashiri/SSD1/torch_api_examples/3990.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3990.py"", line 13, in <module>
+    torch.allclose(torch.matmul(q.mT,q),torch.eye(5))
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/570.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/570.py"", line 5, in <module>
+    x.is_conj()
+AttributeError: 'Tensor' object has no attribute 'is_conj'
+"
+/media/nimashiri/SSD1/torch_api_examples/6230.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6230.py"", line 7, in <module>
+    torch.nn.Conv1d(inputs,filters)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
+"
+/media/nimashiri/SSD1/torch_api_examples/3390.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3390.py"", line 4, in <module>
+    torch.histogram(torch.tensor([1.,2,1]),bins=4,range=(0.,3.),weight=torch.tensor([1.,2.,4.]))
+AttributeError: module 'torch' has no attribute 'histogram'
+"
+/media/nimashiri/SSD1/torch_api_examples/340.py,"/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py:99: UserWarning: torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+  outputs = func(*args, **kwargs)
+"
+/media/nimashiri/SSD1/torch_api_examples/3410.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3410.py"", line 6, in <module>
+    grid_x,grid_y=torch.meshgrid(x,y,indexing='ij')
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: meshgrid() got an unexpected keyword argument 'indexing'
+"
+/media/nimashiri/SSD1/torch_api_examples/3460.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3460.py"", line 10, in <module>
+    torch.repeat_interleave(y,torch.tensor([1,2]),dim=0,output_size=3)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: repeat_interleave() received an invalid combination of arguments - got (Tensor, Tensor, output_size=int, dim=int), but expected one of:
+ * (Tensor input, Tensor repeats, int dim)
+ * (Tensor input, int repeats, int dim)
+ * (Tensor repeats)
+
+"
+/media/nimashiri/SSD1/torch_api_examples/3480.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3480.py"", line 9, in <module>
+    torch.searchsorted(sorted_sequence,values,side='right')
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: searchsorted() received an invalid combination of arguments - got (Tensor, Tensor, side=str), but expected one of:
+ * (Tensor sorted_sequence, Tensor input, *, bool out_int32, bool right, Tensor out)
+ * (Tensor sorted_sequence, Number self, *, bool out_int32, bool right)
+
+"
+/media/nimashiri/SSD1/torch_api_examples/3590.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3590.py"", line 6, in <module>
+    y.is_conj()
+AttributeError: 'Tensor' object has no attribute 'is_conj'
+"
+/media/nimashiri/SSD1/torch_api_examples/3600.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3600.py"", line 7, in <module>
+    z.is_neg()
+AttributeError: 'Tensor' object has no attribute 'is_neg'
+"
+/media/nimashiri/SSD1/torch_api_examples/3680.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3680.py"", line 5, in <module>
+    a=a@a.mT+1e-3# make symmetric positive-definite
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/3690.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3690.py"", line 11, in <module>
+    a=a@a.mT+1e-03# make symmetric positive-definite
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/3840.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3840.py"", line 6, in <module>
+    LU,pivots=torch.linalg.lu_factor(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu_factor'
+"
+/media/nimashiri/SSD1/torch_api_examples/3850.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3850.py"", line 7, in <module>
+    A_factor=torch.linalg.lu_factor(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu_factor'
+"
+/media/nimashiri/SSD1/torch_api_examples/3860.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3860.py"", line 5, in <module>
+    LU,pivots=torch.linalg.lu_factor(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu_factor'
+"
+/media/nimashiri/SSD1/torch_api_examples/3890.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3890.py"", line 5, in <module>
+    torch.linalg.matrix_power(A,0)
+AttributeError: module 'torch.linalg' has no attribute 'matrix_power'
+"
+/media/nimashiri/SSD1/torch_api_examples/3910.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3910.py"", line 8, in <module>
+    torch.linalg.matrix_exp(A)
+AttributeError: module 'torch.linalg' has no attribute 'matrix_exp'
+"
+/media/nimashiri/SSD1/torch_api_examples/3950.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3950.py"", line 6, in <module>
+    Q=torch.linalg.householder_product(h,tau)
+AttributeError: module 'torch.linalg' has no attribute 'householder_product'
+"
+/media/nimashiri/SSD1/torch_api_examples/4000.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4000.py"", line 13, in <module>
+    torch.dist(a_big,torch.matmul(torch.matmul(u,torch.diag_embed(s)),v.mT))
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/4030.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4030.py"", line 11, in <module>
+    a_big=a_big+a_big.mT# To make a_big symmetric
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/4060.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4060.py"", line 6, in <module>
+    torch.trapezoid(y)
+AttributeError: module 'torch' has no attribute 'trapezoid'
+"
+/media/nimashiri/SSD1/torch_api_examples/4070.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4070.py"", line 6, in <module>
+    torch.cumulative_trapezoid(y)
+AttributeError: module 'torch' has no attribute 'cumulative_trapezoid'
+"
+/media/nimashiri/SSD1/torch_api_examples/4140.py,"[W Context.cpp:69] Warning: torch.use_deterministic_algorithms is in beta, and its design and functionality may change in the future. (function operator())
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4140.py"", line 5, in <module>
+    torch.randn(10,device='cuda').kthvalue(0)
+RuntimeError: kthvalue CUDA does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.
+"
+/media/nimashiri/SSD1/torch_api_examples/4370.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4370.py"", line 4, in <module>
+    m=nn.Conv1d(16,33,3,stride=2)
+NameError: name 'nn' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/4720.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4720.py"", line 5, in <module>
+    m=nn.ReflectionPad3d(1)
+AttributeError: module 'torch.nn' has no attribute 'ReflectionPad3d'
+"
+/media/nimashiri/SSD1/torch_api_examples/4870.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4870.py"", line 5, in <module>
+    multihead_attn=nn.MultiheadAttention(embed_dim,num_heads)
+NameError: name 'embed_dim' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/5110.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5110.py"", line 5, in <module>
+    m=nn.BatchNorm2d(100)
+NameError: name 'nn' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/5170.py,"  File ""/media/nimashiri/SSD1/torch_api_examples/5170.py"", line 14
+    process_groups=[torch.distributed.new_group(pids)forpidsin[r1,r2]]
+                                                     ^
+SyntaxError: invalid syntax
+"
+/media/nimashiri/SSD1/torch_api_examples/530.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/530.py"", line 5, in <module>
+    torch.argwhere(t)
+AttributeError: module 'torch' has no attribute 'argwhere'
+"
+/media/nimashiri/SSD1/torch_api_examples/5430.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5430.py"", line 5, in <module>
+    m=nn.Dropout1d(p=0.2)
+AttributeError: module 'torch.nn' has no attribute 'Dropout1d'
+"
+/media/nimashiri/SSD1/torch_api_examples/5490.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5490.py"", line 12, in <module>
+    embedding_sum=nn.EmbeddingBag(10,3,mode='sum',padding_idx=2)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() got an unexpected keyword argument 'padding_idx'
+"
+/media/nimashiri/SSD1/torch_api_examples/5540.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5540.py"", line 14, in <module>
+    output=loss(input,target)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 103, in new_call
+    outputs = old_call(self, *inputs, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/modules/module.py"", line 889, in _call_impl
+    result = self.forward(*input, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/modules/loss.py"", line 1047, in forward
+    return F.cross_entropy(input, target, weight=self.weight,
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/functional.py"", line 2693, in cross_entropy
+    return nll_loss(log_softmax(input, 1), target, weight, None, ignore_index, None, reduction)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/functional.py"", line 2388, in nll_loss
+    ret = torch._C._nn.nll_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index)
+RuntimeError: 1D target tensor expected, multi-target not supported
+"
+/media/nimashiri/SSD1/torch_api_examples/5550.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5550.py"", line 47, in <module>
+    input=torch.randn(T,C).log_softmax(2).detach().requires_grad_()
+IndexError: Dimension out of range (expected to be in range of [-2, 1], but got 2)
+"
+/media/nimashiri/SSD1/torch_api_examples/80.py,"Traceback (most recent call last):
   File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 13, in json_serialize
     json.dumps(v)
   File ""/usr/lib/python3.8/json/__init__.py"", line 231, in dumps
@@ -22,7 +396,64 @@ TypeError: 'getset_descriptor' object is not iterable
 During handling of the above exception, another exception occurred:
 
 Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
+  File ""/media/nimashiri/SSD1/torch_api_examples/80.py"", line 7, in <module>
+    torch.set_default_tensor_type(torch.FloatTensor)# setting tensor type also affects this
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 102, in wrapper
+    param_dict = build_param_dict(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 42, in build_param_dict
+    param_dict['parameter:%d' % ind] = json_serialize(arg)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 17, in json_serialize
+    return get_var_signature(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 88, in get_var_signature
+    s['shape'] = get_var_shape(var)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 58, in get_var_shape
+    print(e.message)
+AttributeError: 'TypeError' object has no attribute 'message'
+"
+/media/nimashiri/SSD1/torch_api_examples/830.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/830.py"", line 6, in <module>
+    torch.diagonal_scatter(a,torch.ones(3),0)
+AttributeError: module 'torch' has no attribute 'diagonal_scatter'
+"
+/media/nimashiri/SSD1/torch_api_examples/840.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/840.py"", line 6, in <module>
+    a.select_scatter(b,0,0)
+AttributeError: 'Tensor' object has no attribute 'select_scatter'
+"
+/media/nimashiri/SSD1/torch_api_examples/850.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/850.py"", line 6, in <module>
+    a.slice_scatter(b,start=6)
+AttributeError: 'Tensor' object has no attribute 'slice_scatter'
+"
+/media/nimashiri/SSD1/torch_api_examples/890.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/890.py"", line 7, in <module>
+    input.scatter_reduce(0,index,src,reduce=""sum"")
+AttributeError: 'Tensor' object has no attribute 'scatter_reduce'
+"
+/media/nimashiri/SSD1/torch_api_examples/90.py,"Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 13, in json_serialize
+    json.dumps(v)
+  File ""/usr/lib/python3.8/json/__init__.py"", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 257, in iterencode
+    return _iterencode(o, 0)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type tensortype is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 56, in get_var_shape
+    return list(s)  # convert torch.Size to list
+TypeError: 'getset_descriptor' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/90.py"", line 5, in <module>
     torch.set_default_tensor_type(torch.DoubleTensor)
   File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 102, in wrapper
     param_dict = build_param_dict(*args, **kwargs)
@@ -36,310 +467,219 @@ Traceback (most recent call last):
     print(e.message)
 AttributeError: 'TypeError' object has no attribute 'message'
 "
+/media/nimashiri/SSD1/torch_api_examples/980.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/980.py"", line 6, in <module>
+    torch.take_along_dim(t,max_idx)
+AttributeError: module 'torch' has no attribute 'take_along_dim'
 "
- torch. asarray ( obj ,  * ,  dtype ,  device ,  copy ,  requires_grad )   → ¶","['import numpy as np', 'import numpy', 'import torch', '', 'a=torch.tensor([1,2,3])', 'b=torch.asarray(a)', 'a.data_ptr()==b.data_ptr()', 'c=torch.asarray(a,copy=True)', 'a=torch.tensor([1,2,3],requires_grad=True).float()', 'c=torch.asarray(b)', 'd=torch.asarray(b,requires_grad=True)', 'array=numpy.array([1,2,3])', 't1=torch.asarray(array)', ""array.__array_interface__['data'][0]==t1.data_ptr()"", 't2=torch.asarray(array,dtype=torch.float32)', ""array.__array_interface__['data'][0]==t1.data_ptr()"", '']","Traceback (most recent call last):
-  File ""example.py"", line 6, in <module>
-    b=torch.asarray(a)
-AttributeError: module 'torch' has no attribute 'asarray'
+/media/nimashiri/SSD1/torch_api_examples/6240.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6240.py"", line 7, in <module>
+    torch.nn.Conv2d(inputs,filters,padding=1)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
 "
+/media/nimashiri/SSD1/torch_api_examples/6250.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6250.py"", line 6, in <module>
+    torch.nn.Conv3d(inputs,filters)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
 "
- torch. frombuffer ( buffer ,  * ,  dtype ,  count ,  offset ,  requires_grad )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'import array', ""a=array.array('i',[1,2,3])"", 't=torch.frombuffer(a,dtype=torch.int32)', '', 'import array', ""a=array.array('b',[-1,0,0,0])"", 'torch.frombuffer(a,dtype=torch.int32)', '']","Traceback (most recent call last):
-  File ""example.py"", line 6, in <module>
-    t=torch.frombuffer(a,dtype=torch.int32)
-AttributeError: module 'torch' has no attribute 'frombuffer'
+/media/nimashiri/SSD1/torch_api_examples/6260.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6260.py"", line 6, in <module>
+    torch.nn.ConvTranspose1d(inputs,weights)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
 "
+/media/nimashiri/SSD1/torch_api_examples/6270.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6270.py"", line 7, in <module>
+    torch.nn.ConvTranspose2d(inputs,weights,padding=1)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
 "
- torch. range ( start=0 ,  end ,  step=1 ,  * ,  out=None ,  dtype=None ,  layout=torch.strided ,  device=None ,  requires_grad=False )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.range(1,4)', 'torch.range(1,4,0.5)']","/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py:99: UserWarning: torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
-  outputs = func(*args, **kwargs)
+/media/nimashiri/SSD1/torch_api_examples/6280.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6280.py"", line 6, in <module>
+    torch.nn.ConvTranspose3d(inputs,weights)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
 "
-"
- torch. argwhere ( input )   → ¶","['import numpy as np', 'import numpy', 'import torch', 't=torch.tensor([1,0,1])', 'torch.argwhere(t)', 't=torch.tensor([[1,0,1],[0,1,1]])', 'torch.argwhere(t)', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    torch.argwhere(t)
-AttributeError: module 'torch' has no attribute 'argwhere'
-"
-"
- torch. conj ( input )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([-1+1j,-2+2j,3-3j])', 'x.is_conj()', 'y=torch.conj(x)', 'y.is_conj()', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    x.is_conj()
-AttributeError: 'Tensor' object has no attribute 'is_conj'
-"
-"
- Tensor. index_add_ ( dim ,  index ,  source ,  * ,  alpha )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.ones(5,3)', 't=torch.tensor([[1,2,3],[4,5,6],[7,8,9]],dtype=torch.float)', 'index=torch.tensor([0,4,2])', 'x.index_add_(0,index,t)', 'x.index_add_(0,index,t,alpha=-1)', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 8, in <module>
+/media/nimashiri/SSD1/torch_api_examples/660.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/660.py"", line 8, in <module>
     x.index_add_(0,index,t,alpha=-1)
   File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
     outputs = func(*args, **kwargs)
 TypeError: index_add_() got an unexpected keyword argument 'alpha'
 "
-"
- Tensor. index_reduce_ ( dim ,  index ,  source ,  reduce ,  * ,  include_self )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.empty(5,3).fill_(2)', 't=torch.tensor([[1,2,3],[4,5,6],[7,8,9],[10,11,12]],dtype=torch.float)', 'index=torch.tensor([0,4,2,0])', ""x.index_reduce_(0,index,t,'prod')"", '', 'x=torch.empty(5,3).fill_(2)', ""x.index_reduce_(0,index,t,'prod',include_self=False)"", '', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 7, in <module>
+/media/nimashiri/SSD1/torch_api_examples/690.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/690.py"", line 7, in <module>
     x.index_reduce_(0,index,t,'prod')
 AttributeError: 'Tensor' object has no attribute 'index_reduce_'
 "
-"
- torch. select_scatter ( input ,  src ,  dim ,  index )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.zeros(2,2)', 'b=torch.ones(2)', 'a.select_scatter(b,0,0)', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 6, in <module>
-    a.select_scatter(b,0,0)
-AttributeError: 'Tensor' object has no attribute 'select_scatter'
-"
-"
- torch. slice_scatter ( input ,  src ,  dim ,  start ,  end ,  step )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.zeros(8,8)', 'b=torch.ones(8)', 'a.slice_scatter(b,start=6)', '', 'b=torch.ones(2)', 'a.slice_scatter(b,dim=1,start=2,end=6,step=2)', '', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 6, in <module>
-    a.slice_scatter(b,start=6)
-AttributeError: 'Tensor' object has no attribute 'slice_scatter'
-"
-"
- Tensor. scatter_reduce_ ( dim ,  index ,  src ,  reduce ,  * ,  include_self )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'src=torch.tensor([1.,2.,3.,4.,5.,6.])', 'index=torch.tensor([0,1,0,1,2,1])', 'input1=torch.tensor([1.,2.,3.,4.])', 'input1.scatter_reduce(0,index,src,reduce=""sum"")', '', 'input1.scatter_reduce(0,index,src,reduce=""sum"",include_self=False)', '', 'input2=torch.tensor([5.,4.,3.,2.])', 'input2.scatter_reduce(0,index,src,reduce=""amax"")', '', 'input2.scatter_reduce(0,index,src,reduce=""amax"",include_self=False)', '']","Traceback (most recent call last):
-  File ""example.py"", line 7, in <module>
-    input1.scatter_reduce(0,index,src,reduce=""sum"")
-AttributeError: 'Tensor' object has no attribute 'scatter_reduce'
-"
-"
- torch. take_along_dim ( input ,  indices ,  dim ,  * ,  out )   → ¶","['', 'import numpy as np', 'import numpy', 'import torch', 't=torch.tensor([[10,30,20],[60,40,50]])', 'max_idx=torch.argmax(t)', 'torch.take_along_dim(t,max_idx)', '', 'sorted_idx=torch.argsort(t,dim=1)', 'torch.take_along_dim(t,sorted_idx,dim=1)', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 7, in <module>
-    torch.take_along_dim(t,max_idx)
-AttributeError: module 'torch' has no attribute 'take_along_dim'
-"
-"
- torch. clamp ( input ,  min ,  max ,  * ,  out )   → ¶","['', 'import numpy as np', 'import numpy', 'import torch', 'a=torch.randn(4)', '', 'torch.clamp(a,min=-0.5,max=0.5)', 'min=torch.linspace(-1,1,steps=4)', 'torch.clamp(a,min=min)', '']","Traceback (most recent call last):
-  File ""example.py"", line 9, in <module>
-    torch.clamp(a,min=min)
+/media/nimashiri/SSD1/torch_api_examples/6990.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6990.py"", line 15, in <module>
+    F.embedding_bag(input,embedding_matrix,offsets,padding_idx=2,mode='sum')
   File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
     outputs = func(*args, **kwargs)
-TypeError: clamp(): argument 'min' must be Number, not Tensor
+TypeError: embedding_bag() got an unexpected keyword argument 'padding_idx'
 "
-"
- torch. conj_physical ( input ,  * ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.conj_physical(torch.tensor([-1+1j,-2+2j,3-3j]))', '']","Traceback (most recent call last):
-  File ""example.py"", line 4, in <module>
-    torch.conj_physical(torch.tensor([-1+1j,-2+2j,3-3j]))
-AttributeError: module 'torch' has no attribute 'conj_physical'
-"
-"
- torch. exp ( input ,  * ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.exp(torch.tensor([0,math.log(2.)]))', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 4, in <module>
-    torch.exp(torch.tensor([0,math.log(2.)]))
-NameError: name 'math' is not defined
-"
-"
- torch. fake_quantize_per_channel_affine ( input ,  scale ,  zero_point ,  quant_min ,  quant_max )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.randn(2,2,2)', '', 'scales=(torch.randn(2)+1)*0.05', '', 'zero_points=torch.zeros(2).to(torch.int32)', '', 'torch.fake_quantize_per_channel_affine(x,scales,zero_points,1,0,255)', '']","Traceback (most recent call last):
-  File ""example.py"", line 10, in <module>
-    torch.fake_quantize_per_channel_affine(x,scales,zero_points,1,0,255)
+/media/nimashiri/SSD1/torch_api_examples/7080.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/7080.py"", line 14, in <module>
+    loss=F.cross_entropy(input,target)
   File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
     outputs = func(*args, **kwargs)
-RuntimeError: Zero-point must be Long, found Int
-"
-"
- torch. frexp ( input ,  * ,  out=None) ,  Tensor ) ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.arange(9.)', 'mantissa,exponent=torch.frexp(x)', 'torch.ldexp(mantissa,exponent)', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    mantissa,exponent=torch.frexp(x)
-AttributeError: module 'torch' has no attribute 'frexp'
-"
-"
- torch. positive ( input )   → ¶","['import numpy as np', 'import numpy', 'import torch', 't=torch.randn(5)', '', 'torch.positive(t)', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 6, in <module>
-    torch.positive(t)
-AttributeError: module 'torch' has no attribute 'positive'
-"
-"
- torch. pow ( input ,  exponent ,  * ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.randn(4)', '', 'tensor([ 0.4331,  1.2475,  0.6834, -0.2791])', 'torch.pow(a,2)', 'tensor([ 0.1875,  1.5561,  0.4670,  0.0779])', 'exp=torch.arange(1.,5.)a=torch.arange(1.,5.)', '', 'torch.pow(a,exp)', '', '']","  File ""example.py"", line 9
-    exp=torch.arange(1.,5.)a=torch.arange(1.,5.)
-                           ^
-SyntaxError: invalid syntax
-"
-"
- torch. round ( input ,  * ,  decimals ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.round(torch.tensor((4.7,-2.3,9.1,-7.7)))', '# Values equidistant from two integers are rounded towards the', '#   the nearest even value (zero is treated as even)', 'torch.round(torch.tensor([-0.5,0.5,1.5,2.5]))', '# A positive decimals argument rounds to the to that decimal place', 'torch.round(torch.tensor([0.1234567]),decimals=3)', '# A negative decimals argument rounds to the left of the decimal', 'torch.round(torch.tensor([1200.1234567]),decimals=-3)', '', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 9, in <module>
-    torch.round(torch.tensor([0.1234567]),decimals=3)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/functional.py"", line 2693, in cross_entropy
+    return nll_loss(log_softmax(input, 1), target, weight, None, ignore_index, None, reduction)
   File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
     outputs = func(*args, **kwargs)
-TypeError: round() got an unexpected keyword argument 'decimals'
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/functional.py"", line 2388, in nll_loss
+    ret = torch._C._nn.nll_loss(input, target, weight, _Reduction.get_enum(reduction), ignore_index)
+RuntimeError: 1D target tensor expected, multi-target not supported
 "
+/media/nimashiri/SSD1/torch_api_examples/7360.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/7360.py"", line 8, in <module>
+    weights=preprocess(loaded_weights)# some function
+NameError: name 'preprocess' is not defined
 "
- torch. aminmax ( input ,  * ,  dim=None ,  keepdim=False ,  out=None) ,  Tensor ) ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.aminmax(torch.tensor([1,-3,5]))', '']","Traceback (most recent call last):
-  File ""example.py"", line 4, in <module>
-    torch.aminmax(torch.tensor([1,-3,5]))
-AttributeError: module 'torch' has no attribute 'aminmax'
-"
-"
- torch. nanmean ( input ,  dim ,  keepdim ,  * ,  dtype ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([[torch.nan,1,2],[1,2,3]])', 'x.mean()', '', 'x.nanmean()', '', 'x.mean(dim=0)', '', 'x.nanmean(dim=0)', '', 'torch.tensor([torch.nan]).nanmean()', '']","Traceback (most recent call last):
-  File ""example.py"", line 4, in <module>
-    x=torch.tensor([[torch.nan,1,2],[1,2,3]])
-AttributeError: module 'torch' has no attribute 'nan'
-"
-"
- torch. quantile ( input ,  q ,  dim ,  keepdim ,  * ,  interpolation ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.randn(2,3)', '', 'q=torch.tensor([0.25,0.5,0.75])', 'torch.quantile(a,q,dim=1,keepdim=True)', '', 'torch.quantile(a,q,dim=1,keepdim=True).shape', 'torch.Size([3, 2, 1])', 'a=torch.arange(4.)', '', ""torch.quantile(a,0.6,interpolation='linear')"", '', ""torch.quantile(a,0.6,interpolation='lower')"", '', ""torch.quantile(a,0.6,interpolation='higher')"", '', ""torch.quantile(a,0.6,interpolation='midpoint')"", '', ""torch.quantile(a,0.6,interpolation='nearest')"", '', ""torch.quantile(a,0.4,interpolation='nearest')"", '', '']","Traceback (most recent call last):
-  File ""example.py"", line 13, in <module>
-    torch.quantile(a,0.6,interpolation='linear')
-  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
-    outputs = func(*args, **kwargs)
-TypeError: quantile() received an invalid combination of arguments - got (Tensor, float, interpolation=str), but expected one of:
- * (Tensor input, Tensor q, int dim, bool keepdim, *, Tensor out)
- * (Tensor input, float q, int dim, bool keepdim, *, Tensor out)
-
-"
-"
- torch. corrcoef ( input )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([[0,1,2],[2,1,0]])', 'torch.corrcoef(x)', '', 'x=torch.randn(2,4)', '', 'torch.corrcoef(x)', '', 'torch.corrcoef(x[0])', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    torch.corrcoef(x)
-AttributeError: module 'torch' has no attribute 'corrcoef'
-"
-"
- torch. rot90 ( input ,  k ,  dims )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.arange(4).view(2,2)', '', 'torch.rot90(x,1,[0,1])', 'tensor([[1, 3],', 'x=torch.arange(8).view(2,2,2)', '', 'torch.rot90(x,1,[1,2])', '']","  File ""example.py"", line 8
-    x=torch.arange(8).view(2,2,2)
-     ^
-SyntaxError: invalid syntax
-"
-"
- torch. histogram ( input ,  bins ,  * ,  range ,  weight ,  density ,  out ) ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.histogram(torch.tensor([1.,2,1]),bins=4,range=(0.,3.),weight=torch.tensor([1.,2.,4.]))', '', 'torch.histogram(torch.tensor([1.,2,1]),bins=4,range=(0.,3.),weight=torch.tensor([1.,2.,4.]),density=True)', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 4, in <module>
-    torch.histogram(torch.tensor([1.,2,1]),bins=4,range=(0.,3.),weight=torch.tensor([1.,2.,4.]))
-AttributeError: module 'torch' has no attribute 'histogram'
-"
-"
- torch. meshgrid ( * ,  indexing ) [source] ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([1,2,3])', 'y=torch.tensor([4,5,6])', '', ""grid_x,grid_y=torch.meshgrid(x,y,indexing='ij')"", '', '', 'torch.equal(torch.cat(tuple(torch.dstack([grid_x,grid_y]))),torch.cartesian_prod(x,y))', '', 'xs=torch.linspace(-5,5,steps=100)', 'ys=torch.linspace(-5,5,steps=100)', ""x,y=torch.meshgrid(xs,ys,indexing='xy')"", 'z=torch.sin(torch.sqrt(x*x+y*y))', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 7, in <module>
-    grid_x,grid_y=torch.meshgrid(x,y,indexing='ij')
-  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
-    outputs = func(*args, **kwargs)
-TypeError: meshgrid() got an unexpected keyword argument 'indexing'
-"
-"
- torch. repeat_interleave ( input ,  repeats ,  dim ,  * ,  output_size )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([1,2,3])', 'x.repeat_interleave(2)', '', 'y=torch.tensor([[1,2],[3,4]])', 'torch.repeat_interleave(y,2)', '', 'torch.repeat_interleave(y,3,dim=1)', '', 'torch.repeat_interleave(y,torch.tensor([1,2]),dim=0)', '', 'torch.repeat_interleave(y,torch.tensor([1,2]),dim=0,output_size=3)', '', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 14, in <module>
-    torch.repeat_interleave(y,torch.tensor([1,2]),dim=0,output_size=3)
-  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
-    outputs = func(*args, **kwargs)
-TypeError: repeat_interleave() received an invalid combination of arguments - got (Tensor, Tensor, output_size=int, dim=int), but expected one of:
- * (Tensor input, Tensor repeats, int dim)
- * (Tensor input, int repeats, int dim)
- * (Tensor repeats)
-
-"
-"
- torch. searchsorted ( sorted_sequence ,  values ,  * ,  out_int32 ,  right ,  side ,  out ,  sorter )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'sorted_sequence=torch.tensor([[1,3,5,7,9],[2,4,6,8,10]])', 'sorted_sequence', '', 'values=torch.tensor([[3,6,9],[3,6,9]])', '', 'torch.searchsorted(sorted_sequence,values)', '', ""torch.searchsorted(sorted_sequence,values,side='right')"", '', 'sorted_sequence_1d=torch.tensor([1,3,5,7,9])', '', 'torch.searchsorted(sorted_sequence_1d,values)', '']","Traceback (most recent call last):
-  File ""example.py"", line 11, in <module>
-    torch.searchsorted(sorted_sequence,values,side='right')
-  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
-    outputs = func(*args, **kwargs)
-TypeError: searchsorted() received an invalid combination of arguments - got (Tensor, Tensor, side=str), but expected one of:
- * (Tensor sorted_sequence, Tensor input, *, bool out_int32, bool right, Tensor out)
- * (Tensor sorted_sequence, Number self, *, bool out_int32, bool right)
-
-"
-"
- torch. resolve_conj ( input )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([-1+1j,-2+2j,3-3j])', 'y=x.conj()', 'y.is_conj()', '', 'z=y.resolve_conj()', '', 'z.is_conj()', '']","Traceback (most recent call last):
-  File ""example.py"", line 6, in <module>
-    y.is_conj()
-AttributeError: 'Tensor' object has no attribute 'is_conj'
-"
-"
- torch. resolve_neg ( input )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([-1+1j,-2+2j,3-3j])', 'y=x.conj()', 'z=y.imag', 'z.is_neg()', '', 'out=y.resolve_neg()', '', 'out.is_neg()', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 7, in <module>
-    z.is_neg()
-AttributeError: 'Tensor' object has no attribute 'is_neg'
-"
-"
- torch. cholesky ( input ,  upper ,  * ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.randn(3,3)', 'a=a@a.mT+1e-3', 'l=torch.cholesky(a)', '', 'a=torch.randn(3,2,2)', 'a=a@a.mT+1e-03', 'l=torch.cholesky(a)', 'z=l@l.mT', 'torch.dist(z,a)', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    a=a@a.mT+1e-3
-AttributeError: 'Tensor' object has no attribute 'mT'
-"
-"
- torch. cholesky_inverse ( input ,  upper ,  * ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.randn(3,3)', 'a=torch.mm(a,a.t())+1e-05*torch.eye(3)# make symmetric positive definite', 'u=torch.linalg.cholesky(a)', '', 'torch.cholesky_inverse(u)', '', 'a.inverse()', '', 'a=torch.randn(3,2,2', 'a=a@a.mT+1e-03', 'l=torch.linalg.cholesky(a)', 'z=l@l.mT', 'torch.dist(z,a)', '', '']","  File ""example.py"", line 13
-    a=a@a.mT+1e-03
-    ^
-SyntaxError: invalid syntax
-"
-"
- torch. inner ( input ,  other ,  * ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', '', 'torch.inner(torch.tensor([1,2,3]),torch.tensor([0,2,1]))', '', 'a=torch.randn(2,3)', '', 'b=torch.randn(2,4,3)', '', 'torch.inner(a,b)', '', 'Torch.inner(a,torch.tensor(2))', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 13, in <module>
-    Torch.inner(a,torch.tensor(2))
-NameError: name 'Torch' is not defined
-"
-"
- torch. lu_solve ( b ,  LU_data ,  LU_pivots ,  * ,  out )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'A=torch.randn(2,3,3)', 'b=torch.randn(2,3,1)', 'LU,pivots=torch.linalg.lu_factor(A)', 'x=torch.lu_solve(b,LU,pivots)', 'torch.dist(A@x,b)', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 6, in <module>
-    LU,pivots=torch.linalg.lu_factor(A)
-AttributeError: module 'torch.linalg' has no attribute 'lu_factor'
-"
-"
- torch.linalg. matrix_exp ( A )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'A=torch.empty(2,2,2)', 'A[0,:,:]=torch.eye(2,2)', 'A[1,:,:]=2*torch.eye(2,2)', '', 'torch.linalg.matrix_exp(A)', '', 'import math', 'A=torch.tensor([[0,math.pi/3],[-math.pi/3,0]])', 'torch.linalg.matrix_exp(A)', '']","Traceback (most recent call last):
-  File ""example.py"", line 8, in <module>
-    torch.linalg.matrix_exp(A)
-AttributeError: module 'torch.linalg' has no attribute 'matrix_exp'
-"
-"
- torch. qr ( input ,  some ,  * ,  out ) ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.tensor([[12.,-51,4],[6,167,-68],[-4,24,-41]])', 'q,r=torch.qr(a)', '', 'torch.mm(q,r).round()', '', 'torch.mm(q.t(),q).round()', '', 'a=torch.randn(3,4,5)', 'q,r=torch.qr(a,some=False)', 'torch.allclose(torch.matmul(q,r),a)', '', 'torch.allclose(torch.matmul(q.mT,q),torch.eye(5))', '']","Traceback (most recent call last):
-  File ""example.py"", line 15, in <module>
-    torch.allclose(torch.matmul(q.mT,q),torch.eye(5))
-AttributeError: 'Tensor' object has no attribute 'mT'
-"
-"
- torch. svd ( input ,  some ,  compute_uv ,  * ,  out ) ¶","['import numpy as np', 'import numpy', 'import torch', 'a=torch.randn(5,3)', '', 'u,s,v=torch.svd(a)', '', 'torch.dist(a,torch.mm(torch.mm(u,torch.diag(s)),v.t()))', '', 'a_big=torch.randn(7,5,3)', 'u,s,v=torch.svd(a_big)', 'torch.dist(a_big,torch.matmul(torch.matmul(u,torch.diag_embed(s)),v.mT))']","Traceback (most recent call last):
-  File ""example.py"", line 12, in <module>
-    torch.dist(a_big,torch.matmul(torch.matmul(u,torch.diag_embed(s)),v.mT))
-AttributeError: 'Tensor' object has no attribute 'mT'
-"
-"
- torch. use_deterministic_algorithms ( mode ,  * ,  warn_only ) [source] ¶","['import numpy as np', 'import numpy', 'import torch', 'torch.use_deterministic_algorithms(True)', ""torch.randn(10,device='cuda').kthvalue(0)""]","[W Context.cpp:69] Warning: torch.use_deterministic_algorithms is in beta, and its design and functionality may change in the future. (function operator())
-Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    torch.randn(10,device='cuda').kthvalue(0)
-RuntimeError: kthvalue CUDA does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.
-"
-"
- class torch.nn. DataParallel ( module ,  device_ids ,  output_device ,  dim ) [source] ¶","['import numpy as np', 'import numpy', 'import torch', 'net=torch.nn.DataParallel(model,device_ids=[0,1,2])', 'output=net(input_var)', '']","Traceback (most recent call last):
-  File ""example.py"", line 4, in <module>
-    net=torch.nn.DataParallel(model,device_ids=[0,1,2])
-NameError: name 'model' is not defined
-"
-"
- torch.nn.utils. skip_init ( module_cls ,  * ,  ** ) [source] ¶","['import numpy as np', 'import numpy', 'import torch', '', 'm=torch.nn.utils.skip_init(torch.nn.Linear,5,1)', '', 'm2=torch.nn.utils.skip_init(torch.nn.Linear,in_features=6,out_features=1)', '', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    m=torch.nn.utils.skip_init(torch.nn.Linear,5,1)
-AttributeError: module 'torch.nn.utils' has no attribute 'skip_init'
-"
-"
- torch.nn.utils.parametrizations. orthogonal ( module ,  name ,  orthogonal_map ,  * ,  use_trivialization ) [source] ¶","['', 'import numpy as np', 'import numpy', 'import torch', 'import torch.nn.functional as F', '', 'orth_linear=F.parametrizations(F.Linear(20,40))', '', 'Q=orth_linear.weight', 'torch.dist(Q.T@Q,torch.eye(20))', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 7, in <module>
-    orth_linear=F.parametrizations(F.Linear(20,40))
-AttributeError: module 'torch.nn.functional' has no attribute 'parametrizations'
-"
-"
- torch.nn.utils.parametrizations. spectral_norm ( module ,  name ,  n_power_iterations ,  eps ,  dim ) [source] ¶","['import numpy as np', 'import numpy', 'import torch', 'from torch import nn', 'snm=nn.utils.spectral_norm(nn.Linear(20,40))', '', 'torch.linalg.matrix_norm(snm.weight,2)']","Traceback (most recent call last):
-  File ""example.py"", line 7, in <module>
-    torch.linalg.matrix_norm(snm.weight,2)
-AttributeError: module 'torch.linalg' has no attribute 'matrix_norm'
-"
-"
- Tensor. to_sparse_csr ( )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'dense=torch.randn(5,5)', 'sparse=dense.to_sparse_csr()', '', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
+/media/nimashiri/SSD1/torch_api_examples/12070.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12070.py"", line 5, in <module>
     sparse=dense.to_sparse_csr()
 AttributeError: 'Tensor' object has no attribute 'to_sparse_csr'
 "
-"
- Tensor. to_sparse_csc ( )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'dense=torch.randn(5,5)', 'sparse=dense.to_sparse_csc()', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
+/media/nimashiri/SSD1/torch_api_examples/12080.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12080.py"", line 5, in <module>
     sparse=dense.to_sparse_csc()
 AttributeError: 'Tensor' object has no attribute 'to_sparse_csc'
 "
-"
- Tensor. to_sparse_bsr ( blocksize )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'dense=torch.randn(10,10)', 'sparse=dense.to_sparse_csr()', 'sparse_bsr=sparse.to_sparse_bsr((5,5))', '', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
+/media/nimashiri/SSD1/torch_api_examples/12090.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12090.py"", line 5, in <module>
     sparse=dense.to_sparse_csr()
 AttributeError: 'Tensor' object has no attribute 'to_sparse_csr'
 "
-"
- Tensor. to_sparse_bsc ( blocksize )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'dense=torch.randn(10,10)', 'sparse=dense.to_sparse_csr()', 'sparse_bsc=sparse.to_sparse_bsc((5,5))', '', '']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
+/media/nimashiri/SSD1/torch_api_examples/12100.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12100.py"", line 5, in <module>
     sparse=dense.to_sparse_csr()
 AttributeError: 'Tensor' object has no attribute 'to_sparse_csr'
 "
+/media/nimashiri/SSD1/torch_api_examples/12351.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12351.py"", line 11, in <module>
+    x.view(torch.cfloat)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: Viewing a tensor as a new dtype with a different number of bytes per element is not supported.
 "
- torch.linalg. vander ( x ,  N )   → ¶","['import numpy as np', 'import numpy', 'import torch', 'x=torch.tensor([1,2,3,5])', 'torch.linalg.vander(x)', '', 'torch.linalg.vander(x,N=3)']","Traceback (most recent call last):
-  File ""example.py"", line 5, in <module>
-    torch.linalg.vander(x)
+/media/nimashiri/SSD1/torch_api_examples/13400.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13400.py"", line 11, in <module>
+    A=A@A.mT+torch.eye(2)# batch of symmetric positive-definite matrices
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/13410.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13410.py"", line 6, in <module>
+    L,info=torch.linalg.cholesky_ex(A)
+AttributeError: module 'torch.linalg' has no attribute 'cholesky_ex'
+"
+/media/nimashiri/SSD1/torch_api_examples/13420.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13420.py"", line 5, in <module>
+    P,L,U=torch.linalg.lu(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu'
+"
+/media/nimashiri/SSD1/torch_api_examples/13430.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13430.py"", line 5, in <module>
+    LU,pivots=torch.linalg.lu_factor(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu_factor'
+"
+/media/nimashiri/SSD1/torch_api_examples/13440.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13440.py"", line 16, in <module>
+    torch.dist(Q.mT@Q,torch.eye(4))
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/13470.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13470.py"", line 5, in <module>
+    S=torch.linalg.svdvals(A)
+AttributeError: module 'torch.linalg' has no attribute 'svdvals'
+"
+/media/nimashiri/SSD1/torch_api_examples/13940.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13940.py"", line 9, in <module>
+    LA.vector_norm(a,ord=3.5)
+AttributeError: module 'torch.linalg' has no attribute 'vector_norm'
+"
+/media/nimashiri/SSD1/torch_api_examples/13950.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13950.py"", line 7, in <module>
+    LA.matrix_norm(A)
+AttributeError: module 'torch.linalg' has no attribute 'matrix_norm'
+"
+/media/nimashiri/SSD1/torch_api_examples/13980.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13980.py"", line 16, in <module>
+    torch.linalg.matrix_rank(A,atol=1.0,rtol=0.0)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+TypeError: linalg_matrix_rank() got an unexpected keyword argument 'atol'
+"
+/media/nimashiri/SSD1/torch_api_examples/13990.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13990.py"", line 6, in <module>
+    L,V=torch.linalg.eig(A)
+AttributeError: module 'torch.linalg' has no attribute 'eig'
+"
+/media/nimashiri/SSD1/torch_api_examples/14000.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14000.py"", line 5, in <module>
+    L=torch.linalg.eigvals(A)
+AttributeError: module 'torch.linalg' has no attribute 'eigvals'
+"
+/media/nimashiri/SSD1/torch_api_examples/14010.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14010.py"", line 9, in <module>
+    A=A+A.mT# creates a batch of symmetric matrices
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/14030.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14030.py"", line 6, in <module>
+    X=torch.linalg.solve_triangular(A,B,upper=True)
+AttributeError: module 'torch.linalg' has no attribute 'solve_triangular'
+"
+/media/nimashiri/SSD1/torch_api_examples/14040.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14040.py"", line 6, in <module>
+    X=torch.linalg.lstsq(A,B).solution
+AttributeError: module 'torch.linalg' has no attribute 'lstsq'
+"
+/media/nimashiri/SSD1/torch_api_examples/14070.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14070.py"", line 4, in <module>
+    from torch.linalg import vecdot 
+ImportError: cannot import name 'vecdot' from 'torch.linalg' (/home/nimashiri/.local/lib/python3.8/site-packages/torch/linalg/__init__.py)
+"
+/media/nimashiri/SSD1/torch_api_examples/14080.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14080.py"", line 4, in <module>
+    from torch.linalg import multi_dot 
+ImportError: cannot import name 'multi_dot' from 'torch.linalg' (/home/nimashiri/.local/lib/python3.8/site-packages/torch/linalg/__init__.py)
+"
+/media/nimashiri/SSD1/torch_api_examples/14090.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14090.py"", line 11, in <module>
+    Ainv=torch.linalg.inverse(A)
+AttributeError: module 'torch.linalg' has no attribute 'inverse'
+"
+/media/nimashiri/SSD1/torch_api_examples/14110.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14110.py"", line 6, in <module>
+    linalg.vander(x)
 AttributeError: module 'torch.linalg' has no attribute 'vander'
+"
+/media/nimashiri/SSD1/torch_api_examples/14120.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14120.py"", line 5, in <module>
+    Ainv,info=torch.linalg.solve_ex(A)
+AttributeError: module 'torch.linalg' has no attribute 'solve_ex'
+"
+/media/nimashiri/SSD1/torch_api_examples/14140.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14140.py"", line 5, in <module>
+    A=A@A.mT# make symmetric
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/14150.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14150.py"", line 5, in <module>
+    A=A@A.mT# make symmetric
+AttributeError: 'Tensor' object has no attribute 'mT'
+"
+/media/nimashiri/SSD1/torch_api_examples/14160.py,"Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14160.py"", line 5, in <module>
+    A=A@A.mT# make symmetric
+AttributeError: 'Tensor' object has no attribute 'mT'
 "

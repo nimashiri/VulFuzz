@@ -55,7 +55,7 @@ def decorate_function(func, hint):
                     try:
                         return list(s)  # convert torch.Size to list
                     except Exception as e:
-                        print(e.message)
+                        print(e)
 
         def get_var_dtype(var):
             if hasattr(var, 'dtype'):
@@ -74,7 +74,7 @@ def decorate_function(func, hint):
                 try:
                     return type(var).__name__
                 except Exception as e:
-                    print(e.message)
+                    print(e)
 
         def get_shape_for_tensors(t):
             if isinstance(t, list):
@@ -97,7 +97,6 @@ def decorate_function(func, hint):
             return signatures
 
         outputs = func(*args, **kwargs)
-        
         output_signature = get_signature_for_tensors(outputs)
         param_dict = build_param_dict(*args, **kwargs)
         write_fn(hint, param_dict, None, output_signature)

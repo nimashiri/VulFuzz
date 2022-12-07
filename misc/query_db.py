@@ -67,4 +67,4 @@ def countall(dbname):
     print(counter)
 
 if __name__ == '__main__':
-    countall('Torch-VulFuzz')
+    countall('tf')

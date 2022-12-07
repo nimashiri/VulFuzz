@@ -22,12 +22,15 @@ def build_param_dict(*args, **kwargs):
     return param_dict
 
 
+
+
 def dump_signature_of_class(klass, class_name, output_dir):
     if not hasattr(klass, '__call__'):
         return klass
     old_init = klass.__init__
     old_call = klass.__call__
     init_params = dict()
+
 
     def new_init(self, *args, **kwargs):
         nonlocal init_params
@@ -60,6 +63,7 @@ def dump_signature_of_function(func, hint, output_dir):
         import json
         import os
 
+
         outputs = func(*args, **kwargs)
         output_signature = get_signature_for_tensors(outputs)
         param_dict = build_param_dict(*args, **kwargs)
@@ -70,3 +74,4 @@ def dump_signature_of_function(func, hint, output_dir):
         return func
 
     return wrapper
+

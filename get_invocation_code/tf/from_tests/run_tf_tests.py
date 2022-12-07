@@ -96,7 +96,7 @@ def run_tf_tests(data):
 if __name__ == '__main__':
     # subprocess.call('cp -r /media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/write_tools.py /home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/instrumentation/', shell=True)
 
-    tf_tests = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/kernel_tests.txt'
+    tf_tests = '/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_test_files/tf_tests_v2.4.0.txt'
     data = read_txt(tf_tests)
     run_tf_tests(data)
     #obj_ = RunTestFiles(data)

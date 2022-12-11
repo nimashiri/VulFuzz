@@ -18,10 +18,17 @@ skip_list = [
     'tpu'
 ]
 
+def read_ast(file_to_be_processed):
+    with open(file_to_be_processed, "r") as source:
+        ast_tree = ast.parse(source.read())
+    return ast_tree
+
 def get_doc_string_examples(ast_tree):
     f_objects = [x for x in ast.walk(ast_tree) if isinstance(x, ast.FunctionDef) or isinstance(x, ast.ClassDef)]
     for f in f_objects:
-        print(ast.get_docstring(f))
+        function = f.body[0]
+        #ast.dump(function.args)
+        # print(ast.get_docstring(f))
 
 def write_list_to_txt(data, filename):
     with open(filename, "a", encoding='utf-8') as file:
@@ -54,10 +61,18 @@ def get_parent_module(file_addr):
     import_stmt = 'from '+x+' import '+sub_split[-1]
     return import_stmt, sub_split[-1]
 
-def get_ast_functions(file_to_be_processed):
-    with open(file_to_be_processed, "r") as source:
-        ast_tree = ast.parse(source.read())
-    return [x.name for x in ast.walk(ast_tree) if isinstance(x, ast.FunctionDef) or isinstance(x, ast.ClassDef)]
+def get_ast_functions(ast_tree):
+    f_names = []
+    for x in ast.walk(ast_tree):
+        if isinstance(x, ast.FunctionDef):
+            if x.args:
+                f_names.append(x.name)
+
+        if isinstance(x, ast.ClassDef):
+            if isinstance(x.bases[0], ast.Call):
+                if x.bases[0].args:
+                    f_names.append(x.name)
+    return f_names
 
 def get_tf_apis():
     dict_obj = {}
@@ -73,17 +88,17 @@ def get_tf_apis():
                         file_to_be_processed = os.path.join(current_module, f)
                         if os.path.isfile(file_to_be_processed):
                             try:
-                                f_names = get_ast_functions(file_to_be_processed)
+                                ast_tree = read_ast(file_to_be_processed)
+                                f_names = get_ast_functions(ast_tree)
                                 
                                 if f_names:
+                                    # get_doc_string_examples(ast_tree)
                                     import_stmt, module_name = get_parent_module(file_to_be_processed)
                                     # save_objects(module_name)
-                                    write_list_to_txt(import_stmt, '/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_internal_imports.txt')
+                                    write_list_to_txt(import_stmt, '/media/nimashiri/SSD1/FSE23_2/data/tf/tf_internal_imports1.txt')
 
                                     dict_obj[module_name] = []
                                     for module in f_names:
-                                        
-                                        
                                         if module not in skip_list:
                                             counter = counter + 1
                                             print(counter)
@@ -92,7 +107,7 @@ def get_tf_apis():
                                 print(e)
 
     
-    with open('/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_apis/tf_apis1.json', 'w') as fp:
+    with open('/media/nimashiri/SSD1/FSE23_2/data/tf/tf_apis/tf_apis2.json', 'w') as fp:
         json.dump(dict_obj, fp, indent=4)
 
 if __name__ == '__main__':

@@ -82,14 +82,17 @@ def get_tf_apis():
 
                                     dict_obj[module_name] = []
                                     for module in f_names:
-                                        counter = counter + 1
+                                        
+                                        
                                         if module not in skip_list:
+                                            counter = counter + 1
+                                            print(counter)
                                             dict_obj[module_name].append(module)
                             except Exception as e:
                                 print(e)
 
     
-    with open('/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_apis/tf_apis.json', 'w') as fp:
+    with open('/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_apis/tf_apis1.json', 'w') as fp:
         json.dump(dict_obj, fp, indent=4)
 
 if __name__ == '__main__':

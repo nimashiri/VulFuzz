@@ -1,0 +1,13 @@
+tensorflow.python.eager.context.graph_mode,tests
+tensorflow.python.eager.context.context,tests
+tensorflow.python.eager.context.context_safe,tests
+tensorflow.python.util.tf_decorator._has_tf_decorator_attr,tests
+tensorflow.python.eager.context.executing_eagerly,tests
+tensorflow.python.platform.app._parse_flags_tolerate_undef,tests
+tensorflow.python.eager.context.set_global_seed,tests
+tensorflow.python.platform.tf_logging.info,tests
+tensorflow.python.platform.tf_logging.get_logger,tests
+tensorflow.python.platform.resource_loader.get_data_files_path,tests
+tensorflow.python.util.tf_decorator.unwrap,tests
+tensorflow.python.platform.flags.absl.flags._flagvalues.FlagValues,tests
+tensorflow.python.framework.ops.reset_default_graph,tests

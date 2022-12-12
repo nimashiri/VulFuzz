@@ -2034,7 +2034,7 @@ def hijack_all(output_dir, verbose=False):
     failed_list = []
     skip_list = []
     import os
-    api_file = __file__.replace("hijack.py", "array_ops.txt")
+    api_file = __file__.replace("hijack.py", "tf_valid_APIs_new.txt")
     with open(api_file, 'r') as fr:
         apis = fr.readlines()
     print('Number of total apis: ', len(apis)) 

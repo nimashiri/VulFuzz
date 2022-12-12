@@ -30,6 +30,10 @@ def read_txt(fname):
         data = fileReader.read().splitlines()
     return data
 
+'''
+This function returns a new database in which all documents are distinct.
+The distinction is based the first parameter of each the documents in each collection.
+'''
 def get_unique_documents(dbname, new_db_name):
     new_db = pymongo.MongoClient(host="localhost", port=27017)[new_db_name]
     mydb = myclient[dbname]
@@ -67,12 +71,19 @@ def get_unique_documents(dbname, new_db_name):
 def drop_database(dbname):
     myclient.drop_database(dbname)
 
+'''
+Delete all documents in a collection based on the field source.
+'''
 def drop_document(dbname):
     mydb = myclient[dbname]
     for name in mydb.list_collection_names():
         print(name)
         mycol = mydb[name]
         mycol.delete_many({"source": "tests" })
+
+'''
+Count the number of APIs based on the source they have been collected. 
+'''
 
 def count_sources_per_api(dbname):
     

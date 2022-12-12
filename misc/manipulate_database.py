@@ -30,6 +30,17 @@ def read_txt(fname):
         data = fileReader.read().splitlines()
     return data
 
+
+def count_value_space(dbname):
+    source_dict = {'docs': 0, 'tests': 0, 'models': 0}
+    mydb = myclient[dbname]
+    for api_name in mydb.list_collection_names():
+        logging.info(api_name)
+        mycol = mydb[api_name]
+        for source in ['docs', 'tests', 'models']:
+            source_dict[source] += mycol.count_documents({"source": source})
+            print(source_dict)
+
 '''
 This function returns a new database in which all documents are distinct.
 The distinction is based the first parameter of each the documents in each collection.
@@ -120,15 +131,27 @@ def count_all_apis(dbname):
         counter = counter + 1
     print(counter)
 
+def get_all_databases():
+    print(myclient.list_database_names())
+
 def main():
+    client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS=10, connectTimeoutMS=300)
 
-    '''
-    Please put the database name you want to work on.
-    '''
-    db_name = "Torch"
-    new_db_name = 'Torch-Unique'
+    try:
+        info = client.server_info()
+                
+    except ServerSelectionTimeoutError:
+        logging.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
+        logging.info('#### MongoDB Server is Down! I am trying initiating the server now. ####')
+        logging.info('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@')
 
-    get_unique_documents(db_name, new_db_name)
+        subprocess.call('rm -rf /media/nimashiri/DATA/mongodata/mongod.lock', shell=True)
+        subprocess.run(['mongod', '--dbpath', '/media/nimashiri/DATA/mongodata/', '--logpath', '/media/nimashiri/DATA/mongolog/mongo.log', '--fork'])
+
+    db_name = "Torch-VulFuzz"
+
+    get_all_databases()
+    count_value_space(db_name)
 
 if __name__ == '__main__':
     main()

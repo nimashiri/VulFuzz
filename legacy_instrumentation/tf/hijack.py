@@ -1909,7 +1909,7 @@ def hijack(output_dir="signature_db"):
     hijack_all(output_dir)
 
 
-def hijack_api(obj, func_name_str, output_dir):
+def hijack_api(obj, func_name_str, obj_hint, output_dir):
     """
     Function to hijack an API.
 
@@ -1954,12 +1954,12 @@ def hijack_api(obj, func_name_str, output_dir):
     if is_class(orig_func):
         if hasattr(orig_func, '__slots__'):
             return False
-        wrapped_func = dump_signature_of_class(orig_func, func_name_str, output_dir=output_dir)
+        wrapped_func = dump_signature_of_class(orig_func, func_name_str, obj_hint, output_dir=output_dir)
         setattr(module_obj, func_name, wrapped_func)
         return True
     else:
       if is_callable(orig_func):
-        wrapped_func = dump_signature_of_function(orig_func, func_name_str, output_dir=output_dir)
+        wrapped_func = dump_signature_of_function(orig_func, func_name_str, obj_hint, output_dir=output_dir)
         setattr(module_obj, func_name, wrapped_func)
         return True
       else:
@@ -2046,7 +2046,6 @@ def hijack_all(output_dir, verbose=False):
     import sys
     module_members = inspect.getmembers(sys.modules[__name__], inspect.ismodule)
 
-    
     f = open ('/home/nimashiri/.local/lib/python3.8/site-packages/tensorflow/instrumentation/tf_apis.json', "r")
     data = json.loads(f.read())
     for key, value in data.items():
@@ -2055,7 +2054,11 @@ def hijack_all(output_dir, verbose=False):
             # print(api_name)
             try:
                 result = next((v[1] for i, v in enumerate(module_members) if v[0] == key), None)
-                hijack_api(result, v, output_dir)
+                x = repr(result)
+                obj_hint = x.split('from')[0].split('module')[1]
+                obj_hint = obj_hint.replace("'",'')
+                obj_hint = obj_hint.replace(" ",'')
+                hijack_api(result, v, obj_hint, output_dir)
             except:
                 continue
     # for i, api in enumerate(apis):

@@ -63,16 +63,21 @@ def get_parent_module(file_addr):
 
 def get_ast_functions(ast_tree):
     f_names = []
+    filtered = []
     for x in ast.walk(ast_tree):
         if isinstance(x, ast.FunctionDef):
             if x.args:
                 f_names.append(x.name)
+            else:
+                filtered.append(x.name)
 
         if isinstance(x, ast.ClassDef):
             if isinstance(x.bases[0], ast.Call):
-                if x.bases[0].args:
-                    f_names.append(x.name)
-    return f_names
+                #if x.bases[0].args:
+                f_names.append(x.name)
+            else:
+                filtered.append(x.name)
+    return f_names, filtered
 
 def get_tf_apis():
     dict_obj = {}
@@ -89,25 +94,24 @@ def get_tf_apis():
                         if os.path.isfile(file_to_be_processed):
                             try:
                                 ast_tree = read_ast(file_to_be_processed)
-                                f_names = get_ast_functions(ast_tree)
+                                f_names, filtered = get_ast_functions(ast_tree)
                                 
                                 if f_names:
-                                    # get_doc_string_examples(ast_tree)
+                                    # get_doc_string_examples(ast_tree) 
                                     import_stmt, module_name = get_parent_module(file_to_be_processed)
                                     # save_objects(module_name)
-                                    write_list_to_txt(import_stmt, '/media/nimashiri/SSD1/FSE23_2/data/tf/tf_internal_imports1.txt')
+                                    write_list_to_txt(import_stmt, '/media/nimashiri/SSD1/FSE23_2/data/tf/tf_internal_imports.txt')
 
                                     dict_obj[module_name] = []
                                     for module in f_names:
                                         if module not in skip_list:
                                             counter = counter + 1
-                                            print(counter)
                                             dict_obj[module_name].append(module)
                             except Exception as e:
                                 print(e)
 
     
-    with open('/media/nimashiri/SSD1/FSE23_2/data/tf/tf_apis/tf_apis2.json', 'w') as fp:
+    with open('/media/nimashiri/SSD1/FSE23_2/data/tf/tf_apis/tf_apis.json', 'w') as fp:
         json.dump(dict_obj, fp, indent=4)
 
 if __name__ == '__main__':

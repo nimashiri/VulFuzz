@@ -24,7 +24,7 @@ def build_param_dict(*args, **kwargs):
 
 
 
-def dump_signature_of_class(klass, class_name, output_dir):
+def dump_signature_of_class(klass, class_name, obj_hint, output_dir):
     if not hasattr(klass, '__call__'):
         return klass
     old_init = klass.__init__
@@ -46,7 +46,7 @@ def dump_signature_of_class(klass, class_name, output_dir):
         input_signature = get_signature_for_tensors(inputs)
         outputs = old_call(self, *inputs, **kwargs)
         output_signature = get_signature_for_tensors(outputs)
-        write_fn(self.__class__.__module__ + '.' + self.__class__.__name__, init_params, input_signature,
+        write_fn(obj_hint, self.__class__.__module__ + '.' + self.__class__.__name__, init_params, input_signature,
                  output_signature)
         return outputs
 
@@ -57,7 +57,7 @@ def dump_signature_of_class(klass, class_name, output_dir):
 from functools import wraps
 
 
-def dump_signature_of_function(func, hint, output_dir):
+def dump_signature_of_function(func, hint, obj_hint , output_dir):
     @wraps(func)
     def wrapper(*args, **kwargs):
         import json
@@ -67,7 +67,7 @@ def dump_signature_of_function(func, hint, output_dir):
         outputs = func(*args, **kwargs)
         output_signature = get_signature_for_tensors(outputs)
         param_dict = build_param_dict(*args, **kwargs)
-        write_fn(hint, param_dict, None, output_signature)
+        write_fn(obj_hint, hint, param_dict, None, output_signature)
         return outputs
 
     if not callable(func):

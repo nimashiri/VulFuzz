@@ -1,0 +1,25 @@
+https://github.com/tensorflow/docs/blob/master/site/en/tutorials/generative/adversarial_fgsm.ipynb, 7
+https://www.tensorflow.org/tutorials/generative/adversarial_fgsm, 1
+https://www.tensorflow.org/tutorials/generative/deepdream, 1
+https://www.tensorflow.org/tutorials/generative/style_transfer, 1
+https://www.tensorflow.org/guide/distributed_training, 2
+https://www.tensorflow.org/tutorials/customization/basics
+https://www.tensorflow.org/tutorials/customization/custom_layers, 3
+https://www.tensorflow.org/tutorials/customization/custom_training_walkthrough, 1
+https://www.tensorflow.org/tutorials/images/cnn, 1
+https://www.tensorflow.org/tutorials/images/classification, 1
+https://www.tensorflow.org/tutorials/images/transfer_learning, 1
+https://www.tensorflow.org/text/guide/word_embeddingsm, 1
+https://github.com/keras-team/keras-io/blob/master/examples/vision/attention_mil_classification.py, 1
+https://github.com/keras-team/keras-io/blob/master/examples/vision/mlp_image_classification.py, 1
+https://raw.githubusercontent.com/keras-team/keras-io/master/examples/vision/mobilevit.py, 1
+https://github.com/keras-team/keras-io/blob/master/examples/vision/cct.py, 1
+https://github.com/keras-team/keras-io/blob/master/examples/vision/involution.py, 1
+https://github.com/keras-team/keras-io/blob/master/examples/vision/reptile.py, 1
+https://github.com/keras-team/keras-io/blob/master/examples/nlp/text_classification_from_scratch.py, 1
+https://github.com/keras-team/keras-io/blob/master/examples/nlp/active_learning_review_classification.py, 1
+https://keras.io/examples/generative/stylegan/, 1
+https://keras.io/examples/timeseries/timeseries_anomaly_detection/, 1
+https://keras.io/examples/timeseries/timeseries_classification_from_scratch/, 1
+https://keras.io/examples/timeseries/timeseries_weather_forecasting/, 1
+https://keras.io/examples/timeseries/timeseries_classification_transformer/, 1

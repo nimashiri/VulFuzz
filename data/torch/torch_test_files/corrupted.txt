@@ -1,0 +1,3 @@
+/media/nimashiri/SSD1/pytorch/test/test_ops.py
+/media/nimashiri/SSD1/pytorch/test/test_vmap.py
+/media/nimashiri/SSD1/pytorch/test/test_decomp.py

@@ -1,0 +1,2528 @@
+,
+/media/nimashiri/SSD1/torch_api_examples/5790.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5790.py"", line 5, in <module>
+    net=torch.nn.DataParallel(model,device_ids=[0,1,2])
+NameError: name 'model' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/5800.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5800.py"", line 5, in <module>
+    torch.distributed.init_process_group(backend='nccl',world_size=4,init_method='...')
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/distributed/distributed_c10d.py"", line 592, in init_process_group
+    rendezvous_iterator = rendezvous(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/distributed/rendezvous.py"", line 88, in rendezvous
+    raise RuntimeError(""No rendezvous handler for {}://"".format(result.scheme))
+RuntimeError: No rendezvous handler for ://
+"
+/media/nimashiri/SSD1/torch_api_examples/60.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/60.py"", line 8, in <module>
+    torch.is_nonzero(torch.tensor([1,3,5]))
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: Boolean value of Tensor with more than one value is ambiguous
+"
+/media/nimashiri/SSD1/torch_api_examples/6060.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6060.py"", line 5, in <module>
+    m=torch.nn.utils.skip_init(torch.nn.Linear,5,1)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/utils/init.py"", line 47, in skip_init
+    raise RuntimeError('Module must support a \'device\' arg to skip initialization')
+RuntimeError: Module must support a 'device' arg to skip initialization
+"
+/media/nimashiri/SSD1/torch_api_examples/6070.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/6080.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14490.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14490.py"", line 4, in <module>
+    f_add=torch.ao.nn.quantized.FloatFunctional()
+AttributeError: module 'torch.ao.nn' has no attribute 'quantized'
+"
+/media/nimashiri/SSD1/torch_api_examples/14620.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14690.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+  File ""/media/nimashiri/SSD1/torch_api_examples/14690.py"", line 7
+    V=torch.randn(nnz,dims[2],dims[3])
+     ^
+SyntaxError: invalid syntax
+"
+/media/nimashiri/SSD1/torch_api_examples/14700.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14700.py"", line 7, in <module>
+    torch.sparse.sampled_addmm(input,mat1,mat2)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: Calling sampled_addmm with sparse GPU tensors requires compiling PyTorch with CUDA 11.2.1+. Please use PyTorch built with newer CUDA version.
+"
+/media/nimashiri/SSD1/torch_api_examples/14720.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14720.py"", line 6, in <module>
+    s=torch.sparse.spdiags(diags,torch.tensor([0,-1,-2]),(3,3))
+AttributeError: module 'torch.sparse' has no attribute 'spdiags'
+"
+/media/nimashiri/SSD1/torch_api_examples/14721.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14721.py"", line 6, in <module>
+    s=torch.sparse.spdiags(diags,torch.tensor([0,-1,-2]),(3,3),layout=torch.sparse_csr)
+AttributeError: module 'torch.sparse' has no attribute 'spdiags'
+"
+/media/nimashiri/SSD1/torch_api_examples/1610.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/1650.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/1790.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/1880.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/1890.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/2160.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/2240.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/230.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/230.py"", line 11, in <module>
+    a=torch.tensor([1,2,3],requires_grad=True).float()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: Only Tensors of floating point and complex dtype can require gradients
+"
+/media/nimashiri/SSD1/torch_api_examples/2450.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/2510.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/2550.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/2550.py"", line 4, in <module>
+    importtorch
+NameError: name 'importtorch' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/2580.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/270.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/280.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/2950.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13390.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/1760.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/1760.py"", line 4, in <module>
+    torch.exp(torch.tensor([0,math.log(2.)]))
+NameError: name 'math' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/3300.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3990.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py:99: UserWarning: torch.qr is deprecated in favor of torch.linalg.qr and will be removed in a future PyTorch release.
+The boolean parameter 'some' has been replaced with a string parameter 'mode'.
+Q, R = torch.qr(A, some)
+should be replaced with
+Q, R = torch.linalg.qr(A, 'reduced' if some else 'complete') (Triggered internally at  ../aten/src/ATen/native/BatchLinearAlgebra.cpp:1974.)
+  outputs = func(*args, **kwargs)
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3990.py"", line 13, in <module>
+    torch.allclose(torch.matmul(q.mT,q),torch.eye(5))
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+RuntimeError: The size of tensor a (4) must match the size of tensor b (5) at non-singleton dimension 2
+"
+/media/nimashiri/SSD1/torch_api_examples/570.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/6230.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6230.py"", line 7, in <module>
+    torch.nn.Conv1d(inputs,filters)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
+"
+/media/nimashiri/SSD1/torch_api_examples/3390.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/340.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py:99: UserWarning: torch.range is deprecated and will be removed in a future release because its behavior is inconsistent with Python's range builtin. Instead, use torch.arange, which produces values in [start, end).
+  outputs = func(*args, **kwargs)
+"
+/media/nimashiri/SSD1/torch_api_examples/3410.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3460.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3480.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3590.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3600.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3680.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py:99: UserWarning: torch.cholesky is deprecated in favor of torch.linalg.cholesky and will be removed in a future PyTorch release.
+L = torch.cholesky(A)
+should be replaced with
+L = torch.linalg.cholesky(A)
+and
+U = torch.cholesky(A, upper=True)
+should be replaced with
+U = torch.linalg.cholesky(A).mH().
+This transform will produce equivalent results for all valid (symmetric positive definite) inputs. (Triggered internally at  ../aten/src/ATen/native/BatchLinearAlgebra.cpp:1326.)
+  outputs = func(*args, **kwargs)
+"
+/media/nimashiri/SSD1/torch_api_examples/3690.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3840.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3850.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3850.py"", line 8, in <module>
+    X1=torch.linalg.lu_solve(A_factor,B1)
+AttributeError: module 'torch.linalg' has no attribute 'lu_solve'
+"
+/media/nimashiri/SSD1/torch_api_examples/3860.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/3860.py"", line 15, in <module>
+    P_,L_,U_=torch.linalg.lu(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu'
+"
+/media/nimashiri/SSD1/torch_api_examples/3890.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3910.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/3950.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/4000.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/4030.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py:99: UserWarning: torch.symeig is deprecated in favor of torch.linalg.eigh and will be removed in a future PyTorch release.
+The default behavior has changed from using the upper triangular portion of the matrix by default to using the lower triangular portion.
+L, _ = torch.symeig(A, upper=upper)
+should be replaced with
+L = torch.linalg.eigvalsh(A, UPLO='U' if upper else 'L')
+and
+L, V = torch.symeig(A, eigenvectors=True)
+should be replaced with
+L, V = torch.linalg.eigh(A, UPLO='U' if upper else 'L') (Triggered internally at  ../aten/src/ATen/native/BatchLinearAlgebra.cpp:2512.)
+  outputs = func(*args, **kwargs)
+"
+/media/nimashiri/SSD1/torch_api_examples/4060.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/4070.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/4140.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4140.py"", line 5, in <module>
+    torch.randn(10,device='cuda').kthvalue(0)
+RuntimeError: kthvalue CUDA does not have a deterministic implementation, but you set 'torch.use_deterministic_algorithms(True)'. You can turn off determinism just for this operation, or you can use the 'warn_only=True' option, if that's acceptable for your application. You can also file an issue at https://github.com/pytorch/pytorch/issues to help us prioritize adding deterministic support for this operation.
+"
+/media/nimashiri/SSD1/torch_api_examples/4370.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4370.py"", line 4, in <module>
+    m=nn.Conv1d(16,33,3,stride=2)
+NameError: name 'nn' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/4720.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/4870.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/4870.py"", line 5, in <module>
+    multihead_attn=nn.MultiheadAttention(embed_dim,num_heads)
+NameError: name 'embed_dim' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/5110.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5110.py"", line 5, in <module>
+    m=nn.BatchNorm2d(100)
+NameError: name 'nn' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/5170.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+  File ""/media/nimashiri/SSD1/torch_api_examples/5170.py"", line 14
+    process_groups=[torch.distributed.new_group(pids)forpidsin[r1,r2]]
+                                                     ^
+SyntaxError: invalid syntax
+"
+/media/nimashiri/SSD1/torch_api_examples/530.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/5430.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5430.py"", line 5, in <module>
+    m=nn.Dropout1d(p=0.2)
+AttributeError: module 'torch.nn' has no attribute 'Dropout1d'
+"
+/media/nimashiri/SSD1/torch_api_examples/5490.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/5540.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/5550.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/5550.py"", line 47, in <module>
+    input=torch.randn(T,C).log_softmax(2).detach().requires_grad_()
+IndexError: Dimension out of range (expected to be in range of [-2, 1], but got 2)
+"
+/media/nimashiri/SSD1/torch_api_examples/80.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 13, in json_serialize
+    json.dumps(v)
+  File ""/usr/lib/python3.8/json/__init__.py"", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 257, in iterencode
+    return _iterencode(o, 0)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type tensortype is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 56, in get_var_shape
+    return list(s)  # convert torch.Size to list
+TypeError: 'getset_descriptor' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/80.py"", line 7, in <module>
+    torch.set_default_tensor_type(torch.FloatTensor)# setting tensor type also affects this
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 102, in wrapper
+    param_dict = build_param_dict(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 42, in build_param_dict
+    param_dict['parameter:%d' % ind] = json_serialize(arg)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 17, in json_serialize
+    return get_var_signature(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 88, in get_var_signature
+    s['shape'] = get_var_shape(var)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 58, in get_var_shape
+    print(e.message)
+AttributeError: 'TypeError' object has no attribute 'message'
+"
+/media/nimashiri/SSD1/torch_api_examples/830.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/840.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/850.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/850.py"", line 6, in <module>
+    a.slice_scatter(b,start=6)
+RuntimeError: expected src to have a size equal to the slice of self. src size = [8], slice size = [2, 8]
+"
+/media/nimashiri/SSD1/torch_api_examples/890.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/890.py"", line 7, in <module>
+    input.scatter_reduce(0,index,src,reduce=""sum"")
+TypeError: scatter_reduce(): argument 'reduce' (position 3) must be str, not Tensor
+"
+/media/nimashiri/SSD1/torch_api_examples/90.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 13, in json_serialize
+    json.dumps(v)
+  File ""/usr/lib/python3.8/json/__init__.py"", line 231, in dumps
+    return _default_encoder.encode(obj)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 199, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 257, in iterencode
+    return _iterencode(o, 0)
+  File ""/usr/lib/python3.8/json/encoder.py"", line 179, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type tensortype is not JSON serializable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 56, in get_var_shape
+    return list(s)  # convert torch.Size to list
+TypeError: 'getset_descriptor' object is not iterable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/90.py"", line 5, in <module>
+    torch.set_default_tensor_type(torch.DoubleTensor)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 102, in wrapper
+    param_dict = build_param_dict(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 42, in build_param_dict
+    param_dict['parameter:%d' % ind] = json_serialize(arg)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 17, in json_serialize
+    return get_var_signature(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 88, in get_var_signature
+    s['shape'] = get_var_shape(var)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 58, in get_var_shape
+    print(e.message)
+AttributeError: 'TypeError' object has no attribute 'message'
+"
+/media/nimashiri/SSD1/torch_api_examples/980.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/6240.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6240.py"", line 7, in <module>
+    torch.nn.Conv2d(inputs,filters,padding=1)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
+"
+/media/nimashiri/SSD1/torch_api_examples/6250.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6250.py"", line 6, in <module>
+    torch.nn.Conv3d(inputs,filters)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
+"
+/media/nimashiri/SSD1/torch_api_examples/6260.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6260.py"", line 6, in <module>
+    torch.nn.ConvTranspose1d(inputs,weights)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
+"
+/media/nimashiri/SSD1/torch_api_examples/6270.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6270.py"", line 7, in <module>
+    torch.nn.ConvTranspose2d(inputs,weights,padding=1)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
+"
+/media/nimashiri/SSD1/torch_api_examples/6280.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/6280.py"", line 6, in <module>
+    torch.nn.ConvTranspose3d(inputs,weights)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_cls.py"", line 98, in new_init
+    old_init(self, *args, **kwargs)
+TypeError: __init__() missing 1 required positional argument: 'kernel_size'
+"
+/media/nimashiri/SSD1/torch_api_examples/660.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/690.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/690.py"", line 7, in <module>
+    x.index_reduce_(0,index,t,'prod')
+AttributeError: 'Tensor' object has no attribute 'index_reduce_'
+"
+/media/nimashiri/SSD1/torch_api_examples/6990.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/7080.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/7360.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/7360.py"", line 8, in <module>
+    weights=preprocess(loaded_weights)# some function
+NameError: name 'preprocess' is not defined
+"
+/media/nimashiri/SSD1/torch_api_examples/12070.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/12080.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12080.py"", line 5, in <module>
+    sparse=dense.to_sparse_csc()
+AttributeError: 'Tensor' object has no attribute 'to_sparse_csc'
+"
+/media/nimashiri/SSD1/torch_api_examples/12090.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12090.py"", line 6, in <module>
+    sparse_bsr=sparse.to_sparse_bsr((5,5))
+AttributeError: 'Tensor' object has no attribute 'to_sparse_bsr'
+"
+/media/nimashiri/SSD1/torch_api_examples/12100.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/12100.py"", line 6, in <module>
+    sparse_bsc=sparse.to_sparse_bsc((5,5))
+AttributeError: 'Tensor' object has no attribute 'to_sparse_bsc'
+"
+/media/nimashiri/SSD1/torch_api_examples/12351.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13400.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13410.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13420.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13420.py"", line 5, in <module>
+    P,L,U=torch.linalg.lu(A)
+AttributeError: module 'torch.linalg' has no attribute 'lu'
+"
+/media/nimashiri/SSD1/torch_api_examples/13430.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/13430.py"", line 7, in <module>
+    X=torch.linalg.lu_solve(LU,pivots,B)
+AttributeError: module 'torch.linalg' has no attribute 'lu_solve'
+"
+/media/nimashiri/SSD1/torch_api_examples/13440.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13470.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13940.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13950.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13980.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/13990.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14000.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14010.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14030.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14040.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14070.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14070.py"", line 4, in <module>
+    from torch.linalg import vecdot 
+ImportError: cannot import name 'vecdot' from 'torch.linalg' (/home/nimashiri/.local/lib/python3.8/site-packages/torch/linalg/__init__.py)
+"
+/media/nimashiri/SSD1/torch_api_examples/14080.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+"
+/media/nimashiri/SSD1/torch_api_examples/14090.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14090.py"", line 11, in <module>
+    Ainv=torch.linalg.inverse(A)
+AttributeError: module 'torch.linalg' has no attribute 'inverse'
+"
+/media/nimashiri/SSD1/torch_api_examples/14110.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14110.py"", line 6, in <module>
+    linalg.vander(x)
+AttributeError: module 'torch.linalg' has no attribute 'vander'
+"
+/media/nimashiri/SSD1/torch_api_examples/14120.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14120.py"", line 5, in <module>
+    Ainv,info=torch.linalg.solve_ex(A)
+AttributeError: module 'torch.linalg' has no attribute 'solve_ex'
+"
+/media/nimashiri/SSD1/torch_api_examples/14140.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14140.py"", line 7, in <module>
+    LD,pivots=torch.linalg.ldl_factor(A)
+AttributeError: module 'torch.linalg' has no attribute 'ldl_factor'
+"
+,
+/media/nimashiri/SSD1/torch_api_examples/14160.py,"Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/PasteDeploy-2.1.1-py3.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Error processing line 1 of /home/nimashiri/.local/lib/python3.8/site-packages/repoze.sendmail-4.4.1-py2.7-nspkg.pth:
+
+  Traceback (most recent call last):
+    File ""/usr/lib/python3.8/site.py"", line 175, in addpackage
+      exec(line)
+    File ""<string>"", line 1, in <module>
+    File ""<frozen importlib._bootstrap>"", line 553, in module_from_spec
+  AttributeError: 'NoneType' object has no attribute 'loader'
+
+Remainder of file ignored
+Traceback (most recent call last):
+  File ""/media/nimashiri/SSD1/torch_api_examples/14160.py"", line 6, in <module>
+    LD,pivots,info=torch.linalg.ldl_factor_ex(A)
+AttributeError: module 'torch.linalg' has no attribute 'ldl_factor_ex'
+"

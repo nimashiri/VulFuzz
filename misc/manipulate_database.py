@@ -42,8 +42,10 @@ def count_value_space(dbname):
         mycol = mydb[api_name]
         count_test = mycol.count_documents({"source": 'tests'})
         count_models = mycol.count_documents({"source": 'models'})
+        count_docs = mycol.count_documents({"source": 'docs'})
         source_dict['tests'] = source_dict['tests'] + count_test
         source_dict['models'] = source_dict['models'] + count_models
+        source_dict['docs'] = source_dict['docs'] + count_docs
         print(source_dict)
 
 '''
@@ -96,7 +98,7 @@ def drop_document(dbname):
     for name in mydb.list_collection_names():
         print(name)
         mycol = mydb[name]
-        mycol.delete_many({"source": "tests" })
+        mycol.delete_many({"source": "docs" })
 
 '''
 Count the number of APIs based on the source they have been collected. 
@@ -118,6 +120,7 @@ def count_sources_per_api(dbname):
             write_list_to_txt4(name, QUERIED_APIS_ADDRESS)
             counter = counter + 1
             mycol = mydb[name]
+            
             source_dict = {}
             for source in ['docs', 'tests', 'models']:
                 source_dict[source] = mycol.count_documents({"source": source})
@@ -137,6 +140,15 @@ def count_all_apis(dbname):
         counter = counter + 1
     print(counter)
 
+def get_single_api(api, dbname):
+    mydb = myclient[dbname]
+    try:
+        mydb.validate_collection(api)
+        print("This collection exist")
+    except pymongo.errors.OperationFailure:  
+        print("This collection doesn't exist")
+
+
 def get_all_databases():
     print(myclient.list_database_names())
 
@@ -154,7 +166,7 @@ def main():
         subprocess.call('rm -rf /media/nimashiri/DATA/mongodata/mongod.lock', shell=True)
         subprocess.run(['mongod', '--dbpath', '/media/nimashiri/DATA/mongodata/', '--logpath', '/media/nimashiri/DATA/mongolog/mongo.log', '--fork'])
 
-    count_value_space('TF-Unique2')
+    count_all_apis('TF')
 
 
 if __name__ == '__main__':

@@ -5062,6 +5062,16 @@ values = initializer(shape=(2, 2))"
 ","[['Inherits From: ', 'Initializer']]","# Standalone usage:
 initializer = tf.keras.initializers.TruncatedNormal(mean=0., stddev=1.)
 values = initializer(shape=(2, 2))"
+"tf.keras.initializers.VarianceScaling(
+    scale=1.0,
+    mode='fan_in',
+    distribution='truncated_normal',
+    seed=None
+)
+","[['Inherits From: ', 'Initializer']]","# Standalone usage:
+initializer = tf.keras.initializers.VarianceScaling(
+scale=0.1, mode='fan_in', distribution='uniform')
+values = initializer(shape=(2, 2))"
 "tf.io.FixedLenFeature(
     shape, dtype, default_value=None
 )
@@ -6549,10 +6559,6 @@ array([-0.9950547, -0.7615942,  0.,  0.7615942,  0.9950547], dtype=float32)"
     pooling=None,
     classes=1000,
     classifier_activation='softmax'
-)
-",[],[]
-"tf.keras.applications.convnext.decode_predictions(
-    preds, top=5
 )
 ",[],[]
 "tf.keras.applications.convnext.preprocess_input(
@@ -14697,10 +14703,6 @@ det = tf.exp(tf.linalg.logdet(A))  # scalar
     input, name=None
 )
 ","[[None, '\n']]",[]
-"tf.linalg.lstsq(
-    matrix, rhs, l2_regularizer=0.0, fast=True, name=None
-)
-","[[None, '\n']]",[]
 "tf.linalg.lu(
     input,
     output_idx_type=tf.dtypes.int32,
@@ -15902,6 +15904,13 @@ y = tf.math.tan(x) # [1.731261, 0.99920404]
 
 tf.math.atan(y) # [1.047, 0.785] = x
 "
+"tf.math.atan2(
+    y, x, name=None
+)
+","[[None, '\n'], ['Computes arctangent of ', 'y/x', ' element-wise, respecting signs of the arguments.']]","x = [1., 1.]
+y = [1., -1.]
+print((tf.math.atan2(y,x) * (180 / np.pi)).numpy())
+[ 45. -45.]"
 "tf.math.atanh(
     x, name=None
 )
@@ -23459,20 +23468,6 @@ tf.math.greater_equal(x, y) ==> [True, False, True, True]
     name=None
 )
 ","[['Creates a dataset that computes a group-by on ', 'input_dataset', '.']]",[]
-"tf.raw_ops.GroupByWindowDataset(
-    input_dataset,
-    key_func_other_arguments,
-    reduce_func_other_arguments,
-    window_size_func_other_arguments,
-    key_func,
-    reduce_func,
-    window_size_func,
-    output_types,
-    output_shapes,
-    metadata='',
-    name=None
-)
-","[['Creates a dataset that computes a windowed group-by on ', 'input_dataset', '.']]",[]
 "tf.raw_ops.GuaranteeConst(
     input, name=None
 )
@@ -25507,46 +25502,6 @@ parallel_concat([x, y, z]) => [[1, 4], [2, 5], [3, 6]]  # Pack along first dim.
     name=None
 )
 ",[],[]
-"tf.raw_ops.ParseSequenceExampleV2(
-    serialized,
-    debug_name,
-    context_sparse_keys,
-    context_dense_keys,
-    context_ragged_keys,
-    feature_list_sparse_keys,
-    feature_list_dense_keys,
-    feature_list_ragged_keys,
-    feature_list_dense_missing_assumed_empty,
-    context_dense_defaults,
-    Ncontext_sparse=0,
-    context_sparse_types=[],
-    context_ragged_value_types=[],
-    context_ragged_split_types=[],
-    context_dense_shapes=[],
-    Nfeature_list_sparse=0,
-    Nfeature_list_dense=0,
-    feature_list_dense_types=[],
-    feature_list_sparse_types=[],
-    feature_list_ragged_value_types=[],
-    feature_list_ragged_split_types=[],
-    feature_list_dense_shapes=[],
-    name=None
-)
-",[],"context_sparse_indices: A list of `Ncontext_sparse` `Tensor` objects with type `int64`.
-context_sparse_values: A list of `Tensor` objects of type `context_sparse_types`.
-context_sparse_shapes: A list of `Ncontext_sparse` `Tensor` objects with type `int64`.
-context_dense_values: A list of `Tensor` objects. Has the same type as `context_dense_defaults`.
-context_ragged_values: A list of `Tensor` objects of type `context_ragged_value_types`.
-context_ragged_row_splits: A list of `Tensor` objects of type `context_ragged_split_types`.
-feature_list_sparse_indices: A list of `Nfeature_list_sparse` `Tensor` objects with type `int64`.
-feature_list_sparse_values: A list of `Tensor` objects of type `feature_list_sparse_types`.
-feature_list_sparse_shapes: A list of `Nfeature_list_sparse` `Tensor` objects with type `int64`.
-feature_list_dense_values: A list of `Tensor` objects of type `feature_list_dense_types`.
-feature_list_dense_lengths: A list of `Nfeature_list_dense` `Tensor` objects with type `int64`.
-feature_list_ragged_values: A list of `Tensor` objects of type `feature_list_ragged_value_types`.
-feature_list_ragged_outer_splits: A list of `Tensor` objects of type `feature_list_ragged_split_types`.
-feature_list_ragged_inner_splits: A list of `Tensor` objects of type `feature_list_ragged_split_types`.
-"
 "tf.raw_ops.ParseSingleExample(
     serialized,
     dense_defaults,
@@ -29066,10 +29021,6 @@ dense[sparse_indices[i][0], ..., sparse_indices[i][d-1]] = sparse_values[i]
     axis, value, num_split, name=None
 )
 ","[['Splits a tensor into ', 'num_split', ' tensors along one dimension.']]",[]
-"tf.raw_ops.SplitV(
-    value, size_splits, axis, num_split, name=None
-)
-","[['Splits a tensor into ', 'num_split', ' tensors along one dimension.']]",[]
 "tf.raw_ops.SqlDataset(
     driver_name,
     data_source_name,
@@ -29561,11 +29512,6 @@ array([ 5, 10, 1], dtype=int32)"
 st.shape = [2, 3]
 st.values = ['hello', 'world', 'a', 'b', 'c']
 "
-"tf.raw_ops.StringStrip(
-    input, name=None
-)
-",[],"tf.strings.strip([""\nTensorFlow"", ""     The python library    ""]).numpy()
-array([b'TensorFlow', b'The python library'], dtype=object)"
 "tf.raw_ops.StringToHashBucket(
     string_tensor, num_buckets, name=None
 )
@@ -37753,10 +37699,6 @@ hook = early_stopping.make_early_stopping_hook(
 train_spec = tf.estimator.TrainSpec(..., hooks=[hook])
 tf.estimator.train_and_evaluate(estimator, train_spec, ...)
 "
-"tf.estimator.experimental.make_stop_at_checkpoint_step_hook(
-    estimator, last_step, wait_after_file_check_secs=30
-)
-",[],[]
 "tf.estimator.experimental.stop_if_higher_hook(
     estimator,
     metric_name,
@@ -58629,6 +58571,10 @@ example.features.feature['my_feature'].int64_list.value
     save_graph_def=True
 )
 ","[['Creates a ', 'MonitoredSession', ' for training.']]",[]
+"tf.estimator.NanLossDuringTrainingError(
+    *args, **kwargs
+)
+",[],[]
 "tf.estimator.NanTensorHook(
     loss_tensor, fail_on_nan_loss=True
 )

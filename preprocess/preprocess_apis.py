@@ -137,7 +137,7 @@ def find_valid_apis_tf(data):
             has_api = parse_recursive_api_tree(ast_tree.body[1].value)
 
             if has_api:
-                write_list_to_txt4(api_no_sig,'/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_apis/tf_valid_APIs.txt')
+                write_list_to_txt4(api_no_sig,'/media/nimashiri/SSD1/FSE23_2/data/tf/tf_apis/tf_valid_APIs.txt')
                 # d = ['import tensorflow as tf', api_]
 
                 # write_to_disc(d, 'example.py')
@@ -156,13 +156,13 @@ def find_valid_apis_tf(data):
             else:
                 mydata = [v['API'], 'No input params', 'No example']
 
-                with open('/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_apis/filtered_apis.csv', 'a', newline='\n') as fd:
+                with open('/media/nimashiri/SSD1/FSE23_2/data/tf/tf_apis/filtered_apis.csv', 'a', newline='\n') as fd:
                     writer_object = writer(fd)
                     writer_object.writerow(mydata)
                 
         except Exception as e:
             mydata = [v['API'], e, 'No example']
-            with open('/media/nimashiri/DATA/vsprojects/FSE23_2/data/tf/tf_apis/filtered_apis.csv', 'a', newline='\n') as fd:
+            with open('/media/nimashiri/SSD1/FSE23_2/data/tf/tf_apis/filtered_apis.csv', 'a', newline='\n') as fd:
                 writer_object = writer(fd)
                 writer_object.writerow(mydata)
 
@@ -258,15 +258,15 @@ def remove_dup_torch():
     
 
 if __name__ == '__main__':
-    remove_dup_torch()
-    # lib_name = 'torch'
-    # data = pd.read_csv(f'/media/nimashiri/DATA/vsprojects/FSE23_2/data/{lib_name}/{lib_name}_apis/APIs_validation_status.csv')
+
+    lib_name = 'tf'
+    data = pd.read_csv(f'/media/nimashiri/SSD1/FSE23_2/data/{lib_name}/{lib_name}_apis/tf_APIs_signatures.csv')
     # get_torch_apis_raw_symbols_v2(data)
     
     
-    # if lib_name == 'torch':
-    #     find_valid_apis_torch(data)
-    # elif lib_name == 'tf':
-    #     find_valid_apis_tf(data)
-    # else:
-    #     find_valid_apis_mxnet(data)
+    if lib_name == 'torch':
+        find_valid_apis_torch(data)
+    elif lib_name == 'tf':
+        find_valid_apis_tf(data)
+    else:
+        find_valid_apis_mxnet(data)

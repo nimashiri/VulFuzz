@@ -337,9 +337,9 @@ def search_dict(d, q):
 
 
 def scrape_tensorflow_symbols(all_symbols_link):
-    tf_data = pd.read_csv('/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/tf_symbols.csv', sep=',', encoding='utf-8')
+    tf_data = pd.read_csv('/media/nimashiri/SSD1/FSE23_2/scrapers/tf_symbols.csv', sep=',', encoding='utf-8')
 
-    history_addr = '/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/history_tf.txt'
+    history_addr = '/media/nimashiri/SSD1/FSE23_2/scrapers/history_tf.txt'
 
     if not os.path.exists(history_addr):
         f1 = open(history_addr, 'a') 
@@ -416,7 +416,7 @@ def scrape_tensorflow_symbols(all_symbols_link):
 
                             if i_found_api_sig:
                                 my_data = [signature_, token_sequence_descp, temp]
-                                with open('/media/nimashiri/DATA/vsprojects/FSE23_2/scrapers/tf_APIs_signatures.csv', 'a', newline='\n') as fd:
+                                with open('/media/nimashiri/SSD1/FSE23_2/scrapers/tf_APIs_signatures.csv', 'a', newline='\n') as fd:
                                     writer_object = writer(fd)
 
                                     writer_object.writerow(my_data)
@@ -544,7 +544,7 @@ def scrape_mxnet():
 def main():
     all_symbols_link = 'https://www.tensorflow.org/api_docs/python/tf/all_symbols'
 
-    code = 'torch'
+    code = 'tf'
 
     if code == 'tf':
         scrape_tensorflow_symbols(all_symbols_link)

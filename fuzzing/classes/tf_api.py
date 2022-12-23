@@ -902,6 +902,14 @@ class TFArgument(Argument):
         self.maxv = maxv
         self.shape = shape
         self.dtype = dtype
+
+        '''
+        ADDED by NIMA
+        '''
+        self.tensor_empty_flag_type1 = False
+        self.tensor_empty_flag_type2 = False
+        self.large_tensor_flag_type1 = False
+        self.large_tensor_flag_type2 = False
         self.make_tensor_neg = False
 
     @staticmethod
@@ -1150,38 +1158,79 @@ class TFArgument(Argument):
             assert (0)
         code = ""
         var_tensor_name = f"{var_name}_tensor"
+
         big_value_list = [-1879048192, -1250999896764]
         small_value_list = [-49, -5, -10, -2, -80, -60]
+
         if dtype.is_floating:
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_empty_flag_type1:
+                value = []
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_empty_flag_type2:
+                code += "%s = [] \n" % (var_tensor_name)
+            elif self.large_tensor_flag_type1:
+                value = choice(big_value_list)
+                code += "%s = tf.random.uniform(%s, dtype=tf.%s, maxval=%s)\n" % (var_tensor_name, shape, dtype.name, abs(value))
+            elif self.large_tensor_flag_type2:
+                value = choice(big_value_list)
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, abs(value), shape, dtype.name)
             else:
                 code += "%s = tf.random.uniform(%s, dtype=tf.%s)\n" % (var_tensor_name, shape, dtype.name)
         elif dtype.is_complex:
             if self.make_tensor_neg:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
-                value = choice(big_value_list)
-                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, ftype)
-                # min1= choice([-1879, -1250])
-                # max1= choice([-1, -49, -5, -10, -2, -80, -60])
-                # min2= choice([-1879, -1250])
-                # max2= choice([-1, -49, -5, -10, -2, -80, -60])
-                # code += "%s = tf.complex(tf.random.uniform(%s,%s,%s, dtype=tf.%s)," \
-                #         "tf.random.uniform(%s,%s,%s, dtype=tf.%s))\n" % (var_tensor_name, shape,min1,max1, ftype, shape, min2, max2, ftype)
+                value1 = choice(big_value_list)
+                value2 = choice(big_value_list)
+                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
+                     "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
+            elif self.make_tensor_empty_type1:
+                value = []
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.make_tensor_empty_type2:
+                code += "%s = [] \n" % (var_tensor_name)
+            elif self.large_tensor_flag_type1:
+                ftype = "float64" if dtype == tf.complex128 else "float32"
+                value1 = choice(big_value_list)
+                value2 = choice(big_value_list)
+                code += "%s =tf.complex(tf.random.uniform(%s, dtype=tf.%s, maxval=%s),"\
+                     "tf.random.uniform(%s, dtype=tf.%s, maxval=%s))" % (var_tensor_name, shape, ftype, abs(value1), shape, ftype, abs(value2))
+            elif self.large_tensor_flag_type2:
+                ftype = "float64" if dtype == tf.complex128 else "float32"
+                value1 = choice(big_value_list)
+                value2 = choice(big_value_list)
+                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
+                     "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, abs(value1), shape, ftype, abs(value2), shape, ftype)
             else:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 code += "%s = tf.complex(tf.random.uniform(%s, dtype=tf.%s)," \
                         "tf.random.uniform(%s, dtype=tf.%s))\n" % (var_tensor_name, shape, ftype, shape, ftype)
         elif dtype == tf.bool:
-            code += "%s = tf.cast(tf.random.uniform(" \
-                   "%s, minval=0, maxval=2, dtype=tf.int32), dtype=tf.bool)\n" % (var_tensor_name, shape)
+            if self.make_tensor_empty_type1:
+                value = []
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.make_tensor_empty_type2:
+                code += "%s = [] \n" % (var_tensor_name)
+            else:
+                code += "%s = tf.cast(tf.random.uniform(" \
+                    "%s, minval=0, maxval=2, dtype=tf.int32), dtype=tf.bool)\n" % (var_tensor_name, shape)
         elif dtype == tf.string:
             code += "%s = tf.convert_to_tensor(np.ones(%s, dtype=str))\n" % (var_tensor_name, shape)
         elif dtype in [tf.int32, tf.int64]:
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.make_tensor_empty_type1:
+                value = []
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.make_tensor_empty_type2:
+                code += "%s = [] \n" % (var_tensor_name)
+            elif self.large_tensor_flag:
+                value = choice(big_value_list)
+                code += "%s = tf.random.uniform(%s, dtype=tf.%s, maxval=%s)\n" \
+                    % (var_tensor_name, shape, dtype.name, abs(value))
             else:
                 code += "%s = tf.random.uniform(%s, minval=%d, maxval=%d, dtype=tf.%s)\n" \
                     % (var_tensor_name, shape, self.minv, self.maxv + 1, dtype.name)
@@ -1190,6 +1239,14 @@ class TFArgument(Argument):
                 value = choice(big_value_list)
                 code += "%s = tf.saturate_cast(" \
                 "tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_empty_flag_type1:
+                value = []
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_empty_flag_type2:
+                code += "%s = [] \n" % (var_tensor_name)
+            elif self.large_tensor_flag:
+                value = choice(big_value_list)
+                code += "%s = tf.random.uniform(%s, dtype=tf.%s, maxval=%s)\n" % (var_tensor_name, shape, dtype.name, abs(value))
             else:
                 code += "%s = tf.saturate_cast(" \
                     "tf.random.uniform(%s, minval=%d, maxval=%d, dtype=tf.int64), " \
@@ -1256,16 +1313,86 @@ class TFArgument(Argument):
             return code
         return ""
 
-    def new_mutation(self, RULE=None):
-        if RULE=='NEGATIVE_INT_TENSOR':
+    def new_mutation_multiple(self, RULE=None):
+        if RULE=='NEGATE_INT_TENSOR':
             self.mutate_negative()
         elif RULE=='RANK_REDUCTION_EXPANSION':
             self.modify_rank()
+        elif RULE == 'EMPTY_TENSOR_TYPE1':
+            self.make_tensor_empty_type1()
+        elif RULE == 'EMPTY_TENSOR_TYPE2':
+            self.make_tensor_empty_type2()
+        elif RULE == 'EMPTY_LIST':
+            self.make_list_tuple_empty()
+        elif RULE == 'LARGE_INPUT':
+            self.make_tensor_large()
+        else:
+            return
+
+
+    def new_mutation(self, RULE=None):
+        if RULE=='NEGATE_INT_TENSOR':
+            self.mutate_negative()
+        elif RULE=='RANK_REDUCTION_EXPANSION':
+            self.modify_rank()
+        elif RULE == 'EMPTY_TENSOR_TYPE1':
+            self.make_tensor_empty_type1()
+        elif RULE == 'EMPTY_TENSOR_TYPE2':
+            self.make_tensor_empty_type2()
+        elif RULE == 'EMPTY_LIST':
+            self.make_list_tuple_empty()
+        elif RULE == 'LARGE_TENSOR_TYPE1':
+            self.make_tensor_large_type1()
+        elif RULE == 'LARGE_TENSOR_TYPE2':
+            self.make_tenso_large_type2()
         else:
             return
 
     def mutate_value(self):
         self.mutate_value_random()
+
+    
+    '''
+    ######################### VERY LARGE INPUTS #####################
+    #################################################################
+    '''
+
+    def make_tensor_large_type1(self):
+        self.large_tensor_flag_type1 = True
+
+    def make_tensor_large_type2(self):
+        self.large_tensor_flag_type2 = True
+
+    '''
+    ######################## EMPTY INPUTS ###########################
+    ################################################################# 
+    '''
+    def make_int_zero(self, value) -> int:
+        new_value = 0
+        return new_value
+
+    def make_float_zero(self, value) -> float:
+        new_value = 0
+        return new_value
+
+    def make_tensor_empty_type1(self):
+        if self.type in self._tensor_arg_dtypes:
+            self.tensor_empty_flag_type1 = True
+
+    def make_tensor_empty_type2(self):
+        if self.type in self._tensor_arg_dtypes:
+            self.tensor_empty_flag_type2 = True
+
+    def make_list_tuple_empty(self):
+        if self.type == ArgType.INT:
+            self.value = self.make_int_zero(self.value)
+        elif self.type == ArgType.FLOAT:
+            self.value = self.make_float_zero(self.value)
+        elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
+            for self in self.value:
+                self.make_list_tuple_empty()
+        else:
+            return 
 
     '''
     ######################## TENSOR RANK REDUCTION EXPANSION#########
@@ -1321,8 +1448,8 @@ class TFArgument(Argument):
         elif self.type == ArgType.FLOAT:
             self.value = self.make_float_negative(self.value)
         elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
-            for arg in self.value:
-                arg.mutate_negative()
+            for self in self.value:
+                self.mutate_negative()
         elif self.type in self._tensor_arg_dtypes:
             self.make_tensor_negative()
         elif self.type == ArgType.TF_DTYPE:
@@ -1482,7 +1609,7 @@ class TFAPI(API):
         #     arg.new_mutation()
 
     def new_mutate_multiple(self, arg, r):
-        arg.new_mutation(r)
+        arg.new_mutation_multiple(r)
         
 
     def mutate(self, enable_value=True, enable_type=True, enable_db=True):

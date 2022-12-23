@@ -50,14 +50,17 @@ def fuzzing():
     enable_type = True
     enable_db = False
 
-    rules = ['NEGATIVE_INT_TENSOR']
+    # 'EMPTY_LIST','EMPTY_TENSOR_TYPE2','EMPTY_TENSOR_TYPE1','NEGATIVE', 'RANK_REDUCTION_EXPANSION', 'LARGE_TENSOR_TYPE1', 'LARGE_TENSOR_TYPE2'
+    rules = ['LARGE_TENSOR_TYPE2']
 
     tf_output_dir = '/media/nimashiri/SSD1/FSE23_2/fuzzing'
     MyTF = TFLibrary(tf_output_dir)
 
     for api_ in mydb.list_collection_names():
         # api_ = 'tensorflow.python.ops.array_grad._BatchGatherGrad'
-        api_ = 'tf.transpose'
+        # api_ = 'tf.transpose'
+        api_ = 'tensorflow.python.ops.nn_ops.max_pool'
+       
         api = TFAPI(api_)
         api.args.pop('source')
         api.args.pop('_id')
@@ -69,8 +72,8 @@ def fuzzing():
                 for r in rules:
                     old_arg = copy.deepcopy(api.args[arg])
                     api.new_mutate_multiple(api.args[arg], r)
-                    if r == 'NEGATIVE_INT_TENSOR':
-                        MyTF.test_with_oracle(api, OracleType.CRASH)
+                    MyTF.test_with_oracle(api, OracleType.CRASH)
+                    api.api = api_
                     api.args[arg] = old_arg
 
     

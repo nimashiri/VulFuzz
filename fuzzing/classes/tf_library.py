@@ -42,8 +42,16 @@ class TFLibrary(Library):
             # else:
             #     self.write_to_dir(join(self.output[oracle], "fail"), api.api, code)
         elif oracle == OracleType.CUDA:
+            part_from = ".".join(api.api.split('.')[0:-2])
+
             code = "import tensorflow as tf\n"
-            code += self.generate_code(api, oracle)
+
+            if re.findall(r'(tensorflow\.python)', api.api):
+                code += f"from {part_from} import {api.api.split('.')[-2]}\n"
+                api.api = ".".join(api.api.split('.')[-2:])
+                code += self.generate_code(api, oracle)
+            else:
+                code += self.generate_code(api, oracle)
 
             write_code = "results = dict()\n" + code + "\nprint(results)\n"
             with open(join(self.directory, "temp.py"), "w") as f:
@@ -73,9 +81,19 @@ class TFLibrary(Library):
                 write_dir = join(self.output[oracle], "fail")
             self.write_to_dir(write_dir, api.api, write_code)
         elif oracle == OracleType.PRECISION:
-            code = "import tensorflow as tf\n"
+           
             code += "import time\n"
-            code += self.generate_code(api, oracle)
+            
+            part_from = ".".join(api.api.split('.')[0:-2])
+
+            code = "import tensorflow as tf\n"
+
+            if re.findall(r'(tensorflow\.python)', api.api):
+                code += f"from {part_from} import {api.api.split('.')[-2]}\n"
+                api.api = ".".join(api.api.split('.')[-2:])
+                code += self.generate_code(api, oracle)
+            else:
+                code += self.generate_code(api, oracle)         
 
             write_code = "results = dict()\n" + code + "\nprint(results)\n"
             with open(join(self.directory, "temp.py"), "w") as f:

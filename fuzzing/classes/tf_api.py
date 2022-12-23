@@ -913,6 +913,7 @@ class TFArgument(Argument):
         self.make_tensor_neg = False
         self.tensor_zero_flag_type1 = False
         self.tensor_zero_flag_type2 = False
+        self.nan_input_tensor = False
 
     @staticmethod
     def str_to_dtype(dt: str):
@@ -1168,6 +1169,9 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            if self.nan_input_tensor:
+                value = np.nan
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_zero_flag_type1:
                 value = [0]
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
@@ -1194,17 +1198,27 @@ class TFArgument(Argument):
                 value2 = choice(big_value_list)
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                      "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
+            if self.nan_input_tensor:
+                ftype = "float64" if dtype == tf.complex128 else "float32"
+                value1 = np.nan
+                value2 = np.nan
+                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
+                     "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
             elif self.tensor_zero_flag_type1:
+                ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = [0]
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                 "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.tensor_zero_flag_type2:
+                ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = 0.0
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                 "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.make_tensor_empty_type1:
+                ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = []
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
+                "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.make_tensor_empty_type2:
                 code += "%s = [] \n" % (var_tensor_name)
             elif self.large_tensor_flag_type1:
@@ -1238,6 +1252,9 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            if self.nan_input_tensor:
+                value = np.nan
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_zero_flag_type1:
                 value = [0]
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
@@ -1265,12 +1282,21 @@ class TFArgument(Argument):
                 code += "%s = tf.saturate_cast(" \
                     "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
                     "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
+            if self.nan_input_tensor:
+                value = np.nan
+                code += "%s = tf.saturate_cast(" \
+                    "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
+                    "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_zero_flag_type1:
                 value = [0]
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+                code += "%s = tf.saturate_cast(" \
+                    "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
+                    "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_zero_flag_type2:
                 value = 0.0
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+                code += "%s = tf.saturate_cast(" \
+                    "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
+                    "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_empty_flag_type1:
                 value = []
                 code += "%s = tf.saturate_cast(" \
@@ -1371,6 +1397,12 @@ class TFArgument(Argument):
             self.make_tensor_large_type2()
         elif RULE == 'LARGE_LIST_ELEMENT':
             self.make_list_element_large()
+        elif RULE == 'ZERO_TENSOR_TYPE1':
+            self.make_tensor_zero_type1()
+        elif RULE == 'ZERO_TENSOR_TYPE2':
+            self.make_tensor_zero_type2()
+        elif RULE == 'NAN_TENSOR':
+            self.make_tensor_nan()
         else:
             return
 
@@ -1401,6 +1433,14 @@ class TFArgument(Argument):
 
     def mutate_value(self):
         self.mutate_value_random()
+
+    '''
+    ######################### NAN INPUT TO TENSORS ##############
+    #################################################################
+    '''
+
+    def make_tensor_nan(self):
+        self.nan_input_tensor = True
 
     '''
     ######################### ZERO ELEMENTS OR TENSORS ##############

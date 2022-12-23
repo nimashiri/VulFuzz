@@ -51,7 +51,7 @@ def fuzzing():
     enable_db = False
 
     # 'EMPTY_LIST','EMPTY_TENSOR_TYPE2','EMPTY_TENSOR_TYPE1','NEGATIVE', 'RANK_REDUCTION_EXPANSION', 'LARGE_TENSOR_TYPE1', 'LARGE_TENSOR_TYPE2'
-    rules = ['LARGE_TENSOR_TYPE2']
+    rules = ['LARGE_LIST_ELEMENT']
 
     tf_output_dir = '/media/nimashiri/SSD1/FSE23_2/fuzzing'
     MyTF = TFLibrary(tf_output_dir)
@@ -59,8 +59,8 @@ def fuzzing():
     for api_ in mydb.list_collection_names():
         # api_ = 'tensorflow.python.ops.array_grad._BatchGatherGrad'
         # api_ = 'tf.transpose'
-        api_ = 'tensorflow.python.ops.nn_ops.max_pool'
-       
+        # api_ = 'tensorflow.python.ops.nn_ops.max_pool'
+        api_ = 'tensorflow.python.ops.nn_ops.in_top_k'
         api = TFAPI(api_)
         api.args.pop('source')
         api.args.pop('_id')

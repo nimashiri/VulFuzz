@@ -911,6 +911,7 @@ class TFArgument(Argument):
         self.large_tensor_flag_type1 = False
         self.large_tensor_flag_type2 = False
         self.make_tensor_neg = False
+        self.tensor_zero_flag = False
 
     @staticmethod
     def str_to_dtype(dt: str):
@@ -1166,6 +1167,9 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_zero_flag:
+                value = [0]
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_empty_flag_type1:
                 value = []
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
@@ -1186,6 +1190,10 @@ class TFArgument(Argument):
                 value2 = choice(big_value_list)
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                      "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
+            elif self.tensor_zero_flag:
+                value = [0]
+                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
+                "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.make_tensor_empty_type1:
                 value = []
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
@@ -1222,6 +1230,9 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_zero_flag:
+                value = [0]
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.make_tensor_empty_type1:
                 value = []
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
@@ -1243,6 +1254,9 @@ class TFArgument(Argument):
                 code += "%s = tf.saturate_cast(" \
                     "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
                     "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_zero_flag:
+                value = [0]
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_empty_flag_type1:
                 value = []
                 code += "%s = tf.saturate_cast(" \
@@ -1337,8 +1351,12 @@ class TFArgument(Argument):
             self.make_tensor_empty_type2()
         elif RULE == 'EMPTY_LIST':
             self.make_list_tuple_empty()
-        elif RULE == 'LARGE_INPUT':
-            self.make_tensor_large()
+        elif RULE == 'LARGE_TENSOR_TYPE1':
+            self.make_tensor_large_type1()
+        elif RULE == 'LARGE_TENSOR_TYPE2':
+            self.make_tensor_large_type2()
+        elif RULE == 'LARGE_LIST_ELEMENT':
+            self.make_list_element_large()
         else:
             return
 
@@ -1357,18 +1375,39 @@ class TFArgument(Argument):
         elif RULE == 'LARGE_TENSOR_TYPE1':
             self.make_tensor_large_type1()
         elif RULE == 'LARGE_TENSOR_TYPE2':
-            self.make_tenso_large_type2()
+            self.make_tensor_large_type2()
+        elif RULE == 'LARGE_LIST_ELEMENT':
+            self.make_list_element_large()
+        elif RULE == 'ZERO_TENSOR':
+            self.make_tensor_zero()
         else:
             return
 
     def mutate_value(self):
         self.mutate_value_random()
 
+    '''
+    ######################### ZERO ELEMENTS OR TENSORS ##############
+    #################################################################
+    '''
+
+    def make_tensor_zero(self):
+        self.tensor_zero_flag = True
     
     '''
     ######################### VERY LARGE INPUTS #####################
     #################################################################
     '''
+    def make_list_element_large(self):
+        if self.type == ArgType.INT:
+            self.value = 1250999896764
+        elif self.type == ArgType.FLOAT:
+            self.value = 0.000005478554
+        elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
+            for self in self.value:
+                self.make_list_element_large()
+        else:
+            return 
 
     def make_tensor_large_type1(self):
         self.large_tensor_flag_type1 = True

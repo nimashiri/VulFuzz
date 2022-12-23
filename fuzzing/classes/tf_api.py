@@ -1227,10 +1227,13 @@ class TFArgument(Argument):
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.make_tensor_empty_type2:
                 code += "%s = [] \n" % (var_tensor_name)
-            elif self.large_tensor_flag:
+            elif self.large_tensor_flag_type1:
                 value = choice(big_value_list)
                 code += "%s = tf.random.uniform(%s, dtype=tf.%s, maxval=%s)\n" \
                     % (var_tensor_name, shape, dtype.name, abs(value))
+            elif self.large_tensor_flag_type2:
+                value = choice(big_value_list)
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, abs(value), shape, dtype.name)
             else:
                 code += "%s = tf.random.uniform(%s, minval=%d, maxval=%d, dtype=tf.%s)\n" \
                     % (var_tensor_name, shape, self.minv, self.maxv + 1, dtype.name)
@@ -1238,15 +1241,25 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.saturate_cast(" \
-                "tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+                    "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
+                    "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_empty_flag_type1:
                 value = []
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+                code += "%s = tf.saturate_cast(" \
+                "tf.constant(%s, shape=%s, dtype=tf.int64,),"\
+                "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_empty_flag_type2:
                 code += "%s = [] \n" % (var_tensor_name)
-            elif self.large_tensor_flag:
+            elif self.large_tensor_flag_type1:
                 value = choice(big_value_list)
-                code += "%s = tf.random.uniform(%s, dtype=tf.%s, maxval=%s)\n" % (var_tensor_name, shape, dtype.name, abs(value))
+                code += "%s = tf.saturate_cast(" \
+                "tf.random.uniform(%s, dtype=tf.int64, maxval=%s),"\
+                "dtype=tf.%s)\n" % (var_tensor_name, shape, abs(value), dtype.name)
+            elif self.large_tensor_flag_type2:
+                value = choice(big_value_list)
+                code += "%s = tf.saturate_cast(" \
+                "tf.constant(%s, shape=%s, dtype=tf.int64,),"\
+                "dtype=tf.%s)\n" % (var_tensor_name, abs(value), shape, dtype.name)
             else:
                 code += "%s = tf.saturate_cast(" \
                     "tf.random.uniform(%s, minval=%d, maxval=%d, dtype=tf.int64), " \

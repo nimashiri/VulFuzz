@@ -911,7 +911,8 @@ class TFArgument(Argument):
         self.large_tensor_flag_type1 = False
         self.large_tensor_flag_type2 = False
         self.make_tensor_neg = False
-        self.tensor_zero_flag = False
+        self.tensor_zero_flag_type1 = False
+        self.tensor_zero_flag_type2 = False
 
     @staticmethod
     def str_to_dtype(dt: str):
@@ -1167,8 +1168,11 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
-            elif self.tensor_zero_flag:
+            elif self.tensor_zero_flag_type1:
                 value = [0]
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_zero_flag_type2:
+                value = 0.0
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_empty_flag_type1:
                 value = []
@@ -1190,8 +1194,12 @@ class TFArgument(Argument):
                 value2 = choice(big_value_list)
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                      "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
-            elif self.tensor_zero_flag:
+            elif self.tensor_zero_flag_type1:
                 value = [0]
+                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
+                "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
+            elif self.tensor_zero_flag_type2:
+                value = 0.0
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                 "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.make_tensor_empty_type1:
@@ -1230,8 +1238,11 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
-            elif self.tensor_zero_flag:
+            elif self.tensor_zero_flag_type1:
                 value = [0]
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_zero_flag_type2:
+                value = 0.0
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.make_tensor_empty_type1:
                 value = []
@@ -1254,8 +1265,11 @@ class TFArgument(Argument):
                 code += "%s = tf.saturate_cast(" \
                     "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
                     "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
-            elif self.tensor_zero_flag:
+            elif self.tensor_zero_flag_type1:
                 value = [0]
+                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.tensor_zero_flag_type2:
+                value = 0.0
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_empty_flag_type1:
                 value = []
@@ -1378,8 +1392,10 @@ class TFArgument(Argument):
             self.make_tensor_large_type2()
         elif RULE == 'LARGE_LIST_ELEMENT':
             self.make_list_element_large()
-        elif RULE == 'ZERO_TENSOR':
-            self.make_tensor_zero()
+        elif RULE == 'ZERO_TENSOR_TYPE1':
+            self.make_tensor_zero_type1()
+        elif RULE == 'ZERO_TENSOR_TYPE2':
+            self.make_tensor_zero_type2()
         else:
             return
 
@@ -1391,8 +1407,11 @@ class TFArgument(Argument):
     #################################################################
     '''
 
-    def make_tensor_zero(self):
-        self.tensor_zero_flag = True
+    def make_tensor_zero_type1(self):
+        self.tensor_zero_flag_type1 = True
+
+    def make_tensor_zero_type2(self):
+        self.tensor_zero_flag_type2 = True
     
     '''
     ######################### VERY LARGE INPUTS #####################

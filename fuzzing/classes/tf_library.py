@@ -75,7 +75,7 @@ class TFLibrary(Library):
             else:
                 code += self.generate_code(api, oracle)
 
-            write_code = "results = dict()\n"
+            write_code = "results = dict()\n" + code
             with open(join(self.directory, "temp.py"), "w") as f:
                 f.write(write_code)
 
@@ -115,7 +115,7 @@ class TFLibrary(Library):
             else:
                 code += self.generate_code(api, oracle)         
 
-            write_code = "results = dict()\n"
+            write_code = "results = dict()\n" + code
             with open(join(self.directory, "temp.py"), "w") as f:
                 f.write(write_code)
 

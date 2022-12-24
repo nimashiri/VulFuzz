@@ -71,25 +71,28 @@ if __name__ == '__main__':
         #api_ = 'tensorflow.python.ops.nn_ops.in_top_k'
         # api_ = 'tensorflow.python.ops.linalg.linear_operator_algebra.tensorflow.python.ops.linalg.linear_operator_algebra.RegisterCholesky'
 
-    api = TFAPI(api_name)
-    api_keywords = api_name.split('.')
-    if api_keywords.count('tensorflow') > 1:
-        api_name = make_api_name_unique(api_name)
-    num_tensors = count_tensor_inputs(api)
-    api.args.pop('source')
-    if '_id' in api.args:
-        api.args.pop('_id')
+    try:
+        api = TFAPI(api_name)
+        api_keywords = api_name.split('.')
+        if api_keywords.count('tensorflow') > 1:
+            api_name = make_api_name_unique(api_name)
+        num_tensors = count_tensor_inputs(api)
+        api.args.pop('source')
+        if '_id' in api.args:
+            api.args.pop('_id')
 
-    for i, arg in enumerate(api.args):       
-        for r in rules:
-            print("The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(api_name, arg, r))
-            old_arg = copy.deepcopy(api.args[arg])
-            api.new_mutate_multiple(api.args[arg], r)
-            MyTF.test_with_oracle(api, OracleType.CRASH)
-            api.api = sys.argv[2]
-            MyTF.test_with_oracle(api, OracleType.CUDA)
-            api.api = sys.argv[2]
-            MyTF.test_with_oracle(api, OracleType.PRECISION)
-            api.api = sys.argv[2]
-            api.args[arg] = old_arg
+        for i, arg in enumerate(api.args):       
+            for r in rules:
+                print("The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(api_name, arg, r))
+                old_arg = copy.deepcopy(api.args[arg])
+                api.new_mutate_multiple(api.args[arg], r)
+                MyTF.test_with_oracle(api, OracleType.CRASH)
+                api.api = sys.argv[2]
+                MyTF.test_with_oracle(api, OracleType.CUDA)
+                # api.api = sys.argv[2]
+                # MyTF.test_with_oracle(api, OracleType.PRECISION)
+                api.api = sys.argv[2]
+                api.args[arg] = old_arg
+    except Exception as e:
+        pass
 

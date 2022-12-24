@@ -1162,7 +1162,7 @@ class TFArgument(Argument):
         code = ""
         var_tensor_name = f"{var_name}_tensor"
 
-        big_value_list = [-1879048192, -1250999896764]
+        big_value_list = [-1879, -1250]
         small_value_list = [-49, -5, -10, -2, -80, -60]
 
         if dtype.is_floating:
@@ -1440,7 +1440,8 @@ class TFArgument(Argument):
     '''
 
     def make_tensor_nan(self):
-        self.nan_input_tensor = True
+        if self.type in self._tensor_arg_dtypes:
+            self.nan_input_tensor = True
 
     '''
     ######################### ZERO ELEMENTS OR TENSORS ##############
@@ -1448,10 +1449,12 @@ class TFArgument(Argument):
     '''
 
     def make_tensor_zero_type1(self):
-        self.tensor_zero_flag_type1 = True
+        if self.type in self._tensor_arg_dtypes:
+            self.tensor_zero_flag_type1 = True
 
     def make_tensor_zero_type2(self):
-        self.tensor_zero_flag_type2 = True
+        if self.type in self._tensor_arg_dtypes:
+            self.tensor_zero_flag_type2 = True
     
     '''
     ######################### VERY LARGE INPUTS #####################
@@ -1459,9 +1462,9 @@ class TFArgument(Argument):
     '''
     def make_list_element_large(self):
         if self.type == ArgType.INT:
-            self.value = 1250999896764
+            self.value = 12509
         elif self.type == ArgType.FLOAT:
-            self.value = 0.000005478554
+            self.value = 0.000005
         elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
             for self in self.value:
                 self.make_list_element_large()
@@ -1469,10 +1472,12 @@ class TFArgument(Argument):
             return 
 
     def make_tensor_large_type1(self):
-        self.large_tensor_flag_type1 = True
+        if self.type in self._tensor_arg_dtypes:
+            self.large_tensor_flag_type1 = True
 
     def make_tensor_large_type2(self):
-        self.large_tensor_flag_type2 = True
+        if self.type in self._tensor_arg_dtypes:
+            self.large_tensor_flag_type2 = True
 
     '''
     ######################## EMPTY INPUTS ###########################
@@ -1572,8 +1577,7 @@ class TFArgument(Argument):
             self.value = None
             pass
         else:
-            raise ValueError(self.type)
-            assert (0)
+            return
     '''
     ##################################################################
     ##################################################################
@@ -1854,6 +1858,7 @@ class TFAPI(API):
                 res_code += f"{RES_KEY}[\"{res_name}\"] = {cls_name}(*{input_name})\n"
         else:
             res_code = f"{RES_KEY}[\"{res_name}\"] = {self.api}({arg_str})\n"
+
         invocation = self._to_invocation_code(arg_code, res_code, **kwargs)
         return invocation
 

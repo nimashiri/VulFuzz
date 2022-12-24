@@ -11,6 +11,7 @@ from classes.library import Library
 from classes.database import TFDatabase
 from constants.enum import OracleType
 from constants.keys import ERR_CPU_KEY, ERR_GPU_KEY, ERR_HIGH_KEY, ERR_LOW_KEY, ERROR_KEY, RES_CPU_KEY, RES_GPU_KEY, TIME_HIGH_KEY, TIME_LOW_KEY
+import subprocess
 
 class TFLibrary(Library):
     def __init__(self, output_dir, diff_bound=1e-5, time_bound=10, time_thresold=1e-3) -> None:
@@ -26,6 +27,8 @@ class TFLibrary(Library):
             part_from = ".".join(api.api.split('.')[0:-2])
 
             code = "import tensorflow as tf\n"
+            code += 'import os\n'
+            code += 'os.environ["CUDA_VISIBLE_DEVICES"] = "-1"\n'
 
             if re.findall(r'(tensorflow\.python)', api.api):
                 code += f"from {part_from} import {api.api.split('.')[-2]}\n"
@@ -34,13 +37,25 @@ class TFLibrary(Library):
             else:
                 code += self.generate_code(api, oracle)
 
+            write_code = "results = dict()\n" + code + "\nprint(results)\n"
+
             with open(join(self.directory, "temp.py"), "w") as f:
-                f.write(code)
-            #results, error = self.run_code(code)
-            # if error == None:
-            #     self.write_to_dir(join(self.output[oracle], "success"), api.api, code)
-            # else:
-            #     self.write_to_dir(join(self.output[oracle], "fail"), api.api, code)
+                f.write(write_code)
+
+            results, error = self.run_code(write_code)
+
+            # command = 'python3 /media/nimashiri/SSD1/testing_results/temp.py'
+            #res = subprocess.getoutput(['python3', '/media/nimashiri/SSD1/testing_results/temp.py'])
+            #stdout = subprocess.run(['python3', '/media/nimashiri/SSD1/testing_results/temp.py'], check=True, capture_output=True, text=True).stdout
+            # print('############################################')
+            # print('############################################')
+            #print(stdout)
+            # print('############################################')
+            # print('############################################')
+            if error == None:
+                self.write_to_dir(join(self.output[oracle], "success"), api.api, write_code)
+            else:
+                self.write_to_dir(join(self.output[oracle], "fail"), api.api, write_code)
         elif oracle == OracleType.CUDA:
             part_from = ".".join(api.api.split('.')[0:-2])
 
@@ -57,7 +72,7 @@ class TFLibrary(Library):
             with open(join(self.directory, "temp.py"), "w") as f:
                 f.write(write_code)
 
-            results, error = self.run_code(code)
+            results, error = self.run_code(write_code)
             err_cpu = results[ERR_CPU_KEY]
             err_gpu = results[ERR_GPU_KEY]
             write_dir = ""
@@ -82,12 +97,12 @@ class TFLibrary(Library):
             self.write_to_dir(write_dir, api.api, write_code)
         elif oracle == OracleType.PRECISION:
            
-            code += "import time\n"
             
+
             part_from = ".".join(api.api.split('.')[0:-2])
 
             code = "import tensorflow as tf\n"
-
+            code += "import time\n"
             if re.findall(r'(tensorflow\.python)', api.api):
                 code += f"from {part_from} import {api.api.split('.')[-2]}\n"
                 api.api = ".".join(api.api.split('.')[-2:])
@@ -99,7 +114,7 @@ class TFLibrary(Library):
             with open(join(self.directory, "temp.py"), "w") as f:
                 f.write(write_code)
 
-            results, error = self.run_code(code)
+            results, error = self.run_code(write_code)
             err_high = results[ERR_HIGH_KEY]
             err_low = results[ERR_LOW_KEY]
             write_dir = ""

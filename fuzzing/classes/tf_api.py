@@ -1197,28 +1197,28 @@ class TFArgument(Argument):
                 value1 = choice(big_value_list)
                 value2 = choice(big_value_list)
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                     "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
+                     "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
             if self.nan_input_tensor:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 value1 = np.nan
                 value2 = np.nan
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                     "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
+                     "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
             elif self.tensor_zero_flag_type1:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = [0]
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
+                "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.tensor_zero_flag_type2:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = 0.0
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
+                "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.make_tensor_empty_type1:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = []
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
+                "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
             elif self.make_tensor_empty_type2:
                 code += "%s = [] \n" % (var_tensor_name)
             elif self.large_tensor_flag_type1:
@@ -1226,13 +1226,13 @@ class TFArgument(Argument):
                 value1 = choice(big_value_list)
                 value2 = choice(big_value_list)
                 code += "%s =tf.complex(tf.random.uniform(%s, dtype=tf.%s, maxval=%s),"\
-                     "tf.random.uniform(%s, dtype=tf.%s, maxval=%s))" % (var_tensor_name, shape, ftype, abs(value1), shape, ftype, abs(value2))
+                     "tf.random.uniform(%s, dtype=tf.%s, maxval=%s))\n" % (var_tensor_name, shape, ftype, abs(value1), shape, ftype, abs(value2))
             elif self.large_tensor_flag_type2:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 value1 = choice(big_value_list)
                 value2 = choice(big_value_list)
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                     "tf.constant(%s, shape=%s, dtype=tf.%s,))" % (var_tensor_name, abs(value1), shape, ftype, abs(value2), shape, ftype)
+                     "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, abs(value1), shape, ftype, abs(value2), shape, ftype)
             else:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 code += "%s = tf.complex(tf.random.uniform(%s, dtype=tf.%s)," \
@@ -1698,8 +1698,8 @@ import re
 class TFAPI(API):
     def __init__(self, api_name, record=None) -> None:
         super().__init__(api_name)
-        self.record = TFDatabase.get_specified_record(api_name)
-        # self.record = TFDatabase.get_rand_record(api_name) if record is None else record
+        # self.record = TFDatabase.get_specified_record(api_name)
+        self.record = TFDatabase.get_rand_record(api_name) if record is None else record
         self.args = TFAPI.generate_args_from_record(self.record)
         if re.findall(r'(tensorflow\.)', api_name):
             _name = self.api.split('.')[-2:]

@@ -40,7 +40,7 @@ def count_tensor_inputs(api, lib='Tensorflow'):
         if lib == 'Tensorflow':
             if re.findall(r'(ArgType\.TF\_TENSOR\:)', repr(_arg.type)):
                 tensor_holder.append(1)
-        else:
+        else:   
             if re.findall('r(ArgType\.TORCH\_TENSOR\:)', repr(_arg.type)):
                 tensor_holder.append(1)
     return tensor_holder
@@ -48,31 +48,20 @@ def count_tensor_inputs(api, lib='Tensorflow'):
 if __name__ == '__main__':
     library = sys.argv[1]
     api_name = sys.argv[2]
-
-    dbname = library
-    mydb = myclient[dbname]
-    check_connection()
-    TFDatabase.database_config('localhost', 27017, dbname)
-    enable_value = True
-    enable_type = True
-    enable_db = False
-
-
+    TFDatabase.database_config('localhost', 27017, library)
     rules = [
-        #'NEGATE_INT_TENSOR', 
-        #'RANK_REDUCTION_EXPANSION', 
-        #'EMPTY_TENSOR_TYPE1', 
+        'NEGATE_INT_TENSOR', 
+        'RANK_REDUCTION_EXPANSION', 
+        'EMPTY_TENSOR_TYPE1', 
         'EMPTY_TENSOR_TYPE2', 
-        # 'EMPTY_LIST', 
-        # 'LARGE_TENSOR_TYPE1', 
-        # 'LARGE_TENSOR_TYPE2',
-        # 'LARGE_LIST_ELEMENT',
-        # 'ZERO_TENSOR_TYPE1',
-        # 'ZERO_TENSOR_TYPE2',
-        #'NAN_TENSOR'
+        'EMPTY_LIST', 
+        'LARGE_TENSOR_TYPE1', 
+        'LARGE_TENSOR_TYPE2',
+        'LARGE_LIST_ELEMENT',
+        'ZERO_TENSOR_TYPE1',
+        'ZERO_TENSOR_TYPE2',
+        'NAN_TENSOR'
         ]
-
-
 
     tf_output_dir = '/media/nimashiri/SSD1/testing_results'
     MyTF = TFLibrary(tf_output_dir)
@@ -81,26 +70,26 @@ if __name__ == '__main__':
         # api_ = 'tensorflow.python.ops.nn_ops.max_pool'
         #api_ = 'tensorflow.python.ops.nn_ops.in_top_k'
         # api_ = 'tensorflow.python.ops.linalg.linear_operator_algebra.tensorflow.python.ops.linalg.linear_operator_algebra.RegisterCholesky'
-    try:
-        api = TFAPI(api_name)
-        api_keywords = api_name.split('.')
-        if api_keywords.count('tensorflow') > 1:
-                api_name = make_api_name_unique(api_name)
-        num_tensors = count_tensor_inputs(api)
-        api.args.pop('source')
-        if '_id' in api.args:
-                api.args.pop('_id')
 
-        for i, arg in enumerate(api.args):
-                
-            for r in rules:
-                print("The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(api_, arg, r))
-                old_arg = copy.deepcopy(api.args[arg])
-                api.new_mutate_multiple(api.args[arg], r)
-                MyTF.test_with_oracle(api, OracleType.CRASH)
-                    # MyTF.test_with_oracle(api, OracleType.CUDA)
-                    #MyTF.test_with_oracle(api, OracleType.PRECISION)
-                api.api = api_name
-                api.args[arg] = old_arg
-    except Exception as e:
-        print(e)
+    api = TFAPI(api_name)
+    api_keywords = api_name.split('.')
+    if api_keywords.count('tensorflow') > 1:
+        api_name = make_api_name_unique(api_name)
+    num_tensors = count_tensor_inputs(api)
+    api.args.pop('source')
+    if '_id' in api.args:
+        api.args.pop('_id')
+
+    for i, arg in enumerate(api.args):       
+        for r in rules:
+            print("The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(api_name, arg, r))
+            old_arg = copy.deepcopy(api.args[arg])
+            api.new_mutate_multiple(api.args[arg], r)
+            MyTF.test_with_oracle(api, OracleType.CRASH)
+            api.api = sys.argv[2]
+            MyTF.test_with_oracle(api, OracleType.CUDA)
+            api.api = sys.argv[2]
+            MyTF.test_with_oracle(api, OracleType.PRECISION)
+            api.api = sys.argv[2]
+            api.args[arg] = old_arg
+

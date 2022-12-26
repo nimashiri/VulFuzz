@@ -84,7 +84,7 @@ def run_fuzzer():
     TFDatabase.database_config('localhost', 27017, 'TF')
 
     for api_ in mydb.list_collection_names():
-        api_ = 'tensorflow.python.ops.gen_count_ops.sparse_count_sparse_output'
+        # api_ = 'tensorflow.python.ops.gen_count_ops.sparse_count_sparse_output'
         if not pre_run_check(api_):
             skip_flag = find_skip_list(api_)
             if skip_flag:

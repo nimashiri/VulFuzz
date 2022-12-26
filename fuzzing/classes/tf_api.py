@@ -1164,7 +1164,7 @@ class TFArgument(Argument):
         code = ""
         var_tensor_name = f"{var_name}_tensor"
 
-        big_value_list = [-1879, -1250]
+        big_value_list = [-1879048192, -1610637938, -100000000]
         small_value_list = [-49, -5, -10, -2, -80, -60]
 
         if dtype.is_floating:

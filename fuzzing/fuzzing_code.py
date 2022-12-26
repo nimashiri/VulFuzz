@@ -51,41 +51,45 @@ def count_tensor_inputs(api, lib='Tensorflow'):
     return tensor_holder
 
 if __name__ == '__main__':
-    #library = sys.argv[1]
-    #api_name = sys.argv[2]
-    buggy_api = '/media/nimashiri/SSD1/testing_results/runcrash.txt'
-    data = read_txt(buggy_api)
+    library = sys.argv[1]
+    api_name = sys.argv[2]
+    # buggy_api = '/media/nimashiri/SSD1/testing_results/runcrash.txt'
+    # data = read_txt(buggy_api)
     TFDatabase.database_config('localhost', 27017, 'TF')
 
     dimension_mismatch = True
 
     rules = [
-        # 'NEGATE_INT_TENSOR', 
-        # 'RANK_REDUCTION_EXPANSION', 
-        # 'EMPTY_TENSOR_TYPE1', 
-        # 'EMPTY_TENSOR_TYPE2', 
-        # 'EMPTY_LIST', 
-        # 'LARGE_TENSOR_TYPE1', 
-        # 'LARGE_TENSOR_TYPE2',
-        # 'LARGE_LIST_ELEMENT',
-        # 'ZERO_TENSOR_TYPE1',
-        # 'ZERO_TENSOR_TYPE2',
-        # 'NAN_TENSOR',
-        # 'NON_SCALAR_INPUT'
-       'NAN_TENSOR'
-        ]
+    'NEGATE_INT_TENSOR',
+    'RANK_REDUCTION_EXPANSION',
+    'EMPTY_TENSOR_TYPE1',
+    'EMPTY_TENSOR_TYPE2',
+    'EMPTY_LIST',
+    'LARGE_TENSOR_TYPE1',
+    'LARGE_TENSOR_TYPE2',
+    'LARGE_LIST_ELEMENT',
+    'ZERO_TENSOR_TYPE1',
+    'ZERO_TENSOR_TYPE2',
+    'NAN_TENSOR',
+    'NAN_TENSOR_WHOLE',
+    'NON_SCALAR_INPUT',
+    'SCALAR_INPUT'
+    ]
 
     tf_output_dir = '/media/nimashiri/SSD1/testing_results'
     MyTF = TFLibrary(tf_output_dir)
 
     try:
-        for api_name in data:
-            api_name = 'tensorflow.python.ops.gen_count_ops.sparse_count_sparse_output'
+        #for api_name in data:
+            # api_name = 'tensorflow.python.ops.gen_count_ops.sparse_count_sparse_output'
             
             api = TFAPI(api_name)
             old_api = copy.deepcopy(api)
             _count_tensor = count_tensor_inputs(api)
             if  len(_count_tensor) > 1:
+                print("########################################################################################################################")
+                print("The current API under test: ###{0}###. Working on dimension mismatch".format(api_name))
+                print("########################################################################################################################")
                 api_keywords = api_name.split('.')
                 if api_keywords.count('tensorflow') > 1:
                     api_name = make_api_name_unique(api_name)

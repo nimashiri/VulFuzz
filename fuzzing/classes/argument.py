@@ -42,11 +42,18 @@ class Argument:
     def __init__(self, value, type: ArgType):
         self.value = value
         self.type = type
+        self.non_scalar_input_flag = False
+
+    def activate_non_scalar_input_flag(self):
+        self.non_scalar_input_flag = True
 
     def to_code(self, var_name: str) -> str:
         """ArgType.LIST and ArgType.TUPLE should be converted to code in the inherent class"""
         if self.type in [ArgType.INT, ArgType.FLOAT, ArgType.BOOL]:
-            return f"{var_name} = {self.value}\n"
+            if self.non_scalar_input_flag:
+                return "%s = tf.constant([], shape=[0], dtype=tf.%s,)\n" % (var_name, self.type)
+            else:
+                return f"{var_name} = {self.value}\n"
         elif self.type == ArgType.STR:
             return f"{var_name} = \"{self.value}\"\n"
         elif self.type == ArgType.NULL:

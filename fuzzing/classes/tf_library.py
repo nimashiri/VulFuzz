@@ -43,6 +43,7 @@ class TFLibrary(Library):
 
             code = "import tensorflow as tf\n"
             code += 'import os\n'
+            code += 'import numpy as np\n'
             # code += 'os.environ["CUDA_VISIBLE_DEVICES"] = "-1"\n'
 
             if re.findall(r'(tensorflow\.python)', api.api):
@@ -67,7 +68,7 @@ class TFLibrary(Library):
             part_from = ".".join(api.api.split('.')[0:-2])
 
             code = "import tensorflow as tf\n"
-
+            code += 'import numpy as np\n'
             if re.findall(r'(tensorflow\.python)', api.api):
                 code += f"from {part_from} import {api.api.split('.')[-2]}\n"
                 api.api = ".".join(api.api.split('.')[-2:])

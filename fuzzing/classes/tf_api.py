@@ -914,6 +914,8 @@ class TFArgument(Argument):
         self.tensor_zero_flag_type1 = False
         self.tensor_zero_flag_type2 = False
         self.nan_input_tensor = False
+        self.scalar_input_flag = False
+        self.nan_input_tensor_whole = False
 
     @staticmethod
     def str_to_dtype(dt: str):
@@ -1169,15 +1171,18 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
-            if self.nan_input_tensor:
-                value = np.nan
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.scalar_input_flag:
+                code += "%s = 1 \n" % (var_tensor_name)
+            elif self.nan_input_tensor:
+                code += "%s = tf.constant(np.nan, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, shape, dtype.name)
+            elif self.nan_input_tensor_whole:
+                code += "%s = np.nan\n" % (var_tensor_name)
             elif self.tensor_zero_flag_type1:
                 value = [0]
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_zero_flag_type2:
                 value = 0.0
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+                code += "%s = tf.constant(%s, shape=[0, 0], dtype=tf.%s,)\n" % (var_tensor_name, value, dtype.name)
             elif self.tensor_empty_flag_type1:
                 value = []
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
@@ -1198,12 +1203,14 @@ class TFArgument(Argument):
                 value2 = choice(big_value_list)
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                      "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
-            if self.nan_input_tensor:
+            elif self.scalar_input_flag:
+                code += "%s = 1 \n" % (var_tensor_name)
+            elif self.nan_input_tensor:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
-                value1 = np.nan
-                value2 = np.nan
-                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                     "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value1, shape, ftype, value2, shape, ftype)
+                code += "%s = tf.complex(tf.constant(np.nan, shape=%s, dtype=tf.%s,),"\
+                     "tf.constant(np.nan, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, shape, ftype, shape, ftype)
+            elif self.nan_input_tensor_whole:
+                code += "%s = np.nan\n" % (var_tensor_name)
             elif self.tensor_zero_flag_type1:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = [0]
@@ -1214,12 +1221,12 @@ class TFArgument(Argument):
                 value = 0.0
                 code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
                 "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
-            elif self.make_tensor_empty_type1:
+            elif self.tensor_empty_flag_type1:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
                 value = []
-                code += "%s = tf.complex(tf.constant(%s, shape=%s, dtype=tf.%s,),"\
-                "tf.constant(%s, shape=%s, dtype=tf.%s,))\n" % (var_tensor_name, value, shape, ftype, value, shape, ftype)
-            elif self.make_tensor_empty_type2:
+                code += "%s = tf.complex(tf.constant(%s, shape=[0,0], dtype=tf.%s,),"\
+                "tf.constant(%s, shape=[0,0], dtype=tf.%s,))\n" % (var_tensor_name, value, ftype, value, ftype)
+            elif self.tensor_empty_flag_type1:
                 code += "%s = [] \n" % (var_tensor_name)
             elif self.large_tensor_flag_type1:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
@@ -1238,11 +1245,13 @@ class TFArgument(Argument):
                 code += "%s = tf.complex(tf.random.uniform(%s, dtype=tf.%s)," \
                         "tf.random.uniform(%s, dtype=tf.%s))\n" % (var_tensor_name, shape, ftype, shape, ftype)
         elif dtype == tf.bool:
-            if self.make_tensor_empty_type1:
+            if self.tensor_empty_flag_type1:
                 value = []
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
-            elif self.make_tensor_empty_type2:
+                code += "%s = tf.constant(%s, shape=[0,0], dtype=tf.%s,)\n" % (var_tensor_name, value, dtype.name)
+            elif self.tensor_empty_flag_type1:
                 code += "%s = [] \n" % (var_tensor_name)
+            elif self.scalar_input_flag:
+                code += "%s = 1 \n" % (var_tensor_name)
             else:
                 code += "%s = tf.cast(tf.random.uniform(" \
                     "%s, minval=0, maxval=2, dtype=tf.int32), dtype=tf.bool)\n" % (var_tensor_name, shape)
@@ -1252,19 +1261,22 @@ class TFArgument(Argument):
             if self.make_tensor_neg:
                 value = choice(big_value_list)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
-            if self.nan_input_tensor:
-                value = np.nan
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
+            elif self.scalar_input_flag:
+                code += "%s = 1 \n" % (var_tensor_name)
+            elif self.nan_input_tensor:
+                code += "%s = tf.constant(np.nan, shape=%s, dtype=tf.float64,)\n" % (var_tensor_name, shape)
+            elif self.nan_input_tensor_whole:
+                code += "%s = np.nan\n" % (var_tensor_name)
             elif self.tensor_zero_flag_type1:
                 value = [0]
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
             elif self.tensor_zero_flag_type2:
                 value = 0.0
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
-            elif self.make_tensor_empty_type1:
+            elif self.tensor_empty_flag_type1:
                 value = []
-                code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (var_tensor_name, value, shape, dtype.name)
-            elif self.make_tensor_empty_type2:
+                code += "%s = tf.constant(%s, shape=[0, 0], dtype=tf.%s,)\n" % (var_tensor_name, value, dtype.name)
+            elif self.tensor_empty_flag_type1:
                 code += "%s = [] \n" % (var_tensor_name)
             elif self.large_tensor_flag_type1:
                 value = choice(big_value_list)
@@ -1282,11 +1294,14 @@ class TFArgument(Argument):
                 code += "%s = tf.saturate_cast(" \
                     "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
                     "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
-            if self.nan_input_tensor:
-                value = np.nan
+            elif self.scalar_input_flag:
+                code += "%s = 1 \n" % (var_tensor_name)
+            elif self.nan_input_tensor:
                 code += "%s = tf.saturate_cast(" \
-                    "tf.constant(%s, shape=%s, dtype=tf.int64,)," \
-                    "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
+                    "tf.constant(np.nan, shape=%s, dtype=tf.float64,)," \
+                    "dtype=tf.%s)\n" % (var_tensor_name, shape)
+            elif self.nan_input_tensor_whole:
+                code += "%s = np.nan\n" % (var_tensor_name)
             elif self.tensor_zero_flag_type1:
                 value = [0]
                 code += "%s = tf.saturate_cast(" \
@@ -1403,6 +1418,12 @@ class TFArgument(Argument):
             self.make_tensor_zero_type2()
         elif RULE == 'NAN_TENSOR':
             self.make_tensor_nan()
+        elif RULE == 'NAN_TENSOR_WHOLE':
+            self.make_tensor_nan_whole()
+        elif RULE == 'NON_SCALAR_INPUT':
+            self.make_input_non_scalar()
+        elif RULE == 'SCALAR_INPUT':
+            self.make_input_scalar()
         else:
             return
 
@@ -1434,6 +1455,28 @@ class TFArgument(Argument):
     def mutate_value(self):
         self.mutate_value_random()
 
+
+    '''
+    ######################### NON SCALAR INPUTS ##############
+    #################################################################
+    '''
+
+    def make_input_scalar(self):
+        if self.type in self._tensor_arg_dtypes:
+            self.scalar_input_flag = True
+    '''
+    ######################### NON SCALAR INPUTS ##############
+    #################################################################
+    '''
+
+    def make_input_non_scalar(self):
+        if self.type == ArgType.INT:
+            super().activate_non_scalar_input_flag()
+        elif self.type == ArgType.FLOAT:
+            super().activate_non_scalar_input_flag
+        else:
+            return
+
     '''
     ######################### NAN INPUT TO TENSORS ##############
     #################################################################
@@ -1442,6 +1485,10 @@ class TFArgument(Argument):
     def make_tensor_nan(self):
         if self.type in self._tensor_arg_dtypes:
             self.nan_input_tensor = True
+
+    def make_tensor_nan_whole(self):
+        if self.type in self._tensor_arg_dtypes:
+            self.nan_input_tensor_whole = True
 
     '''
     ######################### ZERO ELEMENTS OR TENSORS ##############
@@ -1638,6 +1685,8 @@ class TFArgument(Argument):
             except:
                 value = signature['value']
                 pass
+            if isinstance(value, bool):
+                return TFArgument(value, ArgType.BOOL)
             if isinstance(value, int):
                 return TFArgument(value, ArgType.INT)
             if isinstance(value, str):

@@ -62,7 +62,6 @@ def my_exec(cmd, globals=None, locals=None, description='source string'):
         return existence_flag
     return existence_flag
 
-    
 
 def pre_run_check(api_):
     code = "import tensorflow as tf\n"
@@ -85,7 +84,7 @@ def run_fuzzer():
     TFDatabase.database_config('localhost', 27017, 'TF')
 
     for api_ in mydb.list_collection_names():
-        # api_ = 'tensorflow.python.ops.numpy_ops.np_utils.set_is_sig_mismatch_an_error'
+        api_ = 'tensorflow.python.ops.gen_count_ops.sparse_count_sparse_output'
         if not pre_run_check(api_):
             skip_flag = find_skip_list(api_)
             if skip_flag:

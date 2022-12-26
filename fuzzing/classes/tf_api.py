@@ -1427,28 +1427,20 @@ class TFArgument(Argument):
         else:
             return
 
+    '''
+    ######################### Delete list element ##############
+    #################################################################
+    '''
+
+    def delete_list_elem(self) -> None:
+        for self in self.value:
+            self.make_list_element_large()
 
     def new_mutation(self, RULE=None):
-        if RULE=='NEGATE_INT_TENSOR':
-            self.mutate_negative()
-        elif RULE=='RANK_REDUCTION_EXPANSION':
+        if self.type in self._tensor_arg_dtypes:
             self.modify_rank()
-        elif RULE == 'EMPTY_TENSOR_TYPE1':
-            self.make_tensor_empty_type1()
-        elif RULE == 'EMPTY_TENSOR_TYPE2':
-            self.make_tensor_empty_type2()
-        elif RULE == 'EMPTY_LIST':
-            self.make_list_tuple_empty()
-        elif RULE == 'LARGE_TENSOR_TYPE1':
-            self.make_tensor_large_type1()
-        elif RULE == 'LARGE_TENSOR_TYPE2':
-            self.make_tensor_large_type2()
-        elif RULE == 'LARGE_LIST_ELEMENT':
-            self.make_list_element_large()
-        elif RULE == 'ZERO_TENSOR_TYPE1':
-            self.make_tensor_zero_type1()
-        elif RULE == 'ZERO_TENSOR_TYPE2':
-            self.make_tensor_zero_type2()
+        elif self.type == ArgType.LIST or self.type == ArgType.TUPLE:
+            self.delete_list_elem()
         else:
             return
 
@@ -1761,16 +1753,9 @@ class TFAPI(API):
     Mutate based on vulnerability rules
     '''
     def new_mutate(self):
-        arg = self.args['parameter:0']
-        arg.new_mutation()
-        # num_args = len(self.args)
-        # if num_args == 0:
-        #     return
-        # num_Mutation = randint(1, num_args + 1)
-        # for _ in range(num_Mutation):
-        #     arg_name = choice(list(self.args.keys()))
-        #     arg = self.args[arg_name]
-        #     arg.new_mutation()
+        for p in self.args:
+            arg = self.args[p]
+            arg.new_mutation()
 
     def new_mutate_multiple(self, arg, r):
         arg.new_mutation_multiple(r)

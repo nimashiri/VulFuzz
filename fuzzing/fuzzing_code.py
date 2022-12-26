@@ -57,6 +57,8 @@ if __name__ == '__main__':
     data = read_txt(buggy_api)
     TFDatabase.database_config('localhost', 27017, 'TF')
 
+    dimension_mismatch = True
+
     rules = [
         # 'NEGATE_INT_TENSOR', 
         # 'RANK_REDUCTION_EXPANSION', 
@@ -79,29 +81,44 @@ if __name__ == '__main__':
     try:
         for api_name in data:
             api_name = 'tensorflow.python.ops.gen_count_ops.sparse_count_sparse_output'
+            
             api = TFAPI(api_name)
+            old_api = copy.deepcopy(api)
+            _count_tensor = count_tensor_inputs(api)
+            if  len(_count_tensor) > 1:
+                api_keywords = api_name.split('.')
+                if api_keywords.count('tensorflow') > 1:
+                    api_name = make_api_name_unique(api_name)
+                api.args.pop('source')
+                if '_id' in api.args:
+                    api.args.pop('_id')
+
+                api.new_mutate()
+                MyTF.test_with_oracle(api, OracleType.CRASH)
+                api.api = api_name
+                MyTF.test_with_oracle(api, OracleType.CUDA)
+
+
             api_keywords = api_name.split('.')
             if api_keywords.count('tensorflow') > 1:
                 api_name = make_api_name_unique(api_name)
-            num_tensors = count_tensor_inputs(api)
-            api.args.pop('source')
-            if '_id' in api.args:
-                api.args.pop('_id')
-
-            for i, arg in enumerate(api.args):       
+            old_api.args.pop('source')
+            if '_id' in old_api.args:
+                old_api.args.pop('_id')
+            for i, arg in enumerate(old_api.args):       
                 for r in rules:
                     print("########################################################################################################################")
                     print("The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(api_name, arg, r))
                     print("########################################################################################################################")
-                    old_arg = copy.deepcopy(api.args[arg])
-                    api.new_mutate_multiple(api.args[arg], r)
-                    MyTF.test_with_oracle(api, OracleType.CRASH)
-                    api.api = api_name
-                    MyTF.test_with_oracle(api, OracleType.CUDA)
+                    old_arg = copy.deepcopy(old_api.args[arg])
+                    old_api.new_mutate_multiple(old_api.args[arg], r)
+                    MyTF.test_with_oracle(old_api, OracleType.CRASH)
+                    old_api.api = api_name
+                    MyTF.test_with_oracle(old_api, OracleType.CUDA)
                     # api.api = sys.argv[2]
                     # MyTF.test_with_oracle(api, OracleType.PRECISION)
-                    api.api = api_name
-                    api.args[arg] = old_arg
+                    old_api.api = api_name
+                    old_api.args[arg] = old_arg
     except Exception as e:
         pass
 

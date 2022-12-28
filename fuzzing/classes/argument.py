@@ -3,6 +3,7 @@ from enum import IntEnum
 from utils.probability import *
 from constants.enum import OracleType
 
+
 class ArgType(IntEnum):
     INT = 1
     STR = 2
@@ -19,8 +20,6 @@ class ArgType(IntEnum):
     KERAS_TENSOR = 13
     TF_VARIABLE = 14
     TF_OBJECT = 15
-    
-
 
 
 class Argument:
@@ -103,7 +102,6 @@ class Argument:
             # cannot change the type of assert in the general Argument
             assert (0)
 
-
     def mutate_int_value(self, value, _min=None, _max=None) -> int:
         if choose_from_list():
             value = choice(Argument._int_values)
@@ -116,7 +114,6 @@ class Argument:
             value = min(_max, value)
         return value
 
-
     def mutate_str_value(self, value) -> str:
         """You can add more string mutation strategies"""
         if choose_from_list():
@@ -124,13 +121,11 @@ class Argument:
         else:
             return value
 
-
     def mutate_float_value(self, value) -> float:
         if choose_from_list():
             return choice(Argument._float_values)
         else:
             return value + randint(-64, 64) * 1.0
-
 
     def initial_value(self, type: ArgType):
         """LIST and TUPLE should be implemented in the inherent class"""
@@ -146,7 +141,7 @@ class Argument:
             return None
         else:
             assert (0)
-    
+
     @staticmethod
     def get_type(x):
         if x is None:

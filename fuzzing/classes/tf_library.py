@@ -1,27 +1,28 @@
+import contextlib
+from io import StringIO
+import sys
+import subprocess
+from constants.keys import ERR_CPU_KEY, ERR_GPU_KEY, ERR_HIGH_KEY, ERR_LOW_KEY, ERROR_KEY, RES_CPU_KEY, RES_GPU_KEY, TIME_HIGH_KEY, TIME_LOW_KEY
+from constants.enum import OracleType
+from classes.database import TFDatabase
+from classes.library import Library
+from classes.tf_api import TFAPI, TFArgument
+from classes.argument import Argument, ArgType
+import re
+import numpy as np
+import time
+import tensorflow as tf
+from os.path import join
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
-from os.path import join
-import tensorflow as tf
-import time
-import numpy as np
-import re
-from classes.argument import Argument, ArgType
-from classes.tf_api import TFAPI, TFArgument
-from classes.library import Library
-from classes.database import TFDatabase
-from constants.enum import OracleType
-from constants.keys import ERR_CPU_KEY, ERR_GPU_KEY, ERR_HIGH_KEY, ERR_LOW_KEY, ERROR_KEY, RES_CPU_KEY, RES_GPU_KEY, TIME_HIGH_KEY, TIME_LOW_KEY
-import subprocess
 
-import sys
-from io import StringIO
-import contextlib
 
-def runProcess(exe):    
-    p = subprocess.Popen(exe, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
+def runProcess(exe):
+    p = subprocess.Popen(exe, stdout=subprocess.PIPE,
+                         stderr=subprocess.STDOUT, shell=True)
     while(True):
         # returns None while subprocess is running
-        retcode = p.poll() 
+        retcode = p.poll()
         line = p.stdout.readline()
         yield line
         if retcode is not None:
@@ -34,7 +35,7 @@ class TFLibrary(Library):
         self.diff_bound = diff_bound
         self.time_bound = time_bound
         self.time_thresold = time_thresold
-    
+
     def test_with_oracle(self, api: TFAPI, oracle: OracleType):
         if oracle == OracleType.CRASH:
             # We need call another process to catch the crash error
@@ -53,17 +54,19 @@ class TFLibrary(Library):
             else:
                 code += self.generate_code(api, oracle)
 
-            write_code = "results = dict()\n" + code
+            write_code = code
 
             with open(join(self.directory, "temp.py"), "w") as f:
                 f.write(write_code)
 
             results, error = self.run_code(write_code)
-    
+
             if error == None:
-                self.write_to_dir(join(self.output[oracle], "success"), api.api, write_code)
+                self.write_to_dir(
+                    join(self.output[oracle], "success"), api.api, write_code)
             else:
-                self.write_to_dir(join(self.output[oracle], "fail"), api.api, write_code)
+                self.write_to_dir(
+                    join(self.output[oracle], "fail"), api.api, write_code)
         elif oracle == OracleType.CUDA:
             part_from = ".".join(api.api.split('.')[0:-2])
 
@@ -104,7 +107,7 @@ class TFLibrary(Library):
                 write_dir = join(self.output[oracle], "fail")
             self.write_to_dir(write_dir, api.api, write_code)
         elif oracle == OracleType.PRECISION:
-           
+
             part_from = ".".join(api.api.split('.')[0:-2])
 
             code = "import tensorflow as tf\n"
@@ -114,7 +117,7 @@ class TFLibrary(Library):
                 api.api = ".".join(api.api.split('.')[-2:])
                 code += self.generate_code(api, oracle)
             else:
-                code += self.generate_code(api, oracle)         
+                code += self.generate_code(api, oracle)
 
             write_code = "results = dict()\n" + code
             with open(join(self.directory, "temp.py"), "w") as f:
@@ -158,7 +161,7 @@ class TFLibrary(Library):
             return code
         else:
             assert(0)
-    
+
     @staticmethod
     def run_code(code):
         results = dict()
@@ -170,11 +173,11 @@ class TFLibrary(Library):
         results[RES_GPU_KEY] = None
         results[TIME_HIGH_KEY] = None
         results[TIME_LOW_KEY] = None
-        
+
         output = exec(code)
         error = results[ERROR_KEY] if ERROR_KEY in results else None
         return results, error
-    
+
     @staticmethod
     def get_type(x):
         res = Argument.get_type(x)
@@ -187,7 +190,6 @@ class TFLibrary(Library):
         else:
             return ArgType.TF_OBJECT
 
-    
     @staticmethod
     def _eval_k(x):
         return tf.convert_to_tensor(x).numpy()
@@ -198,7 +200,7 @@ class TFLibrary(Library):
             return tf.sparse.to_dense(t).numpy()
         else:
             return t.numpy()
-            
+
     @staticmethod
     def is_equal(x, y):
         x_type = TFArgument.get_type(x)
@@ -221,7 +223,8 @@ class TFLibrary(Library):
                 elif x.dtype.is_integer:
                     return np.equal(np_x, np_y).all()
             except:
-                raise ValueError(f"Comparison between {type(x)} is not supported now.")
+                raise ValueError(
+                    f"Comparison between {type(x)} is not supported now.")
             return True
         elif x_type == ArgType.FLOAT:
             return abs(x - y) < 1e-5
@@ -232,7 +235,7 @@ class TFLibrary(Library):
                 if TFLibrary.is_equal(x[i], y[i]) == False:
                     return False
             return True
-        
+
         else:
             try:
                 flag = x == y
@@ -246,4 +249,4 @@ class TFLibrary(Library):
                     pass
             except:
                 flag = True
-            return 
+            return

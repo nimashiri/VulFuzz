@@ -100,14 +100,21 @@ def run_fuzzer():
     check_connection()
     TFDatabase.database_config('localhost', 27017, 'TF')
 
+    tool = 'F'
+    config_name = '/media/nimashiri/SSD1/FSE23_2/fuzzing/config/expr.conf'
+
     for api_ in mydb.list_collection_names():
         #api_ = 'tensorflow.python.ops.array_ops.batch_gather_nd'
         if not pre_run_check(api_):
             skip_flag = find_skip_list(api_)
             if skip_flag:
                 try:
-                    res = subprocess.run(
-                        ["python3", "/media/nimashiri/SSD1/FSE23_2/fuzzing/fuzzing_code.py", "TF", api_], shell=False, timeout=100)
+                    if tool == 'V':
+                        res = subprocess.run(
+                            ["python3", "/media/nimashiri/SSD1/FSE23_2/fuzzing/vullFuzz_api.py", "TF", api_], shell=False, timeout=100)
+                    elif tool == 'F':
+                        res = subprocess.run(
+                            ["python3", "/media/nimashiri/SSD1/FSE23_2/fuzzing/freefuzz_api.py", config_name, "TF", api_], shell=False, timeout=100)
                 except subprocess.TimeoutExpired:
                     dump_data(f"{api_}\n", join(
                         tf_output_dir, "timeout.txt"), "a")
@@ -121,7 +128,7 @@ def run_fuzzer():
             else:
                 print('API Skipped!')
         else:
-            print('This module does not exist in tensorflow v2.4.0!')
+            print('This module does not exist in tensorflow')
 
 
 if __name__ == '__main__':

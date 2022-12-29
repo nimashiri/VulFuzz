@@ -71,6 +71,7 @@ class TFLibrary(Library):
             part_from = ".".join(api.api.split('.')[0:-2])
 
             code = "import tensorflow as tf\n"
+
             code += 'import numpy as np\n'
             if re.findall(r'(tensorflow\.python)', api.api):
                 code += f"from {part_from} import {api.api.split('.')[-2]}\n"
@@ -79,7 +80,7 @@ class TFLibrary(Library):
             else:
                 code += self.generate_code(api, oracle)
 
-            write_code = "results = dict()\n" + code
+            write_code = code
             with open(join(self.directory, "temp.py"), "w") as f:
                 f.write(write_code)
 

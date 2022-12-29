@@ -71,10 +71,13 @@ if __name__ == '__main__':
     tf_output_dir = '/media/nimashiri/SSD1/testing_results'
     if not os.path.exists(tf_output_dir):
         os.mkdir(tf_output_dir)
-    # buggy_api = '/media/nimashiri/SSD1/testing_results/runcrash.txt'
-    # data = read_txt(buggy_api)
-    TFDatabase.database_config('localhost', 27017, 'TF')
 
+    tool = 'FreeFuzz'
+    MyTF = TFLibrary(tf_output_dir)
+
+    #buggy_api = '/media/nimashiri/SSD1/testing_results/runcrash.txt'
+    #data = read_txt(buggy_api)
+    TFDatabase.database_config('localhost', 27017, 'TF')
     dimension_mismatch = True
 
     rules = [
@@ -93,8 +96,6 @@ if __name__ == '__main__':
         'NON_SCALAR_INPUT',
         'SCALAR_INPUT'
     ]
-
-    MyTF = TFLibrary(tf_output_dir)
 
     try:
         # for api_name in data:

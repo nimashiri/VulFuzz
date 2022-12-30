@@ -1,0 +1,3758 @@
+torch.is_tensor(),valid api,"import torch
+torch.is_tensor()"
+torch.is_storage(),valid api,"import torch
+torch.is_storage()"
+torch.is_complex(),valid api,"import torch
+torch.is_complex()"
+torch.is_conj(),AttributeError: module torch has no attribute,"import torch
+torch.is_conj()"
+torch.is_floating_point(),valid api,"import torch
+torch.is_floating_point()"
+torch.is_nonzero(),valid api,"import torch
+torch.is_nonzero()"
+torch.set_default_dtype(),valid api,"import torch
+torch.set_default_dtype()"
+torch.get_default_dtype(),,"import torch
+torch.get_default_dtype()"
+torch.set_default_tensor_type(),valid api,"import torch
+torch.set_default_tensor_type()"
+torch.numel(),valid api,"import torch
+torch.numel()"
+torch.set_printoptions(),,"import torch
+torch.set_printoptions()"
+torch.set_flush_denormal(),valid api,"import torch
+torch.set_flush_denormal()"
+torch.rand(),valid api,"import torch
+torch.rand()"
+torch.rand_like(),valid api,"import torch
+torch.rand_like()"
+torch.randn(),valid api,"import torch
+torch.randn()"
+torch.randn_like(),valid api,"import torch
+torch.randn_like()"
+torch.randint(),valid api,"import torch
+torch.randint()"
+torch.randint_like(),valid api,"import torch
+torch.randint_like()"
+torch.randperm(),valid api,"import torch
+torch.randperm()"
+torch.empty(),valid api,"import torch
+torch.empty()"
+torch.tensor(),valid api,"import torch
+torch.tensor()"
+torch.sparse_coo_tensor(),valid api,"import torch
+torch.sparse_coo_tensor()"
+torch.asarray(),AttributeError: module torch has no attribute,"import torch
+torch.asarray()"
+torch.as_tensor(),valid api,"import torch
+torch.as_tensor()"
+torch.as_strided(),valid api,"import torch
+torch.as_strided()"
+torch.from_numpy(),valid api,"import torch
+torch.from_numpy()"
+torch.from_dlpack(),AttributeError: module torch has no attribute,"import torch
+torch.from_dlpack()"
+torch.frombuffer(),AttributeError: module torch has no attribute,"import torch
+torch.frombuffer()"
+torch.zeros(),valid api,"import torch
+torch.zeros()"
+torch.zeros_like(),valid api,"import torch
+torch.zeros_like()"
+torch.ones(),valid api,"import torch
+torch.ones()"
+torch.ones_like(),valid api,"import torch
+torch.ones_like()"
+torch.arange(),valid api,"import torch
+torch.arange()"
+torch.range(),valid api,"import torch
+torch.range()"
+torch.linspace(),valid api,"import torch
+torch.linspace()"
+torch.logspace(),valid api,"import torch
+torch.logspace()"
+torch.eye(),valid api,"import torch
+torch.eye()"
+torch.empty_like(),valid api,"import torch
+torch.empty_like()"
+torch.empty_strided(),valid api,"import torch
+torch.empty_strided()"
+torch.full(),valid api,"import torch
+torch.full()"
+torch.full_like(),valid api,"import torch
+torch.full_like()"
+torch.quantize_per_tensor(),valid api,"import torch
+torch.quantize_per_tensor()"
+torch.quantize_per_channel(),valid api,"import torch
+torch.quantize_per_channel()"
+torch.dequantize(),valid api,"import torch
+torch.dequantize()"
+torch.complex(),valid api,"import torch
+torch.complex()"
+torch.real(),valid api,"import torch
+torch.real()"
+torch.imag(),valid api,"import torch
+torch.imag()"
+torch.polar(),valid api,"import torch
+torch.polar()"
+torch.abs(),valid api,"import torch
+torch.abs()"
+torch.angle(),valid api,"import torch
+torch.angle()"
+torch.heaviside(),valid api,"import torch
+torch.heaviside()"
+torch.adjoint(),AttributeError: module torch has no attribute,"import torch
+torch.adjoint()"
+torch.argwhere(),AttributeError: module torch has no attribute,"import torch
+torch.argwhere()"
+torch.cat(),valid api,"import torch
+torch.cat()"
+torch.concat(),AttributeError: module torch has no attribute,"import torch
+torch.concat()"
+torch.concatenate(),AttributeError: module torch has no attribute,"import torch
+torch.concatenate()"
+torch.conj(),valid api,"import torch
+torch.conj()"
+torch.chunk(),valid api,"import torch
+torch.chunk()"
+torch.dsplit(),AttributeError: module torch has no attribute,"import torch
+torch.dsplit()"
+torch.column_stack(),valid api,"import torch
+torch.column_stack()"
+torch.dstack(),valid api,"import torch
+torch.dstack()"
+torch.gather(),valid api,"import torch
+torch.gather()"
+torch.hsplit(),AttributeError: module torch has no attribute,"import torch
+torch.hsplit()"
+torch.hstack(),valid api,"import torch
+torch.hstack()"
+torch.index_add(),valid api,"import torch
+torch.index_add()"
+torch.Tensor.index_add_(),valid api,"import torch
+torch.Tensor.index_add_()"
+torch.index_copy(),valid api,"import torch
+torch.index_copy()"
+torch.index_reduce(),AttributeError: module torch has no attribute,"import torch
+torch.index_reduce()"
+torch.Tensor.index_reduce_(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.index_reduce_()
+AttributeError: type object 'Tensor' has no attribute 'index_reduce_'
+","import torch
+torch.Tensor.index_reduce_()"
+torch.index_select(),valid api,"import torch
+torch.index_select()"
+torch.masked_select(),valid api,"import torch
+torch.masked_select()"
+torch.movedim(),valid api,"import torch
+torch.movedim()"
+torch.moveaxis(),valid api,"import torch
+torch.moveaxis()"
+torch.narrow(),valid api,"import torch
+torch.narrow()"
+torch.nonzero(),valid api,"import torch
+torch.nonzero()"
+torch.permute(),AttributeError: module torch has no attribute,"import torch
+torch.permute()"
+torch.reshape(),valid api,"import torch
+torch.reshape()"
+torch.row_stack(),valid api,"import torch
+torch.row_stack()"
+torch.vstack(),valid api,"import torch
+torch.vstack()"
+torch.select(),valid api,"import torch
+torch.select()"
+torch.scatter(),valid api,"import torch
+torch.scatter()"
+torch.Tensor.scatter_(),valid api,"import torch
+torch.Tensor.scatter_()"
+torch.diagonal_scatter(),AttributeError: module torch has no attribute,"import torch
+torch.diagonal_scatter()"
+torch.select_scatter(),AttributeError: module torch has no attribute,"import torch
+torch.select_scatter()"
+torch.slice_scatter(),AttributeError: module torch has no attribute,"import torch
+torch.slice_scatter()"
+torch.scatter_add(),valid api,"import torch
+torch.scatter_add()"
+torch.Tensor.scatter_add_(),valid api,"import torch
+torch.Tensor.scatter_add_()"
+torch.scatter_reduce(),AttributeError: module torch has no attribute,"import torch
+torch.scatter_reduce()"
+torch.Tensor.scatter_reduce_(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.scatter_reduce_()
+AttributeError: type object 'Tensor' has no attribute 'scatter_reduce_'
+","import torch
+torch.Tensor.scatter_reduce_()"
+torch.split(),valid api,"import torch
+torch.split()"
+torch.squeeze(),valid api,"import torch
+torch.squeeze()"
+torch.stack(),valid api,"import torch
+torch.stack()"
+torch.swapaxes(),valid api,"import torch
+torch.swapaxes()"
+torch.transpose(),valid api,"import torch
+torch.transpose()"
+torch.swapdims(),valid api,"import torch
+torch.swapdims()"
+torch.t(),valid api,"import torch
+torch.t()"
+torch.take(),valid api,"import torch
+torch.take()"
+torch.take_along_dim(),AttributeError: module torch has no attribute,"import torch
+torch.take_along_dim()"
+torch.tensor_split(),valid api,"import torch
+torch.tensor_split()"
+torch.tile(),valid api,"import torch
+torch.tile()"
+torch.unbind(),valid api,"import torch
+torch.unbind()"
+torch.unsqueeze(),valid api,"import torch
+torch.unsqueeze()"
+torch.vsplit(),AttributeError: module torch has no attribute,"import torch
+torch.vsplit()"
+torch.where(),valid api,"import torch
+torch.where()"
+torch.Generator(),,"import torch
+torch.Generator()"
+torch.seed(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.seed()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/random.py"", line 49, in seed
+    torch.cuda.manual_seed_all(seed)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 103, in wrapper
+    write_fn(hint, param_dict, None, output_signature)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/write_tools.py"", line 15, in write_fn
+    tf_db[out_fname].insert_one(params)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/collection.py"", line 705, in insert_one
+    self._insert(document,
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/collection.py"", line 620, in _insert
+    return self._insert_one(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/collection.py"", line 609, in _insert_one
+    self.__database.client._retryable_write(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/mongo_client.py"", line 1552, in _retryable_write
+    return self._retry_with_session(retryable, func, s, None)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/mongo_client.py"", line 1438, in _retry_with_session
+    return self._retry_internal(retryable, func, session, bulk)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/mongo_client.py"", line 1470, in _retry_internal
+    return func(session, sock_info, retryable)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/collection.py"", line 597, in _insert_command
+    result = sock_info.command(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/pool.py"", line 726, in command
+    self._raise_connection_failure(error)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/pool.py"", line 710, in command
+    return command(self, dbname, spec, secondary_ok,
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/network.py"", line 118, in command
+    request_id, msg, size, max_doc_size = message._op_msg(
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pymongo/message.py"", line 742, in _op_msg
+    return _op_msg_uncompressed(
+OverflowError: MongoDB can only handle up to 8-byte ints
+","import torch
+torch.seed()"
+torch.manual_seed(),valid api,"import torch
+torch.manual_seed()"
+torch.initial_seed(),,"import torch
+torch.initial_seed()"
+torch.get_rng_state(),,"import torch
+torch.get_rng_state()"
+torch.set_rng_state(),valid api,"import torch
+torch.set_rng_state()"
+torch.bernoulli(),valid api,"import torch
+torch.bernoulli()"
+torch.multinomial(),valid api,"import torch
+torch.multinomial()"
+torch.normal(),valid api,"import torch
+torch.normal()"
+torch.poisson(),valid api,"import torch
+torch.poisson()"
+torch.Tensor.bernoulli_(),valid api,"import torch
+torch.Tensor.bernoulli_()"
+torch.Tensor.cauchy_(),valid api,"import torch
+torch.Tensor.cauchy_()"
+torch.Tensor.exponential_(),valid api,"import torch
+torch.Tensor.exponential_()"
+torch.Tensor.geometric_(),valid api,"import torch
+torch.Tensor.geometric_()"
+torch.Tensor.log_normal_(),valid api,"import torch
+torch.Tensor.log_normal_()"
+torch.Tensor.normal_(),valid api,"import torch
+torch.Tensor.normal_()"
+torch.Tensor.random_(),valid api,"import torch
+torch.Tensor.random_()"
+torch.Tensor.uniform_(),valid api,"import torch
+torch.Tensor.uniform_()"
+torch.quasirandom.SobolEngine(),valid api,"import torch
+torch.quasirandom.SobolEngine()"
+torch.save(),valid api,"import torch
+torch.save()"
+torch.load(),valid api,"import torch
+torch.load()"
+torch.get_num_threads(),,"import torch
+torch.get_num_threads()"
+torch.set_num_threads(),valid api,"import torch
+torch.set_num_threads()"
+torch.get_num_interop_threads(),,"import torch
+torch.get_num_interop_threads()"
+torch.set_num_interop_threads(),valid api,"import torch
+torch.set_num_interop_threads()"
+"
+ class torch. no_grad [source] ¶",No input params,No example
+"
+ class torch. enable_grad [source] ¶",No input params,No example
+torch.set_grad_enabled(),valid api,"import torch
+torch.set_grad_enabled()"
+torch.is_grad_enabled(),,"import torch
+torch.is_grad_enabled()"
+torch.inference_mode(),AttributeError: module torch has no attribute,"import torch
+torch.inference_mode()"
+torch.is_inference_mode_enabled(),AttributeError: module torch has no attribute,"import torch
+torch.is_inference_mode_enabled()"
+torch.absolute(),valid api,"import torch
+torch.absolute()"
+torch.acos(),valid api,"import torch
+torch.acos()"
+torch.arccos(),valid api,"import torch
+torch.arccos()"
+torch.acosh(),valid api,"import torch
+torch.acosh()"
+torch.arccosh(),valid api,"import torch
+torch.arccosh()"
+torch.add(),valid api,"import torch
+torch.add()"
+torch.addcdiv(),valid api,"import torch
+torch.addcdiv()"
+torch.addcmul(),valid api,"import torch
+torch.addcmul()"
+torch.asin(),valid api,"import torch
+torch.asin()"
+torch.arcsin(),valid api,"import torch
+torch.arcsin()"
+torch.asinh(),valid api,"import torch
+torch.asinh()"
+torch.arcsinh(),valid api,"import torch
+torch.arcsinh()"
+torch.atan(),valid api,"import torch
+torch.atan()"
+torch.arctan(),valid api,"import torch
+torch.arctan()"
+torch.atanh(),valid api,"import torch
+torch.atanh()"
+torch.arctanh(),valid api,"import torch
+torch.arctanh()"
+torch.atan2(),valid api,"import torch
+torch.atan2()"
+torch.arctan2(),AttributeError: module torch has no attribute,"import torch
+torch.arctan2()"
+torch.bitwise_not(),valid api,"import torch
+torch.bitwise_not()"
+torch.bitwise_and(),valid api,"import torch
+torch.bitwise_and()"
+torch.bitwise_or(),valid api,"import torch
+torch.bitwise_or()"
+torch.bitwise_xor(),valid api,"import torch
+torch.bitwise_xor()"
+torch.bitwise_left_shift(),AttributeError: module torch has no attribute,"import torch
+torch.bitwise_left_shift()"
+torch.bitwise_right_shift(),AttributeError: module torch has no attribute,"import torch
+torch.bitwise_right_shift()"
+torch.ceil(),valid api,"import torch
+torch.ceil()"
+torch.clamp(),valid api,"import torch
+torch.clamp()"
+torch.min(),valid api,"import torch
+torch.min()"
+torch.max(),valid api,"import torch
+torch.max()"
+torch.clip(),valid api,"import torch
+torch.clip()"
+torch.conj_physical(),AttributeError: module torch has no attribute,"import torch
+torch.conj_physical()"
+torch.copysign(),valid api,"import torch
+torch.copysign()"
+torch.cos(),valid api,"import torch
+torch.cos()"
+torch.cosh(),valid api,"import torch
+torch.cosh()"
+torch.deg2rad(),valid api,"import torch
+torch.deg2rad()"
+torch.div(),valid api,"import torch
+torch.div()"
+torch.divide(),valid api,"import torch
+torch.divide()"
+torch.digamma(),valid api,"import torch
+torch.digamma()"
+torch.erf(),valid api,"import torch
+torch.erf()"
+torch.erfc(),valid api,"import torch
+torch.erfc()"
+torch.erfinv(),valid api,"import torch
+torch.erfinv()"
+torch.exp(),valid api,"import torch
+torch.exp()"
+torch.exp2(),valid api,"import torch
+torch.exp2()"
+torch.expm1(),valid api,"import torch
+torch.expm1()"
+torch.fake_quantize_per_channel_affine(),valid api,"import torch
+torch.fake_quantize_per_channel_affine()"
+torch.fake_quantize_per_tensor_affine(),valid api,"import torch
+torch.fake_quantize_per_tensor_affine()"
+torch.fix(),valid api,"import torch
+torch.fix()"
+torch.trunc(),valid api,"import torch
+torch.trunc()"
+torch.float_power(),valid api,"import torch
+torch.float_power()"
+torch.floor(),valid api,"import torch
+torch.floor()"
+torch.floor_divide(),valid api,"import torch
+torch.floor_divide()"
+torch.fmod(),valid api,"import torch
+torch.fmod()"
+torch.frac(),valid api,"import torch
+torch.frac()"
+torch.frexp(),AttributeError: module torch has no attribute,"import torch
+torch.frexp()"
+torch.gradient(),AttributeError: module torch has no attribute,"import torch
+torch.gradient()"
+torch.ldexp(),valid api,"import torch
+torch.ldexp()"
+torch.lerp(),valid api,"import torch
+torch.lerp()"
+torch.lgamma(),valid api,"import torch
+torch.lgamma()"
+torch.log(),valid api,"import torch
+torch.log()"
+torch.log10(),valid api,"import torch
+torch.log10()"
+torch.log1p(),valid api,"import torch
+torch.log1p()"
+torch.log2(),valid api,"import torch
+torch.log2()"
+torch.logaddexp(),valid api,"import torch
+torch.logaddexp()"
+torch.logaddexp2(),valid api,"import torch
+torch.logaddexp2()"
+torch.logical_and(),valid api,"import torch
+torch.logical_and()"
+torch.logical_not(),valid api,"import torch
+torch.logical_not()"
+torch.logical_or(),valid api,"import torch
+torch.logical_or()"
+torch.logical_xor(),valid api,"import torch
+torch.logical_xor()"
+torch.logit(),valid api,"import torch
+torch.logit()"
+torch.hypot(),valid api,"import torch
+torch.hypot()"
+torch.i0(),valid api,"import torch
+torch.i0()"
+torch.igamma(),valid api,"import torch
+torch.igamma()"
+torch.igammac(),valid api,"import torch
+torch.igammac()"
+torch.mul(),valid api,"import torch
+torch.mul()"
+torch.multiply(),valid api,"import torch
+torch.multiply()"
+torch.mvlgamma(),valid api,"import torch
+torch.mvlgamma()"
+torch.nan_to_num(),valid api,"import torch
+torch.nan_to_num()"
+torch.neg(),valid api,"import torch
+torch.neg()"
+torch.negative(),valid api,"import torch
+torch.negative()"
+torch.nextafter(),valid api,"import torch
+torch.nextafter()"
+torch.polygamma(),valid api,"import torch
+torch.polygamma()"
+torch.positive(),AttributeError: module torch has no attribute,"import torch
+torch.positive()"
+torch.pow(),valid api,"import torch
+torch.pow()"
+torch.quantized_batch_norm(),valid api,"import torch
+torch.quantized_batch_norm()"
+torch.quantized_max_pool1d(),valid api,"import torch
+torch.quantized_max_pool1d()"
+torch.quantized_max_pool2d(),valid api,"import torch
+torch.quantized_max_pool2d()"
+torch.rad2deg(),valid api,"import torch
+torch.rad2deg()"
+torch.reciprocal(),valid api,"import torch
+torch.reciprocal()"
+torch.remainder(),valid api,"import torch
+torch.remainder()"
+torch.round(),valid api,"import torch
+torch.round()"
+torch.rsqrt(),valid api,"import torch
+torch.rsqrt()"
+torch.sigmoid(),valid api,"import torch
+torch.sigmoid()"
+torch.sign(),valid api,"import torch
+torch.sign()"
+torch.sgn(),valid api,"import torch
+torch.sgn()"
+torch.signbit(),valid api,"import torch
+torch.signbit()"
+torch.sin(),valid api,"import torch
+torch.sin()"
+torch.sinc(),valid api,"import torch
+torch.sinc()"
+torch.sinh(),valid api,"import torch
+torch.sinh()"
+torch.sqrt(),valid api,"import torch
+torch.sqrt()"
+torch.square(),valid api,"import torch
+torch.square()"
+torch.sub(),valid api,"import torch
+torch.sub()"
+torch.subtract(),valid api,"import torch
+torch.subtract()"
+torch.tan(),valid api,"import torch
+torch.tan()"
+torch.tanh(),valid api,"import torch
+torch.tanh()"
+torch.true_divide(),valid api,"import torch
+torch.true_divide()"
+torch.xlogy(),valid api,"import torch
+torch.xlogy()"
+torch.argmax(),valid api,"import torch
+torch.argmax()"
+torch.argmin(),valid api,"import torch
+torch.argmin()"
+torch.amax(),valid api,"import torch
+torch.amax()"
+torch.amin(),valid api,"import torch
+torch.amin()"
+torch.aminmax(),AttributeError: module torch has no attribute,"import torch
+torch.aminmax()"
+torch.all(),valid api,"import torch
+torch.all()"
+torch.any(),valid api,"import torch
+torch.any()"
+torch.dist(),valid api,"import torch
+torch.dist()"
+torch.logsumexp(),valid api,"import torch
+torch.logsumexp()"
+torch.mean(),valid api,"import torch
+torch.mean()"
+torch.nanmean(),AttributeError: module torch has no attribute,"import torch
+torch.nanmean()"
+torch.median(),valid api,"import torch
+torch.median()"
+torch.nanmedian(),valid api,"import torch
+torch.nanmedian()"
+torch.mode(),valid api,"import torch
+torch.mode()"
+torch.norm(),valid api,"import torch
+torch.norm()"
+torch.nansum(),valid api,"import torch
+torch.nansum()"
+torch.prod(),valid api,"import torch
+torch.prod()"
+torch.quantile(),valid api,"import torch
+torch.quantile()"
+torch.nanquantile(),valid api,"import torch
+torch.nanquantile()"
+torch.std(),valid api,"import torch
+torch.std()"
+torch.std_mean(),valid api,"import torch
+torch.std_mean()"
+torch.sum(),valid api,"import torch
+torch.sum()"
+torch.unique(),valid api,"import torch
+torch.unique()"
+torch.unique_consecutive(),valid api,"import torch
+torch.unique_consecutive()"
+torch.var(),valid api,"import torch
+torch.var()"
+torch.var_mean(),valid api,"import torch
+torch.var_mean()"
+torch.count_nonzero(),valid api,"import torch
+torch.count_nonzero()"
+torch.allclose(),valid api,"import torch
+torch.allclose()"
+torch.argsort(),valid api,"import torch
+torch.argsort()"
+torch.eq(),valid api,"import torch
+torch.eq()"
+torch.equal(),valid api,"import torch
+torch.equal()"
+torch.ge(),valid api,"import torch
+torch.ge()"
+torch.greater_equal(),valid api,"import torch
+torch.greater_equal()"
+torch.gt(),valid api,"import torch
+torch.gt()"
+torch.greater(),valid api,"import torch
+torch.greater()"
+torch.isclose(),valid api,"import torch
+torch.isclose()"
+torch.isfinite(),valid api,"import torch
+torch.isfinite()"
+torch.isin(),AttributeError: module torch has no attribute,"import torch
+torch.isin()"
+torch.isinf(),valid api,"import torch
+torch.isinf()"
+torch.isposinf(),valid api,"import torch
+torch.isposinf()"
+torch.isneginf(),valid api,"import torch
+torch.isneginf()"
+torch.isnan(),valid api,"import torch
+torch.isnan()"
+torch.isreal(),valid api,"import torch
+torch.isreal()"
+torch.kthvalue(),valid api,"import torch
+torch.kthvalue()"
+torch.le(),valid api,"import torch
+torch.le()"
+torch.less_equal(),valid api,"import torch
+torch.less_equal()"
+torch.lt(),valid api,"import torch
+torch.lt()"
+torch.less(),valid api,"import torch
+torch.less()"
+torch.maximum(),valid api,"import torch
+torch.maximum()"
+torch.minimum(),valid api,"import torch
+torch.minimum()"
+torch.fmax(),valid api,"import torch
+torch.fmax()"
+torch.fmin(),valid api,"import torch
+torch.fmin()"
+torch.ne(),valid api,"import torch
+torch.ne()"
+torch.not_equal(),valid api,"import torch
+torch.not_equal()"
+torch.sort(),valid api,"import torch
+torch.sort()"
+torch.topk(),valid api,"import torch
+torch.topk()"
+torch.msort(),valid api,"import torch
+torch.msort()"
+torch.stft(),valid api,"import torch
+torch.stft()"
+torch.istft(),valid api,"import torch
+torch.istft()"
+torch.bartlett_window(),valid api,"import torch
+torch.bartlett_window()"
+torch.blackman_window(),valid api,"import torch
+torch.blackman_window()"
+torch.hamming_window(),valid api,"import torch
+torch.hamming_window()"
+torch.hann_window(),valid api,"import torch
+torch.hann_window()"
+torch.kaiser_window(),valid api,"import torch
+torch.kaiser_window()"
+torch.atleast_1d(),,"import torch
+torch.atleast_1d()"
+torch.atleast_2d(),,"import torch
+torch.atleast_2d()"
+torch.atleast_3d(),,"import torch
+torch.atleast_3d()"
+torch.bincount(),valid api,"import torch
+torch.bincount()"
+torch.block_diag(),,"import torch
+torch.block_diag()"
+torch.broadcast_tensors(),,"import torch
+torch.broadcast_tensors()"
+torch.broadcast_to(),valid api,"import torch
+torch.broadcast_to()"
+torch.broadcast_shapes(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.broadcast_shapes()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/functional.py"", line 107, in broadcast_shapes
+    return tensors[0].shape
+IndexError: tuple index out of range
+","import torch
+torch.broadcast_shapes()"
+torch.bucketize(),valid api,"import torch
+torch.bucketize()"
+torch.cartesian_prod(),valid api,"import torch
+torch.cartesian_prod()"
+torch.cdist(),valid api,"import torch
+torch.cdist()"
+torch.clone(),valid api,"import torch
+torch.clone()"
+torch.combinations(),valid api,"import torch
+torch.combinations()"
+torch.corrcoef(),AttributeError: module torch has no attribute,"import torch
+torch.corrcoef()"
+torch.cov(),AttributeError: module torch has no attribute,"import torch
+torch.cov()"
+torch.cross(),valid api,"import torch
+torch.cross()"
+torch.cummax(),valid api,"import torch
+torch.cummax()"
+torch.cummin(),valid api,"import torch
+torch.cummin()"
+torch.cumprod(),valid api,"import torch
+torch.cumprod()"
+torch.cumsum(),valid api,"import torch
+torch.cumsum()"
+torch.diag(),valid api,"import torch
+torch.diag()"
+torch.diag_embed(),valid api,"import torch
+torch.diag_embed()"
+torch.diagflat(),valid api,"import torch
+torch.diagflat()"
+torch.diagonal(),valid api,"import torch
+torch.diagonal()"
+torch.diff(),valid api,"import torch
+torch.diff()"
+torch.einsum(),valid api,"import torch
+torch.einsum()"
+torch.flatten(),valid api,"import torch
+torch.flatten()"
+torch.flip(),valid api,"import torch
+torch.flip()"
+torch.fliplr(),valid api,"import torch
+torch.fliplr()"
+torch.flipud(),valid api,"import torch
+torch.flipud()"
+torch.kron(),valid api,"import torch
+torch.kron()"
+torch.rot90(),valid api,"import torch
+torch.rot90()"
+torch.gcd(),valid api,"import torch
+torch.gcd()"
+torch.histc(),valid api,"import torch
+torch.histc()"
+torch.histogram(),AttributeError: module torch has no attribute,"import torch
+torch.histogram()"
+torch.histogramdd(),AttributeError: module torch has no attribute,"import torch
+torch.histogramdd()"
+torch.meshgrid(),valid api,"import torch
+torch.meshgrid()"
+torch.lcm(),valid api,"import torch
+torch.lcm()"
+torch.logcumsumexp(),valid api,"import torch
+torch.logcumsumexp()"
+torch.ravel(),valid api,"import torch
+torch.ravel()"
+torch.renorm(),valid api,"import torch
+torch.renorm()"
+torch.repeat_interleave(),valid api,"import torch
+torch.repeat_interleave()"
+torch.roll(),valid api,"import torch
+torch.roll()"
+torch.searchsorted(),valid api,"import torch
+torch.searchsorted()"
+torch.tensordot(),valid api,"import torch
+torch.tensordot()"
+torch.trace(),valid api,"import torch
+torch.trace()"
+torch.tril(),valid api,"import torch
+torch.tril()"
+torch.tril_indices(),valid api,"import torch
+torch.tril_indices()"
+torch.triu(),valid api,"import torch
+torch.triu()"
+torch.triu_indices(),valid api,"import torch
+torch.triu_indices()"
+torch.unflatten(),AttributeError: module torch has no attribute,"import torch
+torch.unflatten()"
+torch.vander(),valid api,"import torch
+torch.vander()"
+torch.view_as_real(),valid api,"import torch
+torch.view_as_real()"
+torch.view_as_complex(),valid api,"import torch
+torch.view_as_complex()"
+torch.resolve_conj(),AttributeError: module torch has no attribute,"import torch
+torch.resolve_conj()"
+torch.resolve_neg(),AttributeError: module torch has no attribute,"import torch
+torch.resolve_neg()"
+torch.addbmm(),valid api,"import torch
+torch.addbmm()"
+torch.addmm(),valid api,"import torch
+torch.addmm()"
+torch.addmv(),valid api,"import torch
+torch.addmv()"
+torch.addr(),valid api,"import torch
+torch.addr()"
+torch.baddbmm(),valid api,"import torch
+torch.baddbmm()"
+torch.bmm(),valid api,"import torch
+torch.bmm()"
+torch.chain_matmul(),valid api,"import torch
+torch.chain_matmul()"
+torch.cholesky(),valid api,"import torch
+torch.cholesky()"
+torch.cholesky_inverse(),valid api,"import torch
+torch.cholesky_inverse()"
+torch.cholesky_solve(),valid api,"import torch
+torch.cholesky_solve()"
+torch.dot(),valid api,"import torch
+torch.dot()"
+torch.geqrf(),valid api,"import torch
+torch.geqrf()"
+torch.ger(),valid api,"import torch
+torch.ger()"
+torch.outer(),valid api,"import torch
+torch.outer()"
+torch.inner(),valid api,"import torch
+torch.inner()"
+torch.inverse(),valid api,"import torch
+torch.inverse()"
+torch.linalg.inv(),valid api,"import torch
+torch.linalg.inv()"
+torch.det(),valid api,"import torch
+torch.det()"
+torch.linalg.det(),valid api,"import torch
+torch.linalg.det()"
+torch.logdet(),valid api,"import torch
+torch.logdet()"
+torch.slogdet(),valid api,"import torch
+torch.slogdet()"
+torch.linalg.slogdet(),valid api,"import torch
+torch.linalg.slogdet()"
+torch.lu(),valid api,"import torch
+torch.lu()"
+torch.lu_solve(),valid api,"import torch
+torch.lu_solve()"
+torch.linalg.lu_factor(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.lu_factor()
+AttributeError: module 'torch.linalg' has no attribute 'lu_factor'
+","import torch
+torch.linalg.lu_factor()"
+torch.lu_unpack(),valid api,"import torch
+torch.lu_unpack()"
+torch.matmul(),valid api,"import torch
+torch.matmul()"
+torch.matrix_power(),valid api,"import torch
+torch.matrix_power()"
+torch.linalg.matrix_power(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.matrix_power()
+AttributeError: module 'torch.linalg' has no attribute 'matrix_power'
+","import torch
+torch.linalg.matrix_power()"
+torch.matrix_exp(),valid api,"import torch
+torch.matrix_exp()"
+torch.linalg.matrix_exp(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.matrix_exp()
+AttributeError: module 'torch.linalg' has no attribute 'matrix_exp'
+","import torch
+torch.linalg.matrix_exp()"
+torch.mm(),valid api,"import torch
+torch.mm()"
+torch.mv(),valid api,"import torch
+torch.mv()"
+torch.orgqr(),valid api,"import torch
+torch.orgqr()"
+torch.linalg.householder_product(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.householder_product()
+AttributeError: module 'torch.linalg' has no attribute 'householder_product'
+","import torch
+torch.linalg.householder_product()"
+torch.ormqr(),valid api,"import torch
+torch.ormqr()"
+torch.pinverse(),valid api,"import torch
+torch.pinverse()"
+torch.linalg.pinv(),valid api,"import torch
+torch.linalg.pinv()"
+torch.qr(),valid api,"import torch
+torch.qr()"
+torch.svd(),valid api,"import torch
+torch.svd()"
+torch.svd_lowrank(),valid api,"import torch
+torch.svd_lowrank()"
+torch.pca_lowrank(),valid api,"import torch
+torch.pca_lowrank()"
+torch.symeig(),valid api,"import torch
+torch.symeig()"
+torch.lobpcg(),valid api,"import torch
+torch.lobpcg()"
+torch.trapz(),valid api,"import torch
+torch.trapz()"
+torch.trapezoid(),AttributeError: module torch has no attribute,"import torch
+torch.trapezoid()"
+torch.cumulative_trapezoid(),AttributeError: module torch has no attribute,"import torch
+torch.cumulative_trapezoid()"
+torch.triangular_solve(),valid api,"import torch
+torch.triangular_solve()"
+torch.vdot(),valid api,"import torch
+torch.vdot()"
+torch.compiled_with_cxx11_abi(),,"import torch
+torch.compiled_with_cxx11_abi()"
+torch.result_type(),valid api,"import torch
+torch.result_type()"
+torch.can_cast(),valid api,"import torch
+torch.can_cast()"
+torch.promote_types(),valid api,"import torch
+torch.promote_types()"
+torch.use_deterministic_algorithms(),valid api,"import torch
+torch.use_deterministic_algorithms()"
+torch.are_deterministic_algorithms_enabled(),,"import torch
+torch.are_deterministic_algorithms_enabled()"
+torch.is_deterministic_algorithms_warn_only_enabled(),AttributeError: module torch has no attribute,"import torch
+torch.is_deterministic_algorithms_warn_only_enabled()"
+torch.set_deterministic_debug_mode(),AttributeError: module torch has no attribute,"import torch
+torch.set_deterministic_debug_mode()"
+torch.get_deterministic_debug_mode(),AttributeError: module torch has no attribute,"import torch
+torch.get_deterministic_debug_mode()"
+torch.set_float32_matmul_precision(),AttributeError: module torch has no attribute,"import torch
+torch.set_float32_matmul_precision()"
+torch.get_float32_matmul_precision(),AttributeError: module torch has no attribute,"import torch
+torch.get_float32_matmul_precision()"
+torch.set_warn_always(),AttributeError: module torch has no attribute,"import torch
+torch.set_warn_always()"
+torch.is_warn_always_enabled(),AttributeError: module torch has no attribute,"import torch
+torch.is_warn_always_enabled()"
+torch._assert(),valid api,"import torch
+torch._assert()"
+torch.nn.parameter.Parameter(),,"import torch
+torch.nn.parameter.Parameter()"
+torch.nn.parameter.UninitializedParameter(),,"import torch
+torch.nn.parameter.UninitializedParameter()"
+torch.nn.parameter.UninitializedBuffer(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.parameter.UninitializedBuffer()
+AttributeError: module 'torch.nn.parameter' has no attribute 'UninitializedBuffer'
+","import torch
+torch.nn.parameter.UninitializedBuffer()"
+"
+ class torch.nn. Module [source] ¶",No input params,No example
+torch.nn.Sequential(),,"import torch
+torch.nn.Sequential()"
+torch.nn.ModuleList(),,"import torch
+torch.nn.ModuleList()"
+torch.nn.ModuleDict(),,"import torch
+torch.nn.ModuleDict()"
+torch.nn.ParameterList(),,"import torch
+torch.nn.ParameterList()"
+torch.nn.ParameterDict(),,"import torch
+torch.nn.ParameterDict()"
+torch.nn.modules.module.register_module_forward_pre_hook(),valid api,"import torch
+torch.nn.modules.module.register_module_forward_pre_hook()"
+torch.nn.modules.module.register_module_forward_hook(),valid api,"import torch
+torch.nn.modules.module.register_module_forward_hook()"
+torch.nn.modules.module.register_module_backward_hook(),valid api,"import torch
+torch.nn.modules.module.register_module_backward_hook()"
+torch.nn.modules.module.register_module_full_backward_hook(),valid api,"import torch
+torch.nn.modules.module.register_module_full_backward_hook()"
+torch.nn.Conv1d(),valid api,"import torch
+torch.nn.Conv1d()"
+torch.nn.Conv2d(),valid api,"import torch
+torch.nn.Conv2d()"
+torch.nn.Conv3d(),valid api,"import torch
+torch.nn.Conv3d()"
+torch.nn.ConvTranspose1d(),valid api,"import torch
+torch.nn.ConvTranspose1d()"
+torch.nn.ConvTranspose2d(),valid api,"import torch
+torch.nn.ConvTranspose2d()"
+torch.nn.ConvTranspose3d(),valid api,"import torch
+torch.nn.ConvTranspose3d()"
+torch.nn.LazyConv1d(),valid api,"import torch
+torch.nn.LazyConv1d()"
+torch.nn.LazyConv2d(),valid api,"import torch
+torch.nn.LazyConv2d()"
+torch.nn.LazyConv3d(),valid api,"import torch
+torch.nn.LazyConv3d()"
+torch.nn.LazyConvTranspose1d(),valid api,"import torch
+torch.nn.LazyConvTranspose1d()"
+torch.nn.LazyConvTranspose2d(),valid api,"import torch
+torch.nn.LazyConvTranspose2d()"
+torch.nn.LazyConvTranspose3d(),valid api,"import torch
+torch.nn.LazyConvTranspose3d()"
+torch.nn.Unfold(),valid api,"import torch
+torch.nn.Unfold()"
+torch.nn.Fold(),valid api,"import torch
+torch.nn.Fold()"
+torch.nn.MaxPool1d(),valid api,"import torch
+torch.nn.MaxPool1d()"
+torch.nn.MaxPool2d(),valid api,"import torch
+torch.nn.MaxPool2d()"
+torch.nn.MaxPool3d(),valid api,"import torch
+torch.nn.MaxPool3d()"
+torch.nn.MaxUnpool1d(),valid api,"import torch
+torch.nn.MaxUnpool1d()"
+torch.nn.MaxUnpool2d(),valid api,"import torch
+torch.nn.MaxUnpool2d()"
+torch.nn.MaxUnpool3d(),valid api,"import torch
+torch.nn.MaxUnpool3d()"
+torch.nn.AvgPool1d(),valid api,"import torch
+torch.nn.AvgPool1d()"
+torch.nn.AvgPool2d(),valid api,"import torch
+torch.nn.AvgPool2d()"
+torch.nn.AvgPool3d(),valid api,"import torch
+torch.nn.AvgPool3d()"
+torch.nn.FractionalMaxPool2d(),valid api,"import torch
+torch.nn.FractionalMaxPool2d()"
+torch.nn.FractionalMaxPool3d(),valid api,"import torch
+torch.nn.FractionalMaxPool3d()"
+torch.nn.LPPool1d(),valid api,"import torch
+torch.nn.LPPool1d()"
+torch.nn.LPPool2d(),valid api,"import torch
+torch.nn.LPPool2d()"
+torch.nn.AdaptiveMaxPool1d(),valid api,"import torch
+torch.nn.AdaptiveMaxPool1d()"
+torch.nn.AdaptiveMaxPool2d(),valid api,"import torch
+torch.nn.AdaptiveMaxPool2d()"
+torch.nn.AdaptiveMaxPool3d(),valid api,"import torch
+torch.nn.AdaptiveMaxPool3d()"
+torch.nn.AdaptiveAvgPool1d(),valid api,"import torch
+torch.nn.AdaptiveAvgPool1d()"
+torch.nn.AdaptiveAvgPool2d(),valid api,"import torch
+torch.nn.AdaptiveAvgPool2d()"
+torch.nn.AdaptiveAvgPool3d(),valid api,"import torch
+torch.nn.AdaptiveAvgPool3d()"
+torch.nn.ReflectionPad1d(),valid api,"import torch
+torch.nn.ReflectionPad1d()"
+torch.nn.ReflectionPad2d(),valid api,"import torch
+torch.nn.ReflectionPad2d()"
+torch.nn.ReflectionPad3d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.ReflectionPad3d()
+AttributeError: module 'torch.nn' has no attribute 'ReflectionPad3d'
+","import torch
+torch.nn.ReflectionPad3d()"
+torch.nn.ReplicationPad1d(),valid api,"import torch
+torch.nn.ReplicationPad1d()"
+torch.nn.ReplicationPad2d(),valid api,"import torch
+torch.nn.ReplicationPad2d()"
+torch.nn.ReplicationPad3d(),valid api,"import torch
+torch.nn.ReplicationPad3d()"
+torch.nn.ZeroPad2d(),valid api,"import torch
+torch.nn.ZeroPad2d()"
+torch.nn.ConstantPad1d(),valid api,"import torch
+torch.nn.ConstantPad1d()"
+torch.nn.ConstantPad2d(),valid api,"import torch
+torch.nn.ConstantPad2d()"
+torch.nn.ConstantPad3d(),valid api,"import torch
+torch.nn.ConstantPad3d()"
+torch.nn.ELU(),,"import torch
+torch.nn.ELU()"
+torch.nn.Hardshrink(),,"import torch
+torch.nn.Hardshrink()"
+torch.nn.Hardsigmoid(),,"import torch
+torch.nn.Hardsigmoid()"
+torch.nn.Hardtanh(),,"import torch
+torch.nn.Hardtanh()"
+torch.nn.Hardswish(),,"import torch
+torch.nn.Hardswish()"
+torch.nn.LeakyReLU(),,"import torch
+torch.nn.LeakyReLU()"
+"
+ class torch.nn. LogSigmoid [source] ¶",No input params,No example
+torch.nn.MultiheadAttention(),valid api,"import torch
+torch.nn.MultiheadAttention()"
+torch.nn.PReLU(),,"import torch
+torch.nn.PReLU()"
+torch.nn.ReLU(),,"import torch
+torch.nn.ReLU()"
+torch.nn.ReLU6(),,"import torch
+torch.nn.ReLU6()"
+torch.nn.RReLU(),,"import torch
+torch.nn.RReLU()"
+torch.nn.SELU(),,"import torch
+torch.nn.SELU()"
+torch.nn.CELU(),,"import torch
+torch.nn.CELU()"
+torch.nn.GELU(),,"import torch
+torch.nn.GELU()"
+"
+ class torch.nn. Sigmoid [source] ¶",No input params,No example
+torch.nn.SiLU(),,"import torch
+torch.nn.SiLU()"
+torch.nn.Mish(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.Mish()
+AttributeError: module 'torch.nn' has no attribute 'Mish'
+","import torch
+torch.nn.Mish()"
+torch.nn.Softplus(),,"import torch
+torch.nn.Softplus()"
+torch.nn.Softshrink(),,"import torch
+torch.nn.Softshrink()"
+"
+ class torch.nn. Softsign [source] ¶",No input params,No example
+"
+ class torch.nn. Tanh [source] ¶",No input params,No example
+"
+ class torch.nn. Tanhshrink [source] ¶",No input params,No example
+torch.nn.Threshold(),valid api,"import torch
+torch.nn.Threshold()"
+torch.nn.GLU(),,"import torch
+torch.nn.GLU()"
+torch.nn.Softmin(),,"import torch
+torch.nn.Softmin()"
+torch.nn.Softmax(),,"import torch
+torch.nn.Softmax()"
+"
+ class torch.nn. Softmax2d [source] ¶",No input params,No example
+torch.nn.LogSoftmax(),,"import torch
+torch.nn.LogSoftmax()"
+torch.nn.AdaptiveLogSoftmaxWithLoss(),valid api,"import torch
+torch.nn.AdaptiveLogSoftmaxWithLoss()"
+torch.nn.BatchNorm1d(),valid api,"import torch
+torch.nn.BatchNorm1d()"
+torch.nn.BatchNorm2d(),valid api,"import torch
+torch.nn.BatchNorm2d()"
+torch.nn.BatchNorm3d(),valid api,"import torch
+torch.nn.BatchNorm3d()"
+torch.nn.LazyBatchNorm1d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.LazyBatchNorm1d()
+AttributeError: module 'torch.nn' has no attribute 'LazyBatchNorm1d'
+","import torch
+torch.nn.LazyBatchNorm1d()"
+torch.nn.LazyBatchNorm2d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.LazyBatchNorm2d()
+AttributeError: module 'torch.nn' has no attribute 'LazyBatchNorm2d'
+","import torch
+torch.nn.LazyBatchNorm2d()"
+torch.nn.LazyBatchNorm3d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.LazyBatchNorm3d()
+AttributeError: module 'torch.nn' has no attribute 'LazyBatchNorm3d'
+","import torch
+torch.nn.LazyBatchNorm3d()"
+torch.nn.GroupNorm(),valid api,"import torch
+torch.nn.GroupNorm()"
+torch.nn.SyncBatchNorm(),valid api,"import torch
+torch.nn.SyncBatchNorm()"
+torch.nn.InstanceNorm1d(),valid api,"import torch
+torch.nn.InstanceNorm1d()"
+torch.nn.InstanceNorm2d(),valid api,"import torch
+torch.nn.InstanceNorm2d()"
+torch.nn.InstanceNorm3d(),valid api,"import torch
+torch.nn.InstanceNorm3d()"
+torch.nn.LazyInstanceNorm1d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.LazyInstanceNorm1d()
+AttributeError: module 'torch.nn' has no attribute 'LazyInstanceNorm1d'
+","import torch
+torch.nn.LazyInstanceNorm1d()"
+torch.nn.LazyInstanceNorm2d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.LazyInstanceNorm2d()
+AttributeError: module 'torch.nn' has no attribute 'LazyInstanceNorm2d'
+","import torch
+torch.nn.LazyInstanceNorm2d()"
+torch.nn.LazyInstanceNorm3d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.LazyInstanceNorm3d()
+AttributeError: module 'torch.nn' has no attribute 'LazyInstanceNorm3d'
+","import torch
+torch.nn.LazyInstanceNorm3d()"
+torch.nn.LayerNorm(),valid api,"import torch
+torch.nn.LayerNorm()"
+torch.nn.LocalResponseNorm(),valid api,"import torch
+torch.nn.LocalResponseNorm()"
+torch.nn.RNNBase(),valid api,"import torch
+torch.nn.RNNBase()"
+torch.nn.RNN(),valid api,"import torch
+torch.nn.RNN()"
+torch.nn.LSTM(),valid api,"import torch
+torch.nn.LSTM()"
+torch.nn.GRU(),valid api,"import torch
+torch.nn.GRU()"
+torch.nn.RNNCell(),valid api,"import torch
+torch.nn.RNNCell()"
+torch.nn.LSTMCell(),valid api,"import torch
+torch.nn.LSTMCell()"
+torch.nn.GRUCell(),valid api,"import torch
+torch.nn.GRUCell()"
+torch.nn.Transformer(),,"import torch
+torch.nn.Transformer()"
+torch.nn.TransformerEncoder(),valid api,"import torch
+torch.nn.TransformerEncoder()"
+torch.nn.TransformerDecoder(),valid api,"import torch
+torch.nn.TransformerDecoder()"
+torch.nn.TransformerEncoderLayer(),valid api,"import torch
+torch.nn.TransformerEncoderLayer()"
+torch.nn.TransformerDecoderLayer(),valid api,"import torch
+torch.nn.TransformerDecoderLayer()"
+torch.nn.Identity(),,"import torch
+torch.nn.Identity()"
+torch.nn.Linear(),valid api,"import torch
+torch.nn.Linear()"
+torch.nn.Bilinear(),valid api,"import torch
+torch.nn.Bilinear()"
+torch.nn.LazyLinear(),valid api,"import torch
+torch.nn.LazyLinear()"
+torch.nn.Dropout(),,"import torch
+torch.nn.Dropout()"
+torch.nn.Dropout1d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.Dropout1d()
+AttributeError: module 'torch.nn' has no attribute 'Dropout1d'
+","import torch
+torch.nn.Dropout1d()"
+torch.nn.Dropout2d(),,"import torch
+torch.nn.Dropout2d()"
+torch.nn.Dropout3d(),,"import torch
+torch.nn.Dropout3d()"
+torch.nn.AlphaDropout(),,"import torch
+torch.nn.AlphaDropout()"
+torch.nn.FeatureAlphaDropout(),,"import torch
+torch.nn.FeatureAlphaDropout()"
+torch.nn.Embedding(),valid api,"import torch
+torch.nn.Embedding()"
+torch.nn.EmbeddingBag(),valid api,"import torch
+torch.nn.EmbeddingBag()"
+torch.nn.CosineSimilarity(),,"import torch
+torch.nn.CosineSimilarity()"
+torch.nn.PairwiseDistance(),,"import torch
+torch.nn.PairwiseDistance()"
+torch.nn.L1Loss(),,"import torch
+torch.nn.L1Loss()"
+torch.nn.MSELoss(),,"import torch
+torch.nn.MSELoss()"
+torch.nn.CrossEntropyLoss(),,"import torch
+torch.nn.CrossEntropyLoss()"
+torch.nn.CTCLoss(),,"import torch
+torch.nn.CTCLoss()"
+torch.nn.NLLLoss(),,"import torch
+torch.nn.NLLLoss()"
+torch.nn.PoissonNLLLoss(),,"import torch
+torch.nn.PoissonNLLLoss()"
+torch.nn.GaussianNLLLoss(),,"import torch
+torch.nn.GaussianNLLLoss()"
+torch.nn.KLDivLoss(),,"import torch
+torch.nn.KLDivLoss()"
+torch.nn.BCELoss(),,"import torch
+torch.nn.BCELoss()"
+torch.nn.BCEWithLogitsLoss(),,"import torch
+torch.nn.BCEWithLogitsLoss()"
+torch.nn.MarginRankingLoss(),,"import torch
+torch.nn.MarginRankingLoss()"
+torch.nn.HingeEmbeddingLoss(),,"import torch
+torch.nn.HingeEmbeddingLoss()"
+torch.nn.MultiLabelMarginLoss(),,"import torch
+torch.nn.MultiLabelMarginLoss()"
+torch.nn.HuberLoss(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.HuberLoss()
+AttributeError: module 'torch.nn' has no attribute 'HuberLoss'
+","import torch
+torch.nn.HuberLoss()"
+torch.nn.SmoothL1Loss(),,"import torch
+torch.nn.SmoothL1Loss()"
+torch.nn.SoftMarginLoss(),,"import torch
+torch.nn.SoftMarginLoss()"
+torch.nn.MultiLabelSoftMarginLoss(),,"import torch
+torch.nn.MultiLabelSoftMarginLoss()"
+torch.nn.CosineEmbeddingLoss(),,"import torch
+torch.nn.CosineEmbeddingLoss()"
+torch.nn.MultiMarginLoss(),,"import torch
+torch.nn.MultiMarginLoss()"
+torch.nn.TripletMarginLoss(),,"import torch
+torch.nn.TripletMarginLoss()"
+torch.nn.TripletMarginWithDistanceLoss(),,"import torch
+torch.nn.TripletMarginWithDistanceLoss()"
+torch.nn.PixelShuffle(),valid api,"import torch
+torch.nn.PixelShuffle()"
+torch.nn.PixelUnshuffle(),valid api,"import torch
+torch.nn.PixelUnshuffle()"
+torch.nn.Upsample(),,"import torch
+torch.nn.Upsample()"
+torch.nn.UpsamplingNearest2d(),,"import torch
+torch.nn.UpsamplingNearest2d()"
+torch.nn.UpsamplingBilinear2d(),,"import torch
+torch.nn.UpsamplingBilinear2d()"
+torch.nn.ChannelShuffle(),valid api,"import torch
+torch.nn.ChannelShuffle()"
+torch.nn.DataParallel(),valid api,"import torch
+torch.nn.DataParallel()"
+torch.nn.parallel.DistributedDataParallel(),valid api,"import torch
+torch.nn.parallel.DistributedDataParallel()"
+torch.nn.utils.clip_grad_norm_(),valid api,"import torch
+torch.nn.utils.clip_grad_norm_()"
+torch.nn.utils.clip_grad_value_(),valid api,"import torch
+torch.nn.utils.clip_grad_value_()"
+torch.nn.utils.parameters_to_vector(),valid api,"import torch
+torch.nn.utils.parameters_to_vector()"
+torch.nn.utils.vector_to_parameters(),valid api,"import torch
+torch.nn.utils.vector_to_parameters()"
+"
+ class torch.nn.utils.prune. BasePruningMethod [source] ¶",No input params,No example
+torch.nn.utils.prune.PruningContainer(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.PruningContainer()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.PruningContainer()"
+"
+ class torch.nn.utils.prune. Identity [source] ¶",No input params,No example
+torch.nn.utils.prune.RandomUnstructured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.RandomUnstructured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.RandomUnstructured()"
+torch.nn.utils.prune.L1Unstructured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.L1Unstructured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.L1Unstructured()"
+torch.nn.utils.prune.RandomStructured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.RandomStructured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.RandomStructured()"
+torch.nn.utils.prune.LnStructured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.LnStructured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.LnStructured()"
+torch.nn.utils.prune.CustomFromMask(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.CustomFromMask()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.CustomFromMask()"
+torch.nn.utils.prune.identity(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.identity()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.identity()"
+torch.nn.utils.prune.random_unstructured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.random_unstructured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.random_unstructured()"
+torch.nn.utils.prune.l1_unstructured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.l1_unstructured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.l1_unstructured()"
+torch.nn.utils.prune.random_structured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.random_structured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.random_structured()"
+torch.nn.utils.prune.ln_structured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.ln_structured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.ln_structured()"
+torch.nn.utils.prune.global_unstructured(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.global_unstructured()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.global_unstructured()"
+torch.nn.utils.prune.custom_from_mask(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.custom_from_mask()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.custom_from_mask()"
+torch.nn.utils.prune.remove(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.remove()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.remove()"
+torch.nn.utils.prune.is_pruned(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.prune.is_pruned()
+AttributeError: module 'torch.nn.utils' has no attribute 'prune'
+","import torch
+torch.nn.utils.prune.is_pruned()"
+torch.nn.utils.weight_norm(),valid api,"import torch
+torch.nn.utils.weight_norm()"
+torch.nn.utils.remove_weight_norm(),valid api,"import torch
+torch.nn.utils.remove_weight_norm()"
+torch.nn.utils.spectral_norm(),valid api,"import torch
+torch.nn.utils.spectral_norm()"
+torch.nn.utils.remove_spectral_norm(),valid api,"import torch
+torch.nn.utils.remove_spectral_norm()"
+torch.nn.utils.skip_init(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.skip_init()
+AttributeError: module 'torch.nn.utils' has no attribute 'skip_init'
+","import torch
+torch.nn.utils.skip_init()"
+torch.nn.utils.parametrizations.orthogonal(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.parametrizations.orthogonal()
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrizations'
+","import torch
+torch.nn.utils.parametrizations.orthogonal()"
+torch.nn.utils.parametrizations.spectral_norm(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.parametrizations.spectral_norm()
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrizations'
+","import torch
+torch.nn.utils.parametrizations.spectral_norm()"
+torch.nn.utils.parametrize.register_parametrization(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.parametrize.register_parametrization()
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrize'
+","import torch
+torch.nn.utils.parametrize.register_parametrization()"
+torch.nn.utils.parametrize.remove_parametrizations(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.parametrize.remove_parametrizations()
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrize'
+","import torch
+torch.nn.utils.parametrize.remove_parametrizations()"
+torch.nn.utils.parametrize.cached(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.parametrize.cached()
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrize'
+","import torch
+torch.nn.utils.parametrize.cached()"
+torch.nn.utils.parametrize.is_parametrized(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.parametrize.is_parametrized()
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrize'
+","import torch
+torch.nn.utils.parametrize.is_parametrized()"
+torch.nn.utils.parametrize.ParametrizationList(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.parametrize.ParametrizationList()
+AttributeError: module 'torch.nn.utils' has no attribute 'parametrize'
+","import torch
+torch.nn.utils.parametrize.ParametrizationList()"
+torch.nn.utils.stateless.functional_call(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.utils.stateless.functional_call()
+AttributeError: module 'torch.nn.utils' has no attribute 'stateless'
+","import torch
+torch.nn.utils.stateless.functional_call()"
+torch.nn.utils.rnn.PackedSequence(),valid api,"import torch
+torch.nn.utils.rnn.PackedSequence()"
+torch.nn.utils.rnn.pack_padded_sequence(),valid api,"import torch
+torch.nn.utils.rnn.pack_padded_sequence()"
+torch.nn.utils.rnn.pad_packed_sequence(),valid api,"import torch
+torch.nn.utils.rnn.pad_packed_sequence()"
+torch.nn.utils.rnn.pad_sequence(),valid api,"import torch
+torch.nn.utils.rnn.pad_sequence()"
+torch.nn.utils.rnn.pack_sequence(),valid api,"import torch
+torch.nn.utils.rnn.pack_sequence()"
+torch.nn.Flatten(),,"import torch
+torch.nn.Flatten()"
+torch.nn.Unflatten(),valid api,"import torch
+torch.nn.Unflatten()"
+torch.nn.modules.lazy.LazyModuleMixin(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.modules.lazy.LazyModuleMixin()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/nn/modules/lazy.py"", line 173, in __init__
+    self._load_hook = self._register_load_state_dict_pre_hook(self._lazy_load_hook)
+AttributeError: 'LazyModuleMixin' object has no attribute '_register_load_state_dict_pre_hook'
+","import torch
+torch.nn.modules.lazy.LazyModuleMixin()"
+torch.nn.functional.conv1d(),valid api,"import torch
+torch.nn.functional.conv1d()"
+torch.nn.functional.conv2d(),valid api,"import torch
+torch.nn.functional.conv2d()"
+torch.nn.functional.conv3d(),valid api,"import torch
+torch.nn.functional.conv3d()"
+torch.nn.functional.conv_transpose1d(),valid api,"import torch
+torch.nn.functional.conv_transpose1d()"
+torch.nn.functional.conv_transpose2d(),valid api,"import torch
+torch.nn.functional.conv_transpose2d()"
+torch.nn.functional.conv_transpose3d(),valid api,"import torch
+torch.nn.functional.conv_transpose3d()"
+torch.nn.functional.unfold(),valid api,"import torch
+torch.nn.functional.unfold()"
+torch.nn.functional.fold(),valid api,"import torch
+torch.nn.functional.fold()"
+torch.nn.functional.avg_pool1d(),valid api,"import torch
+torch.nn.functional.avg_pool1d()"
+torch.nn.functional.avg_pool2d(),valid api,"import torch
+torch.nn.functional.avg_pool2d()"
+torch.nn.functional.avg_pool3d(),valid api,"import torch
+torch.nn.functional.avg_pool3d()"
+torch.nn.functional.max_pool1d(),valid api,"import torch
+torch.nn.functional.max_pool1d()"
+torch.nn.functional.max_pool2d(),valid api,"import torch
+torch.nn.functional.max_pool2d()"
+torch.nn.functional.max_pool3d(),valid api,"import torch
+torch.nn.functional.max_pool3d()"
+torch.nn.functional.max_unpool1d(),valid api,"import torch
+torch.nn.functional.max_unpool1d()"
+torch.nn.functional.max_unpool2d(),valid api,"import torch
+torch.nn.functional.max_unpool2d()"
+torch.nn.functional.max_unpool3d(),valid api,"import torch
+torch.nn.functional.max_unpool3d()"
+torch.nn.functional.lp_pool1d(),valid api,"import torch
+torch.nn.functional.lp_pool1d()"
+torch.nn.functional.lp_pool2d(),valid api,"import torch
+torch.nn.functional.lp_pool2d()"
+torch.nn.functional.adaptive_max_pool1d(),valid api,"import torch
+torch.nn.functional.adaptive_max_pool1d()"
+torch.nn.functional.adaptive_max_pool2d(),valid api,"import torch
+torch.nn.functional.adaptive_max_pool2d()"
+torch.nn.functional.adaptive_max_pool3d(),valid api,"import torch
+torch.nn.functional.adaptive_max_pool3d()"
+torch.nn.functional.adaptive_avg_pool1d(),valid api,"import torch
+torch.nn.functional.adaptive_avg_pool1d()"
+torch.nn.functional.adaptive_avg_pool2d(),valid api,"import torch
+torch.nn.functional.adaptive_avg_pool2d()"
+torch.nn.functional.adaptive_avg_pool3d(),valid api,"import torch
+torch.nn.functional.adaptive_avg_pool3d()"
+torch.nn.functional.fractional_max_pool2d(),valid api,"import torch
+torch.nn.functional.fractional_max_pool2d()"
+torch.nn.functional.fractional_max_pool3d(),valid api,"import torch
+torch.nn.functional.fractional_max_pool3d()"
+torch.nn.functional.threshold(),valid api,"import torch
+torch.nn.functional.threshold()"
+torch.nn.functional.threshold_(),valid api,"import torch
+torch.nn.functional.threshold_()"
+torch.nn.functional.relu(),valid api,"import torch
+torch.nn.functional.relu()"
+torch.nn.functional.relu_(),valid api,"import torch
+torch.nn.functional.relu_()"
+torch.nn.functional.hardtanh(),valid api,"import torch
+torch.nn.functional.hardtanh()"
+torch.nn.functional.hardtanh_(),valid api,"import torch
+torch.nn.functional.hardtanh_()"
+torch.nn.functional.hardswish(),valid api,"import torch
+torch.nn.functional.hardswish()"
+torch.nn.functional.relu6(),valid api,"import torch
+torch.nn.functional.relu6()"
+torch.nn.functional.elu(),valid api,"import torch
+torch.nn.functional.elu()"
+torch.nn.functional.elu_(),valid api,"import torch
+torch.nn.functional.elu_()"
+torch.nn.functional.selu(),valid api,"import torch
+torch.nn.functional.selu()"
+torch.nn.functional.celu(),valid api,"import torch
+torch.nn.functional.celu()"
+torch.nn.functional.leaky_relu(),valid api,"import torch
+torch.nn.functional.leaky_relu()"
+torch.nn.functional.leaky_relu_(),valid api,"import torch
+torch.nn.functional.leaky_relu_()"
+torch.nn.functional.prelu(),valid api,"import torch
+torch.nn.functional.prelu()"
+torch.nn.functional.rrelu(),valid api,"import torch
+torch.nn.functional.rrelu()"
+torch.nn.functional.rrelu_(),valid api,"import torch
+torch.nn.functional.rrelu_()"
+torch.nn.functional.glu(),valid api,"import torch
+torch.nn.functional.glu()"
+torch.nn.functional.gelu(),valid api,"import torch
+torch.nn.functional.gelu()"
+torch.nn.functional.logsigmoid(),valid api,"import torch
+torch.nn.functional.logsigmoid()"
+torch.nn.functional.hardshrink(),valid api,"import torch
+torch.nn.functional.hardshrink()"
+torch.nn.functional.tanhshrink(),valid api,"import torch
+torch.nn.functional.tanhshrink()"
+torch.nn.functional.softsign(),valid api,"import torch
+torch.nn.functional.softsign()"
+torch.nn.functional.softplus(),valid api,"import torch
+torch.nn.functional.softplus()"
+torch.nn.functional.softmin(),valid api,"import torch
+torch.nn.functional.softmin()"
+torch.nn.functional.softmax(),valid api,"import torch
+torch.nn.functional.softmax()"
+torch.nn.functional.softshrink(),valid api,"import torch
+torch.nn.functional.softshrink()"
+torch.nn.functional.gumbel_softmax(),valid api,"import torch
+torch.nn.functional.gumbel_softmax()"
+torch.nn.functional.log_softmax(),valid api,"import torch
+torch.nn.functional.log_softmax()"
+torch.nn.functional.tanh(),valid api,"import torch
+torch.nn.functional.tanh()"
+torch.nn.functional.sigmoid(),valid api,"import torch
+torch.nn.functional.sigmoid()"
+torch.nn.functional.hardsigmoid(),valid api,"import torch
+torch.nn.functional.hardsigmoid()"
+torch.nn.functional.silu(),valid api,"import torch
+torch.nn.functional.silu()"
+torch.nn.functional.mish(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.functional.mish()
+AttributeError: module 'torch.nn.functional' has no attribute 'mish'
+","import torch
+torch.nn.functional.mish()"
+torch.nn.functional.batch_norm(),valid api,"import torch
+torch.nn.functional.batch_norm()"
+torch.nn.functional.group_norm(),valid api,"import torch
+torch.nn.functional.group_norm()"
+torch.nn.functional.instance_norm(),valid api,"import torch
+torch.nn.functional.instance_norm()"
+torch.nn.functional.layer_norm(),valid api,"import torch
+torch.nn.functional.layer_norm()"
+torch.nn.functional.local_response_norm(),valid api,"import torch
+torch.nn.functional.local_response_norm()"
+torch.nn.functional.normalize(),valid api,"import torch
+torch.nn.functional.normalize()"
+torch.nn.functional.linear(),valid api,"import torch
+torch.nn.functional.linear()"
+torch.nn.functional.bilinear(),valid api,"import torch
+torch.nn.functional.bilinear()"
+torch.nn.functional.dropout(),valid api,"import torch
+torch.nn.functional.dropout()"
+torch.nn.functional.alpha_dropout(),valid api,"import torch
+torch.nn.functional.alpha_dropout()"
+torch.nn.functional.feature_alpha_dropout(),valid api,"import torch
+torch.nn.functional.feature_alpha_dropout()"
+torch.nn.functional.dropout1d(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.functional.dropout1d()
+AttributeError: module 'torch.nn.functional' has no attribute 'dropout1d'
+","import torch
+torch.nn.functional.dropout1d()"
+torch.nn.functional.dropout2d(),valid api,"import torch
+torch.nn.functional.dropout2d()"
+torch.nn.functional.dropout3d(),valid api,"import torch
+torch.nn.functional.dropout3d()"
+torch.nn.functional.embedding(),valid api,"import torch
+torch.nn.functional.embedding()"
+torch.nn.functional.embedding_bag(),valid api,"import torch
+torch.nn.functional.embedding_bag()"
+torch.nn.functional.one_hot(),valid api,"import torch
+torch.nn.functional.one_hot()"
+torch.nn.functional.pairwise_distance(),valid api,"import torch
+torch.nn.functional.pairwise_distance()"
+torch.nn.functional.cosine_similarity(),valid api,"import torch
+torch.nn.functional.cosine_similarity()"
+torch.nn.functional.pdist(),valid api,"import torch
+torch.nn.functional.pdist()"
+torch.nn.functional.binary_cross_entropy(),valid api,"import torch
+torch.nn.functional.binary_cross_entropy()"
+torch.nn.functional.binary_cross_entropy_with_logits(),valid api,"import torch
+torch.nn.functional.binary_cross_entropy_with_logits()"
+torch.nn.functional.poisson_nll_loss(),valid api,"import torch
+torch.nn.functional.poisson_nll_loss()"
+torch.nn.functional.cosine_embedding_loss(),valid api,"import torch
+torch.nn.functional.cosine_embedding_loss()"
+torch.nn.functional.cross_entropy(),valid api,"import torch
+torch.nn.functional.cross_entropy()"
+torch.nn.functional.ctc_loss(),valid api,"import torch
+torch.nn.functional.ctc_loss()"
+torch.nn.functional.gaussian_nll_loss(),valid api,"import torch
+torch.nn.functional.gaussian_nll_loss()"
+torch.nn.functional.hinge_embedding_loss(),valid api,"import torch
+torch.nn.functional.hinge_embedding_loss()"
+torch.nn.functional.kl_div(),valid api,"import torch
+torch.nn.functional.kl_div()"
+torch.nn.functional.l1_loss(),valid api,"import torch
+torch.nn.functional.l1_loss()"
+torch.nn.functional.mse_loss(),valid api,"import torch
+torch.nn.functional.mse_loss()"
+torch.nn.functional.margin_ranking_loss(),valid api,"import torch
+torch.nn.functional.margin_ranking_loss()"
+torch.nn.functional.multilabel_margin_loss(),valid api,"import torch
+torch.nn.functional.multilabel_margin_loss()"
+torch.nn.functional.multilabel_soft_margin_loss(),valid api,"import torch
+torch.nn.functional.multilabel_soft_margin_loss()"
+torch.nn.functional.multi_margin_loss(),valid api,"import torch
+torch.nn.functional.multi_margin_loss()"
+torch.nn.functional.nll_loss(),valid api,"import torch
+torch.nn.functional.nll_loss()"
+torch.nn.functional.huber_loss(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.nn.functional.huber_loss()
+AttributeError: module 'torch.nn.functional' has no attribute 'huber_loss'
+","import torch
+torch.nn.functional.huber_loss()"
+torch.nn.functional.smooth_l1_loss(),valid api,"import torch
+torch.nn.functional.smooth_l1_loss()"
+torch.nn.functional.soft_margin_loss(),valid api,"import torch
+torch.nn.functional.soft_margin_loss()"
+torch.nn.functional.triplet_margin_loss(),valid api,"import torch
+torch.nn.functional.triplet_margin_loss()"
+torch.nn.functional.triplet_margin_with_distance_loss(),valid api,"import torch
+torch.nn.functional.triplet_margin_with_distance_loss()"
+torch.nn.functional.pixel_shuffle(),valid api,"import torch
+torch.nn.functional.pixel_shuffle()"
+torch.nn.functional.pixel_unshuffle(),valid api,"import torch
+torch.nn.functional.pixel_unshuffle()"
+torch.nn.functional.pad(),valid api,"import torch
+torch.nn.functional.pad()"
+torch.nn.functional.interpolate(),valid api,"import torch
+torch.nn.functional.interpolate()"
+torch.nn.functional.upsample(),valid api,"import torch
+torch.nn.functional.upsample()"
+torch.nn.functional.upsample_nearest(),valid api,"import torch
+torch.nn.functional.upsample_nearest()"
+torch.nn.functional.upsample_bilinear(),valid api,"import torch
+torch.nn.functional.upsample_bilinear()"
+torch.nn.functional.grid_sample(),valid api,"import torch
+torch.nn.functional.grid_sample()"
+torch.nn.functional.affine_grid(),valid api,"import torch
+torch.nn.functional.affine_grid()"
+torch.Tensor.new_tensor(),valid api,"import torch
+torch.Tensor.new_tensor()"
+torch.nn.parallel.data_parallel(),valid api,"import torch
+torch.nn.parallel.data_parallel()"
+torch.Tensor.requires_grad_(),valid api,"import torch
+torch.Tensor.requires_grad_()"
+torch.Tensor.detach(),valid api,"import torch
+torch.Tensor.detach()"
+torch.Tensor.item(),valid api,"import torch
+torch.Tensor.item()"
+torch.Tensor.to(),valid api,"import torch
+torch.Tensor.to()"
+torch.Tensor.new_full(),valid api,"import torch
+torch.Tensor.new_full()"
+torch.Tensor.new_empty(),valid api,"import torch
+torch.Tensor.new_empty()"
+torch.Tensor.new_ones(),valid api,"import torch
+torch.Tensor.new_ones()"
+torch.Tensor.new_zeros(),valid api,"import torch
+torch.Tensor.new_zeros()"
+"
+ Tensor. is_cuda ¶",No input params,No example
+"
+ Tensor. is_quantized ¶",No input params,No example
+"
+ Tensor. is_meta ¶",No input params,No example
+"
+ Tensor. device ¶",No input params,No example
+"
+ Tensor. grad ¶",No input params,No example
+"
+ Tensor. ndim ¶",No input params,No example
+torch.Tensor.dim(),valid api,"import torch
+torch.Tensor.dim()"
+"
+ Tensor. real ¶",No input params,No example
+"
+ Tensor. imag ¶",No input params,No example
+torch.Tensor.abs(),valid api,"import torch
+torch.Tensor.abs()"
+torch.Tensor.abs_(),valid api,"import torch
+torch.Tensor.abs_()"
+torch.Tensor.absolute(),valid api,"import torch
+torch.Tensor.absolute()"
+torch.Tensor.absolute_(),valid api,"import torch
+torch.Tensor.absolute_()"
+torch.Tensor.acos(),valid api,"import torch
+torch.Tensor.acos()"
+torch.Tensor.acos_(),valid api,"import torch
+torch.Tensor.acos_()"
+torch.Tensor.arccos(),valid api,"import torch
+torch.Tensor.arccos()"
+torch.Tensor.arccos_(),valid api,"import torch
+torch.Tensor.arccos_()"
+torch.Tensor.add(),valid api,"import torch
+torch.Tensor.add()"
+torch.Tensor.add_(),valid api,"import torch
+torch.Tensor.add_()"
+torch.Tensor.addbmm(),valid api,"import torch
+torch.Tensor.addbmm()"
+torch.Tensor.addbmm_(),valid api,"import torch
+torch.Tensor.addbmm_()"
+torch.Tensor.addcdiv(),valid api,"import torch
+torch.Tensor.addcdiv()"
+torch.Tensor.addcdiv_(),valid api,"import torch
+torch.Tensor.addcdiv_()"
+torch.Tensor.addcmul(),valid api,"import torch
+torch.Tensor.addcmul()"
+torch.Tensor.addcmul_(),valid api,"import torch
+torch.Tensor.addcmul_()"
+torch.Tensor.addmm(),valid api,"import torch
+torch.Tensor.addmm()"
+torch.Tensor.addmm_(),valid api,"import torch
+torch.Tensor.addmm_()"
+torch.Tensor.sspaddmm(),valid api,"import torch
+torch.Tensor.sspaddmm()"
+torch.sspaddmm(),valid api,"import torch
+torch.sspaddmm()"
+torch.Tensor.addmv(),valid api,"import torch
+torch.Tensor.addmv()"
+torch.Tensor.addmv_(),valid api,"import torch
+torch.Tensor.addmv_()"
+torch.Tensor.addr(),valid api,"import torch
+torch.Tensor.addr()"
+torch.Tensor.addr_(),valid api,"import torch
+torch.Tensor.addr_()"
+torch.Tensor.adjoint(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.adjoint()
+AttributeError: type object 'Tensor' has no attribute 'adjoint'
+","import torch
+torch.Tensor.adjoint()"
+torch.Tensor.allclose(),valid api,"import torch
+torch.Tensor.allclose()"
+torch.Tensor.amax(),valid api,"import torch
+torch.Tensor.amax()"
+torch.Tensor.amin(),valid api,"import torch
+torch.Tensor.amin()"
+torch.Tensor.aminmax(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.aminmax()
+AttributeError: type object 'Tensor' has no attribute 'aminmax'
+","import torch
+torch.Tensor.aminmax()"
+torch.Tensor.angle(),valid api,"import torch
+torch.Tensor.angle()"
+torch.Tensor.apply_(),valid api,"import torch
+torch.Tensor.apply_()"
+torch.Tensor.argmax(),valid api,"import torch
+torch.Tensor.argmax()"
+torch.Tensor.argmin(),valid api,"import torch
+torch.Tensor.argmin()"
+torch.Tensor.argsort(),valid api,"import torch
+torch.Tensor.argsort()"
+torch.Tensor.argwhere(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.argwhere()
+AttributeError: type object 'Tensor' has no attribute 'argwhere'
+","import torch
+torch.Tensor.argwhere()"
+torch.Tensor.asin(),valid api,"import torch
+torch.Tensor.asin()"
+torch.Tensor.asin_(),valid api,"import torch
+torch.Tensor.asin_()"
+torch.Tensor.arcsin(),valid api,"import torch
+torch.Tensor.arcsin()"
+torch.Tensor.arcsin_(),valid api,"import torch
+torch.Tensor.arcsin_()"
+torch.Tensor.as_strided(),valid api,"import torch
+torch.Tensor.as_strided()"
+torch.Tensor.atan(),valid api,"import torch
+torch.Tensor.atan()"
+torch.Tensor.atan_(),valid api,"import torch
+torch.Tensor.atan_()"
+torch.Tensor.arctan(),valid api,"import torch
+torch.Tensor.arctan()"
+torch.Tensor.arctan_(),valid api,"import torch
+torch.Tensor.arctan_()"
+torch.Tensor.atan2(),valid api,"import torch
+torch.Tensor.atan2()"
+torch.Tensor.atan2_(),valid api,"import torch
+torch.Tensor.atan2_()"
+torch.Tensor.arctan2(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.arctan2()
+AttributeError: type object 'Tensor' has no attribute 'arctan2'
+","import torch
+torch.Tensor.arctan2()"
+torch.Tensor.arctan2_(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.arctan2_()
+AttributeError: type object 'Tensor' has no attribute 'arctan2_'
+","import torch
+torch.Tensor.arctan2_()"
+torch.Tensor.all(),valid api,"import torch
+torch.Tensor.all()"
+torch.Tensor.any(),valid api,"import torch
+torch.Tensor.any()"
+torch.Tensor.backward(),valid api,"import torch
+torch.Tensor.backward()"
+torch.Tensor.baddbmm(),valid api,"import torch
+torch.Tensor.baddbmm()"
+torch.Tensor.baddbmm_(),valid api,"import torch
+torch.Tensor.baddbmm_()"
+torch.Tensor.bernoulli(),valid api,"import torch
+torch.Tensor.bernoulli()"
+torch.Tensor.bfloat16(),valid api,"import torch
+torch.Tensor.bfloat16()"
+torch.Tensor.bincount(),valid api,"import torch
+torch.Tensor.bincount()"
+torch.Tensor.bitwise_not(),valid api,"import torch
+torch.Tensor.bitwise_not()"
+torch.Tensor.bitwise_not_(),valid api,"import torch
+torch.Tensor.bitwise_not_()"
+torch.Tensor.bitwise_and(),valid api,"import torch
+torch.Tensor.bitwise_and()"
+torch.Tensor.bitwise_and_(),valid api,"import torch
+torch.Tensor.bitwise_and_()"
+torch.Tensor.bitwise_or(),valid api,"import torch
+torch.Tensor.bitwise_or()"
+torch.Tensor.bitwise_or_(),valid api,"import torch
+torch.Tensor.bitwise_or_()"
+torch.Tensor.bitwise_xor(),valid api,"import torch
+torch.Tensor.bitwise_xor()"
+torch.Tensor.bitwise_xor_(),valid api,"import torch
+torch.Tensor.bitwise_xor_()"
+torch.Tensor.bitwise_left_shift(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.bitwise_left_shift()
+AttributeError: type object 'Tensor' has no attribute 'bitwise_left_shift'
+","import torch
+torch.Tensor.bitwise_left_shift()"
+torch.Tensor.bitwise_left_shift_(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.bitwise_left_shift_()
+AttributeError: type object 'Tensor' has no attribute 'bitwise_left_shift_'
+","import torch
+torch.Tensor.bitwise_left_shift_()"
+torch.Tensor.bitwise_right_shift(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.bitwise_right_shift()
+AttributeError: type object 'Tensor' has no attribute 'bitwise_right_shift'
+","import torch
+torch.Tensor.bitwise_right_shift()"
+torch.Tensor.bitwise_right_shift_(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.bitwise_right_shift_()
+AttributeError: type object 'Tensor' has no attribute 'bitwise_right_shift_'
+","import torch
+torch.Tensor.bitwise_right_shift_()"
+torch.Tensor.bmm(),valid api,"import torch
+torch.Tensor.bmm()"
+torch.Tensor.bool(),valid api,"import torch
+torch.Tensor.bool()"
+torch.Tensor.byte(),valid api,"import torch
+torch.Tensor.byte()"
+torch.Tensor.broadcast_to(),valid api,"import torch
+torch.Tensor.broadcast_to()"
+torch.Tensor.ceil(),valid api,"import torch
+torch.Tensor.ceil()"
+torch.Tensor.ceil_(),valid api,"import torch
+torch.Tensor.ceil_()"
+torch.Tensor.char(),valid api,"import torch
+torch.Tensor.char()"
+torch.Tensor.cholesky(),valid api,"import torch
+torch.Tensor.cholesky()"
+torch.Tensor.cholesky_inverse(),valid api,"import torch
+torch.Tensor.cholesky_inverse()"
+torch.Tensor.cholesky_solve(),valid api,"import torch
+torch.Tensor.cholesky_solve()"
+torch.Tensor.chunk(),valid api,"import torch
+torch.Tensor.chunk()"
+torch.Tensor.clamp(),valid api,"import torch
+torch.Tensor.clamp()"
+torch.Tensor.clamp_(),valid api,"import torch
+torch.Tensor.clamp_()"
+torch.Tensor.clip(),valid api,"import torch
+torch.Tensor.clip()"
+torch.Tensor.clip_(),valid api,"import torch
+torch.Tensor.clip_()"
+torch.Tensor.clone(),valid api,"import torch
+torch.Tensor.clone()"
+torch.Tensor.contiguous(),valid api,"import torch
+torch.Tensor.contiguous()"
+torch.Tensor.copy_(),valid api,"import torch
+torch.Tensor.copy_()"
+torch.Tensor.conj(),valid api,"import torch
+torch.Tensor.conj()"
+torch.Tensor.conj_physical(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.conj_physical()
+AttributeError: type object 'Tensor' has no attribute 'conj_physical'
+","import torch
+torch.Tensor.conj_physical()"
+torch.Tensor.conj_physical_(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.conj_physical_()
+AttributeError: type object 'Tensor' has no attribute 'conj_physical_'
+","import torch
+torch.Tensor.conj_physical_()"
+torch.Tensor.resolve_conj(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.resolve_conj()
+AttributeError: type object 'Tensor' has no attribute 'resolve_conj'
+","import torch
+torch.Tensor.resolve_conj()"
+torch.Tensor.resolve_neg(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.resolve_neg()
+AttributeError: type object 'Tensor' has no attribute 'resolve_neg'
+","import torch
+torch.Tensor.resolve_neg()"
+torch.Tensor.copysign(),valid api,"import torch
+torch.Tensor.copysign()"
+torch.Tensor.copysign_(),valid api,"import torch
+torch.Tensor.copysign_()"
+torch.Tensor.cos(),valid api,"import torch
+torch.Tensor.cos()"
+torch.Tensor.cos_(),valid api,"import torch
+torch.Tensor.cos_()"
+torch.Tensor.cosh(),valid api,"import torch
+torch.Tensor.cosh()"
+torch.Tensor.cosh_(),valid api,"import torch
+torch.Tensor.cosh_()"
+torch.Tensor.corrcoef(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.corrcoef()
+AttributeError: type object 'Tensor' has no attribute 'corrcoef'
+","import torch
+torch.Tensor.corrcoef()"
+torch.Tensor.count_nonzero(),valid api,"import torch
+torch.Tensor.count_nonzero()"
+torch.Tensor.cov(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.cov()
+AttributeError: type object 'Tensor' has no attribute 'cov'
+","import torch
+torch.Tensor.cov()"
+torch.Tensor.acosh(),valid api,"import torch
+torch.Tensor.acosh()"
+torch.Tensor.acosh_(),valid api,"import torch
+torch.Tensor.acosh_()"
+torch.Tensor.arccosh(),valid api,"import torch
+torch.Tensor.arccosh()"
+torch.Tensor.arccosh_(),valid api,"import torch
+torch.Tensor.arccosh_()"
+torch.Tensor.cpu(),valid api,"import torch
+torch.Tensor.cpu()"
+torch.Tensor.cross(),valid api,"import torch
+torch.Tensor.cross()"
+torch.Tensor.cuda(),valid api,"import torch
+torch.Tensor.cuda()"
+torch.Tensor.logcumsumexp(),valid api,"import torch
+torch.Tensor.logcumsumexp()"
+torch.Tensor.cummax(),valid api,"import torch
+torch.Tensor.cummax()"
+torch.Tensor.cummin(),valid api,"import torch
+torch.Tensor.cummin()"
+torch.Tensor.cumprod(),valid api,"import torch
+torch.Tensor.cumprod()"
+torch.Tensor.cumprod_(),valid api,"import torch
+torch.Tensor.cumprod_()"
+torch.Tensor.cumsum(),valid api,"import torch
+torch.Tensor.cumsum()"
+torch.Tensor.cumsum_(),valid api,"import torch
+torch.Tensor.cumsum_()"
+torch.Tensor.chalf(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.chalf()
+AttributeError: type object 'Tensor' has no attribute 'chalf'
+","import torch
+torch.Tensor.chalf()"
+torch.Tensor.cfloat(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.cfloat()
+AttributeError: type object 'Tensor' has no attribute 'cfloat'
+","import torch
+torch.Tensor.cfloat()"
+torch.Tensor.cdouble(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.cdouble()
+AttributeError: type object 'Tensor' has no attribute 'cdouble'
+","import torch
+torch.Tensor.cdouble()"
+torch.Tensor.data_ptr(),valid api,"import torch
+torch.Tensor.data_ptr()"
+torch.Tensor.deg2rad(),valid api,"import torch
+torch.Tensor.deg2rad()"
+torch.Tensor.dequantize(),valid api,"import torch
+torch.Tensor.dequantize()"
+torch.Tensor.det(),valid api,"import torch
+torch.Tensor.det()"
+torch.Tensor.dense_dim(),valid api,"import torch
+torch.Tensor.dense_dim()"
+torch.Tensor.detach_(),valid api,"import torch
+torch.Tensor.detach_()"
+torch.Tensor.diag(),valid api,"import torch
+torch.Tensor.diag()"
+torch.Tensor.diag_embed(),valid api,"import torch
+torch.Tensor.diag_embed()"
+torch.Tensor.diagflat(),valid api,"import torch
+torch.Tensor.diagflat()"
+torch.Tensor.diagonal(),valid api,"import torch
+torch.Tensor.diagonal()"
+torch.Tensor.diagonal_scatter(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.diagonal_scatter()
+AttributeError: type object 'Tensor' has no attribute 'diagonal_scatter'
+","import torch
+torch.Tensor.diagonal_scatter()"
+torch.Tensor.fill_diagonal_(),valid api,"import torch
+torch.Tensor.fill_diagonal_()"
+torch.Tensor.fmax(),valid api,"import torch
+torch.Tensor.fmax()"
+torch.Tensor.fmin(),valid api,"import torch
+torch.Tensor.fmin()"
+torch.Tensor.diff(),valid api,"import torch
+torch.Tensor.diff()"
+torch.Tensor.digamma(),valid api,"import torch
+torch.Tensor.digamma()"
+torch.Tensor.digamma_(),valid api,"import torch
+torch.Tensor.digamma_()"
+torch.Tensor.dist(),valid api,"import torch
+torch.Tensor.dist()"
+torch.Tensor.div(),valid api,"import torch
+torch.Tensor.div()"
+torch.Tensor.div_(),valid api,"import torch
+torch.Tensor.div_()"
+torch.Tensor.divide(),valid api,"import torch
+torch.Tensor.divide()"
+torch.Tensor.divide_(),valid api,"import torch
+torch.Tensor.divide_()"
+torch.Tensor.dot(),valid api,"import torch
+torch.Tensor.dot()"
+torch.Tensor.double(),valid api,"import torch
+torch.Tensor.double()"
+torch.Tensor.dsplit(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.dsplit()
+AttributeError: type object 'Tensor' has no attribute 'dsplit'
+","import torch
+torch.Tensor.dsplit()"
+torch.Tensor.element_size(),valid api,"import torch
+torch.Tensor.element_size()"
+torch.Tensor.eq(),valid api,"import torch
+torch.Tensor.eq()"
+torch.Tensor.eq_(),valid api,"import torch
+torch.Tensor.eq_()"
+torch.Tensor.equal(),valid api,"import torch
+torch.Tensor.equal()"
+torch.Tensor.erf(),valid api,"import torch
+torch.Tensor.erf()"
+torch.Tensor.erf_(),valid api,"import torch
+torch.Tensor.erf_()"
+torch.Tensor.erfc(),valid api,"import torch
+torch.Tensor.erfc()"
+torch.Tensor.erfc_(),valid api,"import torch
+torch.Tensor.erfc_()"
+torch.Tensor.erfinv(),valid api,"import torch
+torch.Tensor.erfinv()"
+torch.Tensor.erfinv_(),valid api,"import torch
+torch.Tensor.erfinv_()"
+torch.Tensor.exp(),valid api,"import torch
+torch.Tensor.exp()"
+torch.Tensor.exp_(),valid api,"import torch
+torch.Tensor.exp_()"
+torch.Tensor.expm1(),valid api,"import torch
+torch.Tensor.expm1()"
+torch.Tensor.expm1_(),valid api,"import torch
+torch.Tensor.expm1_()"
+torch.Tensor.expand(),valid api,"import torch
+torch.Tensor.expand()"
+torch.Tensor.expand_as(),valid api,"import torch
+torch.Tensor.expand_as()"
+torch.Tensor.fix(),valid api,"import torch
+torch.Tensor.fix()"
+torch.Tensor.fix_(),valid api,"import torch
+torch.Tensor.fix_()"
+torch.Tensor.fill_(),valid api,"import torch
+torch.Tensor.fill_()"
+torch.Tensor.flatten(),valid api,"import torch
+torch.Tensor.flatten()"
+torch.Tensor.flip(),valid api,"import torch
+torch.Tensor.flip()"
+torch.Tensor.fliplr(),valid api,"import torch
+torch.Tensor.fliplr()"
+torch.Tensor.flipud(),valid api,"import torch
+torch.Tensor.flipud()"
+torch.Tensor.float(),valid api,"import torch
+torch.Tensor.float()"
+torch.Tensor.float_power(),valid api,"import torch
+torch.Tensor.float_power()"
+torch.Tensor.float_power_(),valid api,"import torch
+torch.Tensor.float_power_()"
+torch.Tensor.floor(),valid api,"import torch
+torch.Tensor.floor()"
+torch.Tensor.floor_(),valid api,"import torch
+torch.Tensor.floor_()"
+torch.Tensor.floor_divide(),valid api,"import torch
+torch.Tensor.floor_divide()"
+torch.Tensor.floor_divide_(),valid api,"import torch
+torch.Tensor.floor_divide_()"
+torch.Tensor.fmod(),valid api,"import torch
+torch.Tensor.fmod()"
+torch.Tensor.fmod_(),valid api,"import torch
+torch.Tensor.fmod_()"
+torch.Tensor.frac(),valid api,"import torch
+torch.Tensor.frac()"
+torch.Tensor.frac_(),valid api,"import torch
+torch.Tensor.frac_()"
+torch.Tensor.frexp(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.frexp()
+AttributeError: type object 'Tensor' has no attribute 'frexp'
+","import torch
+torch.Tensor.frexp()"
+torch.Tensor.gather(),valid api,"import torch
+torch.Tensor.gather()"
+torch.Tensor.gcd(),valid api,"import torch
+torch.Tensor.gcd()"
+torch.Tensor.gcd_(),valid api,"import torch
+torch.Tensor.gcd_()"
+torch.Tensor.ge(),valid api,"import torch
+torch.Tensor.ge()"
+torch.Tensor.ge_(),valid api,"import torch
+torch.Tensor.ge_()"
+torch.Tensor.greater_equal(),valid api,"import torch
+torch.Tensor.greater_equal()"
+torch.Tensor.greater_equal_(),valid api,"import torch
+torch.Tensor.greater_equal_()"
+torch.Tensor.geqrf(),valid api,"import torch
+torch.Tensor.geqrf()"
+torch.Tensor.ger(),valid api,"import torch
+torch.Tensor.ger()"
+torch.Tensor.get_device(),valid api,"import torch
+torch.Tensor.get_device()"
+torch.Tensor.gt(),valid api,"import torch
+torch.Tensor.gt()"
+torch.Tensor.gt_(),valid api,"import torch
+torch.Tensor.gt_()"
+torch.Tensor.greater(),valid api,"import torch
+torch.Tensor.greater()"
+torch.Tensor.greater_(),valid api,"import torch
+torch.Tensor.greater_()"
+torch.Tensor.half(),valid api,"import torch
+torch.Tensor.half()"
+torch.Tensor.hardshrink(),valid api,"import torch
+torch.Tensor.hardshrink()"
+torch.Tensor.heaviside(),valid api,"import torch
+torch.Tensor.heaviside()"
+torch.Tensor.histc(),valid api,"import torch
+torch.Tensor.histc()"
+torch.Tensor.histogram(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.histogram()
+AttributeError: type object 'Tensor' has no attribute 'histogram'
+","import torch
+torch.Tensor.histogram()"
+torch.Tensor.hsplit(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.hsplit()
+AttributeError: type object 'Tensor' has no attribute 'hsplit'
+","import torch
+torch.Tensor.hsplit()"
+torch.Tensor.hypot(),valid api,"import torch
+torch.Tensor.hypot()"
+torch.Tensor.hypot_(),valid api,"import torch
+torch.Tensor.hypot_()"
+torch.Tensor.i0(),valid api,"import torch
+torch.Tensor.i0()"
+torch.Tensor.i0_(),valid api,"import torch
+torch.Tensor.i0_()"
+torch.Tensor.igamma(),valid api,"import torch
+torch.Tensor.igamma()"
+torch.Tensor.igamma_(),valid api,"import torch
+torch.Tensor.igamma_()"
+torch.Tensor.igammac(),valid api,"import torch
+torch.Tensor.igammac()"
+torch.Tensor.igammac_(),valid api,"import torch
+torch.Tensor.igammac_()"
+torch.Tensor.index_add(),valid api,"import torch
+torch.Tensor.index_add()"
+torch.Tensor.index_copy_(),valid api,"import torch
+torch.Tensor.index_copy_()"
+torch.Tensor.index_copy(),valid api,"import torch
+torch.Tensor.index_copy()"
+torch.Tensor.index_fill_(),valid api,"import torch
+torch.Tensor.index_fill_()"
+torch.Tensor.index_fill(),valid api,"import torch
+torch.Tensor.index_fill()"
+torch.Tensor.index_put_(),valid api,"import torch
+torch.Tensor.index_put_()"
+torch.Tensor.index_put(),valid api,"import torch
+torch.Tensor.index_put()"
+torch.Tensor.index_reduce(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.index_reduce()
+AttributeError: type object 'Tensor' has no attribute 'index_reduce'
+","import torch
+torch.Tensor.index_reduce()"
+torch.Tensor.index_select(),valid api,"import torch
+torch.Tensor.index_select()"
+torch.Tensor.indices(),valid api,"import torch
+torch.Tensor.indices()"
+torch.Tensor.inner(),valid api,"import torch
+torch.Tensor.inner()"
+torch.Tensor.int(),valid api,"import torch
+torch.Tensor.int()"
+torch.Tensor.int_repr(),valid api,"import torch
+torch.Tensor.int_repr()"
+torch.Tensor.inverse(),valid api,"import torch
+torch.Tensor.inverse()"
+torch.Tensor.isclose(),valid api,"import torch
+torch.Tensor.isclose()"
+torch.Tensor.isfinite(),valid api,"import torch
+torch.Tensor.isfinite()"
+torch.Tensor.isinf(),valid api,"import torch
+torch.Tensor.isinf()"
+torch.Tensor.isposinf(),valid api,"import torch
+torch.Tensor.isposinf()"
+torch.Tensor.isneginf(),valid api,"import torch
+torch.Tensor.isneginf()"
+torch.Tensor.isnan(),valid api,"import torch
+torch.Tensor.isnan()"
+torch.Tensor.is_contiguous(),valid api,"import torch
+torch.Tensor.is_contiguous()"
+torch.Tensor.is_complex(),valid api,"import torch
+torch.Tensor.is_complex()"
+torch.Tensor.is_conj(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.is_conj()
+AttributeError: type object 'Tensor' has no attribute 'is_conj'
+","import torch
+torch.Tensor.is_conj()"
+torch.Tensor.is_floating_point(),valid api,"import torch
+torch.Tensor.is_floating_point()"
+torch.Tensor.is_inference(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.is_inference()
+AttributeError: type object 'Tensor' has no attribute 'is_inference'
+","import torch
+torch.Tensor.is_inference()"
+"
+ Tensor. is_leaf ¶",No input params,No example
+torch.Tensor.is_pinned(),valid api,"import torch
+torch.Tensor.is_pinned()"
+torch.Tensor.is_set_to(),valid api,"import torch
+torch.Tensor.is_set_to()"
+torch.Tensor.is_shared(),valid api,"import torch
+torch.Tensor.is_shared()"
+torch.Tensor.is_signed(),valid api,"import torch
+torch.Tensor.is_signed()"
+"
+ Tensor. is_sparse ¶",No input params,No example
+torch.Tensor.istft(),valid api,"import torch
+torch.Tensor.istft()"
+torch.Tensor.isreal(),valid api,"import torch
+torch.Tensor.isreal()"
+torch.Tensor.kthvalue(),valid api,"import torch
+torch.Tensor.kthvalue()"
+torch.Tensor.lcm(),valid api,"import torch
+torch.Tensor.lcm()"
+torch.Tensor.lcm_(),valid api,"import torch
+torch.Tensor.lcm_()"
+torch.Tensor.ldexp(),valid api,"import torch
+torch.Tensor.ldexp()"
+torch.Tensor.ldexp_(),valid api,"import torch
+torch.Tensor.ldexp_()"
+torch.Tensor.le(),valid api,"import torch
+torch.Tensor.le()"
+torch.Tensor.le_(),valid api,"import torch
+torch.Tensor.le_()"
+torch.Tensor.less_equal(),valid api,"import torch
+torch.Tensor.less_equal()"
+torch.Tensor.less_equal_(),valid api,"import torch
+torch.Tensor.less_equal_()"
+torch.Tensor.lerp(),valid api,"import torch
+torch.Tensor.lerp()"
+torch.Tensor.lerp_(),valid api,"import torch
+torch.Tensor.lerp_()"
+torch.Tensor.lgamma(),valid api,"import torch
+torch.Tensor.lgamma()"
+torch.Tensor.lgamma_(),valid api,"import torch
+torch.Tensor.lgamma_()"
+torch.Tensor.log(),valid api,"import torch
+torch.Tensor.log()"
+torch.Tensor.log_(),valid api,"import torch
+torch.Tensor.log_()"
+torch.Tensor.logdet(),valid api,"import torch
+torch.Tensor.logdet()"
+torch.Tensor.log10(),valid api,"import torch
+torch.Tensor.log10()"
+torch.Tensor.log10_(),valid api,"import torch
+torch.Tensor.log10_()"
+torch.Tensor.log1p(),valid api,"import torch
+torch.Tensor.log1p()"
+torch.Tensor.log1p_(),valid api,"import torch
+torch.Tensor.log1p_()"
+torch.Tensor.log2(),valid api,"import torch
+torch.Tensor.log2()"
+torch.Tensor.log2_(),valid api,"import torch
+torch.Tensor.log2_()"
+torch.Tensor.logaddexp(),valid api,"import torch
+torch.Tensor.logaddexp()"
+torch.Tensor.logaddexp2(),valid api,"import torch
+torch.Tensor.logaddexp2()"
+torch.Tensor.logsumexp(),valid api,"import torch
+torch.Tensor.logsumexp()"
+torch.Tensor.logical_and(),valid api,"import torch
+torch.Tensor.logical_and()"
+torch.Tensor.logical_and_(),valid api,"import torch
+torch.Tensor.logical_and_()"
+torch.Tensor.logical_not(),valid api,"import torch
+torch.Tensor.logical_not()"
+torch.Tensor.logical_not_(),valid api,"import torch
+torch.Tensor.logical_not_()"
+torch.Tensor.logical_or(),valid api,"import torch
+torch.Tensor.logical_or()"
+torch.Tensor.logical_or_(),valid api,"import torch
+torch.Tensor.logical_or_()"
+torch.Tensor.logical_xor(),valid api,"import torch
+torch.Tensor.logical_xor()"
+torch.Tensor.logical_xor_(),valid api,"import torch
+torch.Tensor.logical_xor_()"
+torch.Tensor.logit(),valid api,"import torch
+torch.Tensor.logit()"
+torch.Tensor.logit_(),valid api,"import torch
+torch.Tensor.logit_()"
+torch.Tensor.long(),valid api,"import torch
+torch.Tensor.long()"
+torch.Tensor.lt(),valid api,"import torch
+torch.Tensor.lt()"
+torch.Tensor.lt_(),valid api,"import torch
+torch.Tensor.lt_()"
+torch.Tensor.less(),valid api,"import torch
+torch.Tensor.less()"
+torch.Tensor.less_(),valid api,"import torch
+torch.Tensor.less_()"
+torch.Tensor.lu(),valid api,"import torch
+torch.Tensor.lu()"
+torch.Tensor.lu_solve(),valid api,"import torch
+torch.Tensor.lu_solve()"
+Tensor.as_sub(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    Tensor.as_sub()
+NameError: name 'Tensor' is not defined
+","import torch
+Tensor.as_sub()"
+torch.Tensor.map_(),valid api,"import torch
+torch.Tensor.map_()"
+torch.Tensor.masked_scatter_(),valid api,"import torch
+torch.Tensor.masked_scatter_()"
+torch.Tensor.masked_scatter(),valid api,"import torch
+torch.Tensor.masked_scatter()"
+torch.Tensor.masked_fill_(),valid api,"import torch
+torch.Tensor.masked_fill_()"
+torch.Tensor.masked_fill(),valid api,"import torch
+torch.Tensor.masked_fill()"
+torch.Tensor.masked_select(),valid api,"import torch
+torch.Tensor.masked_select()"
+torch.Tensor.matmul(),valid api,"import torch
+torch.Tensor.matmul()"
+torch.Tensor.matrix_power(),valid api,"import torch
+torch.Tensor.matrix_power()"
+torch.Tensor.matrix_exp(),valid api,"import torch
+torch.Tensor.matrix_exp()"
+torch.Tensor.max(),valid api,"import torch
+torch.Tensor.max()"
+torch.Tensor.maximum(),valid api,"import torch
+torch.Tensor.maximum()"
+torch.Tensor.mean(),valid api,"import torch
+torch.Tensor.mean()"
+torch.Tensor.nanmean(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.nanmean()
+AttributeError: type object 'Tensor' has no attribute 'nanmean'
+","import torch
+torch.Tensor.nanmean()"
+torch.Tensor.median(),valid api,"import torch
+torch.Tensor.median()"
+torch.Tensor.nanmedian(),valid api,"import torch
+torch.Tensor.nanmedian()"
+torch.Tensor.min(),valid api,"import torch
+torch.Tensor.min()"
+torch.Tensor.minimum(),valid api,"import torch
+torch.Tensor.minimum()"
+torch.Tensor.mm(),valid api,"import torch
+torch.Tensor.mm()"
+torch.Tensor.smm(),valid api,"import torch
+torch.Tensor.smm()"
+torch.smm(),valid api,"import torch
+torch.smm()"
+torch.Tensor.mode(),valid api,"import torch
+torch.Tensor.mode()"
+torch.Tensor.movedim(),valid api,"import torch
+torch.Tensor.movedim()"
+torch.Tensor.moveaxis(),valid api,"import torch
+torch.Tensor.moveaxis()"
+torch.Tensor.msort(),valid api,"import torch
+torch.Tensor.msort()"
+torch.Tensor.mul(),valid api,"import torch
+torch.Tensor.mul()"
+torch.Tensor.mul_(),valid api,"import torch
+torch.Tensor.mul_()"
+torch.Tensor.multiply(),valid api,"import torch
+torch.Tensor.multiply()"
+torch.Tensor.multiply_(),valid api,"import torch
+torch.Tensor.multiply_()"
+torch.Tensor.multinomial(),valid api,"import torch
+torch.Tensor.multinomial()"
+torch.Tensor.mv(),valid api,"import torch
+torch.Tensor.mv()"
+torch.Tensor.mvlgamma(),valid api,"import torch
+torch.Tensor.mvlgamma()"
+torch.Tensor.mvlgamma_(),valid api,"import torch
+torch.Tensor.mvlgamma_()"
+torch.Tensor.nansum(),valid api,"import torch
+torch.Tensor.nansum()"
+torch.Tensor.narrow(),valid api,"import torch
+torch.Tensor.narrow()"
+torch.Tensor.narrow_copy(),valid api,"import torch
+torch.Tensor.narrow_copy()"
+torch.Tensor.ndimension(),valid api,"import torch
+torch.Tensor.ndimension()"
+torch.Tensor.nan_to_num(),valid api,"import torch
+torch.Tensor.nan_to_num()"
+torch.Tensor.nan_to_num_(),valid api,"import torch
+torch.Tensor.nan_to_num_()"
+torch.Tensor.ne(),valid api,"import torch
+torch.Tensor.ne()"
+torch.Tensor.ne_(),valid api,"import torch
+torch.Tensor.ne_()"
+torch.Tensor.not_equal(),valid api,"import torch
+torch.Tensor.not_equal()"
+torch.Tensor.not_equal_(),valid api,"import torch
+torch.Tensor.not_equal_()"
+torch.Tensor.neg(),valid api,"import torch
+torch.Tensor.neg()"
+torch.Tensor.neg_(),valid api,"import torch
+torch.Tensor.neg_()"
+torch.Tensor.negative(),valid api,"import torch
+torch.Tensor.negative()"
+torch.Tensor.negative_(),valid api,"import torch
+torch.Tensor.negative_()"
+torch.Tensor.nelement(),valid api,"import torch
+torch.Tensor.nelement()"
+torch.Tensor.numel(),valid api,"import torch
+torch.Tensor.numel()"
+torch.Tensor.nextafter(),valid api,"import torch
+torch.Tensor.nextafter()"
+torch.Tensor.nextafter_(),valid api,"import torch
+torch.Tensor.nextafter_()"
+torch.Tensor.nonzero(),valid api,"import torch
+torch.Tensor.nonzero()"
+torch.Tensor.norm(),valid api,"import torch
+torch.Tensor.norm()"
+torch.Tensor.numpy(),valid api,"import torch
+torch.Tensor.numpy()"
+torch.Tensor.orgqr(),valid api,"import torch
+torch.Tensor.orgqr()"
+torch.Tensor.ormqr(),valid api,"import torch
+torch.Tensor.ormqr()"
+torch.Tensor.outer(),valid api,"import torch
+torch.Tensor.outer()"
+torch.Tensor.permute(),valid api,"import torch
+torch.Tensor.permute()"
+torch.Tensor.pin_memory(),valid api,"import torch
+torch.Tensor.pin_memory()"
+torch.Tensor.pinverse(),valid api,"import torch
+torch.Tensor.pinverse()"
+torch.Tensor.polygamma(),valid api,"import torch
+torch.Tensor.polygamma()"
+torch.Tensor.polygamma_(),valid api,"import torch
+torch.Tensor.polygamma_()"
+torch.Tensor.positive(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.positive()
+AttributeError: type object 'Tensor' has no attribute 'positive'
+","import torch
+torch.Tensor.positive()"
+torch.Tensor.pow(),valid api,"import torch
+torch.Tensor.pow()"
+torch.Tensor.pow_(),valid api,"import torch
+torch.Tensor.pow_()"
+torch.Tensor.prod(),valid api,"import torch
+torch.Tensor.prod()"
+torch.Tensor.put_(),valid api,"import torch
+torch.Tensor.put_()"
+torch.Tensor.qr(),valid api,"import torch
+torch.Tensor.qr()"
+torch.Tensor.qscheme(),valid api,"import torch
+torch.Tensor.qscheme()"
+torch.Tensor.quantile(),valid api,"import torch
+torch.Tensor.quantile()"
+torch.Tensor.nanquantile(),valid api,"import torch
+torch.Tensor.nanquantile()"
+torch.Tensor.q_scale(),valid api,"import torch
+torch.Tensor.q_scale()"
+torch.Tensor.q_zero_point(),valid api,"import torch
+torch.Tensor.q_zero_point()"
+torch.Tensor.q_per_channel_scales(),valid api,"import torch
+torch.Tensor.q_per_channel_scales()"
+torch.Tensor.q_per_channel_zero_points(),valid api,"import torch
+torch.Tensor.q_per_channel_zero_points()"
+torch.Tensor.q_per_channel_axis(),valid api,"import torch
+torch.Tensor.q_per_channel_axis()"
+torch.Tensor.rad2deg(),valid api,"import torch
+torch.Tensor.rad2deg()"
+torch.Tensor.ravel(),valid api,"import torch
+torch.Tensor.ravel()"
+torch.Tensor.reciprocal(),valid api,"import torch
+torch.Tensor.reciprocal()"
+torch.Tensor.reciprocal_(),valid api,"import torch
+torch.Tensor.reciprocal_()"
+torch.Tensor.record_stream(),valid api,"import torch
+torch.Tensor.record_stream()"
+torch.Tensor.register_hook(),valid api,"import torch
+torch.Tensor.register_hook()"
+torch.Tensor.remainder(),valid api,"import torch
+torch.Tensor.remainder()"
+torch.Tensor.remainder_(),valid api,"import torch
+torch.Tensor.remainder_()"
+torch.Tensor.renorm(),valid api,"import torch
+torch.Tensor.renorm()"
+torch.Tensor.renorm_(),valid api,"import torch
+torch.Tensor.renorm_()"
+torch.Tensor.repeat(),valid api,"import torch
+torch.Tensor.repeat()"
+torch.Tensor.repeat_interleave(),valid api,"import torch
+torch.Tensor.repeat_interleave()"
+"
+ Tensor. requires_grad ¶",No input params,No example
+torch.Tensor.reshape(),valid api,"import torch
+torch.Tensor.reshape()"
+torch.Tensor.reshape_as(),valid api,"import torch
+torch.Tensor.reshape_as()"
+torch.Tensor.resize_(),valid api,"import torch
+torch.Tensor.resize_()"
+torch.Tensor.resize_as_(),valid api,"import torch
+torch.Tensor.resize_as_()"
+torch.Tensor.retain_grad(),valid api,"import torch
+torch.Tensor.retain_grad()"
+"
+ Tensor. retains_grad ¶",No input params,No example
+torch.Tensor.roll(),valid api,"import torch
+torch.Tensor.roll()"
+torch.Tensor.rot90(),valid api,"import torch
+torch.Tensor.rot90()"
+torch.Tensor.round(),valid api,"import torch
+torch.Tensor.round()"
+torch.Tensor.round_(),valid api,"import torch
+torch.Tensor.round_()"
+torch.Tensor.rsqrt(),valid api,"import torch
+torch.Tensor.rsqrt()"
+torch.Tensor.rsqrt_(),valid api,"import torch
+torch.Tensor.rsqrt_()"
+torch.Tensor.scatter(),valid api,"import torch
+torch.Tensor.scatter()"
+torch.Tensor.scatter_add(),valid api,"import torch
+torch.Tensor.scatter_add()"
+torch.Tensor.scatter_reduce(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.scatter_reduce()
+AttributeError: type object 'Tensor' has no attribute 'scatter_reduce'
+","import torch
+torch.Tensor.scatter_reduce()"
+torch.Tensor.select(),valid api,"import torch
+torch.Tensor.select()"
+torch.Tensor.select_scatter(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.select_scatter()
+AttributeError: type object 'Tensor' has no attribute 'select_scatter'
+","import torch
+torch.Tensor.select_scatter()"
+torch.Tensor.set_(),valid api,"import torch
+torch.Tensor.set_()"
+torch.Tensor.share_memory_(),valid api,"import torch
+torch.Tensor.share_memory_()"
+torch.Tensor.short(),valid api,"import torch
+torch.Tensor.short()"
+torch.Tensor.sigmoid(),valid api,"import torch
+torch.Tensor.sigmoid()"
+torch.Tensor.sigmoid_(),valid api,"import torch
+torch.Tensor.sigmoid_()"
+torch.Tensor.sign(),valid api,"import torch
+torch.Tensor.sign()"
+torch.Tensor.sign_(),valid api,"import torch
+torch.Tensor.sign_()"
+torch.Tensor.signbit(),valid api,"import torch
+torch.Tensor.signbit()"
+torch.Tensor.sgn(),valid api,"import torch
+torch.Tensor.sgn()"
+torch.Tensor.sgn_(),valid api,"import torch
+torch.Tensor.sgn_()"
+torch.Tensor.sin(),valid api,"import torch
+torch.Tensor.sin()"
+torch.Tensor.sin_(),valid api,"import torch
+torch.Tensor.sin_()"
+torch.Tensor.sinc(),valid api,"import torch
+torch.Tensor.sinc()"
+torch.Tensor.sinc_(),valid api,"import torch
+torch.Tensor.sinc_()"
+torch.Tensor.sinh(),valid api,"import torch
+torch.Tensor.sinh()"
+torch.Tensor.sinh_(),valid api,"import torch
+torch.Tensor.sinh_()"
+torch.Tensor.asinh(),valid api,"import torch
+torch.Tensor.asinh()"
+torch.Tensor.asinh_(),valid api,"import torch
+torch.Tensor.asinh_()"
+torch.Tensor.arcsinh(),valid api,"import torch
+torch.Tensor.arcsinh()"
+torch.Tensor.arcsinh_(),valid api,"import torch
+torch.Tensor.arcsinh_()"
+torch.Tensor.size(),valid api,"import torch
+torch.Tensor.size()"
+torch.Tensor.slogdet(),valid api,"import torch
+torch.Tensor.slogdet()"
+torch.Tensor.slice_scatter(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.slice_scatter()
+AttributeError: type object 'Tensor' has no attribute 'slice_scatter'
+","import torch
+torch.Tensor.slice_scatter()"
+torch.Tensor.sort(),valid api,"import torch
+torch.Tensor.sort()"
+torch.Tensor.split(),valid api,"import torch
+torch.Tensor.split()"
+torch.Tensor.sparse_mask(),valid api,"import torch
+torch.Tensor.sparse_mask()"
+torch.Tensor.sparse_dim(),valid api,"import torch
+torch.Tensor.sparse_dim()"
+torch.Tensor.sqrt(),valid api,"import torch
+torch.Tensor.sqrt()"
+torch.Tensor.sqrt_(),valid api,"import torch
+torch.Tensor.sqrt_()"
+torch.Tensor.square(),valid api,"import torch
+torch.Tensor.square()"
+torch.Tensor.square_(),valid api,"import torch
+torch.Tensor.square_()"
+torch.Tensor.squeeze(),valid api,"import torch
+torch.Tensor.squeeze()"
+torch.Tensor.squeeze_(),valid api,"import torch
+torch.Tensor.squeeze_()"
+torch.Tensor.std(),valid api,"import torch
+torch.Tensor.std()"
+torch.Tensor.stft(),valid api,"import torch
+torch.Tensor.stft()"
+torch.Tensor.storage(),valid api,"import torch
+torch.Tensor.storage()"
+torch.Tensor.storage_offset(),valid api,"import torch
+torch.Tensor.storage_offset()"
+torch.Tensor.storage_type(),valid api,"import torch
+torch.Tensor.storage_type()"
+torch.Tensor.stride(),valid api,"import torch
+torch.Tensor.stride()"
+torch.Tensor.sub(),valid api,"import torch
+torch.Tensor.sub()"
+torch.Tensor.sub_(),valid api,"import torch
+torch.Tensor.sub_()"
+torch.Tensor.subtract(),valid api,"import torch
+torch.Tensor.subtract()"
+torch.Tensor.subtract_(),valid api,"import torch
+torch.Tensor.subtract_()"
+torch.Tensor.sum(),valid api,"import torch
+torch.Tensor.sum()"
+torch.Tensor.sum_to_size(),valid api,"import torch
+torch.Tensor.sum_to_size()"
+torch.Tensor.svd(),valid api,"import torch
+torch.Tensor.svd()"
+torch.Tensor.swapaxes(),valid api,"import torch
+torch.Tensor.swapaxes()"
+torch.Tensor.swapdims(),valid api,"import torch
+torch.Tensor.swapdims()"
+torch.Tensor.symeig(),valid api,"import torch
+torch.Tensor.symeig()"
+torch.Tensor.t(),valid api,"import torch
+torch.Tensor.t()"
+torch.Tensor.t_(),valid api,"import torch
+torch.Tensor.t_()"
+torch.Tensor.tensor_split(),valid api,"import torch
+torch.Tensor.tensor_split()"
+torch.Tensor.tile(),valid api,"import torch
+torch.Tensor.tile()"
+torch.Tensor.to_mkldnn(),valid api,"import torch
+torch.Tensor.to_mkldnn()"
+torch.Tensor.take(),valid api,"import torch
+torch.Tensor.take()"
+torch.Tensor.take_along_dim(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.take_along_dim()
+AttributeError: type object 'Tensor' has no attribute 'take_along_dim'
+","import torch
+torch.Tensor.take_along_dim()"
+torch.Tensor.tan(),valid api,"import torch
+torch.Tensor.tan()"
+torch.Tensor.tan_(),valid api,"import torch
+torch.Tensor.tan_()"
+torch.Tensor.tanh(),valid api,"import torch
+torch.Tensor.tanh()"
+torch.Tensor.tanh_(),valid api,"import torch
+torch.Tensor.tanh_()"
+torch.Tensor.atanh(),valid api,"import torch
+torch.Tensor.atanh()"
+torch.Tensor.atanh_(),valid api,"import torch
+torch.Tensor.atanh_()"
+torch.Tensor.arctanh(),valid api,"import torch
+torch.Tensor.arctanh()"
+torch.Tensor.arctanh_(),valid api,"import torch
+torch.Tensor.arctanh_()"
+torch.Tensor.tolist(),valid api,"import torch
+torch.Tensor.tolist()"
+torch.Tensor.topk(),valid api,"import torch
+torch.Tensor.topk()"
+torch.Tensor.to_dense(),valid api,"import torch
+torch.Tensor.to_dense()"
+torch.Tensor.to_sparse(),valid api,"import torch
+torch.Tensor.to_sparse()"
+torch.Tensor.to_sparse_csr(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.to_sparse_csr()
+AttributeError: type object 'Tensor' has no attribute 'to_sparse_csr'
+","import torch
+torch.Tensor.to_sparse_csr()"
+torch.Tensor.to_sparse_csc(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.to_sparse_csc()
+AttributeError: type object 'Tensor' has no attribute 'to_sparse_csc'
+","import torch
+torch.Tensor.to_sparse_csc()"
+torch.Tensor.to_sparse_bsr(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.to_sparse_bsr()
+AttributeError: type object 'Tensor' has no attribute 'to_sparse_bsr'
+","import torch
+torch.Tensor.to_sparse_bsr()"
+torch.Tensor.to_sparse_bsc(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.to_sparse_bsc()
+AttributeError: type object 'Tensor' has no attribute 'to_sparse_bsc'
+","import torch
+torch.Tensor.to_sparse_bsc()"
+torch.Tensor.trace(),valid api,"import torch
+torch.Tensor.trace()"
+torch.Tensor.transpose(),valid api,"import torch
+torch.Tensor.transpose()"
+torch.Tensor.transpose_(),valid api,"import torch
+torch.Tensor.transpose_()"
+torch.Tensor.triangular_solve(),valid api,"import torch
+torch.Tensor.triangular_solve()"
+torch.Tensor.tril(),valid api,"import torch
+torch.Tensor.tril()"
+torch.Tensor.tril_(),valid api,"import torch
+torch.Tensor.tril_()"
+torch.Tensor.triu(),valid api,"import torch
+torch.Tensor.triu()"
+torch.Tensor.triu_(),valid api,"import torch
+torch.Tensor.triu_()"
+torch.Tensor.true_divide(),valid api,"import torch
+torch.Tensor.true_divide()"
+torch.Tensor.true_divide_(),valid api,"import torch
+torch.Tensor.true_divide_()"
+torch.Tensor.trunc(),valid api,"import torch
+torch.Tensor.trunc()"
+torch.Tensor.trunc_(),valid api,"import torch
+torch.Tensor.trunc_()"
+torch.Tensor.type(),valid api,"import torch
+torch.Tensor.type()"
+torch.Tensor.type_as(),valid api,"import torch
+torch.Tensor.type_as()"
+torch.Tensor.unbind(),valid api,"import torch
+torch.Tensor.unbind()"
+torch.Tensor.unflatten(),valid api,"import torch
+torch.Tensor.unflatten()"
+torch.Tensor.unfold(),valid api,"import torch
+torch.Tensor.unfold()"
+torch.Tensor.unique(),valid api,"import torch
+torch.Tensor.unique()"
+torch.Tensor.unique_consecutive(),valid api,"import torch
+torch.Tensor.unique_consecutive()"
+torch.Tensor.unsqueeze(),valid api,"import torch
+torch.Tensor.unsqueeze()"
+torch.Tensor.unsqueeze_(),valid api,"import torch
+torch.Tensor.unsqueeze_()"
+torch.Tensor.values(),valid api,"import torch
+torch.Tensor.values()"
+torch.Tensor.var(),valid api,"import torch
+torch.Tensor.var()"
+torch.Tensor.vdot(),valid api,"import torch
+torch.Tensor.vdot()"
+torch.Tensor.view(),valid api,"import torch
+torch.Tensor.view()"
+torch.Tensor.view_as(),valid api,"import torch
+torch.Tensor.view_as()"
+torch.Tensor.vsplit(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.vsplit()
+AttributeError: type object 'Tensor' has no attribute 'vsplit'
+","import torch
+torch.Tensor.vsplit()"
+torch.Tensor.where(),valid api,"import torch
+torch.Tensor.where()"
+torch.Tensor.xlogy(),valid api,"import torch
+torch.Tensor.xlogy()"
+torch.Tensor.xlogy_(),valid api,"import torch
+torch.Tensor.xlogy_()"
+torch.Tensor.zero_(),valid api,"import torch
+torch.Tensor.zero_()"
+torch.cuda.set_device(),valid api,"import torch
+torch.cuda.set_device()"
+torch.cuda.current_device(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.current_device()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 388, in current_device
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.current_device()"
+torch.autograd.backward(),valid api,"import torch
+torch.autograd.backward()"
+torch.autograd.grad(),valid api,"import torch
+torch.autograd.grad()"
+"
+ class torch.autograd.forward_ad. dual_level [source] ¶",No input params,No example
+torch.autograd.forward_ad.make_dual(),valid api,"import torch
+torch.autograd.forward_ad.make_dual()"
+torch.autograd.forward_ad.unpack_dual(),valid api,"import torch
+torch.autograd.forward_ad.unpack_dual()"
+torch.autograd.functional.jacobian(),valid api,"import torch
+torch.autograd.functional.jacobian()"
+torch.autograd.functional.hessian(),valid api,"import torch
+torch.autograd.functional.hessian()"
+torch.autograd.functional.vjp(),valid api,"import torch
+torch.autograd.functional.vjp()"
+torch.autograd.functional.jvp(),valid api,"import torch
+torch.autograd.functional.jvp()"
+torch.autograd.functional.vhp(),valid api,"import torch
+torch.autograd.functional.vhp()"
+torch.autograd.functional.hvp(),valid api,"import torch
+torch.autograd.functional.hvp()"
+torch.staticFunction.forward(),AttributeError: module torch has no attribute,"import torch
+torch.staticFunction.forward()"
+torch.autograd.gradcheck(),valid api,"import torch
+torch.autograd.gradcheck()"
+torch.staticFunction.backward(),AttributeError: module torch has no attribute,"import torch
+torch.staticFunction.backward()"
+torch.staticFunction.jvp(),AttributeError: module torch has no attribute,"import torch
+torch.staticFunction.jvp()"
+torch.FunctionCtx.mark_dirty(),AttributeError: module torch has no attribute,"import torch
+torch.FunctionCtx.mark_dirty()"
+torch.FunctionCtx.mark_non_differentiable(),AttributeError: module torch has no attribute,"import torch
+torch.FunctionCtx.mark_non_differentiable()"
+torch.FunctionCtx.save_for_backward(),AttributeError: module torch has no attribute,"import torch
+torch.FunctionCtx.save_for_backward()"
+torch.FunctionCtx.set_materialize_grads(),AttributeError: module torch has no attribute,"import torch
+torch.FunctionCtx.set_materialize_grads()"
+torch.autograd.gradgradcheck(),valid api,"import torch
+torch.autograd.gradgradcheck()"
+torch.profile.export_chrome_trace(),AttributeError: module torch has no attribute,"import torch
+torch.profile.export_chrome_trace()"
+torch.profile.key_averages(),AttributeError: module torch has no attribute,"import torch
+torch.profile.key_averages()"
+"
+ property profile. self_cpu_time_total ¶",No input params,No example
+torch.profile.total_average(),AttributeError: module torch has no attribute,"import torch
+torch.profile.total_average()"
+torch.autograd.profiler.load_nvprof(),valid api,"import torch
+torch.autograd.profiler.load_nvprof()"
+torch.cuda.StreamContext(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.StreamContext()
+AttributeError: module 'torch.cuda' has no attribute 'StreamContext'
+","import torch
+torch.cuda.StreamContext()"
+torch.cuda.is_available(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+","import torch
+torch.cuda.is_available()"
+torch.cuda.can_device_access_peer(),valid api,"import torch
+torch.cuda.can_device_access_peer()"
+torch.cuda.current_blas_handle(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.current_blas_handle()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 448, in current_blas_handle
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.current_blas_handle()"
+torch.cuda.current_stream(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.current_stream()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 427, in current_stream
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.current_stream()"
+torch.cuda.Stream(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.Stream()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/streams.py"", line 33, in __new__
+    with torch.cuda.device(device):
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 223, in __enter__
+    self.prev_idx = torch._C._cuda_getDevice()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.Stream()"
+torch.cuda.default_stream(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.default_stream()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 441, in default_stream
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.default_stream()"
+torch.cuda.device(),valid api,"import torch
+torch.cuda.device()"
+torch.cuda.device_count(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+","import torch
+torch.cuda.device_count()"
+torch.cuda.device_of(),valid api,"import torch
+torch.cuda.device_of()"
+torch.cuda.get_arch_list(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+","import torch
+torch.cuda.get_arch_list()"
+torch.cuda.get_device_capability(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.get_device_capability()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 292, in get_device_capability
+    prop = get_device_properties(device)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 306, in get_device_properties
+    _lazy_init()  # will define _get_device_properties
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.get_device_capability()"
+torch.cuda.get_device_name(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.get_device_name()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 276, in get_device_name
+    return get_device_properties(device).name
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 306, in get_device_properties
+    _lazy_init()  # will define _get_device_properties
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.get_device_name()"
+torch.cuda.get_device_properties(),valid api,"import torch
+torch.cuda.get_device_properties()"
+torch.cuda.get_gencode_flags(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+","import torch
+torch.cuda.get_gencode_flags()"
+torch.cuda.get_sync_debug_mode(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.get_sync_debug_mode()
+AttributeError: module 'torch.cuda' has no attribute 'get_sync_debug_mode'
+","import torch
+torch.cuda.get_sync_debug_mode()"
+torch.cuda.init(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 141, in init
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.init()"
+torch.cuda.ipc_collect(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.ipc_collect()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 414, in ipc_collect
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.ipc_collect()"
+torch.cuda.is_initialized(),,"import torch
+torch.cuda.is_initialized()"
+torch.cuda.memory_usage(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.memory_usage()
+AttributeError: module 'torch.cuda' has no attribute 'memory_usage'
+","import torch
+torch.cuda.memory_usage()"
+torch.cuda.set_stream(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.set_stream()
+AttributeError: module 'torch.cuda' has no attribute 'set_stream'
+","import torch
+torch.cuda.set_stream()"
+torch.cuda.set_sync_debug_mode(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.set_sync_debug_mode()
+AttributeError: module 'torch.cuda' has no attribute 'set_sync_debug_mode'
+","import torch
+torch.cuda.set_sync_debug_mode()"
+torch.cuda.stream(),valid api,"import torch
+torch.cuda.stream()"
+torch.cuda.synchronize(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.synchronize()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 400, in synchronize
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.synchronize()"
+torch.cuda.utilization(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.utilization()
+AttributeError: module 'torch.cuda' has no attribute 'utilization'
+","import torch
+torch.cuda.utilization()"
+"
+ exception torch.cuda. OutOfMemoryError ¶",No input params,No example
+torch.cuda.get_rng_state(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.get_rng_state()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/random.py"", line 22, in get_rng_state
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.get_rng_state()"
+torch.cuda.get_rng_state_all(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+","import torch
+torch.cuda.get_rng_state_all()"
+torch.cuda.set_rng_state(),valid api,"import torch
+torch.cuda.set_rng_state()"
+torch.cuda.set_rng_state_all(),valid api,"import torch
+torch.cuda.set_rng_state_all()"
+torch.cuda.manual_seed(),valid api,"import torch
+torch.cuda.manual_seed()"
+torch.cuda.manual_seed_all(),valid api,"import torch
+torch.cuda.manual_seed_all()"
+torch.cuda.seed(),,"import torch
+torch.cuda.seed()"
+torch.cuda.seed_all(),,"import torch
+torch.cuda.seed_all()"
+torch.cuda.initial_seed(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.initial_seed()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/random.py"", line 159, in initial_seed
+    _lazy_init()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py"", line 170, in _lazy_init
+    torch._C._cuda_init()
+RuntimeError: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW
+","import torch
+torch.cuda.initial_seed()"
+torch.cuda.comm.broadcast(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.comm.broadcast()
+AttributeError: module 'torch.cuda' has no attribute 'comm'
+","import torch
+torch.cuda.comm.broadcast()"
+torch.cuda.comm.broadcast_coalesced(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.comm.broadcast_coalesced()
+AttributeError: module 'torch.cuda' has no attribute 'comm'
+","import torch
+torch.cuda.comm.broadcast_coalesced()"
+torch.cuda.comm.reduce_add(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.comm.reduce_add()
+AttributeError: module 'torch.cuda' has no attribute 'comm'
+","import torch
+torch.cuda.comm.reduce_add()"
+torch.cuda.comm.scatter(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.comm.scatter()
+AttributeError: module 'torch.cuda' has no attribute 'comm'
+","import torch
+torch.cuda.comm.scatter()"
+torch.cuda.comm.gather(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.comm.gather()
+AttributeError: module 'torch.cuda' has no attribute 'comm'
+","import torch
+torch.cuda.comm.gather()"
+torch.cuda.ExternalStream(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.ExternalStream()
+AttributeError: module 'torch.cuda' has no attribute 'ExternalStream'
+","import torch
+torch.cuda.ExternalStream()"
+torch.cuda.Event(),,"import torch
+torch.cuda.Event()"
+torch.cuda.is_current_stream_capturing(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.is_current_stream_capturing()
+AttributeError: module 'torch.cuda' has no attribute 'is_current_stream_capturing'
+","import torch
+torch.cuda.is_current_stream_capturing()"
+torch.cuda.graph_pool_handle(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.graph_pool_handle()
+AttributeError: module 'torch.cuda' has no attribute 'graph_pool_handle'
+","import torch
+torch.cuda.graph_pool_handle()"
+"
+ class torch.cuda. CUDAGraph [source] ¶",No input params,No example
+torch.cuda.graph(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.graph()
+AttributeError: module 'torch.cuda' has no attribute 'graph'
+","import torch
+torch.cuda.graph()"
+torch.cuda.make_graphed_callables(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.make_graphed_callables()
+AttributeError: module 'torch.cuda' has no attribute 'make_graphed_callables'
+","import torch
+torch.cuda.make_graphed_callables()"
+torch.cuda.empty_cache(),,"import torch
+torch.cuda.empty_cache()"
+torch.cuda.list_gpu_processes(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.list_gpu_processes()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py"", line 520, in list_gpu_processes
+    pynvml.nvmlInit()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pynvml/nvml.py"", line 1450, in nvmlInit
+    nvmlInitWithFlags(0)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pynvml/nvml.py"", line 1440, in nvmlInitWithFlags
+    _nvmlCheckReturn(ret)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/pynvml/nvml.py"", line 765, in _nvmlCheckReturn
+    raise NVMLError(ret)
+pynvml.nvml.NVMLError_LibRmVersionMismatch: RM has detected an NVML/RM version mismatch.
+","import torch
+torch.cuda.list_gpu_processes()"
+torch.cuda.mem_get_info(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.mem_get_info()
+AttributeError: module 'torch.cuda' has no attribute 'mem_get_info'
+","import torch
+torch.cuda.mem_get_info()"
+torch.cuda.memory_stats(),,"import torch
+torch.cuda.memory_stats()"
+torch.cuda.memory_summary(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.memory_summary()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py"", line 474, in memory_summary
+    current = stats[prefix + ""current""]
+KeyError: 'allocated_bytes.all.current'
+","import torch
+torch.cuda.memory_summary()"
+torch.cuda.memory_snapshot(),,"import torch
+torch.cuda.memory_snapshot()"
+torch.cuda.memory_allocated(),,"import torch
+torch.cuda.memory_allocated()"
+torch.cuda.max_memory_allocated(),,"import torch
+torch.cuda.max_memory_allocated()"
+torch.cuda.reset_max_memory_allocated(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py:260: FutureWarning: torch.cuda.reset_max_memory_allocated now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
+  warnings.warn(
+/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.reset_max_memory_allocated()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/decorate_func.py"", line 99, in wrapper
+    outputs = func(*args, **kwargs)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py"", line 264, in reset_max_memory_allocated
+    return reset_peak_memory_stats(device=device)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py"", line 238, in reset_peak_memory_stats
+    return torch._C._cuda_resetPeakMemoryStats(device)
+RuntimeError: invalid argument to reset_peak_memory_stats
+","import torch
+torch.cuda.reset_max_memory_allocated()"
+torch.cuda.memory_reserved(),,"import torch
+torch.cuda.memory_reserved()"
+torch.cuda.max_memory_reserved(),,"import torch
+torch.cuda.max_memory_reserved()"
+torch.cuda.set_per_process_memory_fraction(),valid api,"import torch
+torch.cuda.set_per_process_memory_fraction()"
+torch.cuda.memory_cached(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py:373: FutureWarning: torch.cuda.memory_cached has been renamed to torch.cuda.memory_reserved
+  warnings.warn(
+","import torch
+torch.cuda.memory_cached()"
+torch.cuda.max_memory_cached(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py:381: FutureWarning: torch.cuda.max_memory_cached has been renamed to torch.cuda.max_memory_reserved
+  warnings.warn(
+","import torch
+torch.cuda.max_memory_cached()"
+torch.cuda.reset_max_memory_cached(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py:286: FutureWarning: torch.cuda.reset_max_memory_cached now calls torch.cuda.reset_peak_memory_stats, which resets /all/ peak memory stats.
+  warnings.warn(
+/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.reset_max_memory_cached()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py"", line 290, in reset_max_memory_cached
+    return reset_peak_memory_stats(device=device)
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py"", line 238, in reset_peak_memory_stats
+    return torch._C._cuda_resetPeakMemoryStats(device)
+RuntimeError: invalid argument to reset_peak_memory_stats
+","import torch
+torch.cuda.reset_max_memory_cached()"
+torch.cuda.reset_peak_memory_stats(),"/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/__init__.py:52: UserWarning: CUDA initialization: Unexpected error from cudaGetDeviceCount(). Did you run some cuda functions before calling NumCudaDevices() that might have already set an error? Error 804: forward compatibility was attempted on non supported HW (Triggered internally at  /pytorch/c10/cuda/CUDAFunctions.cpp:109.)
+  return torch._C._cuda_getDeviceCount() > 0
+Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.reset_peak_memory_stats()
+  File ""/home/nimashiri/.local/lib/python3.8/site-packages/torch/cuda/memory.py"", line 238, in reset_peak_memory_stats
+    return torch._C._cuda_resetPeakMemoryStats(device)
+RuntimeError: invalid argument to reset_peak_memory_stats
+","import torch
+torch.cuda.reset_peak_memory_stats()"
+torch.cuda.caching_allocator_alloc(),valid api,"import torch
+torch.cuda.caching_allocator_alloc()"
+torch.cuda.caching_allocator_delete(),valid api,"import torch
+torch.cuda.caching_allocator_delete()"
+torch.cuda.nvtx.mark(),valid api,"import torch
+torch.cuda.nvtx.mark()"
+torch.cuda.nvtx.range_push(),valid api,"import torch
+torch.cuda.nvtx.range_push()"
+torch.cuda.nvtx.range_pop(),,"import torch
+torch.cuda.nvtx.range_pop()"
+torch.cuda.jiterator._create_jit_fn(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.jiterator._create_jit_fn()
+AttributeError: module 'torch.cuda' has no attribute 'jiterator'
+","import torch
+torch.cuda.jiterator._create_jit_fn()"
+torch.cuda.jiterator._create_multi_output_jit_fn(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.cuda.jiterator._create_multi_output_jit_fn()
+AttributeError: module 'torch.cuda' has no attribute 'jiterator'
+","import torch
+torch.cuda.jiterator._create_multi_output_jit_fn()"
+torch.linalg.inv_ex(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.inv_ex()
+AttributeError: module 'torch.linalg' has no attribute 'inv_ex'
+","import torch
+torch.linalg.inv_ex()"
+torch.linalg.cholesky(),valid api,"import torch
+torch.linalg.cholesky()"
+torch.linalg.cholesky_ex(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.cholesky_ex()
+AttributeError: module 'torch.linalg' has no attribute 'cholesky_ex'
+","import torch
+torch.linalg.cholesky_ex()"
+torch.linalg.lu(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.lu()
+AttributeError: module 'torch.linalg' has no attribute 'lu'
+","import torch
+torch.linalg.lu()"
+torch.linalg.lu_solve(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.lu_solve()
+AttributeError: module 'torch.linalg' has no attribute 'lu_solve'
+","import torch
+torch.linalg.lu_solve()"
+torch.linalg.qr(),valid api,"import torch
+torch.linalg.qr()"
+torch.linalg.eigh(),valid api,"import torch
+torch.linalg.eigh()"
+torch.linalg.svd(),valid api,"import torch
+torch.linalg.svd()"
+torch.linalg.svdvals(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.svdvals()
+AttributeError: module 'torch.linalg' has no attribute 'svdvals'
+","import torch
+torch.linalg.svdvals()"
+torch.Optimizer.state_dict(),AttributeError: module torch has no attribute,"import torch
+torch.Optimizer.state_dict()"
+torch.Optimizer.step(),AttributeError: module torch has no attribute,"import torch
+torch.Optimizer.step()"
+torch.fft.fft(),valid api,"import torch
+torch.fft.fft()"
+torch.fft.ifft(),valid api,"import torch
+torch.fft.ifft()"
+torch.fft.fft2(),valid api,"import torch
+torch.fft.fft2()"
+torch.fft.ifft2(),valid api,"import torch
+torch.fft.ifft2()"
+torch.fft.fftn(),valid api,"import torch
+torch.fft.fftn()"
+torch.fft.ifftn(),valid api,"import torch
+torch.fft.ifftn()"
+torch.fft.rfft(),valid api,"import torch
+torch.fft.rfft()"
+torch.fft.irfft(),valid api,"import torch
+torch.fft.irfft()"
+torch.fft.rfft2(),valid api,"import torch
+torch.fft.rfft2()"
+torch.fft.irfft2(),valid api,"import torch
+torch.fft.irfft2()"
+torch.fft.rfftn(),valid api,"import torch
+torch.fft.rfftn()"
+torch.fft.irfftn(),valid api,"import torch
+torch.fft.irfftn()"
+torch.fft.hfft(),valid api,"import torch
+torch.fft.hfft()"
+torch.fft.ihfft(),valid api,"import torch
+torch.fft.ihfft()"
+torch.fft.hfft2(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.fft.hfft2()
+AttributeError: module 'torch.fft' has no attribute 'hfft2'
+","import torch
+torch.fft.hfft2()"
+torch.fft.ihfft2(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.fft.ihfft2()
+AttributeError: module 'torch.fft' has no attribute 'ihfft2'
+","import torch
+torch.fft.ihfft2()"
+torch.fft.hfftn(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.fft.hfftn()
+AttributeError: module 'torch.fft' has no attribute 'hfftn'
+","import torch
+torch.fft.hfftn()"
+torch.fft.ihfftn(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.fft.ihfftn()
+AttributeError: module 'torch.fft' has no attribute 'ihfftn'
+","import torch
+torch.fft.ihfftn()"
+torch.fft.fftfreq(),valid api,"import torch
+torch.fft.fftfreq()"
+torch.fft.rfftfreq(),valid api,"import torch
+torch.fft.rfftfreq()"
+torch.fft.fftshift(),valid api,"import torch
+torch.fft.fftshift()"
+torch.fft.ifftshift(),valid api,"import torch
+torch.fft.ifftshift()"
+torch.jit.script(),valid api,"import torch
+torch.jit.script()"
+"
+ class torch.jit. ScriptModule [source] ¶",No input params,No example
+"
+ class torch.jit. ScriptFunction ¶",No input params,No example
+torch.jit.trace(),valid api,"import torch
+torch.jit.trace()"
+torch.jit.script_if_tracing(),valid api,"import torch
+torch.jit.script_if_tracing()"
+torch.jit.trace_module(),valid api,"import torch
+torch.jit.trace_module()"
+torch.jit.fork(),valid api,"import torch
+torch.jit.fork()"
+torch.jit.wait(),valid api,"import torch
+torch.jit.wait()"
+torch.jit.freeze(),valid api,"import torch
+torch.jit.freeze()"
+torch.jit.optimize_for_inference(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.jit.optimize_for_inference()
+AttributeError: module 'torch.jit' has no attribute 'optimize_for_inference'
+","import torch
+torch.jit.optimize_for_inference()"
+torch.jit.enable_onednn_fusion(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.jit.enable_onednn_fusion()
+AttributeError: module 'torch.jit' has no attribute 'enable_onednn_fusion'
+","import torch
+torch.jit.enable_onednn_fusion()"
+torch.jit.onednn_fusion_enabled(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.jit.onednn_fusion_enabled()
+AttributeError: module 'torch.jit' has no attribute 'onednn_fusion_enabled'
+","import torch
+torch.jit.onednn_fusion_enabled()"
+torch.jit.set_fusion_strategy(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.jit.set_fusion_strategy()
+AttributeError: module 'torch.jit' has no attribute 'set_fusion_strategy'
+","import torch
+torch.jit.set_fusion_strategy()"
+"
+ class torch.jit. strict_fusion [source] ¶",No input params,No example
+torch.jit.save(),valid api,"import torch
+torch.jit.save()"
+torch.jit.load(),valid api,"import torch
+torch.jit.load()"
+torch.jit.ignore(),,"import torch
+torch.jit.ignore()"
+torch.jit.unused(),valid api,"import torch
+torch.jit.unused()"
+torch.jit.isinstance(),valid api,"import torch
+torch.jit.isinstance()"
+torch.jit.Attribute(),valid api,"import torch
+torch.jit.Attribute()"
+torch.jit.annotate(),valid api,"import torch
+torch.jit.annotate()"
+torch.linalg.norm(),valid api,"import torch
+torch.linalg.norm()"
+torch.linalg.vector_norm(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.vector_norm()
+AttributeError: module 'torch.linalg' has no attribute 'vector_norm'
+","import torch
+torch.linalg.vector_norm()"
+torch.linalg.matrix_norm(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.matrix_norm()
+AttributeError: module 'torch.linalg' has no attribute 'matrix_norm'
+","import torch
+torch.linalg.matrix_norm()"
+torch.linalg.diagonal(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.diagonal()
+AttributeError: module 'torch.linalg' has no attribute 'diagonal'
+","import torch
+torch.linalg.diagonal()"
+torch.linalg.cond(),valid api,"import torch
+torch.linalg.cond()"
+torch.linalg.matrix_rank(),valid api,"import torch
+torch.linalg.matrix_rank()"
+torch.linalg.eig(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.eig()
+AttributeError: module 'torch.linalg' has no attribute 'eig'
+","import torch
+torch.linalg.eig()"
+torch.linalg.eigvals(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.eigvals()
+AttributeError: module 'torch.linalg' has no attribute 'eigvals'
+","import torch
+torch.linalg.eigvals()"
+torch.linalg.eigvalsh(),valid api,"import torch
+torch.linalg.eigvalsh()"
+torch.linalg.solve(),valid api,"import torch
+torch.linalg.solve()"
+torch.linalg.solve_triangular(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.solve_triangular()
+AttributeError: module 'torch.linalg' has no attribute 'solve_triangular'
+","import torch
+torch.linalg.solve_triangular()"
+torch.linalg.lstsq(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.lstsq()
+AttributeError: module 'torch.linalg' has no attribute 'lstsq'
+","import torch
+torch.linalg.lstsq()"
+torch.linalg.cross(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.cross()
+AttributeError: module 'torch.linalg' has no attribute 'cross'
+","import torch
+torch.linalg.cross()"
+torch.linalg.matmul(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.matmul()
+AttributeError: module 'torch.linalg' has no attribute 'matmul'
+","import torch
+torch.linalg.matmul()"
+torch.linalg.vecdot(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.vecdot()
+AttributeError: module 'torch.linalg' has no attribute 'vecdot'
+","import torch
+torch.linalg.vecdot()"
+torch.linalg.multi_dot(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.multi_dot()
+AttributeError: module 'torch.linalg' has no attribute 'multi_dot'
+","import torch
+torch.linalg.multi_dot()"
+torch.linalg.tensorinv(),valid api,"import torch
+torch.linalg.tensorinv()"
+torch.linalg.tensorsolve(),valid api,"import torch
+torch.linalg.tensorsolve()"
+torch.linalg.vander(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.vander()
+AttributeError: module 'torch.linalg' has no attribute 'vander'
+","import torch
+torch.linalg.vander()"
+torch.linalg.solve_ex(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.solve_ex()
+AttributeError: module 'torch.linalg' has no attribute 'solve_ex'
+","import torch
+torch.linalg.solve_ex()"
+torch.linalg.lu_factor_ex(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.lu_factor_ex()
+AttributeError: module 'torch.linalg' has no attribute 'lu_factor_ex'
+","import torch
+torch.linalg.lu_factor_ex()"
+torch.linalg.ldl_factor(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.ldl_factor()
+AttributeError: module 'torch.linalg' has no attribute 'ldl_factor'
+","import torch
+torch.linalg.ldl_factor()"
+torch.linalg.ldl_factor_ex(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.ldl_factor_ex()
+AttributeError: module 'torch.linalg' has no attribute 'ldl_factor_ex'
+","import torch
+torch.linalg.ldl_factor_ex()"
+torch.linalg.ldl_solve(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.linalg.ldl_solve()
+AttributeError: module 'torch.linalg' has no attribute 'ldl_solve'
+","import torch
+torch.linalg.ldl_solve()"
+torch.onnx.JitScalarType(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.onnx.JitScalarType()
+AttributeError: module 'torch.onnx' has no attribute 'JitScalarType'
+","import torch
+torch.onnx.JitScalarType()"
+torch.Optimizer.add_param_group(),AttributeError: module torch has no attribute,"import torch
+torch.Optimizer.add_param_group()"
+torch.Optimizer.load_state_dict(),AttributeError: module torch has no attribute,"import torch
+torch.Optimizer.load_state_dict()"
+torch.Optimizer.zero_grad(),AttributeError: module torch has no attribute,"import torch
+torch.Optimizer.zero_grad()"
+torch.optim.Adadelta(),valid api,"import torch
+torch.optim.Adadelta()"
+torch.optim.Adagrad(),valid api,"import torch
+torch.optim.Adagrad()"
+torch.optim.Adam(),valid api,"import torch
+torch.optim.Adam()"
+torch.optim.AdamW(),valid api,"import torch
+torch.optim.AdamW()"
+torch.optim.SparseAdam(),valid api,"import torch
+torch.optim.SparseAdam()"
+torch.optim.Adamax(),valid api,"import torch
+torch.optim.Adamax()"
+torch.optim.ASGD(),valid api,"import torch
+torch.optim.ASGD()"
+torch.optim.LBFGS(),valid api,"import torch
+torch.optim.LBFGS()"
+torch.optim.NAdam(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.optim.NAdam()
+AttributeError: module 'torch.optim' has no attribute 'NAdam'
+","import torch
+torch.optim.NAdam()"
+torch.optim.RAdam(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.optim.RAdam()
+AttributeError: module 'torch.optim' has no attribute 'RAdam'
+","import torch
+torch.optim.RAdam()"
+torch.optim.RMSprop(),valid api,"import torch
+torch.optim.RMSprop()"
+torch.optim.Rprop(),valid api,"import torch
+torch.optim.Rprop()"
+torch.optim.SGD(),valid api,"import torch
+torch.optim.SGD()"
+torch.optim.lr_scheduler.ReduceLROnPlateau(),valid api,"import torch
+torch.optim.lr_scheduler.ReduceLROnPlateau()"
+torch.optim.lr_scheduler.LambdaLR(),valid api,"import torch
+torch.optim.lr_scheduler.LambdaLR()"
+torch.optim.lr_scheduler.MultiplicativeLR(),valid api,"import torch
+torch.optim.lr_scheduler.MultiplicativeLR()"
+torch.optim.lr_scheduler.StepLR(),valid api,"import torch
+torch.optim.lr_scheduler.StepLR()"
+torch.optim.lr_scheduler.MultiStepLR(),valid api,"import torch
+torch.optim.lr_scheduler.MultiStepLR()"
+torch.optim.lr_scheduler.ConstantLR(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.optim.lr_scheduler.ConstantLR()
+AttributeError: module 'torch.optim.lr_scheduler' has no attribute 'ConstantLR'
+","import torch
+torch.optim.lr_scheduler.ConstantLR()"
+torch.optim.lr_scheduler.LinearLR(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.optim.lr_scheduler.LinearLR()
+AttributeError: module 'torch.optim.lr_scheduler' has no attribute 'LinearLR'
+","import torch
+torch.optim.lr_scheduler.LinearLR()"
+torch.optim.lr_scheduler.ExponentialLR(),valid api,"import torch
+torch.optim.lr_scheduler.ExponentialLR()"
+torch.optim.lr_scheduler.PolynomialLR(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.optim.lr_scheduler.PolynomialLR()
+AttributeError: module 'torch.optim.lr_scheduler' has no attribute 'PolynomialLR'
+","import torch
+torch.optim.lr_scheduler.PolynomialLR()"
+torch.optim.lr_scheduler.CosineAnnealingLR(),valid api,"import torch
+torch.optim.lr_scheduler.CosineAnnealingLR()"
+torch.optim.lr_scheduler.ChainedScheduler(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.optim.lr_scheduler.ChainedScheduler()
+AttributeError: module 'torch.optim.lr_scheduler' has no attribute 'ChainedScheduler'
+","import torch
+torch.optim.lr_scheduler.ChainedScheduler()"
+torch.optim.lr_scheduler.SequentialLR(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.optim.lr_scheduler.SequentialLR()
+AttributeError: module 'torch.optim.lr_scheduler' has no attribute 'SequentialLR'
+","import torch
+torch.optim.lr_scheduler.SequentialLR()"
+torch.optim.lr_scheduler.CyclicLR(),valid api,"import torch
+torch.optim.lr_scheduler.CyclicLR()"
+torch.optim.lr_scheduler.OneCycleLR(),valid api,"import torch
+torch.optim.lr_scheduler.OneCycleLR()"
+torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(),valid api,"import torch
+torch.optim.lr_scheduler.CosineAnnealingWarmRestarts()"
+"
+ class torch.ao.nn.quantized. FloatFunctional [source] ¶",No input params,No example
+"
+ Tensor. is_sparse_csr ¶",No input params,No example
+torch.Tensor.coalesce(),valid api,"import torch
+torch.Tensor.coalesce()"
+torch.Tensor.is_coalesced(),valid api,"import torch
+torch.Tensor.is_coalesced()"
+torch.sparse.softmax(),valid api,"import torch
+torch.sparse.softmax()"
+torch.sparse_csr_tensor(),AttributeError: module torch has no attribute,"import torch
+torch.sparse_csr_tensor()"
+torch.sparse_csc_tensor(),AttributeError: module torch has no attribute,"import torch
+torch.sparse_csc_tensor()"
+torch.sparse_bsr_tensor(),AttributeError: module torch has no attribute,"import torch
+torch.sparse_bsr_tensor()"
+torch.sparse_bsc_tensor(),AttributeError: module torch has no attribute,"import torch
+torch.sparse_bsc_tensor()"
+torch.sparse_compressed_tensor(),AttributeError: module torch has no attribute,"import torch
+torch.sparse_compressed_tensor()"
+torch.sparse.mm(),valid api,"import torch
+torch.sparse.mm()"
+torch.hspmm(),valid api,"import torch
+torch.hspmm()"
+torch.sparse.addmm(),valid api,"import torch
+torch.sparse.addmm()"
+torch.Tensor.to_sparse_coo(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.to_sparse_coo()
+AttributeError: type object 'Tensor' has no attribute 'to_sparse_coo'
+","import torch
+torch.Tensor.to_sparse_coo()"
+torch.Tensor.sparse_resize_(),valid api,"import torch
+torch.Tensor.sparse_resize_()"
+torch.Tensor.sparse_resize_and_clear_(),valid api,"import torch
+torch.Tensor.sparse_resize_and_clear_()"
+torch.Tensor.crow_indices(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.crow_indices()
+AttributeError: type object 'Tensor' has no attribute 'crow_indices'
+","import torch
+torch.Tensor.crow_indices()"
+torch.Tensor.col_indices(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.col_indices()
+AttributeError: type object 'Tensor' has no attribute 'col_indices'
+","import torch
+torch.Tensor.col_indices()"
+torch.Tensor.row_indices(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.row_indices()
+AttributeError: type object 'Tensor' has no attribute 'row_indices'
+","import torch
+torch.Tensor.row_indices()"
+torch.Tensor.ccol_indices(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.Tensor.ccol_indices()
+AttributeError: type object 'Tensor' has no attribute 'ccol_indices'
+","import torch
+torch.Tensor.ccol_indices()"
+torch.sparse.sum(),valid api,"import torch
+torch.sparse.sum()"
+torch.sparse.sampled_addmm(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.sparse.sampled_addmm()
+AttributeError: module 'torch.sparse' has no attribute 'sampled_addmm'
+","import torch
+torch.sparse.sampled_addmm()"
+torch.sparse.log_softmax(),valid api,"import torch
+torch.sparse.log_softmax()"
+torch.sparse.spdiags(),"Traceback (most recent call last):
+  File ""example.py"", line 2, in <module>
+    torch.sparse.spdiags()
+AttributeError: module 'torch.sparse' has no attribute 'spdiags'
+","import torch
+torch.sparse.spdiags()"

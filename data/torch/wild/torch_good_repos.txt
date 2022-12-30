@@ -1,0 +1,7 @@
+https://github.com/jettify/pytorch-optimizer.git, 2
+https://github.com/AIZOOTech/FaceMaskDetection.git, 1
+https://github.com/JaidedAI/EasyOCR.git, 2
+https://github.com/weiaicunzai/pytorch-cifar100, 22
+https://github.com/pytorch/examples/tree/master/super_resolution, 1
+https://github.com/pytorch/examples/tree/master/fast_neural_style, 1
+

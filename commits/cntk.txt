@@ -1,0 +1,9 @@
+https://github.com/microsoft/CNTK/commit/00b80377fe590199a06ff625ac3b888881e3d1c7
+https://github.com/microsoft/CNTK/commit/8c0b71b69b0150a8045636a21cb27d821263edf0
+https://github.com/microsoft/CNTK/commit/8bd045987c00d058ac3f14f3ccb1d3dd95c53bcc
+https://github.com/microsoft/CNTK/commit/e7e872370d1a55e56ce6148469cc1ecd8249cdc0
+https://github.com/microsoft/CNTK/commit/3e83c56b8fc4d0e2878a710b09c8d61f3a9e76d3
+https://github.com/microsoft/CNTK/commit/28f587f424396e1ad32f738eafbd2b968bd4b1c6
+https://github.com/microsoft/CNTK/commit/dd888856c65a4042d3a447da28b98dce04695415
+https://github.com/microsoft/CNTK/commit/4f03bad4e8ec4098ec2d7ffe5037da62ab3d51d8
+https://github.com/microsoft/CNTK/commit/3cf3af5df6d0071f282b6696bcafca9f4838dabd

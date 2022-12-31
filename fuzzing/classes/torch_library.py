@@ -6,31 +6,38 @@ from os.path import join
 import os
 from constants.keys import *
 
+
 class TorchLibrary(Library):
     def __init__(self, output_dir, diff_bound=1e-5, time_bound=10, time_thresold=1e-3) -> None:
         super().__init__(output_dir)
         self.diff_bound = diff_bound
         self.time_bound = time_bound
         self.time_thresold = time_thresold
-    
+
     def test_with_oracle(self, api: TorchAPI, oracle: OracleType):
         if oracle == OracleType.CRASH:
             # We need call another process to catch the crash error
             code = "import torch\n"
+            code += "import numpy as np\n"
             code += self.generate_code(api, oracle)
             with open(join(self.directory, "temp.py"), "w") as f:
                 f.write(code)
             _, error = self.run_code(code)
             if error == None:
-                self.write_to_dir(join(self.output[oracle], "success"), api.api, code)
+                self.write_to_dir(
+                    join(self.output[oracle], "success"), api.api, code)
             elif self.is_crash_msg(error):
-                self.write_to_dir(join(self.output[oracle], "potential-bug"), api.api, code)
+                self.write_to_dir(
+                    join(self.output[oracle], "potential-bug"), api.api, code)
             else:
-                self.write_to_dir(join(self.output[oracle], "fail"), api.api, code)
+                self.write_to_dir(
+                    join(self.output[oracle], "fail"), api.api, code)
         elif oracle == OracleType.CUDA:
             code = "import torch\n"
-            code += api.to_code(res=f"{RES_KEY}[\"{RES_CPU_KEY}\"]", use_try=True, error_res=f"{RES_KEY}[\"{ERR_CPU_KEY}\"]")
-            code += api.to_diff_code(oracle, res=f"{RES_KEY}[\"{RES_GPU_KEY}\"]", use_try=True, error_res=f"{RES_KEY}[\"{ERR_GPU_KEY}\"]")
+            code += api.to_code(res=f"{RES_KEY}[\"{RES_CPU_KEY}\"]",
+                                use_try=True, error_res=f"{RES_KEY}[\"{ERR_CPU_KEY}\"]")
+            code += api.to_diff_code(oracle, res=f"{RES_KEY}[\"{RES_GPU_KEY}\"]",
+                                     use_try=True, error_res=f"{RES_KEY}[\"{ERR_GPU_KEY}\"]")
 
             write_code = "results = dict()\n" + code + "\nprint(results)\n"
             with open(join(self.directory, "temp.py"), "w") as f:
@@ -43,14 +50,16 @@ class TorchLibrary(Library):
                 # first check the correctness
                 if results[ERR_CPU_KEY] == None and results[ERR_GPU_KEY] == None:
                     try:
-                        is_equal = self.is_equal(results[RES_CPU_KEY], results[RES_GPU_KEY], self.diff_bound)
+                        is_equal = self.is_equal(
+                            results[RES_CPU_KEY], results[RES_GPU_KEY], self.diff_bound)
                     except Exception:
                         write_dir = join(self.output[oracle], "compare-bug")
                     else:
                         if is_equal:
                             write_dir = join(self.output[oracle], "success")
                         else:
-                            write_dir = join(self.output[oracle], "potential-bug")
+                            write_dir = join(
+                                self.output[oracle], "potential-bug")
                 elif self.is_crash_msg(results[ERR_CPU_KEY]) or self.is_crash_msg(results[ERR_GPU_KEY]):
                     write_dir = join(self.output[oracle], "potential-bug")
                 elif results[ERR_CPU_KEY] and results[ERR_GPU_KEY]:
@@ -68,8 +77,10 @@ class TorchLibrary(Library):
         elif oracle == OracleType.PRECISION:
             code = "import torch\n"
             code += "import time\n"
-            code += api.to_code(res=f"results[\"{TIME_LOW_KEY}\"]", low_precision=True)
-            code += api.to_diff_code(oracle, res=f"results[\"{TIME_HIGH_KEY}\"]")
+            code += api.to_code(res=f"results[\"{TIME_LOW_KEY}\"]",
+                                low_precision=True)
+            code += api.to_diff_code(oracle,
+                                     res=f"results[\"{TIME_HIGH_KEY}\"]")
 
             write_code = "results = dict()\n" + code + "\nprint(results)\n"
             with open(join(self.directory, "temp.py"), "w") as f:
@@ -102,7 +113,7 @@ class TorchLibrary(Library):
             return code
         else:
             assert(0)
-    
+
     @staticmethod
     def run_code(code):
         results = dict()
@@ -114,7 +125,7 @@ class TorchLibrary(Library):
         except Exception as e:
             error = str(e)
         return results, error
-    
+
     @staticmethod
     def is_equal(x, y, diff_bound):
         def eq_float_tensor(x, y):
@@ -145,7 +156,8 @@ class TorchLibrary(Library):
             if y.is_sparse:
                 y = y.to_dense()
             if x.is_complex():
-                if not y.is_complex(): return False
+                if not y.is_complex():
+                    return False
                 return eq_float_tensor(x.real, y.real) and eq_float_tensor(
                     x.imag, y.imag)
             if not x.dtype.is_floating_point:
@@ -162,7 +174,7 @@ class TorchLibrary(Library):
             return True
         else:
             return x == y
-    
+
     @staticmethod
     def is_error_msg(error_msg):
         allowed_msgs = ["not implement", "not support"]
@@ -173,7 +185,7 @@ class TorchLibrary(Library):
             if msg in error_msg:
                 return False
         return True
-    
+
     @staticmethod
     def is_crash_msg(error_msg):
         if error_msg == None:
@@ -182,7 +194,7 @@ class TorchLibrary(Library):
             return True
         else:
             return False
-    
+
 
 def test():
     api_name = "torch.nn.Conv2d"

@@ -4,13 +4,15 @@ from classes.argument import ArgType, Argument, OracleType
 from utils.probability import *
 
 
-
 class API:
     def __init__(self, api_name):
         self.api = api_name
 
-    def new_mutate(self):
+    def new_mutate_tf(self):
         pass
+
+    # def new_mutate_torch(self):
+    #     pass
 
     def mutate(self):
         pass

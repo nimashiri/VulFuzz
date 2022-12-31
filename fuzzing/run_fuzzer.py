@@ -10,9 +10,10 @@ from constants.enum import OracleType
 from os.path import join
 from utils.converter import str_to_bool
 import tensorflow as tf
-from classes.tf_library import TFLibrary
-from classes.tf_api import TFAPI
-from classes.database import TorchDatabase, TFDatabase
+#from classes.tf_library import TFLibrary
+#from classes.tf_api import TFAPI
+from classes.database import TorchDatabase
+#from classes.database import FDatabase
 import subprocess
 import re
 from utils.printer import dump_data
@@ -41,6 +42,8 @@ def find_skip_list(api_):
     skip_list = ['python.autograph', 'python.debug', 'python.distribute',
                  'python.eager', 'python.framework', 'python.grappler']
     if 'tf.' in api_:
+        return False
+    elif 'torch.' in api_:
         return True
     else:
         split_api = api_.split('.')
@@ -91,16 +94,16 @@ def pre_run_check(api_):
 
 
 def run_fuzzer():
-    dbname = 'TF'
+    dbname = 'Torch-Unique'
     tf_output_dir = '/media/nimashiri/SSD1/testing_results'
     if not os.path.exists(tf_output_dir):
         os.mkdir(tf_output_dir)
 
     mydb = myclient[dbname]
     check_connection()
-    TFDatabase.database_config('localhost', 27017, 'TF')
+    TorchDatabase.database_config('localhost', 27017, 'TF')
 
-    tool = 'F'
+    tool = 'orion'
     config_name = '/media/nimashiri/SSD1/FSE23_2/fuzzing/config/expr.conf'
 
     data = mydb.list_collection_names()
@@ -108,12 +111,13 @@ def run_fuzzer():
         print("API {}/{}".format(i, len(data)))
         #api_ = 'tensorflow.python.ops.array_ops.batch_gather_nd'
         if not pre_run_check(api_):
+
             skip_flag = find_skip_list(api_)
             if skip_flag:
                 try:
-                    if tool == 'V':
+                    if tool == 'orion':
                         res = subprocess.run(
-                            ["python3", "/media/nimashiri/SSD1/FSE23_2/fuzzing/vullFuzz_api.py", "TORCH", api_], shell=False, timeout=100)
+                            ["python3", "/media/nimashiri/SSD1/FSE23_2/fuzzing/orion.py", "TORCH", api_], shell=False, timeout=100)
                     elif tool == 'F':
                         res = subprocess.run(
                             ["python3", "/media/nimashiri/SSD1/FSE23_2/fuzzing/freefuzz_api.py", config_name, "TF", api_], shell=False, timeout=100)

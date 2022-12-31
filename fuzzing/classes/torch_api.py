@@ -1,8 +1,10 @@
 import torch
+import random
 from classes.argument import *
 from classes.api import *
 from classes.database import TorchDatabase
 from os.path import join
+
 
 class TorchArgument(Argument):
     _supported_types = [
@@ -30,6 +32,21 @@ class TorchArgument(Argument):
         self.max_value = max_value
         self.min_value = min_value
 
+        '''
+        Added by me
+        '''
+        self.make_tensor_neg = False
+        self.tensor_empty_flag_type1 = False
+        self.tensor_empty_flag_type2 = False
+        self.tensor_zero_flag_type1 = False
+        self.tensor_zero_flag_type2 = False
+        self.nan_input_tensor = False
+        self.nan_input_tensor_whole = False
+        self.non_scalar_input_flag = False
+        self.scalar_input_flag = False
+        self.large_tensor_flag1 = False
+        self.large_tensor_flag2 = False
+
     def to_code(self, var_name, low_precision=False, is_cuda=False) -> str:
         if self.type in [ArgType.LIST, ArgType.TUPLE]:
             code = ""
@@ -44,6 +61,15 @@ class TorchArgument(Argument):
             else:
                 code += f"{var_name} = ({arg_name_list})\n"
             return code
+
+        elif self.type in [ArgType.INT, ArgType.FLOAT, ArgType.BOOL]:
+            dtype = self.dtype
+            if self.non_scalar_input_flag:
+                code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
+            else:
+                code = f"{var_name} = {self.value}\n"
+            return code
+
         elif self.type == ArgType.TORCH_TENSOR:
             dtype = self.dtype
             max_value = self.max_value
@@ -52,14 +78,79 @@ class TorchArgument(Argument):
                 dtype = self.low_precision_dtype(dtype)
                 max_value, min_value = self.random_tensor_value(dtype)
             suffix = ""
+            big_number = random.randint(10000, 100000)
             if is_cuda:
                 suffix = ".cuda()"
             if dtype.is_floating_point:
-                code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                if self.make_tensor_neg:
+                    code = f"{var_name}_tensor = torch.neg(torch.rand({self.shape}, dtype={dtype}))\n"
+                elif self.tensor_empty_flag_type1:
+                    code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
+                elif self.tensor_empty_flag_type2:
+                    code = f"{var_name}_tensor = torch.full([0], {big_number}, dtype={dtype})\n"
+                elif self.tensor_zero_flag_type1:
+                    code = f"{var_name}_tensor = torch.zeros({self.shape}, dtype={dtype})\n"
+                elif self.tensor_zero_flag_type2:
+                    code = f"{var_name}_tensor = torch.zeros([1, 96, 111, 63, 111], dtype={dtype})\n"
+                elif self.nan_input_tensor:
+                    code = f"{var_name}_tensor = torch.tensor({self.shape}, dtype={dtype})\n"
+                    code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
+                elif self.nan_input_tensor_whole:
+                    code = f"{var_name}_tensor = np.nan \n"
+                elif self.scalar_input_flag:
+                    code = f"{var_name}_tensor = 1 \n"
+                elif self.large_tensor_flag1:
+                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), 1.5e+300, dtype={dtype})\n"
+                elif self.large_tensor_flag2:
+                    code = f"{var_name}_tensor = torch.tensor([{big_number}], dtype={dtype})\n"
+                else:
+                    code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
             elif dtype.is_complex:
-                code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                if self.make_tensor_neg:
+                    code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                elif self.tensor_empty_flag_type1:
+                    code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
+                elif self.tensor_empty_flag_type2:
+                    code = f"{var_name}_tensor = torch.full([0], {big_number}, dtype={dtype})\n"
+                elif self.tensor_zero_flag_type1:
+                    code = f"{var_name}_tensor = torch.zeros({self.shape}, dtype={dtype})\n"
+                elif self.tensor_zero_flag_type2:
+                    code = f"{var_name}_tensor = torch.zeros([1, 96, 111, 63, 111], dtype={dtype})\n"
+                elif self.nan_input_tensor:
+                    code = f"{var_name}_tensor = torch.tensor({self.shape}, dtype={dtype})\n"
+                    code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
+                elif self.nan_input_tensor_whole:
+                    code = f"{var_name}_tensor = np.nan \n"
+                elif self.scalar_input_flag:
+                    code = f"{var_name}_tensor = 1 \n"
+                elif self.large_tensor_flag1:
+                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), 1.5e+300, dtype={dtype})\n"
+                elif self.large_tensor_flag2:
+                    code = f"{var_name}_tensor = torch.tensor([{big_number}], dtype={dtype})\n"
+                else:
+                    code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
             elif dtype == torch.bool:
-                code = f"{var_name}_tensor = torch.randint(0,2,{self.shape}, dtype={dtype})\n"
+                if self.tensor_empty_flag_type1:
+                    code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
+                elif self.tensor_empty_flag_type2:
+                    code = f"{var_name}_tensor = torch.full([0], {big_number}, dtype={dtype})\n"
+                elif self.tensor_zero_flag_type1:
+                    code = f"{var_name}_tensor = torch.zeros({self.shape}, dtype={dtype})\n"
+                elif self.tensor_zero_flag_type2:
+                    code = f"{var_name}_tensor = torch.zeros([1, 96, 111, 63, 111], dtype={dtype})\n"
+                elif self.nan_input_tensor:
+                    code = f"{var_name}_tensor = torch.tensor({self.shape}, dtype={dtype})\n"
+                    code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
+                elif self.nan_input_tensor_whole:
+                    code = f"{var_name}_tensor = np.nan \n"
+                elif self.scalar_input_flag:
+                    code = f"{var_name}_tensor = 1 \n"
+                elif self.large_tensor_flag1:
+                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), 1.5e+300, dtype={dtype})\n"
+                elif self.large_tensor_flag2:
+                    code = f"{var_name}_tensor = torch.tensor([{big_number}], dtype={dtype})\n"
+                else:
+                    code = f"{var_name}_tensor = torch.randint(0,2,{self.shape}, dtype={dtype})\n"
             else:
                 code = f"{var_name}_tensor = torch.randint({min_value},{max_value},{self.shape}, dtype={dtype})\n"
             code += f"{var_name} = {var_name}_tensor.clone(){suffix}\n"
@@ -139,7 +230,8 @@ class TorchArgument(Argument):
             # change dtype
             if change_tensor_dtype():
                 self.dtype = choice(self._dtypes)
-                self.max_value, self.min_value = self.random_tensor_value(self.dtype)
+                self.max_value, self.min_value = self.random_tensor_value(
+                    self.dtype)
         elif self.type == ArgType.TORCH_OBJECT:
             pass
         elif self.type == ArgType.TORCH_DTYPE:
@@ -264,6 +356,191 @@ class TorchArgument(Argument):
         else:
             return ArgType.TORCH_OBJECT
 
+    '''
+    ########################################################################
+    '''
+
+    def make_int_negative(self, value) -> int:
+        new_value = -value
+        return new_value
+
+    def make_float_negative(self, value) -> float:
+        new_value = -value
+        return new_value
+
+    def make_tensor_negative(self) -> None:
+        self.make_tensor_neg = True
+
+    def mutate_negative(self) -> None:
+        if self.type == ArgType.INT:
+            self.value = self.make_int_negative(self.value)
+        elif self.type == ArgType.FLOAT:
+            self.value = self.make_float_negative(self.value)
+        elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
+            for self in self.value:
+                self.mutate_negative()
+        elif self.type == ArgType.TORCH_TENSOR:
+            self.make_tensor_negative()
+        elif self.type == ArgType.TORCH_DTYPE:
+            self.value = choice(self._dtypes)
+        elif self.type == ArgType.TORCH_OBJECT:
+            self.value = None
+            pass
+        elif self.type == ArgType.NULL:
+            self.value = None
+            pass
+        else:
+            return
+
+    def alter_tensor_shape(self, old_shape, reduction=True):
+        new_shape = old_shape
+        # Change rank
+        if reduction:
+            new_shape.pop()
+        else:
+            new_shape.append(1)
+
+        return new_shape
+
+    def modify_rank(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            if len(self.shape) == 4:
+                self.shape = self.alter_tensor_shape(self.shape)
+            elif len(self.shape) == 3:
+                self.shape = self.alter_tensor_shape(self.shape)
+            elif len(self.shape) == 2:
+                self.shape = self.alter_tensor_shape(self.shape)
+            elif len(self.shape) == 1:
+                self.shape = self.alter_tensor_shape(self.shape)
+            elif len(self.shape) == 0:
+                self.shape = self.alter_tensor_shape(
+                    self.shape, reduction=False)
+            else:
+                self.shape = self.alter_tensor_shape(self.shape)
+        else:
+            return
+
+    def make_tensor_empty_type1(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.tensor_empty_flag_type1 = True
+
+    def make_tensor_empty_type2(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.tensor_empty_flag_type2 = True
+
+    def make_int_zero(self, value) -> int:
+        new_value = 0
+        return new_value
+
+    def make_float_zero(self, value) -> float:
+        new_value = 0
+        return new_value
+
+    def make_list_tuple_empty(self):
+        if self.type == ArgType.INT:
+            self.value = self.make_int_zero(self.value)
+        elif self.type == ArgType.FLOAT:
+            self.value = self.make_float_zero(self.value)
+        elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
+            for self in self.value:
+                self.make_list_tuple_empty()
+        else:
+            return
+
+    def make_tensor_zero_type1(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.tensor_zero_flag_type1 = True
+
+    def make_tensor_zero_type2(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.tensor_zero_flag_type2 = True
+
+    def make_tensor_nan(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.nan_input_tensor = True
+
+    def make_tensor_nan_whole(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.nan_input_tensor_whole = True
+
+    def make_input_non_scalar(self):
+        if self.type == ArgType.INT:
+            self.non_scalar_input_flag = True
+        elif self.type == ArgType.FLOAT:
+            self.non_scalar_input_flag = True
+        elif self.type == ArgType.BOOL:
+            self.non_scalar_input_flag = True
+        else:
+            return
+
+    def make_tensor_large_type1(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.large_tensor_flag1 = True
+
+    def make_tensor_large_type2(self) -> None:
+        if self.type == ArgType.TORCH_TENSOR:
+            self.large_tensor_flag2 = True
+
+    def make_input_scalar(self):
+        self.scalar_input_flag = True
+
+    def make_list_element_large(self):
+        if self.type == ArgType.INT:
+            self.value = 125091515651
+        elif self.type == ArgType.FLOAT:
+            self.value = 2251.000000
+        elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
+            for self in self.value:
+                self.make_list_element_large()
+        else:
+            return
+
+    def new_mutation_multiple(self, RULE=None):
+        if RULE == 'NEGATE_INT_TENSOR':
+            self.mutate_negative()
+        elif RULE == 'RANK_REDUCTION_EXPANSION':
+            self.modify_rank()
+        elif RULE == 'EMPTY_TENSOR_TYPE1':
+            self.make_tensor_empty_type1()
+        elif RULE == 'EMPTY_TENSOR_TYPE2':
+            self.make_tensor_empty_type2()
+        elif RULE == 'EMPTY_LIST':
+            self.make_list_tuple_empty()
+        elif RULE == 'LARGE_TENSOR_TYPE1':
+            self.make_tensor_large_type1()
+        elif RULE == 'LARGE_TENSOR_TYPE2':
+            self.make_tensor_large_type2()
+        elif RULE == 'LARGE_LIST_ELEMENT':
+            self.make_list_element_large()
+        elif RULE == 'ZERO_TENSOR_TYPE1':
+            self.make_tensor_zero_type1()
+        elif RULE == 'ZERO_TENSOR_TYPE2':
+            self.make_tensor_zero_type2()
+        elif RULE == 'NAN_TENSOR':
+            self.make_tensor_nan()
+        elif RULE == 'NAN_TENSOR_WHOLE':
+            self.make_tensor_nan_whole()
+        elif RULE == 'NON_SCALAR_INPUT':
+            self.make_input_non_scalar()
+        elif RULE == 'SCALAR_INPUT':
+            self.make_input_scalar()
+        else:
+            return
+
+    def increase_integer(self, value) -> int:
+        new_value = value + 1
+        return new_value
+
+    def new_mutation(self, RULE=None):
+        if self.type == ArgType.INT:
+            self.value = self.increase_integer(self.value)
+        elif self.type == ArgType.FLOAT:
+            self.value = self.make_float_negative(self.value)
+        elif self.type == ArgType.TORCH_TENSOR:
+            self.modify_rank()
+        else:
+            return
+
 
 class TorchAPI(API):
     def __init__(self, api_name, record=None):
@@ -272,6 +549,14 @@ class TorchAPI(API):
             record = TorchDatabase.get_rand_record(self.api)
         self.args = self.generate_args_from_record(record)
         self.is_class = inspect.isclass(eval(self.api))
+
+    def new_mutate_multiple(self, arg, r):
+        arg.new_mutation_multiple(r)
+
+    def new_mutate_torch(self):
+        for p in self.args:
+            arg = self.args[p]
+            arg.new_mutation()
 
     def mutate(self, enable_value=True, enable_type=True, enable_db=True):
         num_arg = len(self.args)
@@ -300,7 +585,7 @@ class TorchAPI(API):
                 prefix="arg",
                 res="res",
                 is_cuda=False,
-                use_try=False,
+                use_try=True,
                 error_res=None,
                 low_precision=False) -> str:
         code = ""
@@ -344,7 +629,7 @@ class TorchAPI(API):
                      res="res",
                      *,
                      error_res=None,
-                     use_try=False) -> str:
+                     use_try=True) -> str:
         """Generate code for the oracle"""
         code = ""
         arg_str = ""
@@ -367,7 +652,8 @@ class TorchAPI(API):
                 code = f"{prefix}_class = {prefix}_class.cuda()\n"
             if "input_signature" in self.args.keys():
                 arg_name = f"{prefix}_{count}"
-                code += self.args["input_signature"].to_diff_code(arg_name, oracle)
+                code += self.args["input_signature"].to_diff_code(
+                    arg_name, oracle)
                 res_code = f"{res} = {prefix}_class(*{arg_name})\n"
         else:
             res_code = f"{res} = {self.api}({arg_str})\n"
@@ -384,7 +670,7 @@ class TorchAPI(API):
                 error_res = res
             temp_code = "try:\n"
             temp_code += API.indent_code(res_code)
-            temp_code += f"except Exception as e:\n  {error_res} = \"ERROR:\"+str(e)\n"
+            temp_code += f"except Exception as e:\n  print(\"Error:\"+str(e))\n"
             res_code = temp_code
 
         if low_precision:
@@ -402,4 +688,4 @@ class TorchAPI(API):
             if key != "output_signature":
                 args[key] = TorchArgument.generate_arg_from_signature(
                     record[key])
-        return 
+        return args

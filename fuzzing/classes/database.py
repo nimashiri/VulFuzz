@@ -4,6 +4,8 @@ from numpy.random import choice
 This file is the interfere with database
 """
 from bson.objectid import ObjectId
+
+
 class Database:
     """Database setting"""
     signature_collection = "signature"
@@ -30,7 +32,8 @@ class Database:
     def select_rand_over_db(self, api_name, arg_name):
         if api_name not in self.DB.list_collection_names():
             return None, False
-        arg_names = self.DB[self.signature_collection].find_one({"api": api_name})["args"]
+        arg_names = self.DB[self.signature_collection].find_one({"api": api_name})[
+            "args"]
         if arg_name.startswith("parameter:"):
             index = int(arg_name[10:])
             if index >= len(arg_names):
@@ -95,9 +98,10 @@ class Database:
             assert(0)
         record = record.next()
         record.pop("_id")
+        record.pop("source")
         assert("_id" not in record.keys())
         return record
-    
+
     def get_all_records(self, api_name):
         if api_name not in self.DB.list_collection_names():
             print(f"NO SUCH API: {api_name}")
@@ -108,9 +112,10 @@ class Database:
             assert("_id" not in t.keys())
             records.append(t)
         return records
-    
+
     def get_signature(self, api_name):
-        record = self.DB[self.signature_collection].find_one({"api": api_name}, {"_id": 0})
+        record = self.DB[self.signature_collection].find_one(
+            {"api": api_name}, {"_id": 0})
         if record == None:
             print(f"NO SIGNATURE FOR: {api_name}")
             assert(0)
@@ -124,6 +129,7 @@ class Database:
                 api_list.append(name)
         return api_list
 
+
 class TorchDB(Database):
     def __init__(self) -> None:
         super().__init__()
@@ -132,6 +138,7 @@ class TorchDB(Database):
         self.api_list = super().get_api_list(self.DB, "torch.")
         return self.api_list
 
+
 class TFDB(Database):
     def __init__(self) -> None:
         super().__init__()
@@ -139,6 +146,8 @@ class TFDB(Database):
     def get_api_list(self):
         self.api_list = super().get_api_list(self.DB, "tf.")
         return self.api_list
+
+
 """
 Database for each library
 NOTE:

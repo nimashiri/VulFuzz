@@ -6,9 +6,9 @@ import sys
 from constants.enum import OracleType
 from os.path import join
 from utils.converter import str_to_bool
-import tensorflow as tf
-from classes.tf_library import TFLibrary
-from classes.tf_api import TFAPI
+#import tensorflow as tf
+#from classes.tf_library import TFLibrary
+#from classes.tf_api import TFAPI
 from classes.database import TorchDatabase, TFDatabase
 import re
 import copy
@@ -69,35 +69,36 @@ if __name__ == '__main__':
     # library = sys.argv[1]
     # api_name = sys.argv[2]
     library = 'TORCH'
-    tf_output_dir = '/media/nimashiri/SSD1/testing_results'
-    if not os.path.exists(tf_output_dir):
-        os.mkdir(tf_output_dir)
+    output_dir = '/media/nimashiri/SSD1/testing_results'
+    if not os.path.exists(output_dir):
+        os.mkdir(output_dir)
 
-    MyTF = TFLibrary(tf_output_dir)
+    rules = [
+        'NEGATE_INT_TENSOR',
+        'RANK_REDUCTION_EXPANSION',
+        'EMPTY_TENSOR_TYPE1',
+        'EMPTY_TENSOR_TYPE2',
+        'EMPTY_LIST',
+        'ZERO_TENSOR_TYPE1',
+        'ZERO_TENSOR_TYPE2',
+        'NAN_TENSOR',
+        'NAN_TENSOR_WHOLE',
+        'NON_SCALAR_INPUT',
+        'SCALAR_INPUT',
+        'LARGE_TENSOR_TYPE1',
+        'LARGE_TENSOR_TYPE2',
+        'LARGE_LIST_ELEMENT'
+    ]
+
+    #rules = ['EMPTY_LIST']
 
     buggy_api = '/media/nimashiri/SSD1/testing_results/runcrash.txt'
     data = read_txt(buggy_api)
-
     if library == 'TF':
+
+        MyTF = TFLibrary(output_dir)
         TFDatabase.database_config('localhost', 27017, 'TF')
         dimension_mismatch = True
-
-        rules = [
-            'NEGATE_INT_TENSOR',
-            'RANK_REDUCTION_EXPANSION',
-            'EMPTY_TENSOR_TYPE1',
-            'EMPTY_TENSOR_TYPE2',
-            'EMPTY_LIST',
-            'ZERO_TENSOR_TYPE1',
-            'ZERO_TENSOR_TYPE2',
-            'NAN_TENSOR',
-            'NAN_TENSOR_WHOLE',
-            'NON_SCALAR_INPUT',
-            'SCALAR_INPUT',
-            'LARGE_TENSOR_TYPE1',
-            'LARGE_TENSOR_TYPE2',
-            'LARGE_LIST_ELEMENT'
-        ]
 
         try:
             for api_name in data:
@@ -118,7 +119,7 @@ if __name__ == '__main__':
                 if '_id' in api.args:
                     api.args.pop('_id')
 
-                api.new_mutate()
+                api.new_mutate_tf()
                 MyTF.test_with_oracle(api, OracleType.CRASH)
                 # api.api = api_name
                 # MyTF.test_with_oracle(api, OracleType.CUDA)
@@ -149,4 +150,38 @@ if __name__ == '__main__':
         except Exception as e:
             pass
     else:
-        print('')
+        import torch
+        from classes.torch_library import TorchLibrary
+        from classes.torch_api import TorchAPI
+        from classes.database import TorchDatabase
+        TorchDatabase.database_config('localhost', 27017, 'Torch-Unique')
+
+        MyTorch = TorchLibrary(output_dir)
+
+        try:
+            for api_name in data:
+                api = TorchAPI(api_name)
+                # old_api = copy.deepcopy(api)
+
+                # print('I am running dimension mismatch on current API!')
+                # api.new_mutate_torch()
+                # MyTorch.test_with_oracle(api, OracleType.CRASH)
+
+                for i, arg in enumerate(api.args):
+                    for r in rules:
+                        print(
+                            "########################################################################################################################")
+                        print("The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(
+                            api_name, arg, r))
+                        print(
+                            "########################################################################################################################")
+                        old_arg = copy.deepcopy(api.args[arg])
+                        api.new_mutate_multiple(api.args[arg], r)
+                        MyTorch.test_with_oracle(api, OracleType.CRASH)
+                        api.args[arg] = old_arg
+                        # if cuda_oracle:
+                        #     MyTorch.test_with_oracle(api, OracleType.CUDA)
+                        # if precision_oracle:
+                        #     MyTorch.test_with_oracle(api, OracleType.PRECISION)
+        except Exception as e:
+            print(e)

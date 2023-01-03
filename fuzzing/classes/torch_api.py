@@ -7,34 +7,40 @@ from os.path import join
 
 
 class TorchArgument(Argument):
-    _supported_types = [
-        ArgType.TORCH_DTYPE, ArgType.TORCH_OBJECT, ArgType.TORCH_TENSOR
-    ]
+    _supported_types = [ArgType.TORCH_DTYPE,
+                        ArgType.TORCH_OBJECT, ArgType.TORCH_TENSOR]
     _dtypes = [
-        torch.int8, torch.int16, torch.int32, torch.int64, torch.uint8,
-        torch.float16, torch.float32, torch.float64, torch.bfloat16,
-        torch.complex64, torch.complex128, torch.bool
+        torch.int8,
+        torch.int16,
+        torch.int32,
+        torch.int64,
+        torch.uint8,
+        torch.float16,
+        torch.float32,
+        torch.float64,
+        torch.bfloat16,
+        torch.complex64,
+        torch.complex128,
+        torch.bool,
     ]
     _memory_format = [
-        torch.contiguous_format, torch.channels_last, torch.preserve_format
+        torch.contiguous_format,
+        torch.channels_last,
+        torch.preserve_format,
     ]
 
-    def __init__(self,
-                 value,
-                 type: ArgType,
-                 shape=None,
-                 dtype=None,
-                 max_value=1,
-                 min_value=0):
+    def __init__(
+        self, value, type: ArgType, shape=None, dtype=None, max_value=1, min_value=0
+    ):
         super().__init__(value, type)
         self.shape = shape
         self.dtype = dtype
         self.max_value = max_value
         self.min_value = min_value
 
-        '''
+        """
         Added by me
-        '''
+        """
         self.make_tensor_neg = False
         self.tensor_empty_flag_type1 = False
         self.tensor_empty_flag_type2 = False
@@ -52,8 +58,8 @@ class TorchArgument(Argument):
             code = ""
             arg_name_list = ""
             for i in range(len(self.value)):
-                code += self.value[i].to_code(f"{var_name}_{i}", low_precision,
-                                              is_cuda)
+                code += self.value[i].to_code(f"{var_name}_{i}",
+                                              low_precision, is_cuda)
                 arg_name_list += f"{var_name}_{i},"
 
             if self.type == ArgType.LIST:
@@ -62,13 +68,11 @@ class TorchArgument(Argument):
                 code += f"{var_name} = ({arg_name_list})\n"
             return code
 
-        elif self.type in [ArgType.INT, ArgType.FLOAT, ArgType.BOOL]:
-            dtype = self.dtype
-            if self.non_scalar_input_flag:
-                code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
-            else:
-                code = f"{var_name} = {self.value}\n"
-            return code
+        # elif self.type in [ArgType.INT, ArgType.FLOAT, ArgType.BOOL]:
+        #     dtype = self.dtype
+        #     if self.non_scalar_input_flag:
+        #         code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
+        #     return code
 
         elif self.type == ArgType.TORCH_TENSOR:
             dtype = self.dtype
@@ -78,7 +82,7 @@ class TorchArgument(Argument):
                 dtype = self.low_precision_dtype(dtype)
                 max_value, min_value = self.random_tensor_value(dtype)
             suffix = ""
-            big_number = random.randint(10000, 100000)
+            big_number = random.randint(100000, 100000000)
             if is_cuda:
                 suffix = ".cuda()"
             if dtype.is_floating_point:
@@ -91,23 +95,33 @@ class TorchArgument(Argument):
                 elif self.tensor_zero_flag_type1:
                     code = f"{var_name}_tensor = torch.zeros({self.shape}, dtype={dtype})\n"
                 elif self.tensor_zero_flag_type2:
-                    code = f"{var_name}_tensor = torch.zeros([1, 96, 111, 63, 111], dtype={dtype})\n"
+                    val1 = random.randint(100, 100000)
+                    val2 = random.randint(100, 1000000)
+                    val3 = random.randint(100, 10000000)
+                    val4 = random.randint(100, 100000000)
+                    val5 = random.randint(100, 1000)
+                    code = f"{var_name}_tensor = torch.zeros([{val1}, {val2}, {val3}, {val4}, {val5}], dtype={dtype})\n"
                 elif self.nan_input_tensor:
                     code = f"{var_name}_tensor = torch.tensor({self.shape}, dtype={dtype})\n"
-                    code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
+                    # code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
                 elif self.nan_input_tensor_whole:
                     code = f"{var_name}_tensor = np.nan \n"
                 elif self.scalar_input_flag:
-                    code = f"{var_name}_tensor = 1 \n"
+                    x = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = {x} \n"
                 elif self.large_tensor_flag1:
-                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), 1.5e+300, dtype={dtype})\n"
+                    min_val = random.randint(100000, 1000000000)
+                    max_val = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = torch.randint({min_val},{max_val},{self.shape}, dtype={dtype})\n"
                 elif self.large_tensor_flag2:
                     code = f"{var_name}_tensor = torch.tensor([{big_number}], dtype={dtype})\n"
                 else:
-                    code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                    code = (
+                        f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                    )
             elif dtype.is_complex:
                 if self.make_tensor_neg:
-                    code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                    code = f"{var_name}_tensor = torch.neg(torch.rand({self.shape}, dtype={dtype}))\n"
                 elif self.tensor_empty_flag_type1:
                     code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
                 elif self.tensor_empty_flag_type2:
@@ -115,20 +129,31 @@ class TorchArgument(Argument):
                 elif self.tensor_zero_flag_type1:
                     code = f"{var_name}_tensor = torch.zeros({self.shape}, dtype={dtype})\n"
                 elif self.tensor_zero_flag_type2:
-                    code = f"{var_name}_tensor = torch.zeros([1, 96, 111, 63, 111], dtype={dtype})\n"
+                    val1 = random.randint(100, 100000)
+                    val2 = random.randint(100, 1000000)
+                    val3 = random.randint(100, 10000000)
+                    val4 = random.randint(100, 100000000)
+                    val5 = random.randint(100, 1000)
+                    code = f"{var_name}_tensor = torch.zeros([{val1}, {val2}, {val3}, {val4}, {val5}], dtype={dtype})\n"
                 elif self.nan_input_tensor:
                     code = f"{var_name}_tensor = torch.tensor({self.shape}, dtype={dtype})\n"
-                    code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
+                    # code += f"{var_name}_tensor[{var_name}_tensor == {self.shape}] = float('nan')\n"
                 elif self.nan_input_tensor_whole:
                     code = f"{var_name}_tensor = np.nan \n"
                 elif self.scalar_input_flag:
-                    code = f"{var_name}_tensor = 1 \n"
+                    x = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = {x} \n"
                 elif self.large_tensor_flag1:
-                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), 1.5e+300, dtype={dtype})\n"
+                    big_val = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), {big_val}, dtype={dtype})\n"
                 elif self.large_tensor_flag2:
-                    code = f"{var_name}_tensor = torch.tensor([{big_number}], dtype={dtype})\n"
+                    min_val = random.randint(100000, 1000000000)
+                    max_val = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = torch.randint({min_val},{max_val},{self.shape}, dtype={dtype})\n"
                 else:
-                    code = f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                    code = (
+                        f"{var_name}_tensor = torch.rand({self.shape}, dtype={dtype})\n"
+                    )
             elif dtype == torch.bool:
                 if self.tensor_empty_flag_type1:
                     code = f"{var_name}_tensor = torch.tensor([], dtype={dtype})\n"
@@ -137,18 +162,27 @@ class TorchArgument(Argument):
                 elif self.tensor_zero_flag_type1:
                     code = f"{var_name}_tensor = torch.zeros({self.shape}, dtype={dtype})\n"
                 elif self.tensor_zero_flag_type2:
-                    code = f"{var_name}_tensor = torch.zeros([1, 96, 111, 63, 111], dtype={dtype})\n"
+                    val1 = random.randint(100, 100000)
+                    val2 = random.randint(100, 1000000)
+                    val3 = random.randint(100, 10000000)
+                    val4 = random.randint(100, 100000000)
+                    val5 = random.randint(100, 1000)
+                    code = f"{var_name}_tensor = torch.zeros([{val1}, {val2}, {val3}, {val4}, {val5}], dtype={dtype})\n"
                 elif self.nan_input_tensor:
                     code = f"{var_name}_tensor = torch.tensor({self.shape}, dtype={dtype})\n"
-                    code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
+                    # code += f"{var_name}_tensor[{var_name}_tensor == {self.shape[0]}] = float('nan')\n"
                 elif self.nan_input_tensor_whole:
                     code = f"{var_name}_tensor = np.nan \n"
                 elif self.scalar_input_flag:
-                    code = f"{var_name}_tensor = 1 \n"
+                    x = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = {x} \n"
                 elif self.large_tensor_flag1:
-                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), 1.5e+300, dtype={dtype})\n"
+                    big_val = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = torch.full((1, 1, 1, 1, 1,), {big_val}, dtype={dtype})\n"
                 elif self.large_tensor_flag2:
-                    code = f"{var_name}_tensor = torch.tensor([{big_number}], dtype={dtype})\n"
+                    min_val = random.randint(100000, 1000000000)
+                    max_val = random.randint(100000, 1000000000)
+                    code = f"{var_name}_tensor = torch.randint({min_val},{max_val},{self.shape}, dtype={dtype})\n"
                 else:
                     code = f"{var_name}_tensor = torch.randint(0,2,{self.shape}, dtype={dtype})\n"
             else:
@@ -193,7 +227,7 @@ class TorchArgument(Argument):
             super().mutate_value()
         else:
             print(self.type, self.value)
-            assert (0)
+            assert 0
 
     def mutate_type(self) -> None:
         if self.type == ArgType.NULL:
@@ -203,7 +237,7 @@ class TorchArgument(Argument):
             if new_type == ArgType.LIST or new_type == ArgType.TUPLE:
                 self.value = [
                     TorchArgument(2, ArgType.INT),
-                    TorchArgument(3, ArgType.INT)
+                    TorchArgument(3, ArgType.INT),
                 ]
             elif new_type == ArgType.TORCH_TENSOR:
                 self.shape = [2, 2]
@@ -215,23 +249,9 @@ class TorchArgument(Argument):
             else:
                 self.value = super().initial_value(new_type)
         elif self.type == ArgType.TORCH_TENSOR:
-            new_size = list(self.shape)
-            # change the dimension of tensor
-            if change_tensor_dimension():
-                if add_tensor_dimension():
-                    new_size.append(1)
-                elif len(new_size) > 0:
-                    new_size.pop()
-            # change the shape
-            for i in range(len(new_size)):
-                if change_tensor_shape():
-                    new_size[i] = self.mutate_int_value(new_size[i], _min=0)
-            self.shape = new_size
-            # change dtype
-            if change_tensor_dtype():
-                self.dtype = choice(self._dtypes)
-                self.max_value, self.min_value = self.random_tensor_value(
-                    self.dtype)
+            self.dtype = choice(self._dtypes)
+            self.max_value, self.min_value = self.random_tensor_value(
+                self.dtype)
         elif self.type == ArgType.TORCH_OBJECT:
             pass
         elif self.type == ArgType.TORCH_DTYPE:
@@ -240,7 +260,7 @@ class TorchArgument(Argument):
             super().mutate_type()
         else:
             print(self.type, self.value)
-            assert (0)
+            assert 0
 
     @staticmethod
     def random_tensor_value(dtype):
@@ -267,13 +287,11 @@ class TorchArgument(Argument):
     def generate_arg_from_signature(signature):
         """Generate a Torch argument from the signature"""
         if signature == "torchTensor":
-            return TorchArgument(None,
-                                 ArgType.TORCH_TENSOR,
-                                 shape=[2, 2],
-                                 dtype=torch.float32)
+            return TorchArgument(
+                None, ArgType.TORCH_TENSOR, shape=[2, 2], dtype=torch.float32
+            )
         if signature == "torchdtype":
-            return TorchArgument(choice(TorchArgument._dtypes),
-                                 ArgType.TORCH_DTYPE)
+            return TorchArgument(choice(TorchArgument._dtypes), ArgType.TORCH_DTYPE)
         if isinstance(signature, str) and signature == "torchdevice":
             value = torch.device("cpu")
             return TorchArgument(value, ArgType.TORCH_OBJECT)
@@ -289,7 +307,7 @@ class TorchArgument(Argument):
             elif isinstance(value, torch.memory_format):
                 return TorchArgument(value, ArgType.TORCH_OBJECT)
             print(signature)
-            assert(0)
+            assert 0
         if isinstance(signature, bool):
             return TorchArgument(signature, ArgType.BOOL)
         if isinstance(signature, int):
@@ -310,28 +328,28 @@ class TorchArgument(Argument):
             return TorchArgument(value, ArgType.LIST)
         # signature is a dictionary
         if isinstance(signature, dict):
-            if not ('shape' in signature.keys()
-                    and 'dtype' in signature.keys()):
-                raise Exception('Wrong signature {0}'.format(signature))
-            shape = signature['shape']
-            dtype = signature['dtype']
+            if not ("shape" in signature.keys() and "dtype" in signature.keys()):
+                raise Exception("Wrong signature {0}".format(signature))
+            shape = signature["shape"]
+            dtype = signature["dtype"]
             # signature is a ndarray or tensor.
             if isinstance(shape, (list, tuple)):
                 if not dtype.startswith("torch."):
                     dtype = f"torch.{dtype}"
                 dtype = eval(dtype)
                 max_value, min_value = TorchArgument.random_tensor_value(dtype)
-                return TorchArgument(None,
-                                     ArgType.TORCH_TENSOR,
-                                     shape,
-                                     dtype=dtype,
-                                     max_value=max_value,
-                                     min_value=min_value)
+                return TorchArgument(
+                    None,
+                    ArgType.TORCH_TENSOR,
+                    shape,
+                    dtype=dtype,
+                    max_value=max_value,
+                    min_value=min_value,
+                )
             else:
-                return TorchArgument(None,
-                                     ArgType.TORCH_TENSOR,
-                                     shape=[2, 2],
-                                     dtype=torch.float32)
+                return TorchArgument(
+                    None, ArgType.TORCH_TENSOR, shape=[2, 2], dtype=torch.float32
+                )
         return TorchArgument(None, ArgType.NULL)
 
     @staticmethod
@@ -356,15 +374,17 @@ class TorchArgument(Argument):
         else:
             return ArgType.TORCH_OBJECT
 
-    '''
+    """
     ########################################################################
-    '''
+    """
 
     def make_int_negative(self, value) -> int:
+        value = random.randint(1, 1000)
         new_value = -value
         return new_value
 
     def make_float_negative(self, value) -> float:
+        value = random.uniform(0, 1)
         new_value = -value
         return new_value
 
@@ -486,9 +506,9 @@ class TorchArgument(Argument):
 
     def make_list_element_large(self):
         if self.type == ArgType.INT:
-            self.value = 125091515651
+            self.value = random.randint(12509, 125091515651)
         elif self.type == ArgType.FLOAT:
-            self.value = 2251.000000
+            self.value = random.uniform(1000000.5, 20000000000.9)
         elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
             for self in self.value:
                 self.make_list_element_large()
@@ -496,33 +516,33 @@ class TorchArgument(Argument):
             return
 
     def new_mutation_multiple(self, RULE=None):
-        if RULE == 'NEGATE_INT_TENSOR':
+        if RULE == "NEGATE_INT_TENSOR":
             self.mutate_negative()
-        elif RULE == 'RANK_REDUCTION_EXPANSION':
+        elif RULE == "RANK_REDUCTION_EXPANSION":
             self.modify_rank()
-        elif RULE == 'EMPTY_TENSOR_TYPE1':
+        elif RULE == "EMPTY_TENSOR_TYPE1":
             self.make_tensor_empty_type1()
-        elif RULE == 'EMPTY_TENSOR_TYPE2':
+        elif RULE == "EMPTY_TENSOR_TYPE2":
             self.make_tensor_empty_type2()
-        elif RULE == 'EMPTY_LIST':
+        elif RULE == "EMPTY_LIST":
             self.make_list_tuple_empty()
-        elif RULE == 'LARGE_TENSOR_TYPE1':
+        elif RULE == "LARGE_TENSOR_TYPE1":
             self.make_tensor_large_type1()
-        elif RULE == 'LARGE_TENSOR_TYPE2':
+        elif RULE == "LARGE_TENSOR_TYPE2":
             self.make_tensor_large_type2()
-        elif RULE == 'LARGE_LIST_ELEMENT':
+        elif RULE == "LARGE_LIST_ELEMENT":
             self.make_list_element_large()
-        elif RULE == 'ZERO_TENSOR_TYPE1':
+        elif RULE == "ZERO_TENSOR_TYPE1":
             self.make_tensor_zero_type1()
-        elif RULE == 'ZERO_TENSOR_TYPE2':
+        elif RULE == "ZERO_TENSOR_TYPE2":
             self.make_tensor_zero_type2()
-        elif RULE == 'NAN_TENSOR':
+        elif RULE == "NAN_TENSOR":
             self.make_tensor_nan()
-        elif RULE == 'NAN_TENSOR_WHOLE':
+        elif RULE == "NAN_TENSOR_WHOLE":
             self.make_tensor_nan_whole()
-        elif RULE == 'NON_SCALAR_INPUT':
+        elif RULE == "NON_SCALAR_INPUT":
             self.make_input_non_scalar()
-        elif RULE == 'SCALAR_INPUT':
+        elif RULE == "SCALAR_INPUT":
             self.make_input_scalar()
         else:
             return
@@ -551,6 +571,9 @@ class TorchAPI(API):
         self.is_class = inspect.isclass(eval(self.api))
 
     def new_mutate_multiple(self, arg, r):
+        enable_type = True
+        if enable_type and do_type_mutation():
+            arg.mutate_type()
         arg.new_mutation_multiple(r)
 
     def new_mutate_torch(self):
@@ -581,13 +604,15 @@ class TorchAPI(API):
             if enable_value and do_value_mutation:
                 arg.mutate_value()
 
-    def to_code(self,
-                prefix="arg",
-                res="res",
-                is_cuda=False,
-                use_try=True,
-                error_res=None,
-                low_precision=False) -> str:
+    def to_code(
+        self,
+        prefix="arg",
+        res="res",
+        is_cuda=False,
+        use_try=True,
+        error_res=None,
+        low_precision=False,
+    ) -> str:
         code = ""
         arg_str = ""
         count = 1
@@ -597,8 +622,7 @@ class TorchAPI(API):
                 continue
             arg_name = f"{prefix}_{count}"
             code += arg.to_code(arg_name,
-                                low_precision=low_precision,
-                                is_cuda=is_cuda)
+                                low_precision=low_precision, is_cuda=is_cuda)
             if key.startswith("parameter:"):
                 arg_str += f"{arg_name},"
             else:
@@ -615,21 +639,25 @@ class TorchAPI(API):
             if "input_signature" in self.args.keys():
                 arg_name = f"{prefix}_{count}"
                 code += self.args["input_signature"].to_code(
-                    arg_name, low_precision=low_precision, is_cuda=is_cuda)
+                    arg_name, low_precision=low_precision, is_cuda=is_cuda
+                )
                 res_code = f"{res} = {prefix}_class(*{arg_name})\n"
         else:
             res_code = f"{res} = {self.api}({arg_str})\n"
 
-        return code + self.invocation_code(res, error_res, res_code, use_try,
-                                           low_precision)
+        return code + self.invocation_code(
+            res, error_res, res_code, use_try, low_precision
+        )
 
-    def to_diff_code(self,
-                     oracle: OracleType,
-                     prefix="arg",
-                     res="res",
-                     *,
-                     error_res=None,
-                     use_try=True) -> str:
+    def to_diff_code(
+        self,
+        oracle: OracleType,
+        prefix="arg",
+        res="res",
+        *,
+        error_res=None,
+        use_try=True,
+    ) -> str:
         """Generate code for the oracle"""
         code = ""
         arg_str = ""
@@ -658,8 +686,9 @@ class TorchAPI(API):
         else:
             res_code = f"{res} = {self.api}({arg_str})\n"
 
-        return code + self.invocation_code(res, error_res, res_code, use_try,
-                                           oracle == OracleType.PRECISION)
+        return code + self.invocation_code(
+            res, error_res, res_code, use_try, oracle == OracleType.PRECISION
+        )
 
     @staticmethod
     def invocation_code(res, error_res, res_code, use_try, low_precision):
@@ -670,7 +699,7 @@ class TorchAPI(API):
                 error_res = res
             temp_code = "try:\n"
             temp_code += API.indent_code(res_code)
-            temp_code += f"except Exception as e:\n  print(\"Error:\"+str(e))\n"
+            temp_code += f'except Exception as e:\n  print("Error:"+str(e))\n'
             res_code = temp_code
 
         if low_precision:

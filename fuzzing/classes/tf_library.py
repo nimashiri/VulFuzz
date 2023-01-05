@@ -61,12 +61,12 @@ class TFLibrary(Library):
 
             results, error = self.run_code(write_code)
 
-            if error == None:
-                self.write_to_dir(
-                    join(self.output[oracle], "success"), api.api, write_code)
-            else:
-                self.write_to_dir(
-                    join(self.output[oracle], "fail"), api.api, write_code)
+            # if error == None:
+            #     self.write_to_dir(
+            #         join(self.output[oracle], "success"), api.api, write_code)
+            # else:
+            #     self.write_to_dir(
+            #         join(self.output[oracle], "fail"), api.api, write_code)
         elif oracle == OracleType.CUDA:
             part_from = ".".join(api.api.split('.')[0:-2])
 
@@ -85,28 +85,28 @@ class TFLibrary(Library):
                 f.write(write_code)
 
             results, error = self.run_code(write_code)
-            err_cpu = results[ERR_CPU_KEY]
-            err_gpu = results[ERR_GPU_KEY]
-            write_dir = ""
-            if error is None:
-                if (err_cpu is None) != (err_gpu is None):
-                    write_dir = join(self.output[oracle], "potential-bug")
-                elif err_cpu == None:
-                    res_cpu = results[RES_CPU_KEY]
-                    res_gpu = results[RES_GPU_KEY]
-                    if self.is_equal(res_cpu, res_gpu):
-                        write_dir = join(self.output[oracle], "success")
-                    else:
-                        write_dir = join(self.output[oracle], "potential-bug")
-                elif "SystemError" in err_cpu or "SystemError" in err_gpu:
-                    write_dir = join(self.output[oracle], "potential-bug")
-                else:
-                    write_dir = join(self.output[oracle], "success")
-            elif "SystemError" in error:
-                write_dir = join(self.output[oracle], "potential-bug")
-            else:
-                write_dir = join(self.output[oracle], "fail")
-            self.write_to_dir(write_dir, api.api, write_code)
+            # err_cpu = results[ERR_CPU_KEY]
+            # err_gpu = results[ERR_GPU_KEY]
+            # write_dir = ""
+            # if error is None:
+            #     if (err_cpu is None) != (err_gpu is None):
+            #         write_dir = join(self.output[oracle], "potential-bug")
+            #     elif err_cpu == None:
+            #         res_cpu = results[RES_CPU_KEY]
+            #         res_gpu = results[RES_GPU_KEY]
+            #         if self.is_equal(res_cpu, res_gpu):
+            #             write_dir = join(self.output[oracle], "success")
+            #         else:
+            #             write_dir = join(self.output[oracle], "potential-bug")
+            #     elif "SystemError" in err_cpu or "SystemError" in err_gpu:
+            #         write_dir = join(self.output[oracle], "potential-bug")
+            #     else:
+            #         write_dir = join(self.output[oracle], "success")
+            # elif "SystemError" in error:
+            #     write_dir = join(self.output[oracle], "potential-bug")
+            # else:
+            #     write_dir = join(self.output[oracle], "fail")
+            # self.write_to_dir(write_dir, api.api, write_code)
         elif oracle == OracleType.PRECISION:
 
             part_from = ".".join(api.api.split('.')[0:-2])

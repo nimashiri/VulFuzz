@@ -107,15 +107,14 @@ def pre_run_check(api_):
 
 def run_fuzzer():
     dbname = "TF"
+    tool = "orion"
     tf_output_dir = "/media/nimashiri/SSD/testing_results"
+
     if not os.path.exists(tf_output_dir):
         os.mkdir(tf_output_dir)
 
     mydb = myclient[dbname]
-    check_connection()
-    TorchDatabase.database_config("localhost", 27017, "TF")
-
-    tool = "orion"
+    TorchDatabase.database_config("localhost", 27017, dbname)
     config_name = "/media/nimashiri/SSD/FSE23_2/fuzzing/config/expr.conf"
 
     data = mydb.list_collection_names()
@@ -137,13 +136,13 @@ def run_fuzzer():
                             shell=False,
                             timeout=100,
                         )
-                    elif tool == "F":
+                    elif tool == "FreeFuzz":
                         res = subprocess.run(
                             [
                                 "python3",
                                 "/media/nimashiri/SSD/FSE23_2/fuzzing/freefuzz_api_main.py",
                                 config_name,
-                                "torch",
+                                "tf",
                                 api_,
                             ],
                             shell=False,
@@ -152,17 +151,14 @@ def run_fuzzer():
                     else:
                         print("No tool provided")
                 except subprocess.TimeoutExpired:
-                    dump_data(f"{api_}\n", join(
-                        tf_output_dir, "timeout.txt"), "a")
+                    dump_data(f"{api_}\n", join(tf_output_dir, "timeout.txt"), "a")
                 except Exception as e:
                     dump_data(
-                        f"{api_}\n  {e}\n", join(
-                            tf_output_dir, "runerror.txt"), "a"
+                        f"{api_}\n  {e}\n", join(tf_output_dir, "runerror.txt"), "a"
                     )
                 else:
                     if res.returncode != 0:
-                        dump_data(f"{api_}\n", join(
-                            tf_output_dir, "runcrash.txt"), "a")
+                        dump_data(f"{api_}\n", join(tf_output_dir, "runcrash.txt"), "a")
             else:
                 print("API Skipped!")
         else:

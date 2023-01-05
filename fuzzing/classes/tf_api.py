@@ -30,6 +30,7 @@ from tensorflow.python.platform import app
 from tensorflow.python.platform import tf_logging
 from tensorflow.python.platform import flags
 from tensorflow.python.platform import analytics
+
 # from tensorflow.python.platform import status_bar
 from tensorflow.python.platform import test
 from tensorflow.python.platform import googletest
@@ -53,6 +54,7 @@ from tensorflow.python.distribute import central_storage_strategy
 from tensorflow.python.distribute import collective_all_reduce_strategy
 from tensorflow.python.distribute import distribute_coordinator
 from tensorflow.python.distribute import distribute_lib
+
 # from tensorflow.python.distribute import distributed_file_utils
 from tensorflow.python.distribute import shared_variable_creator
 from tensorflow.python.distribute import values_util
@@ -70,6 +72,7 @@ from tensorflow.python.distribute import input_ops
 from tensorflow.python.distribute import one_device_strategy
 from tensorflow.python.distribute import tpu_values
 from tensorflow.python.distribute import collective_util
+
 # from tensorflow.python.distribute import all_reduce
 from tensorflow.python.distribute import multi_worker_util
 from tensorflow.python.distribute import multi_process_runner
@@ -88,6 +91,7 @@ from tensorflow.python.saved_model import signature_def_utils_impl
 from tensorflow.python.saved_model import save_options
 from tensorflow.python.saved_model import save_context
 from tensorflow.python.saved_model import function_deserialization
+
 # from tensorflow.python.saved_model import load_context
 from tensorflow.python.saved_model import loader_impl
 from tensorflow.python.saved_model import utils_impl
@@ -136,6 +140,7 @@ from tensorflow.python.framework import function_def_to_graph
 from tensorflow.python.framework import graph_to_function_def
 from tensorflow.python.framework import importer
 from tensorflow.python.framework import tensor_spec
+
 # from tensorflow.python.framework import composite_tensor_utils
 from tensorflow.python.framework import dtypes
 from tensorflow.python.framework import errors_impl
@@ -206,6 +211,7 @@ from tensorflow.python.ops import cond_v2
 from tensorflow.python.ops import histogram_ops
 from tensorflow.python.ops import gen_spectral_ops
 from tensorflow.python.ops import gen_sdca_ops
+
 # from tensorflow.python.ops import gen_tensor_forest_ops
 from tensorflow.python.ops import gen_ragged_math_ops
 from tensorflow.python.ops import gen_candidate_sampling_ops
@@ -252,6 +258,7 @@ from tensorflow.python.ops import string_ops
 from tensorflow.python.ops import gen_string_ops
 from tensorflow.python.ops import summary_op_util
 from tensorflow.python.ops import op_selector
+
 # from tensorflow.python.ops import gen_user_ops
 from tensorflow.python.ops import gen_dataset_ops
 from tensorflow.python.ops import control_flow_util
@@ -314,6 +321,7 @@ from tensorflow.python.ops import gen_resource_variable_ops
 from tensorflow.python.ops import confusion_matrix
 from tensorflow.python.ops import gen_functional_ops
 from tensorflow.python.ops import handle_data_util
+
 # from tensorflow.python.ops import tensor_forest_ops
 from tensorflow.python.ops import gen_experimental_dataset_ops
 from tensorflow.python.ops import script_ops
@@ -366,6 +374,7 @@ from tensorflow.python.training import slot_creator
 from tensorflow.python.training import checkpoint_management
 from tensorflow.python.training import quantize_training
 from tensorflow.python.training import adam
+
 # from tensorflow.python.training import tensorboard_logging
 from tensorflow.python.training import warm_starting_util
 from tensorflow.python.training import summary_io
@@ -425,6 +434,7 @@ from tensorflow.python.distribute.cluster_resolver import gce_cluster_resolver
 from tensorflow.python.distribute.cluster_resolver import tfconfig_cluster_resolver
 from tensorflow.python.distribute.cluster_resolver import cluster_resolver
 from tensorflow.python.distribute.parallel_device import parallel_device
+
 # from tensorflow.python.distribute.parallel_device import saving
 from tensorflow.python.saved_model.model_utils import export_output
 from tensorflow.python.saved_model.model_utils import mode_keys
@@ -445,19 +455,24 @@ from tensorflow.python.data.ops import dataset_ops
 from tensorflow.python.data.benchmarks import benchmark_base
 from tensorflow.python.data.experimental.service import server_lib
 from tensorflow.python.data.experimental.ops import iterator_ops
+
 # from tensorflow.python.data.experimental.ops import optimization
 from tensorflow.python.data.experimental.ops import testing
+
 # from tensorflow.python.data.experimental.ops import stats_ops
 from tensorflow.python.data.experimental.ops import scan_ops
 from tensorflow.python.data.experimental.ops import compression_ops
+
 # from tensorflow.python.data.experimental.ops import optimization_options
 from tensorflow.python.data.experimental.ops import unique
 from tensorflow.python.data.experimental.ops import parsing_ops
 from tensorflow.python.data.experimental.ops import distribute
 from tensorflow.python.data.experimental.ops import get_single_element
+
 # from tensorflow.python.data.experimental.ops import stats_aggregator
 from tensorflow.python.data.experimental.ops import take_while_ops
 from tensorflow.python.data.experimental.ops import counter
+
 # from tensorflow.python.data.experimental.ops import threadpool
 from tensorflow.python.data.experimental.ops import snapshot
 from tensorflow.python.data.experimental.ops import cardinality
@@ -476,6 +491,7 @@ from tensorflow.python.data.experimental.ops import writers
 from tensorflow.python.data.experimental.ops import batching
 from tensorflow.python.data.experimental.ops import data_service_ops
 from tensorflow.python.data.experimental.ops import readers
+
 # from tensorflow.python.data.experimental.kernel_tests.serialization import dataset_serialization_test_base
 # from tensorflow.python.debug.examples import debug_mnist
 from tensorflow.python.debug.cli import profile_analyzer_cli
@@ -498,6 +514,7 @@ from tensorflow.python.debug.wrappers import grpc_wrapper
 from tensorflow.python.debug.wrappers import local_cli_wrapper
 from tensorflow.python.debug.wrappers import hooks
 from tensorflow.python.debug.wrappers import dumping_wrapper
+
 # from tensorflow.python.debug.examples.v1 import debug_keras
 # from tensorflow.python.debug.examples.v1 import debug_mnist_v1
 # from tensorflow.python.debug.examples.v1 import debug_fibonacci
@@ -523,9 +540,11 @@ from tensorflow.python.keras.engine import training
 from tensorflow.python.keras.engine import keras_tensor
 from tensorflow.python.keras.engine import input_spec
 from tensorflow.python.keras.engine import data_adapter
+
 # from tensorflow.python.keras.engine import base_preprocessing_layer_v1
 from tensorflow.python.keras.engine import training_distributed_v1
 from tensorflow.python.keras.engine import node
+
 # from tensorflow.python.keras.preprocessing import text_dataset
 # from tensorflow.python.keras.preprocessing import dataset_utils
 # from tensorflow.python.keras.preprocessing import image
@@ -538,12 +557,15 @@ from tensorflow.python.keras.engine import node
 # from tensorflow.python.keras.distribute import keras_stateful_lstm_model_correctness_test
 # from tensorflow.python.keras.distribute import keras_embedding_model_correctness_test
 from tensorflow.python.keras.distribute import distributed_training_utils_v1
+
 # from tensorflow.python.keras.distribute import keras_correctness_test_base
 # from tensorflow.python.keras.distribute import keras_rnn_model_correctness_test
 # from tensorflow.python.keras.distribute import distribute_strategy_test
 from tensorflow.python.keras.distribute import distributed_training_utils
+
 # from tensorflow.python.keras.distribute import saved_model_test_base
 from tensorflow.python.keras.distribute import worker_training_state
+
 # from tensorflow.python.keras.distribute import simple_models
 # from tensorflow.python.keras.distribute import optimizer_combinations
 # from tensorflow.python.keras.distribute import keras_dnn_correctness_test
@@ -557,6 +579,7 @@ from tensorflow.python.keras.legacy_tf_layers import base
 from tensorflow.python.keras.legacy_tf_layers import convolutional
 from tensorflow.python.keras.legacy_tf_layers import core
 from tensorflow.python.keras.legacy_tf_layers import pooling
+
 # from tensorflow.python.keras.legacy_tf_layers import normalization
 # from tensorflow.python.keras.datasets import fashion_mnist
 # from tensorflow.python.keras.datasets import mnist
@@ -577,11 +600,13 @@ from tensorflow.python.keras.utils import vis_utils
 from tensorflow.python.keras.utils import version_utils
 from tensorflow.python.keras.utils import losses_utils
 from tensorflow.python.keras.utils import generic_utils
+
 # from tensorflow.python.keras.utils import multi_gpu_utils
 from tensorflow.python.keras.utils import kernelized_utils
 from tensorflow.python.keras.utils import layer_utils
 from tensorflow.python.keras.utils import io_utils
 from tensorflow.python.keras.utils import np_utils
+
 # from tensorflow.python.keras.feature_column import base_feature_layer
 # from tensorflow.python.keras.feature_column import dense_features_v2
 # from tensorflow.python.keras.feature_column import sequence_feature_column
@@ -596,6 +621,7 @@ from tensorflow.python.keras.saving import saved_model_experimental
 from tensorflow.python.keras.saving import model_config
 from tensorflow.python.keras.saving import hdf5_format
 from tensorflow.python.keras.saving import save
+
 # from tensorflow.python.keras.applications import densenet
 # from tensorflow.python.keras.applications import mobilenet
 # from tensorflow.python.keras.applications import xception
@@ -618,17 +644,21 @@ from tensorflow.python.keras.layers import rnn_cell_wrapper_v2
 from tensorflow.python.keras.layers import recurrent_v2
 from tensorflow.python.keras.layers import convolutional
 from tensorflow.python.keras.layers import serialization
+
 # from tensorflow.python.keras.layers import normalization_v2
 from tensorflow.python.keras.layers import merge
+
 # from tensorflow.python.keras.layers import local
 from tensorflow.python.keras.layers import core
 from tensorflow.python.keras.layers import dense_attention
+
 # from tensorflow.python.keras.layers import noise
 from tensorflow.python.keras.layers import recurrent
 from tensorflow.python.keras.layers import advanced_activations
 from tensorflow.python.keras.layers import pooling
 from tensorflow.python.keras.layers import embeddings
 from tensorflow.python.keras.layers import cudnn_recurrent
+
 # from tensorflow.python.keras.layers import normalization
 from tensorflow.python.keras.layers import convolutional_recurrent
 from tensorflow.python.keras.mixed_precision import autocast_variable
@@ -650,6 +680,7 @@ from tensorflow.python.keras.optimizer_v2 import rmsprop
 from tensorflow.python.keras.optimizer_v2 import learning_rate_schedule
 from tensorflow.python.keras.optimizer_v2 import adam
 from tensorflow.python.keras.optimizer_v2 import optimizer_v2
+
 # from tensorflow.python.keras.benchmarks.saved_model_benchmarks import saved_model_benchmark_util
 from tensorflow.python.keras.saving.saved_model import network_serialization
 from tensorflow.python.keras.saving.saved_model import load
@@ -662,6 +693,7 @@ from tensorflow.python.keras.saving.saved_model import save_impl
 from tensorflow.python.keras.saving.saved_model import serialized_attributes
 from tensorflow.python.keras.saving.saved_model import model_serialization
 from tensorflow.python.keras.saving.saved_model import layer_serialization
+
 # from tensorflow.python.keras.layers.preprocessing import string_lookup
 # from tensorflow.python.keras.layers.preprocessing import reduction
 # from tensorflow.python.keras.layers.preprocessing import hashing
@@ -689,6 +721,7 @@ from tensorflow.python.ops.parallel_for import pfor
 from tensorflow.python.ops.parallel_for import test_util
 from tensorflow.python.ops.parallel_for import control_flow_ops
 from tensorflow.python.ops.losses import losses_impl
+
 # from tensorflow.python.ops.losses import loss_reduction
 from tensorflow.python.ops.losses import util
 from tensorflow.python.ops.distributions import special_math
@@ -785,12 +818,14 @@ from tensorflow.python.ops.linalg.sparse import sparse_csr_matrix_grad
 from tensorflow.python.ops.linalg.sparse import conjugate_gradient
 from tensorflow.python.training.experimental import loss_scale
 from tensorflow.python.training.experimental import loss_scale_optimizer
+
 # from tensorflow.python.training.experimental import loss_scaling_gradient_tape
 from tensorflow.python.training.experimental import mixed_precision
 from tensorflow.python.training.saving import checkpoint_options
 from tensorflow.python.training.saving import functional_saver
 from tensorflow.python.training.saving import saveable_object
 from tensorflow.python.training.saving import saveable_object_util
+
 # from tensorflow.python.training.saving import saveable_hook
 from tensorflow.python.training.tracking import graph_view
 from tensorflow.python.training.tracking import base
@@ -821,6 +856,7 @@ from tensorflow.python.autograph.utils import misc
 from tensorflow.python.autograph.utils import context_managers
 from tensorflow.python.autograph.utils import tensor_list
 from tensorflow.python.autograph.utils import py_func
+
 # from tensorflow.python.autograph.utils import compat_util
 from tensorflow.python.autograph.utils import tensors
 from tensorflow.python.autograph.utils import ag_logging
@@ -829,6 +865,7 @@ from tensorflow.python.autograph.operators import conditional_expressions
 from tensorflow.python.autograph.operators import py_builtins
 from tensorflow.python.autograph.operators import control_flow
 from tensorflow.python.autograph.operators import data_structures
+
 # from tensorflow.python.autograph.operators import control_flow_deprecated_py2
 from tensorflow.python.autograph.operators import logical
 from tensorflow.python.autograph.operators import slices
@@ -882,8 +919,7 @@ from tensorflow.python.lib.io import tf_record
 class TFArgument(Argument):
     _str_values = ["", "1", "sum", "same", "valid", "zeros"]
     _float_values = [0.0, 1.0, -1.0, 63.0, -63.0]
-    _tensor_arg_dtypes = [ArgType.TF_TENSOR,
-                          ArgType.KERAS_TENSOR, ArgType.TF_VARIABLE]
+    _tensor_arg_dtypes = [ArgType.TF_TENSOR, ArgType.KERAS_TENSOR, ArgType.TF_VARIABLE]
     _dtypes = [
         tf.bfloat16,
         tf.bool,
@@ -1037,8 +1073,7 @@ class TFArgument(Argument):
         elif self.type == ArgType.BOOL:
             self.value = self.mutate_bool_value(True)
         elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
-            self.value = [TFArgument(1, ArgType.INT),
-                          TFArgument(1, ArgType.INT)]
+            self.value = [TFArgument(1, ArgType.INT), TFArgument(1, ArgType.INT)]
         elif self.type in self._tensor_arg_dtypes:
             shape = [randint(1, 3), randint(1, 3)]
             dtype = choice([tf.int32, tf.float32, tf.float64])
@@ -1096,8 +1131,7 @@ class TFArgument(Argument):
                 return False
             new_type = choice(self._support_types + super()._support_types)
             if new_type == ArgType.LIST or new_type == ArgType.TUPLE:
-                self.value = [TFArgument(
-                    2, ArgType.INT), TFArgument(3, ArgType.INT)]
+                self.value = [TFArgument(2, ArgType.INT), TFArgument(3, ArgType.INT)]
             elif new_type == ArgType.TF_TENSOR:
                 self.shape = [2, 2]
                 self.dtype = tf.float32
@@ -1195,7 +1229,7 @@ class TFArgument(Argument):
 
         if dtype.is_floating:
             if self.make_tensor_neg:
-                big_number = random.randint(1, 1000)
+                big_number = random.randint(1879048192, 161063793887434)
                 value = -big_number
                 code += f"{var_tensor_name} = tf.constant({value}, shape={shape}, dtype=tf.{dtype.name},)\n"
             elif self.scalar_input_flag:
@@ -1227,8 +1261,8 @@ class TFArgument(Argument):
         elif dtype.is_complex:
             if self.make_tensor_neg:
                 ftype = "float64" if dtype == tf.complex128 else "float32"
-                value1 = random.randint(1, 1000)
-                value2 = random.randint(1, 1000)
+                value1 = random.randint(1879048192, 161063793887434)
+                value2 = random.randint(1879048192, 161063793887434)
                 code += f"{var_tensor_name} = tf.complex(tf.constant({-value1}, shape={shape}, dtype=tf.{ftype}), tf.constant({-value2}, shape={shape}, dtype=tf.{ftype}))\n"
             elif self.scalar_input_flag:
                 value = random.randint(1, 1000)
@@ -1335,7 +1369,7 @@ class TFArgument(Argument):
             )
         elif dtype in [tf.int32, tf.int64]:
             if self.make_tensor_neg:
-                value = random.randint(1, 1000)
+                value = random.randint(1879048192, 161063793887434)
                 code += "%s = tf.constant(%s, shape=%s, dtype=tf.%s,)\n" % (
                     var_tensor_name,
                     -value,
@@ -1343,7 +1377,7 @@ class TFArgument(Argument):
                     dtype.name,
                 )
             elif self.scalar_input_flag:
-                value = random.randint(1, 1000)
+                value = random.randint(1879048192, 161063793887434)
                 code += f"{var_tensor_name} = {value} \n"
             elif self.nan_input_tensor:
                 code += "%s = tf.constant(np.nan, shape=%s, dtype=tf.float64,)\n" % (
@@ -1353,14 +1387,14 @@ class TFArgument(Argument):
             elif self.nan_input_tensor_whole:
                 code += "%s = np.nan\n" % (var_tensor_name)
             elif self.tensor_zero_flag_type1:
-                value = [0]
+                value = [0.0000000000000]
                 code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s,)\n" % (
                     var_tensor_name,
                     value,
                     dtype.name,
                 )
             elif self.tensor_zero_flag_type2:
-                value = 0
+                value = 0.0000000000000
                 code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s,)\n" % (
                     var_tensor_name,
                     value,
@@ -1398,15 +1432,15 @@ class TFArgument(Argument):
                 )
         else:
             if self.make_tensor_neg:
-                value = random.randint(1, 1000)
+                value = random.randint(1879048192, 161063793887434)
                 code += (
                     "%s = tf.saturate_cast("
                     "tf.constant(%s, shape=%s, dtype=tf.int64,),"
-                    "dtype=tf.%s)\n" % (
-                        var_tensor_name, -value, shape, dtype.name)
+                    "dtype=tf.%s)\n" % (var_tensor_name, -value, shape, dtype.name)
                 )
             elif self.scalar_input_flag:
-                code += "%s = 1 \n" % (var_tensor_name)
+                value = random.randint(1879048192, 161063793887434)
+                code += f"{var_tensor_name} = {value} \n"
             elif self.nan_input_tensor:
                 code += (
                     "%s = tf.saturate_cast("
@@ -1420,8 +1454,7 @@ class TFArgument(Argument):
                 code += (
                     "%s = tf.saturate_cast("
                     "tf.constant(%s, shape=%s, dtype=tf.int64,),"
-                    "dtype=tf.%s)\n" % (
-                        var_tensor_name, value, shape, dtype.name)
+                    "dtype=tf.%s)\n" % (var_tensor_name, value, shape, dtype.name)
                 )
             elif self.tensor_zero_flag_type2:
                 value = 0
@@ -1444,16 +1477,14 @@ class TFArgument(Argument):
                 code += (
                     "%s = tf.saturate_cast("
                     "tf.random.uniform(%s, dtype=tf.int64, maxval=%s),"
-                    "dtype=tf.%s)\n" % (
-                        var_tensor_name, shape, abs(value), dtype.name)
+                    "dtype=tf.%s)\n" % (var_tensor_name, shape, abs(value), dtype.name)
                 )
             elif self.large_tensor_flag_type2:
                 value = random.randint(1879048192, 161063793887434)
                 code += (
                     "%s = tf.saturate_cast("
                     "tf.constant(%s, shape=%s, dtype=tf.int64,),"
-                    "dtype=tf.%s)\n" % (
-                        var_tensor_name, abs(value), shape, dtype.name)
+                    "dtype=tf.%s)\n" % (var_tensor_name, abs(value), shape, dtype.name)
                 )
             else:
                 code += (
@@ -1489,15 +1520,12 @@ class TFArgument(Argument):
             # Did not consider cloning for in-place operation here.
             code = ""
             if self.type == ArgType.TF_TENSOR:
-                code = self.to_code_tensor(
-                    var_name, low_precision=low_precision)
+                code = self.to_code_tensor(var_name, low_precision=low_precision)
             elif self.type == ArgType.TF_VARIABLE:
-                code = self.to_code_tensor(
-                    var_name, low_precision=low_precision)
+                code = self.to_code_tensor(var_name, low_precision=low_precision)
                 code += "%s = tf.Variable(%s)\n" % (var_name, var_name)
             elif self.type == ArgType.KERAS_TENSOR:
-                code = self.to_code_keras_tensor(
-                    var_name, low_precision=low_precision)
+                code = self.to_code_keras_tensor(var_name, low_precision=low_precision)
             return code
         return super().to_code(var_name)
 
@@ -1506,8 +1534,7 @@ class TFArgument(Argument):
             code = ""
             arg_name_list = ""
             for i in range(len(self.value)):
-                code += self.value[i].to_diff_code(
-                    f"{var_name}_{i}", low_precision)
+                code += self.value[i].to_diff_code(f"{var_name}_{i}", low_precision)
                 arg_name_list += f"{var_name}_{i},"
             if self.type == ArgType.LIST:
                 code += f"{var_name} = [{arg_name_list}]\n"
@@ -1596,9 +1623,9 @@ class TFArgument(Argument):
     """
 
     def make_input_non_scalar(self):
-        if self.type == ArgType.INT:
+        if self.type == self.ArgType.INT:
             super().activate_non_scalar_input_flag()
-        elif self.type == ArgType.FLOAT:
+        elif self.type == self.ArgType.FLOAT:
             super().activate_non_scalar_input_flag()
         else:
             return
@@ -1711,8 +1738,7 @@ class TFArgument(Argument):
             elif len(self.shape) == 1:
                 self.shape = self.alter_tensor_shape(self.shape)
             elif len(self.shape) == 0:
-                self.shape = self.alter_tensor_shape(
-                    self.shape, reduction=False)
+                self.shape = self.alter_tensor_shape(self.shape, reduction=False)
             else:
                 self.shape = self.alter_tensor_shape(self.shape)
         else:
@@ -1807,8 +1833,7 @@ class TFArgument(Argument):
                 minv, maxv = TFArgument.random_tensor_value_range(dtype)
                 return TFArgument(None, ArgType.TF_TENSOR, minv, maxv, shape, dtype)
             if signature["class_name"] == "tensorflow.python.framework.dtypes.DType":
-                name = signature["to_str"].replace(
-                    "<dtype: '", "").replace("'>", "")
+                name = signature["to_str"].replace("<dtype: '", "").replace("'>", "")
                 value = eval("tf." + name)
                 return TFArgument(value, ArgType.TF_DTYPE)
             try:
@@ -1833,14 +1858,12 @@ class TFArgument(Argument):
             if isinstance(value, tuple):
                 tuple_value = []
                 for elem in value:
-                    tuple_value.append(
-                        TFArgument.generate_arg_from_signature(elem))
+                    tuple_value.append(TFArgument.generate_arg_from_signature(elem))
                 return TFArgument(tuple_value, ArgType.TUPLE)
             if isinstance(value, list):
                 list_value = []
                 for elem in value:
-                    list_value.append(
-                        TFArgument.generate_arg_from_signature(elem))
+                    list_value.append(TFArgument.generate_arg_from_signature(elem))
                 return TFArgument(list_value, ArgType.LIST)
 
         if label == "tuple":
@@ -1848,8 +1871,7 @@ class TFArgument(Argument):
                 value = json.loads(signature["value"])
                 tuple_value = []
                 for elem in value:
-                    tuple_value.append(
-                        TFArgument.generate_arg_from_signature(elem))
+                    tuple_value.append(TFArgument.generate_arg_from_signature(elem))
                 return TFArgument(tuple_value, ArgType.TUPLE)
             except:
                 raise ValueError("Wrong signature " + str(signature))
@@ -1861,8 +1883,7 @@ class TFArgument(Argument):
                     value = signature["value"]
                 list_value = []
                 for elem in value:
-                    list_value.append(
-                        TFArgument.generate_arg_from_signature(elem))
+                    list_value.append(TFArgument.generate_arg_from_signature(elem))
                 return TFArgument(list_value, ArgType.LIST)
             except:
                 raise ValueError("Wrong signature " + str(signature))
@@ -1890,8 +1911,7 @@ class TFAPI(API):
     def __init__(self, api_name, record=None) -> None:
         super().__init__(api_name)
         # self.record = TFDatabase.get_specified_record(api_name)
-        self.record = TFDatabase.get_rand_record(
-            api_name) if record is None else record
+        self.record = TFDatabase.get_rand_record(api_name) if record is None else record
         self.args = TFAPI.generate_args_from_record(self.record)
         if re.findall(r"(tensorflow\.)", api_name):
             _name = self.api.split(".")[-2:]
@@ -1929,8 +1949,7 @@ class TFAPI(API):
                 arg.mutate_type()
             do_value_mutation = True
             if enable_db and do_select_from_db():
-                new_arg, success = TFDatabase.select_rand_over_db(
-                    self.api, arg_name)
+                new_arg, success = TFDatabase.select_rand_over_db(self.api, arg_name)
                 if success:
                     new_arg = TFArgument.generate_arg_from_signature(new_arg)
                     self.args[arg_name] = new_arg
@@ -2023,8 +2042,7 @@ class TFAPI(API):
         arg_str = ""
         index = 0
         for arg in args:
-            arg_code += arg.to_code(f"{prefix}_{index}",
-                                    low_precision=low_precision)
+            arg_code += arg.to_code(f"{prefix}_{index}", low_precision=low_precision)
             arg_str += f"{prefix}_{index},"
             index += 1
         for key, arg in kwargs.items():
@@ -2072,8 +2090,7 @@ class TFAPI(API):
             cls_name = f"{prefix}_class"
             arg_code += f"{cls_name} = {self.api}({arg_str})\n"
             if inputs:
-                arg_code += inputs.to_code(input_name,
-                                           low_precision=low_precision)
+                arg_code += inputs.to_code(input_name, low_precision=low_precision)
                 res_code += f"out = {cls_name}(*{input_name})\n"
         else:
             res_code = f"out = {self.api}({arg_str})\n"
@@ -2100,8 +2117,7 @@ class TFAPI(API):
             cls_name = f"{prefix}_class"
             res_code = f""
             if inputs:
-                arg_code += inputs.to_diff_code(input_name,
-                                                low_precision=low_precision)
+                arg_code += inputs.to_diff_code(input_name, low_precision=low_precision)
                 res_code += f'{RES_KEY}["{res_name}"] = {cls_name}(*{input_name})\n'
         else:
             res_code = f'{RES_KEY}["{res_name}"] = {self.api}({arg_str})\n'

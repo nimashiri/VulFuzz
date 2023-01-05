@@ -29,8 +29,7 @@ if __name__ == "__main__":
     # data = read_txt(buggy_api)
 
     freefuzz_cfg = configparser.ConfigParser()
-    freefuzz_cfg.read(join(__file__.replace(
-        "freefuzz_api.py", "config"), config_name))
+    freefuzz_cfg.read(join(__file__.replace("freefuzz_api.py", "config"), config_name))
 
     # database configuration
     mongo_cfg = freefuzz_cfg["mongodb"]
@@ -72,8 +71,7 @@ if __name__ == "__main__":
             cuda_oracle = False
         # Pytorch TEST
 
-        MyTorch = TorchLibrary(
-            torch_output_dir, diff_bound, time_bound, time_thresold)
+        MyTorch = TorchLibrary(torch_output_dir, diff_bound, time_bound, time_thresold)
         # for api_name in data:
         print("###########################")
         print(api_name)
@@ -118,16 +116,15 @@ if __name__ == "__main__":
         if api_keywords.count("tensorflow") > 1:
             api_name = make_api_name_unique(api_name)
 
-        for _ in range(each_api_run_times):
-
-            api = TFAPI(api_name)
-            api.args.pop("source")
-            if "_id" in api.args:
-                api.args.pop("_id")
-
-            api.mutate(enable_value, enable_type, enable_db)
-            if crash_oracle:
-                MyTF.test_with_oracle(api, OracleType.CRASH)
-                api.api = api_name
-            if cuda_oracle:
-                MyTF.test_with_oracle(api, OracleType.CUDA)
+        try:
+            for _ in range(each_api_run_times):
+                api = TFAPI(api_name)
+                api.mutate(enable_value, enable_type, enable_db)
+                if crash_oracle:
+                    MyTF.test_with_oracle(api, OracleType.CRASH)
+                    api.api = api_name
+                if cuda_oracle:
+                    MyTF.test_with_oracle(api, OracleType.CUDA)
+                    api.api = api_name
+        except Exception as e:
+            print(e)

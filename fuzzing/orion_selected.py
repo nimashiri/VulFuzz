@@ -74,7 +74,7 @@ if __name__ == "__main__":
     # library = sys.argv[1]
     # api_name = sys.argv[2]
 
-    library = "TORCH"
+    library = "TF"
 
     output_dir = "/media/nimashiri/SSD/testing_results"
     if not os.path.exists(output_dir):
@@ -126,43 +126,40 @@ if __name__ == "__main__":
                 api_keywords = api_name.split(".")
                 if api_keywords.count("tensorflow") > 1:
                     api_name = make_api_name_unique(api_name)
-                api.args.pop("source")
-                if "_id" in api.args:
-                    api.args.pop("_id")
 
                 api.new_mutate_tf()
                 MyTF.test_with_oracle(api, OracleType.CRASH)
-                # api.api = api_name
-                # MyTF.test_with_oracle(api, OracleType.CUDA)
+                api.api = api_name
+                MyTF.test_with_oracle(api, OracleType.CUDA)
+                api.api = api_name
 
                 api_keywords = api_name.split(".")
                 if api_keywords.count("tensorflow") > 1:
                     api_name = make_api_name_unique(api_name)
-                old_api.args.pop("source")
-                if "_id" in old_api.args:
-                    old_api.args.pop("_id")
-                for i, arg in enumerate(old_api.args):
-                    for r in rules:
-                        print(
-                            "########################################################################################################################"
-                        )
-                        print(
-                            "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(
-                                api_name, arg, r
+
+                for j in range(500):
+                    for i, arg in enumerate(old_api.args):
+                        for r in rules:
+                            print(
+                                "########################################################################################################################"
                             )
-                        )
-                        print(
-                            "########################################################################################################################"
-                        )
-                        old_arg = copy.deepcopy(old_api.args[arg])
-                        old_api.new_mutate_multiple(old_api.args[arg], r)
-                        MyTF.test_with_oracle(old_api, OracleType.CRASH)
-                        # old_api.api = api_name
-                        # MyTF.test_with_oracle(old_api, OracleType.CUDA)
-                        # api.api = sys.argv[2]
-                        # MyTF.test_with_oracle(api, OracleType.PRECISION)
-                        old_api.api = api_name
-                        old_api.args[arg] = old_arg
+                            print(
+                                "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###, Iteration: {3}".format(
+                                    api_name, arg, r, j
+                                )
+                            )
+                            print(
+                                "########################################################################################################################"
+                            )
+                            old_arg = copy.deepcopy(old_api.args[arg])
+                            old_api.new_mutate_multiple(old_api.args[arg], r)
+                            MyTF.test_with_oracle(old_api, OracleType.CRASH)
+                            old_api.api = api_name
+                            MyTF.test_with_oracle(old_api, OracleType.CUDA)
+                            # api.api = sys.argv[2]
+                            # MyTF.test_with_oracle(api, OracleType.PRECISION)
+                            old_api.api = api_name
+                            old_api.args[arg] = old_arg
         except Exception as e:
             pass
     else:

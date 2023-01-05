@@ -1,11 +1,22 @@
-import torch
+import tensorflow as tf
 import numpy as np
-arg_1_tensor = torch.rand([0, 0, 1, 2, 3, 0], dtype=torch.float64)
-arg_1 = arg_1_tensor.clone()
-arg_2_tensor = torch.rand([1, 2, 3, 0], dtype=torch.float64)
-arg_2 = arg_2_tensor.clone()
-arg_3 = 95063276620
+from tensorflow.python.ops import array_ops
 try:
-    res = torch.tensordot(arg_1, arg_2, dims=arg_3,)
-except Exception as e:
+  try:
+    with tf.device('/CPU'):
+      arg_0_tensor = np.nan
+      arg_0 = tf.identity(arg_0_tensor)
+      maxlen = 5
+      out = array_ops.sequence_mask(arg_0,maxlen=maxlen,)
+      print(out)
+  except Exception as e:
     print("Error:"+str(e))
+  try:
+    with tf.device('/GPU:0'):
+      arg_0 = tf.identity(arg_0_tensor)
+      arg_0 = tf.cast(arg_0, tf.int64)
+      out = array_ops.sequence_mask(arg_0,maxlen=maxlen,)
+  except Exception as e:
+    print("Error:"+str(e))
+except Exception as e:
+  print("Error:"+str(e))

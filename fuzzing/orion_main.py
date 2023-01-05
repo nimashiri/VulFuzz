@@ -77,25 +77,8 @@ if __name__ == "__main__":
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
 
-    rules = [
-        "NEGATE_INT_TENSOR",
-        "RANK_REDUCTION_EXPANSION",
-        "EMPTY_TENSOR_TYPE1",
-        "EMPTY_TENSOR_TYPE2",
-        "EMPTY_LIST",
-        "ZERO_TENSOR_TYPE1",
-        "ZERO_TENSOR_TYPE2",
-        "NAN_TENSOR",
-        "NAN_TENSOR_WHOLE",
-        "NON_SCALAR_INPUT",
-        "SCALAR_INPUT",
-        "LARGE_TENSOR_TYPE1",
-        "LARGE_TENSOR_TYPE2",
-        "LARGE_LIST_ELEMENT",
-    ]
+    rules = ["NEGATE_INT_TENSOR"]
 
-    buggy_api = "/media/nimashiri/SSD/testing_results/runcrash.txt"
-    data = read_txt(buggy_api)
     if library == "TF":
 
         MyTF = TFLibrary(output_dir)
@@ -103,12 +86,9 @@ if __name__ == "__main__":
         dimension_mismatch = True
 
         try:
-            # for api_name in data:
-            # api_name = 'tensorflow.python.ops.array_ops.batch_gather_nd'
 
             api = TFAPI(api_name)
             old_api = copy.deepcopy(api)
-            # _count_tensor = count_tensor_inputs(api)
 
             print(
                 "########################################################################################################################"
@@ -124,15 +104,16 @@ if __name__ == "__main__":
             api_keywords = api_name.split(".")
             if api_keywords.count("tensorflow") > 1:
                 api_name = make_api_name_unique(api_name)
-    
-            api.new_mutate_tf()
-            MyTF.test_with_oracle(api, OracleType.CRASH)
-            api.api = api_name
-            MyTF.test_with_oracle(api, OracleType.CUDA)
 
-            api_keywords = api_name.split(".")
-            if api_keywords.count("tensorflow") > 1:
-                api_name = make_api_name_unique(api_name)
+            for j in range(500):
+                api.new_mutate_tf()
+                MyTF.test_with_oracle(api, OracleType.CRASH)
+                api.api = api_name
+                MyTF.test_with_oracle(api, OracleType.CUDA)
+
+                api_keywords = api_name.split(".")
+                if api_keywords.count("tensorflow") > 1:
+                    api_name = make_api_name_unique(api_name)
 
             for i, arg in enumerate(old_api.args):
                 for r in rules:
@@ -140,8 +121,8 @@ if __name__ == "__main__":
                         "########################################################################################################################"
                     )
                     print(
-                        "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(
-                            api_name, arg, r
+                        "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###, Iteration {3}".format(
+                            api_name, arg, r, j
                         )
                     )
                     print(
@@ -152,7 +133,6 @@ if __name__ == "__main__":
                     MyTF.test_with_oracle(old_api, OracleType.CRASH)
                     old_api.api = api_name
                     MyTF.test_with_oracle(old_api, OracleType.CUDA)
-                    api.api = sys.argv[2]
                     # MyTF.test_with_oracle(api, OracleType.PRECISION)
                     old_api.api = api_name
                     old_api.args[arg] = old_arg

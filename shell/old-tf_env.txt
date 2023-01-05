@@ -1,0 +1,1376 @@
+
+== check python ===================================================
+python version: 3.10.6
+python branch: 
+python build version: ('main', 'Nov 14 2022 16:10:14')
+python compiler version: GCC 11.3.0
+python implementation: CPython
+
+
+== check os platform ===============================================
+
+== are we in docker =============================================
+No
+
+== compiler =====================================================
+c++ (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+== check pips ===================================================
+protobuf                3.12.4
+
+== check for virtualenv =========================================
+False
+
+== tensorflow import ============================================
+      8830:	find library=libm.so.6 [0]; searching
+      8830:	 search cache=/etc/ld.so.cache
+      8830:	  trying file=/lib/x86_64-linux-gnu/libm.so.6
+      8830:	
+      8830:	find library=libexpat.so.1 [0]; searching
+      8830:	 search cache=/etc/ld.so.cache
+      8830:	  trying file=/lib/x86_64-linux-gnu/libexpat.so.1
+      8830:	
+      8830:	find library=libz.so.1 [0]; searching
+      8830:	 search cache=/etc/ld.so.cache
+      8830:	  trying file=/lib/x86_64-linux-gnu/libz.so.1
+      8830:	
+      8830:	find library=libc.so.6 [0]; searching
+      8830:	 search cache=/etc/ld.so.cache
+      8830:	  trying file=/lib/x86_64-linux-gnu/libc.so.6
+      8830:	
+      8830:	
+      8830:	calling init: /lib64/ld-linux-x86-64.so.2
+      8830:	
+      8830:	
+      8830:	calling init: /lib/x86_64-linux-gnu/libc.so.6
+      8830:	
+      8830:	
+      8830:	calling init: /lib/x86_64-linux-gnu/libz.so.1
+      8830:	
+      8830:	
+      8830:	calling init: /lib/x86_64-linux-gnu/libexpat.so.1
+      8830:	
+      8830:	
+      8830:	calling init: /lib/x86_64-linux-gnu/libm.so.6
+      8830:	
+      8830:	
+      8830:	initialize program: /usr/bin/python
+      8830:	
+      8830:	
+      8830:	transferring control: /usr/bin/python
+      8830:	
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+ModuleNotFoundError: No module named 'tensorflow'
+      8830:	
+      8830:	calling fini: /usr/bin/python [0]
+      8830:	
+      8830:	
+      8830:	calling fini: /lib/x86_64-linux-gnu/libm.so.6 [0]
+      8830:	
+      8830:	
+      8830:	calling fini: /lib/x86_64-linux-gnu/libexpat.so.1 [0]
+      8830:	
+      8830:	
+      8830:	calling fini: /lib/x86_64-linux-gnu/libz.so.1 [0]
+      8830:	
+
+== env ==========================================================
+LD_LIBRARY_PATH is unset
+DYLD_LIBRARY_PATH is unset
+
+== nvidia-smi ===================================================
+Wed Jan  4 01:37:10 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.60.11    Driver Version: 525.60.11    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0  On |                  N/A |
+| 33%   37C    P8    12W / 120W |    378MiB /  6144MiB |      3%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2191      G   /usr/lib/xorg/Xorg                170MiB |
+|    0   N/A  N/A      2345      G   /usr/bin/gnome-shell               67MiB |
+|    0   N/A  N/A      3342      G   ...5/usr/lib/firefox/firefox      137MiB |
++-----------------------------------------------------------------------------+
+
+== cuda libs  ===================================================
+
+== tensorflow installed from info ==================
+
+== python version  ==============================================
+(major, minor, micro, releaselevel, serial)
+(3, 10, 6, 'final', 0)
+
+== bazel version  ===============================================
+
+== check python ===================================================
+python version: 3.9.15
+python branch: 
+python build version: ('main', 'Nov 24 2022 14:31:59')
+python compiler version: GCC 11.2.0
+python implementation: CPython
+
+
+== check os platform ===============================================
+
+== are we in docker =============================================
+No
+
+== compiler =====================================================
+c++ (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+== check pips ===================================================
+numpy                        1.24.1
+protobuf                     3.19.6
+tensorflow                   2.11.0
+tensorflow-estimator         2.11.0
+tensorflow-io-gcs-filesystem 0.29.0
+
+== check for virtualenv =========================================
+False
+
+== tensorflow import ============================================
+tf.version.VERSION = 2.11.0
+tf.version.GIT_VERSION = v2.11.0-rc2-17-gd5b57ca93e5
+tf.version.COMPILER_VERSION = 9.3.1 20200408
+      8886:	find library=libpthread.so.0 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/bin/python)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/glibc-hwcaps/x86-64-v3/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/glibc-hwcaps/x86-64-v2/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls/haswell/x86_64/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls/haswell/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls/x86_64/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/tls/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/haswell/x86_64/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/haswell/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/x86_64/libpthread.so.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/libpthread.so.0
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libpthread.so.0
+      8886:	
+      8886:	find library=libdl.so.2 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/bin/python)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/libdl.so.2
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libdl.so.2
+      8886:	
+      8886:	find library=libutil.so.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/bin/python)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/libutil.so.1
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libutil.so.1
+      8886:	
+      8886:	find library=libm.so.6 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/bin/python)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/libm.so.6
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libm.so.6
+      8886:	
+      8886:	find library=libc.so.6 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/bin/python)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/libc.so.6
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libc.so.6
+      8886:	
+      8886:	
+      8886:	calling init: /lib64/ld-linux-x86-64.so.2
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libc.so.6
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libm.so.6
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libutil.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libdl.so.2
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libpthread.so.0
+      8886:	
+      8886:	
+      8886:	initialize program: /home/nimashiri/anaconda3/envs/cuda11.2/bin/python
+      8886:	
+      8886:	
+      8886:	transferring control: /home/nimashiri/anaconda3/envs/cuda11.2/bin/python
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_heapq.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/grp.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/select.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/math.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	find library=libz.so.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../..		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../glibc-hwcaps/x86-64-v3/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../glibc-hwcaps/x86-64-v2/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls/haswell/x86_64/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls/haswell/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls/x86_64/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../tls/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../haswell/x86_64/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../haswell/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../x86_64/libz.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libz.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libz.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/zlib.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_bz2.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	find library=liblzma.so.5 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../..		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../liblzma.so.5
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../liblzma.so.5
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_lzma.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_struct.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_datetime.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/pyexpat.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_bisect.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_random.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_sha512.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_socket.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/array.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_opcode.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_queue.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_csv.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_json.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	find library=libffi.so.8 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../..		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libffi.so.8
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libffi.so.8
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_ctypes.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	find library=libstdc++.so.6 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/..:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../..		(RUNPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_cpu_feature_guard.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/glibc-hwcaps/x86-64-v3/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/glibc-hwcaps/x86-64-v2/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls/haswell/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls/haswell/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/tls/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/haswell/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/haswell/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../glibc-hwcaps/x86-64-v3/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../glibc-hwcaps/x86-64-v2/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls/haswell/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls/haswell/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../tls/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../haswell/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../haswell/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../glibc-hwcaps/x86-64-v3/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../glibc-hwcaps/x86-64-v2/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls/haswell/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls/haswell/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../tls/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../haswell/x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../haswell/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../x86_64/libstdc++.so.6
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../libstdc++.so.6
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libstdc++.so.6
+      8886:	
+      8886:	find library=libgcc_s.so.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/..:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../..		(RUNPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_cpu_feature_guard.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/libgcc_s.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../libgcc_s.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/../../libgcc_s.so.1
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libgcc_s.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libgcc_s.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libstdc++.so.6
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_cpu_feature_guard.so
+      8886:	
+2023-01-04 01:37:21.625091: I tensorflow/core/platform/cpu_feature_guard.cc:193] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  AVX2 FMA
+To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
+      8886:	find library=libtensorflow_framework.so.2 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/..		(RUNPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/glibc-hwcaps/x86-64-v3/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/glibc-hwcaps/x86-64-v2/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls/haswell/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls/haswell/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/tls/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/haswell/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/haswell/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../../_solib_local/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/glibc-hwcaps/x86-64-v3/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/glibc-hwcaps/x86-64-v2/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls/haswell/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls/haswell/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/tls/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/haswell/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/haswell/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../glibc-hwcaps/x86-64-v3/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../glibc-hwcaps/x86-64-v2/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls/haswell/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls/haswell/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../tls/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../haswell/x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../haswell/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../x86_64/libtensorflow_framework.so.2
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../libtensorflow_framework.so.2
+      8886:	
+      8886:	find library=librt.so.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/..		(RUNPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/librt.so.1
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../librt.so.1
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/librt.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/librt.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../libtensorflow_framework.so.2
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so
+      8886:	
+      8886:	find library=libcudart.so.11.0 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/..		(RUNPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../libcudart.so.11.0
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libcudart.so.11.0
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libcudart.so.11.0
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/termios.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/fcntl.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	find library=libopenblas64_p-r0-15028c96.3.21.so [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/_multiarray_umath.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/glibc-hwcaps/x86-64-v3/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/glibc-hwcaps/x86-64-v2/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls/haswell/x86_64/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls/haswell/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls/x86_64/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/tls/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/haswell/x86_64/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/haswell/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/x86_64/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	
+      8886:	find library=libgfortran-040039e1.so.5.0.0 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/_multiarray_umath.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libgfortran-040039e1.so.5.0.0
+      8886:	
+      8886:	find library=libquadmath-96973f99.so.0.0.0 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/_multiarray_umath.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libquadmath-96973f99.so.0.0.0
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libquadmath-96973f99.so.0.0.0
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libgfortran-040039e1.so.5.0.0
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libopenblas64_p-r0-15028c96.3.21.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/_multiarray_umath.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_pickle.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_contextvars.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/_multiarray_tests.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/fft/_pocketfft_internal.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/mtrand.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/bit_generator.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_common.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	find library=libcrypto.so.1.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../..		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libcrypto.so.1.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libcrypto.so.1.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_hashlib.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_blake2.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_bounded_integers.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_mt19937.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_philox.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_pcg64.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_sfc64.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_generator.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/google/protobuf/internal/_api_implementation.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/google/protobuf/pyext/_message.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tfe.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_tf2.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_tf_session.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_tf_stack.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/wrapt/_wrappers.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_utils.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_nest.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_py_exception_registry.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_dtypes.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/core/_pywrap_bfloat16.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/profiler/internal/_pywrap_traceme.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_pywrap_python_api_dispatcher.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/fast_tensor_util.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_op_def_registry.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/flags_pybind.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_op_def_library_pybind.so
+      8886:	
+      8886:	find library=libuuid.so.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../..		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libuuid.so.1
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/bin/python)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/bin/../lib/libuuid.so.1
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	  trying file=/lib/x86_64-linux-gnu/libuuid.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /lib/x86_64-linux-gnu/libuuid.so.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_uuid.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/io/_pywrap_file_io.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_proto_comparators.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_determinism.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_tensor_float_32_execution.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/data/experimental/service/_pywrap_server_lib.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/data/experimental/service/_pywrap_utils.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_parallel_device.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_checkpoint_reader.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/io/_pywrap_record_io.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/saved_model/pywrap_saved_model.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/core/_pywrap_py_func.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_events_writer.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/profiler/internal/_pywrap_profiler.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_decimal.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_multiprocessing.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_device_lib.so
+      8886:	
+      8886:	find library=libssl.so.1.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../..		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libssl.so.1.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libssl.so.1.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_ssl.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/compiler/tf2tensorrt/_pywrap_py_utils.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/grappler/_pywrap_tf_optimizer.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/grappler/_pywrap_tf_cluster.so
+      8886:	
+      8886:	find library=libnvinfer.so.7 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/..		(RUNPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../libnvinfer.so.7
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	 search path=/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/lib/x86_64-linux-gnu/tls/haswell/x86_64:/lib/x86_64-linux-gnu/tls/haswell:/lib/x86_64-linux-gnu/tls/x86_64:/lib/x86_64-linux-gnu/tls:/lib/x86_64-linux-gnu/haswell/x86_64:/lib/x86_64-linux-gnu/haswell:/lib/x86_64-linux-gnu/x86_64:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3:/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2:/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64:/usr/lib/x86_64-linux-gnu/tls/haswell:/usr/lib/x86_64-linux-gnu/tls/x86_64:/usr/lib/x86_64-linux-gnu/tls:/usr/lib/x86_64-linux-gnu/haswell/x86_64:/usr/lib/x86_64-linux-gnu/haswell:/usr/lib/x86_64-linux-gnu/x86_64:/usr/lib/x86_64-linux-gnu:/lib/glibc-hwcaps/x86-64-v3:/lib/glibc-hwcaps/x86-64-v2:/lib/tls/haswell/x86_64:/lib/tls/haswell:/lib/tls/x86_64:/lib/tls:/lib/haswell/x86_64:/lib/haswell:/lib/x86_64:/lib:/usr/lib/glibc-hwcaps/x86-64-v3:/usr/lib/glibc-hwcaps/x86-64-v2:/usr/lib/tls/haswell/x86_64:/usr/lib/tls/haswell:/usr/lib/tls/x86_64:/usr/lib/tls:/usr/lib/haswell/x86_64:/usr/lib/haswell:/usr/lib/x86_64:/usr/lib		(system search path)
+      8886:	  trying file=/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/tls/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/tls/haswell/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/tls/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/tls/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/haswell/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64-linux-gnu/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v3/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/glibc-hwcaps/x86-64-v2/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/tls/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/tls/haswell/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/tls/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/tls/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/haswell/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/libnvinfer.so.7
+      8886:	  trying file=/lib/glibc-hwcaps/x86-64-v3/libnvinfer.so.7
+      8886:	  trying file=/lib/glibc-hwcaps/x86-64-v2/libnvinfer.so.7
+      8886:	  trying file=/lib/tls/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/tls/haswell/libnvinfer.so.7
+      8886:	  trying file=/lib/tls/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/tls/libnvinfer.so.7
+      8886:	  trying file=/lib/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/haswell/libnvinfer.so.7
+      8886:	  trying file=/lib/x86_64/libnvinfer.so.7
+      8886:	  trying file=/lib/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/glibc-hwcaps/x86-64-v3/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/glibc-hwcaps/x86-64-v2/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/tls/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/tls/haswell/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/tls/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/tls/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/haswell/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/haswell/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/x86_64/libnvinfer.so.7
+      8886:	  trying file=/usr/lib/libnvinfer.so.7
+      8886:	
+2023-01-04 01:37:22.145623: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer.so.7'; dlerror: libnvinfer.so.7: cannot open shared object file: No such file or directory
+      8886:	find library=libnvinfer_plugin.so.7 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/..		(RUNPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../libnvinfer_plugin.so.7
+      8886:	 search cache=/etc/ld.so.cache
+      8886:	 search path=/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/lib:/usr/lib		(system search path)
+      8886:	  trying file=/lib/x86_64-linux-gnu/libnvinfer_plugin.so.7
+      8886:	  trying file=/usr/lib/x86_64-linux-gnu/libnvinfer_plugin.so.7
+      8886:	  trying file=/lib/libnvinfer_plugin.so.7
+      8886:	  trying file=/usr/lib/libnvinfer_plugin.so.7
+      8886:	
+2023-01-04 01:37:22.145891: W tensorflow/compiler/xla/stream_executor/platform/default/dso_loader.cc:64] Could not load dynamic library 'libnvinfer_plugin.so.7'; dlerror: libnvinfer_plugin.so.7: cannot open shared object file: No such file or directory
+2023-01-04 01:37:22.145910: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Cannot dlopen some TensorRT libraries. If you would like to use Nvidia GPU with TensorRT, please make sure the missing libraries mentioned above are installed properly.
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/unicodedata.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_multibytecodec.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	find library=libhdf5-fc7245dc.so.200.2.0 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/glibc-hwcaps/x86-64-v3:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/glibc-hwcaps/x86-64-v2:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/haswell/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/haswell:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/x86_64:/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_errors.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/glibc-hwcaps/x86-64-v3/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/glibc-hwcaps/x86-64-v2/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls/haswell/x86_64/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls/haswell/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls/x86_64/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/tls/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/haswell/x86_64/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/haswell/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/x86_64/libhdf5-fc7245dc.so.200.2.0
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libhdf5-fc7245dc.so.200.2.0
+      8886:	
+      8886:	find library=libhdf5_hl-f1927c41.so.200.1.0 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_errors.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libhdf5_hl-f1927c41.so.200.1.0
+      8886:	
+      8886:	find library=libsz-090daab4.so.2.0.1 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_errors.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libsz-090daab4.so.2.0.1
+      8886:	
+      8886:	find library=libaec-9c9e97eb.so.0.0.10 [0]; searching
+      8886:	 search path=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs		(RPATH from file /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_errors.cpython-39-x86_64-linux-gnu.so)
+      8886:	  trying file=/home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libaec-9c9e97eb.so.0.0.10
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libaec-9c9e97eb.so.0.0.10
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libsz-090daab4.so.2.0.1
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libhdf5-fc7245dc.so.200.2.0
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libhdf5_hl-f1927c41.so.200.1.0
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_errors.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/defs.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_objects.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_conv.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5r.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5t.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5p.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5s.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/utils.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5ac.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5z.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5a.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_proxy.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5d.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5ds.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5f.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5g.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5i.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5fd.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5pl.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5o.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5l.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_selector.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_tfprof.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_quantize_training.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_asyncio.cpython-39-x86_64-linux-gnu.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_sanitizers.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_test_metrics_util.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_stacktrace_handler.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_util_port.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_debug_events_writer.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_mlir.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_pywrap_python_op_gen.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_toco_api.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/python/metrics/_pywrap_tensorflow_lite_metrics_wrapper.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/experimental/microfrontend/python/ops/_audio_microfrontend_op.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/python/interpreter_wrapper/_pywrap_tensorflow_interpreter_wrapper.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/python/analyzer_wrapper/_pywrap_analyzer_wrapper.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_dtensor_device.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/core/kernels/libtfkernel_sobol_op.so
+      8886:	
+      8886:	
+      8886:	calling init: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/fast_module_type.so
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/bin/python [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libutil.so.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_heapq.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/grp.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_posixsubprocess.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/select.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/math.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/binascii.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/zlib.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_bz2.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_lzma.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../liblzma.so.5 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_struct.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_datetime.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/pyexpat.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_bisect.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_random.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_sha512.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_socket.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/array.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_opcode.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_queue.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_csv.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_json.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_ctypes.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libffi.so.8 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_cpu_feature_guard.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libcudart.so.11.0 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/termios.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/fcntl.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/_multiarray_umath.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_pickle.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_contextvars.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/_multiarray_tests.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/linalg/_umath_linalg.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libopenblas64_p-r0-15028c96.3.21.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libgfortran-040039e1.so.5.0.0 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/core/../../numpy.libs/libquadmath-96973f99.so.0.0.0 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/fft/_pocketfft_internal.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/mtrand.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/bit_generator.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_common.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_hashlib.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_blake2.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_bounded_integers.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_mt19937.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_philox.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_pcg64.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_sfc64.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/numpy/random/_generator.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/google/protobuf/internal/_api_implementation.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/google/protobuf/pyext/_message.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tfe.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_tf2.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_tf_session.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_tf_stack.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/wrapt/_wrappers.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_utils.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_nest.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_py_exception_registry.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_dtypes.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/core/_pywrap_bfloat16.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/profiler/internal/_pywrap_traceme.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_pywrap_python_api_dispatcher.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/fast_tensor_util.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_op_def_registry.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/flags_pybind.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_op_def_library_pybind.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_uuid.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libuuid.so.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/io/_pywrap_file_io.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_proto_comparators.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_determinism.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_tensor_float_32_execution.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/data/experimental/service/_pywrap_server_lib.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/data/experimental/service/_pywrap_utils.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_parallel_device.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_checkpoint_reader.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/io/_pywrap_record_io.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/saved_model/pywrap_saved_model.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/lib/core/_pywrap_py_func.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_events_writer.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/profiler/internal/_pywrap_profiler.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_decimal.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_multiprocessing.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_device_lib.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_ssl.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libssl.so.1.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libcrypto.so.1.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/compiler/tf2tensorrt/_pywrap_py_utils.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/grappler/_pywrap_tf_optimizer.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/grappler/_pywrap_tf_cluster.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/unicodedata.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_multibytecodec.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_errors.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/defs.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_objects.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_conv.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5r.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5t.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5p.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5s.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/utils.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5ac.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5z.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5a.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_proxy.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5d.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5ds.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5f.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5g.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5i.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5fd.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5pl.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5o.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/h5l.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/_selector.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libhdf5_hl-f1927c41.so.200.1.0 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libhdf5-fc7245dc.so.200.2.0 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/../../libz.so.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libsz-090daab4.so.2.0.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/h5py/../h5py.libs/libaec-9c9e97eb.so.0.0.10 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_tfprof.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_quantize_training.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/lib-dynload/_asyncio.cpython-39-x86_64-linux-gnu.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_sanitizers.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_test_metrics_util.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/platform/_pywrap_stacktrace_handler.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/_pywrap_util_port.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/client/_pywrap_debug_events_writer.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_mlir.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/framework/_pywrap_python_op_gen.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_toco_api.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/python/metrics/_pywrap_tensorflow_lite_metrics_wrapper.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/experimental/microfrontend/python/ops/_audio_microfrontend_op.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/python/interpreter_wrapper/_pywrap_tensorflow_interpreter_wrapper.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/lite/python/analyzer_wrapper/_pywrap_analyzer_wrapper.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_dtensor_device.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/core/kernels/libtfkernel_sobol_op.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/util/fast_module_type.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/_pywrap_tensorflow_internal.so [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages/tensorflow/python/../libtensorflow_framework.so.2 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libstdc++.so.6 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libgcc_s.so.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/librt.so.1 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libpthread.so.0 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libm.so.6 [0]
+      8886:	
+      8886:	
+      8886:	calling fini: /lib/x86_64-linux-gnu/libdl.so.2 [0]
+      8886:	
+
+== env ==========================================================
+LD_LIBRARY_PATH is unset
+DYLD_LIBRARY_PATH is unset
+
+== nvidia-smi ===================================================
+Wed Jan  4 01:37:22 2023       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 525.60.11    Driver Version: 525.60.11    CUDA Version: 12.0     |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|                               |                      |               MIG M. |
+|===============================+======================+======================|
+|   0  NVIDIA GeForce ...  Off  | 00000000:01:00.0  On |                  N/A |
+| 33%   37C    P8    11W / 120W |    391MiB /  6144MiB |      2%      Default |
+|                               |                      |                  N/A |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                                  |
+|  GPU   GI   CI        PID   Type   Process name                  GPU Memory |
+|        ID   ID                                                   Usage      |
+|=============================================================================|
+|    0   N/A  N/A      2191      G   /usr/lib/xorg/Xorg                170MiB |
+|    0   N/A  N/A      2345      G   /usr/bin/gnome-shell               80MiB |
+|    0   N/A  N/A      3342      G   ...5/usr/lib/firefox/firefox      137MiB |
++-----------------------------------------------------------------------------+
+
+== cuda libs  ===================================================
+
+== tensorflow installed from info ==================
+Name: tensorflow
+Version: 2.11.0
+Summary: TensorFlow is an open source machine learning framework for everyone.
+Home-page: https://www.tensorflow.org/
+Author: Google Inc.
+Author-email: packages@tensorflow.org
+License: Apache 2.0
+Location: /home/nimashiri/anaconda3/envs/cuda11.2/lib/python3.9/site-packages
+Requires: absl-py, astunparse, flatbuffers, gast, google-pasta, grpcio, h5py, keras, libclang, numpy, opt-einsum, packaging, protobuf, setuptools, six, tensorboard, tensorflow-estimator, tensorflow-io-gcs-filesystem, termcolor, typing-extensions, wrapt
+Required-by: 
+
+== python version  ==============================================
+(major, minor, micro, releaselevel, serial)
+(3, 9, 15, 'final', 0)
+
+== bazel version  ===============================================

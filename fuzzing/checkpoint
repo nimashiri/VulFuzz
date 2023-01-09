@@ -1,0 +1,4 @@
+model_checkpoint_path: "train/model-2"
+all_model_checkpoint_paths: "/tmp/checkpoint_management_testc7c2vice/tmp7onadsho/update_checkpoint_state/model-0"
+all_model_checkpoint_paths: "model-2"
+all_model_checkpoint_paths: "train/model-2"

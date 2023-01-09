@@ -2,7 +2,17 @@ import contextlib
 from io import StringIO
 import sys
 import subprocess
-from constants.keys import ERR_CPU_KEY, ERR_GPU_KEY, ERR_HIGH_KEY, ERR_LOW_KEY, ERROR_KEY, RES_CPU_KEY, RES_GPU_KEY, TIME_HIGH_KEY, TIME_LOW_KEY
+from constants.keys import (
+    ERR_CPU_KEY,
+    ERR_GPU_KEY,
+    ERR_HIGH_KEY,
+    ERR_LOW_KEY,
+    ERROR_KEY,
+    RES_CPU_KEY,
+    RES_GPU_KEY,
+    TIME_HIGH_KEY,
+    TIME_LOW_KEY,
+)
 from constants.enum import OracleType
 from classes.database import TFDatabase
 from classes.library import Library
@@ -14,13 +24,15 @@ import time
 import tensorflow as tf
 from os.path import join
 import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+os.environ["TF_CPP_MIN_LOG_LEVEL"] = "2"
 
 
 def runProcess(exe):
-    p = subprocess.Popen(exe, stdout=subprocess.PIPE,
-                         stderr=subprocess.STDOUT, shell=True)
-    while(True):
+    p = subprocess.Popen(
+        exe, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True
+    )
+    while True:
         # returns None while subprocess is running
         retcode = p.poll()
         line = p.stdout.readline()
@@ -30,7 +42,9 @@ def runProcess(exe):
 
 
 class TFLibrary(Library):
-    def __init__(self, output_dir, diff_bound=1e-5, time_bound=10, time_thresold=1e-3) -> None:
+    def __init__(
+        self, output_dir, diff_bound=1e-5, time_bound=10, time_thresold=1e-3
+    ) -> None:
         super().__init__(output_dir)
         self.diff_bound = diff_bound
         self.time_bound = time_bound
@@ -40,16 +54,16 @@ class TFLibrary(Library):
         if oracle == OracleType.CRASH:
             # We need call another process to catch the crash error
 
-            part_from = ".".join(api.api.split('.')[0:-2])
+            part_from = ".".join(api.api.split(".")[0:-2])
 
             code = "import tensorflow as tf\n"
-            code += 'import os\n'
-            code += 'import numpy as np\n'
+            code += "import os\n"
+            code += "import numpy as np\n"
             # code += 'os.environ["CUDA_VISIBLE_DEVICES"] = "-1"\n'
 
-            if re.findall(r'(tensorflow\.python)', api.api):
+            if re.findall(r"(tensorflow\.python)", api.api):
                 code += f"from {part_from} import {api.api.split('.')[-2]}\n"
-                api.api = ".".join(api.api.split('.')[-2:])
+                api.api = ".".join(api.api.split(".")[-2:])
                 code += self.generate_code(api, oracle)
             else:
                 code += self.generate_code(api, oracle)
@@ -68,14 +82,14 @@ class TFLibrary(Library):
             #     self.write_to_dir(
             #         join(self.output[oracle], "fail"), api.api, write_code)
         elif oracle == OracleType.CUDA:
-            part_from = ".".join(api.api.split('.')[0:-2])
+            part_from = ".".join(api.api.split(".")[0:-2])
 
             code = "import tensorflow as tf\n"
 
-            code += 'import numpy as np\n'
-            if re.findall(r'(tensorflow\.python)', api.api):
+            code += "import numpy as np\n"
+            if re.findall(r"(tensorflow\.python)", api.api):
                 code += f"from {part_from} import {api.api.split('.')[-2]}\n"
-                api.api = ".".join(api.api.split('.')[-2:])
+                api.api = ".".join(api.api.split(".")[-2:])
                 code += self.generate_code(api, oracle)
             else:
                 code += self.generate_code(api, oracle)
@@ -109,13 +123,13 @@ class TFLibrary(Library):
             # self.write_to_dir(write_dir, api.api, write_code)
         elif oracle == OracleType.PRECISION:
 
-            part_from = ".".join(api.api.split('.')[0:-2])
+            part_from = ".".join(api.api.split(".")[0:-2])
 
             code = "import tensorflow as tf\n"
             code += "import time\n"
-            if re.findall(r'(tensorflow\.python)', api.api):
+            if re.findall(r"(tensorflow\.python)", api.api):
                 code += f"from {part_from} import {api.api.split('.')[-2]}\n"
-                api.api = ".".join(api.api.split('.')[-2:])
+                api.api = ".".join(api.api.split(".")[-2:])
                 code += self.generate_code(api, oracle)
             else:
                 code += self.generate_code(api, oracle)
@@ -134,7 +148,10 @@ class TFLibrary(Library):
                 elif err_high == None:
                     time_high = results[TIME_HIGH_KEY]
                     time_low = results[TIME_LOW_KEY]
-                    if time_low >= self.time_bound * time_high and time_high >= self.time_thresold:
+                    if (
+                        time_low >= self.time_bound * time_high
+                        and time_high >= self.time_thresold
+                    ):
                         write_dir = join(self.output[oracle], "potential-bug")
                     else:
                         write_dir = join(self.output[oracle], "success")
@@ -161,7 +178,7 @@ class TFLibrary(Library):
             code += api.to_code_oracle(oracle=oracle)
             return code
         else:
-            assert(0)
+            assert 0
 
     @staticmethod
     def run_code(code):
@@ -220,12 +237,13 @@ class TFLibrary(Library):
                 np_x = TFLibrary.get_tensor_value(x)
                 np_y = TFLibrary.get_tensor_value(y)
                 if x.dtype.is_floating:
-                    return tf.experimental.numpy.allclose(np_x, np_y, rtol=1e-3, atol=1e-4)
+                    return tf.experimental.numpy.allclose(
+                        np_x, np_y, rtol=1e-3, atol=1e-4
+                    )
                 elif x.dtype.is_integer:
                     return np.equal(np_x, np_y).all()
             except:
-                raise ValueError(
-                    f"Comparison between {type(x)} is not supported now.")
+                raise ValueError(f"Comparison between {type(x)} is not supported now.")
             return True
         elif x_type == ArgType.FLOAT:
             return abs(x - y) < 1e-5

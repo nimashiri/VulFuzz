@@ -70,6 +70,7 @@ def count_tensor_inputs(api, lib="Tensorflow"):
 if __name__ == "__main__":
     library = sys.argv[1]
     api_name = sys.argv[2]
+    index = sys.argv[3]
 
     # library = "TORCH"
 
@@ -77,7 +78,23 @@ if __name__ == "__main__":
     if not os.path.exists(output_dir):
         os.mkdir(output_dir)
 
-    rules = ["NEGATE_INT_TENSOR"]
+    rules = [
+        "MUTATE_PREEMPTIVES",
+        "NEGATE_INT_TENSOR",
+        "RANK_REDUCTION_EXPANSION",
+        "EMPTY_TENSOR_TYPE1",
+        "EMPTY_TENSOR_TYPE2",
+        "EMPTY_LIST",
+        "ZERO_TENSOR_TYPE1",
+        "ZERO_TENSOR_TYPE2",
+        "NAN_TENSOR",
+        "NAN_TENSOR_WHOLE",
+        "NON_SCALAR_INPUT",
+        "SCALAR_INPUT",
+        "LARGE_TENSOR_TYPE1",
+        "LARGE_TENSOR_TYPE2",
+        "LARGE_LIST_ELEMENT",
+    ]
 
     if library == "TF":
 
@@ -86,56 +103,67 @@ if __name__ == "__main__":
         dimension_mismatch = True
 
         try:
-
-            api = TFAPI(api_name)
-            old_api = copy.deepcopy(api)
-
-            print(
-                "########################################################################################################################"
-            )
-            print(
-                "The current API under test: ###{0}###. Working on dimension mismatch".format(
-                    api_name
-                )
-            )
-            print(
-                "########################################################################################################################"
-            )
-            api_keywords = api_name.split(".")
-            if api_keywords.count("tensorflow") > 1:
-                api_name = make_api_name_unique(api_name)
-
-            for j in range(500):
-                api.new_mutate_tf()
-                MyTF.test_with_oracle(api, OracleType.CRASH)
-                api.api = api_name
-                MyTF.test_with_oracle(api, OracleType.CUDA)
+            for k in range(1):
+                # api = TFAPI(api_name)
+                # old_api = copy.deepcopy(api)
 
                 api_keywords = api_name.split(".")
                 if api_keywords.count("tensorflow") > 1:
                     api_name = make_api_name_unique(api_name)
 
-            for i, arg in enumerate(old_api.args):
-                for r in rules:
+                for c1 in range(1000):
+                    api = TFAPI(api_name)
                     print(
                         "########################################################################################################################"
                     )
                     print(
-                        "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###, Iteration {3}".format(
-                            api_name, arg, r, j
+                        "The current API under test: {0}/Index: {1}. Working on dimension mismatch, Iteration_L1 {2}, Iteration_L2 {3}".format(
+                            api_name, index, k, c1
                         )
                     )
                     print(
                         "########################################################################################################################"
                     )
-                    old_arg = copy.deepcopy(old_api.args[arg])
-                    old_api.new_mutate_multiple(old_api.args[arg], r)
-                    MyTF.test_with_oracle(old_api, OracleType.CRASH)
-                    old_api.api = api_name
-                    MyTF.test_with_oracle(old_api, OracleType.CUDA)
-                    # MyTF.test_with_oracle(api, OracleType.PRECISION)
-                    old_api.api = api_name
-                    old_api.args[arg] = old_arg
+                    api.new_mutate_tf()
+
+                    MyTF.test_with_oracle(api, OracleType.CRASH)
+                    api.api = api_name
+
+                    MyTF.test_with_oracle(api, OracleType.CUDA)
+        except Exception as e:
+            print(e)
+
+        try:
+
+            for k in range(1):
+
+                api_keywords = api_name.split(".")
+                if api_keywords.count("tensorflow") > 1:
+                    api_name = make_api_name_unique(api_name)
+
+                for c2 in range(1000):
+                    old_api = TFAPI(api_name)
+                    for i, arg in enumerate(old_api.args):
+                        for r in rules:
+                            print(
+                                "########################################################################################################################"
+                            )
+                            print(
+                                "The current API under test: ###{0}###/Index: {1}. Mutating the parameter ###{2}### using the rule ###{3}###, Iteration1 {4}, Iteration1 {5}".format(
+                                    api_name, index, arg, r, k, c2
+                                )
+                            )
+                            print(
+                                "########################################################################################################################"
+                            )
+                            old_arg = copy.deepcopy(old_api.args[arg])
+                            old_api.new_mutate_multiple(old_api.args[arg], r)
+                            MyTF.test_with_oracle(old_api, OracleType.CRASH)
+                            old_api.api = api_name
+                            MyTF.test_with_oracle(old_api, OracleType.CUDA)
+                            # MyTF.test_with_oracle(api, OracleType.PRECISION)
+                            old_api.api = api_name
+                            old_api.args[arg] = old_arg
         except Exception as e:
             pass
     else:

@@ -28,14 +28,18 @@ class Argument:
     NOTICE: The inherent class should call the method of its parent
     when it does not support its type
     """
+
     _support_types = [
-        ArgType.INT, ArgType.STR, ArgType.FLOAT, ArgType.NULL, ArgType.TUPLE,
-        ArgType.LIST, ArgType.BOOL
+        ArgType.INT,
+        ArgType.STR,
+        ArgType.FLOAT,
+        ArgType.NULL,
+        ArgType.TUPLE,
+        ArgType.LIST,
+        ArgType.BOOL,
     ]
     _int_values = [-1024, -16, -1, 0, 1, 16, 1024]
-    _str_values = [
-        "mean", "sum", "max", 'zeros', 'reflect', 'circular', 'replicate'
-    ]
+    _str_values = ["mean", "sum", "max", "zeros", "reflect", "circular", "replicate"]
     _float_values = [0.0, 1.0, -1.0, 63.0, -63.0, 1024.0, -1024.0, 1e20, -1e20]
 
     def __init__(self, value, type: ArgType):
@@ -50,15 +54,15 @@ class Argument:
         """ArgType.LIST and ArgType.TUPLE should be converted to code in the inherent class"""
         if self.type in [ArgType.INT, ArgType.FLOAT, ArgType.BOOL]:
             if self.non_scalar_input_flag:
-                return "%s = tf.constant([], shape=[0], dtype=tf.%s,)\n" % (var_name, self.type)
+                return f"{var_name} = tf.constant([], shape=[0], dtype=tf.float64)\n"
             else:
                 return f"{var_name} = {self.value}\n"
         elif self.type == ArgType.STR:
-            return f"{var_name} = \"{self.value}\"\n"
+            return f'{var_name} = "{self.value}"\n'
         elif self.type == ArgType.NULL:
             return f"{var_name} = None\n"
         else:
-            assert (0)
+            assert 0
 
     def mutate_value(self) -> None:
         if self.type == ArgType.INT:
@@ -76,13 +80,11 @@ class Argument:
         elif self.type == ArgType.NULL:
             pass
         else:
-            assert (0)
+            assert 0
 
     def mutate_type(self) -> None:
         """The type mutation for NULL should be implemented in the inherent class"""
-        if self.type in [
-                ArgType.INT, ArgType.FLOAT, ArgType.STR, ArgType.BOOL
-        ]:
+        if self.type in [ArgType.INT, ArgType.FLOAT, ArgType.STR, ArgType.BOOL]:
             types = [ArgType.INT, ArgType.FLOAT, ArgType.STR, ArgType.BOOL]
             types.remove(self.type)
             self.type = choice(types)
@@ -100,7 +102,7 @@ class Argument:
                 arg.mutate_type()
         else:
             # cannot change the type of assert in the general Argument
-            assert (0)
+            assert 0
 
     def mutate_int_value(self, value, _min=None, _max=None) -> int:
         if choose_from_list():
@@ -140,7 +142,7 @@ class Argument:
         elif type == ArgType.NULL:
             return None
         else:
-            assert (0)
+            assert 0
 
     @staticmethod
     def get_type(x):

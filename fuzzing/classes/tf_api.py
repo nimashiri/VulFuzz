@@ -1236,7 +1236,7 @@ class TFArgument(Argument):
                 big_number = random.randint(1, 1000)
                 code += f"{var_tensor_name} = {big_number} \n"
             elif self.nan_input_tensor:
-                code += f"{var_tensor_name} = tf.constant(np.nan, shape={shape}, dtype=tf.{dtype.name},)\n"
+                code += f"{var_tensor_name} = tf.constant(np.nan, shape={shape}, dtype=tf.{dtype.name})\n"
             elif self.nan_input_tensor_whole:
                 code += f"{var_tensor_name} = np.nan\n"
             elif self.tensor_zero_flag_type1:
@@ -1380,7 +1380,7 @@ class TFArgument(Argument):
                 value = random.randint(1879048192, 161063793887434)
                 code += f"{var_tensor_name} = {value} \n"
             elif self.nan_input_tensor:
-                code += "%s = tf.constant(np.nan, shape=%s, dtype=tf.float64,)\n" % (
+                code += "%s = tf.constant(np.nan, shape=%s, dtype=tf.float64)\n" % (
                     var_tensor_name,
                     shape,
                 )
@@ -1388,21 +1388,21 @@ class TFArgument(Argument):
                 code += "%s = np.nan\n" % (var_tensor_name)
             elif self.tensor_zero_flag_type1:
                 value = [0.0000000000000]
-                code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s,)\n" % (
+                code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s)\n" % (
                     var_tensor_name,
                     value,
                     dtype.name,
                 )
             elif self.tensor_zero_flag_type2:
                 value = 0.0000000000000
-                code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s,)\n" % (
+                code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s)\n" % (
                     var_tensor_name,
                     value,
                     dtype.name,
                 )
             elif self.tensor_empty_flag_type1:
                 value = []
-                code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s,)\n" % (
+                code += "%s = tf.constant(%s, shape=[0], dtype=tf.%s)\n" % (
                     var_tensor_name,
                     value,
                     dtype.name,
@@ -1445,7 +1445,7 @@ class TFArgument(Argument):
                 code += (
                     "%s = tf.saturate_cast("
                     "tf.constant(np.nan, shape=%s, dtype=tf.float64,),"
-                    "dtype=tf.%s)\n" % (var_tensor_name, shape)
+                    "dtype=tf.%s)\n" % (var_tensor_name, shape, dtype.name)
                 )
             elif self.nan_input_tensor_whole:
                 code += "%s = np.nan\n" % (var_tensor_name)
@@ -1555,7 +1555,9 @@ class TFArgument(Argument):
         return ""
 
     def new_mutation_multiple(self, RULE=None):
-        if RULE == "NEGATE_INT_TENSOR":
+        if RULE == "MUTATE_PREEMPTIVES":
+            self.mutate_preemptives()
+        elif RULE == "NEGATE_INT_TENSOR":
             self.mutate_negative()
         elif RULE == "RANK_REDUCTION_EXPANSION":
             self.modify_rank()
@@ -1600,8 +1602,23 @@ class TFArgument(Argument):
             self.value = self.increase_integer(self.value)
         elif self.type == ArgType.FLOAT:
             self.value = self.make_float_negative(self.value)
+        elif self.type == ArgType.BOOL:
+            self.value = self.make_bool_inverse(self.value)
+        elif self.type == ArgType.STR:
+            self.value = np.nan
+        elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
+            for self in self.value:
+                self.new_mutation()
         elif self.type in self._tensor_arg_dtypes:
             self.modify_rank()
+        elif self.type == ArgType.TF_DTYPE:
+            self.value = choice(self._dtypes)
+        elif self.type == ArgType.TF_OBJECT:
+            self.value = None
+            pass
+        elif self.type == ArgType.NULL:
+            self.value = None
+            pass
         else:
             return
 
@@ -1623,9 +1640,9 @@ class TFArgument(Argument):
     """
 
     def make_input_non_scalar(self):
-        if self.type == self.ArgType.INT:
+        if self.type == ArgType.INT:
             super().activate_non_scalar_input_flag()
-        elif self.type == self.ArgType.FLOAT:
+        elif self.type == ArgType.FLOAT:
             super().activate_non_scalar_input_flag()
         else:
             return
@@ -1750,7 +1767,7 @@ class TFArgument(Argument):
     """
 
     def make_int_negative(self, value) -> int:
-        value = random.randint(1, 1000)
+        value = random.randint(1, 100)
         new_value = -value
         return new_value
 
@@ -1762,11 +1779,41 @@ class TFArgument(Argument):
     def make_tensor_negative(self) -> None:
         self.make_tensor_neg = True
 
+    def make_bool_inverse(self, value) -> bool:
+        return not value
+
+    def mutate_preemptives(self) -> None:
+        if self.type == ArgType.INT:
+            self.value = np.nan
+        elif self.type == ArgType.FLOAT:
+            self.value = np.nan
+        elif self.type == ArgType.STR:
+            self.value = np.nan
+        elif self.type == ArgType.BOOL:
+            self.value = np.nan
+        elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
+            for self in self.value:
+                self.mutate_negative()
+        elif self.type in self._tensor_arg_dtypes:
+            self.mutate_preemptives()
+        elif self.type == ArgType.TF_DTYPE:
+            self.value = choice(self._dtypes)
+        elif self.type == ArgType.TF_OBJECT:
+            self.value = None
+            pass
+        elif self.type == ArgType.NULL:
+            self.value = None
+            pass
+        else:
+            return
+
     def mutate_negative(self) -> None:
         if self.type == ArgType.INT:
             self.value = self.make_int_negative(self.value)
         elif self.type == ArgType.FLOAT:
             self.value = self.make_float_negative(self.value)
+        elif self.type == ArgType.BOOL:
+            self.value = self.make_bool_inverse(self.value)
         elif self.type == ArgType.TUPLE or self.type == ArgType.LIST:
             for self in self.value:
                 self.mutate_negative()
@@ -2118,9 +2165,9 @@ class TFAPI(API):
             res_code = f""
             if inputs:
                 arg_code += inputs.to_diff_code(input_name, low_precision=low_precision)
-                res_code += f'{RES_KEY}["{res_name}"] = {cls_name}(*{input_name})\n'
+                res_code += f"{cls_name}(*{input_name})\n"
         else:
-            res_code = f'{RES_KEY}["{res_name}"] = {self.api}({arg_str})\n'
+            res_code = f"{self.api}({arg_str})\n"
 
         invocation = self._to_invocation_code(arg_code, res_code, **kwargs)
         return invocation
@@ -2130,9 +2177,9 @@ class TFAPI(API):
         if self.is_class:
             cls_name = f"{prefix}_class"
             if input_name:
-                res_code += f'{RES_KEY}["{res_name}"] = {cls_name}(*{input_name})\n'
+                res_code += f"{cls_name}(*{input_name})\n"
         else:
-            res_code = f'{RES_KEY}["{res_name}"] = {self.api}({arg_str})\n'
+            res_code = f"{self.api}({arg_str})\n"
         return res_code
 
     def _to_invocation_code(

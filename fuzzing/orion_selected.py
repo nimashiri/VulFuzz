@@ -14,8 +14,6 @@ import re
 import copy
 import os
 
-# os.environ["CUDA_VISIBLE_DEVICES"] = "-1"
-
 
 logging.basicConfig(level=logging.INFO)
 myclient = pymongo.MongoClient("mongodb://localhost:27017/")
@@ -90,8 +88,7 @@ if __name__ == "__main__":
         "ZERO_TENSOR_TYPE2",
         "NAN_TENSOR",
         "NAN_TENSOR_WHOLE",
-        "NON_SCALAR_INPUT",
-        "SCALAR_INPUT",
+        "NON_SCALAR_INPUT" "SCALAR_INPUT",
         "LARGE_TENSOR_TYPE1",
         "LARGE_TENSOR_TYPE2",
         "LARGE_LIST_ELEMENT",
@@ -103,65 +100,72 @@ if __name__ == "__main__":
 
         MyTF = TFLibrary(output_dir)
         TFDatabase.database_config("localhost", 27017, "TF")
-        dimension_mismatch = True
+
+        try:
+            for api_name in data:
+                for k in range(10):
+                    # old_api = copy.deepcopy(api)
+
+                    api_keywords = api_name.split(".")
+                    if api_keywords.count("tensorflow") > 1:
+                        api_name = make_api_name_unique(api_name)
+
+                    for c1 in range(1000):
+                        api = TFAPI(api_name)
+                        print(
+                            "########################################################################################################################"
+                        )
+                        print(
+                            "The current API under test: ###{0}###. Working on dimension mismatch, Iteration_L1 {1}, Iteration_L2 {2}".format(
+                                api_name, k, c1
+                            )
+                        )
+                        print(
+                            "########################################################################################################################"
+                        )
+                        api.new_mutate_tf()
+                        print("Running on Crash oracle!")
+                        MyTF.test_with_oracle(api, OracleType.CRASH)
+                        api.api = api_name
+                        print("Running on Crash oracle!")
+                        MyTF.test_with_oracle(api, OracleType.CUDA)
+        except Exception as e:
+            print(e)
 
         try:
             for api_name in data:
 
-                api = TFAPI(api_name)
-                old_api = copy.deepcopy(api)
-                # _count_tensor = count_tensor_inputs(api)
+                for k in range(10):
+                    api_keywords = api_name.split(".")
+                    if api_keywords.count("tensorflow") > 1:
+                        api_name = make_api_name_unique(api_name)
 
-                print(
-                    "########################################################################################################################"
-                )
-                print(
-                    "The current API under test: ###{0}###. Working on dimension mismatch".format(
-                        api_name
-                    )
-                )
-                print(
-                    "########################################################################################################################"
-                )
-                api_keywords = api_name.split(".")
-                if api_keywords.count("tensorflow") > 1:
-                    api_name = make_api_name_unique(api_name)
-
-                api.new_mutate_tf()
-                MyTF.test_with_oracle(api, OracleType.CRASH)
-                api.api = api_name
-                MyTF.test_with_oracle(api, OracleType.CUDA)
-                api.api = api_name
-
-                api_keywords = api_name.split(".")
-                if api_keywords.count("tensorflow") > 1:
-                    api_name = make_api_name_unique(api_name)
-
-                for j in range(500):
-                    for i, arg in enumerate(old_api.args):
-                        for r in rules:
-                            print(
-                                "########################################################################################################################"
-                            )
-                            print(
-                                "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###, Iteration: {3}".format(
-                                    api_name, arg, r, j
+                    for k in range(1000):
+                        old_api = TFAPI(api_name)
+                        for i, arg in enumerate(old_api.args):
+                            for r in rules:
+                                print(
+                                    "########################################################################################################################"
                                 )
-                            )
-                            print(
-                                "########################################################################################################################"
-                            )
-                            old_arg = copy.deepcopy(old_api.args[arg])
-                            old_api.new_mutate_multiple(old_api.args[arg], r)
-                            MyTF.test_with_oracle(old_api, OracleType.CRASH)
-                            old_api.api = api_name
-                            MyTF.test_with_oracle(old_api, OracleType.CUDA)
-                            # api.api = sys.argv[2]
-                            # MyTF.test_with_oracle(api, OracleType.PRECISION)
-                            old_api.api = api_name
-                            old_api.args[arg] = old_arg
+                                print(
+                                    "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###, Iteration: {3}".format(
+                                        api_name, arg, r, k
+                                    )
+                                )
+                                print(
+                                    "########################################################################################################################"
+                                )
+                                old_arg = copy.deepcopy(old_api.args[arg])
+                                old_api.new_mutate_multiple(old_api.args[arg], r)
+                                MyTF.test_with_oracle(old_api, OracleType.CRASH)
+                                old_api.api = api_name
+                                MyTF.test_with_oracle(old_api, OracleType.CUDA)
+                                # api.api = sys.argv[2]
+                                # MyTF.test_with_oracle(api, OracleType.PRECISION)
+                                old_api.api = api_name
+                                old_api.args[arg] = old_arg
         except Exception as e:
-            pass
+            print(e)
     else:
         import torch
         from classes.torch_library import TorchLibrary
@@ -181,28 +185,28 @@ if __name__ == "__main__":
                 # api.new_mutate_torch()
                 # MyTorch.test_with_oracle(api, OracleType.CRASH)
 
-                # for iter in range(500):
-                for i, arg in enumerate(api.args):
-                    for r in rules:
+                for c1 in range(500):
+                    for i, arg in enumerate(api.args):
+                        for r in rules:
 
-                        print(
-                            "########################################################################################################################"
-                        )
-                        print(
-                            "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(
-                                api_name, arg, r
+                            print(
+                                "########################################################################################################################"
                             )
-                        )
-                        print(
-                            "########################################################################################################################"
-                        )
-                        old_arg = copy.deepcopy(api.args[arg])
-                        api.new_mutate_multiple(api.args[arg], r)
-                        MyTorch.test_with_oracle(api, OracleType.CRASH)
-                        api.args[arg] = old_arg
-                        # if cuda_oracle:
-                        #     MyTorch.test_with_oracle(api, OracleType.CUDA)
-                        # if precision_oracle:
-                        #     MyTorch.test_with_oracle(api, OracleType.PRECISION)
+                            print(
+                                "The current API under test: ###{0}###. Mutating the parameter ###{1}### using the rule ###{2}###".format(
+                                    api_name, arg, r
+                                )
+                            )
+                            print(
+                                "########################################################################################################################"
+                            )
+                            old_arg = copy.deepcopy(api.args[arg])
+                            api.new_mutate_multiple(api.args[arg], r)
+                            MyTorch.test_with_oracle(api, OracleType.CRASH)
+                            api.args[arg] = old_arg
+                            if cuda_oracle:
+                                MyTorch.test_with_oracle(api, OracleType.CUDA)
+                            # if precision_oracle:
+                            #     MyTorch.test_with_oracle(api, OracleType.PRECISION)
         except Exception as e:
             print(e)

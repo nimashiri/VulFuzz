@@ -21,6 +21,8 @@ if __name__ == "__main__":
     config_name = sys.argv[1]
     library = sys.argv[2]
     api_name = sys.argv[3]
+    index = sys.argv[4]
+    tool_name = sys.argv[5]
 
     # config_name = "/media/nimashiri/SSD/FSE23_2/fuzzing/config/expr.conf"
     # library = "torch"
@@ -104,8 +106,8 @@ if __name__ == "__main__":
             "########################################################################################################################"
         )
         print(
-            "The current API under test: ###{0}###. Mutating the parameter ###### using the rule #####".format(
-                api_name
+            "The current API under test: ###{0}###. Index: {1} #####, Tool: {2}".format(
+                api_name, index, tool_name
             )
         )
         print(

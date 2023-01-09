@@ -107,7 +107,7 @@ def pre_run_check(api_):
 
 def run_fuzzer():
     dbname = "TF"
-    tool = "orion"
+    tool = "FreeFuzz"
     tf_output_dir = "/media/nimashiri/SSD/testing_results"
 
     if not os.path.exists(tf_output_dir):
@@ -119,7 +119,7 @@ def run_fuzzer():
 
     data = mydb.list_collection_names()
     for i, api_ in enumerate(data):
-        print("API {}/{}".format(i, len(data)))
+        # print("API {}/{}".format(i, len(data)))
         # api_ = 'tensorflow.python.ops.array_ops.batch_gather_nd'
         if not pre_run_check(api_):
             skip_flag = find_skip_list(api_)
@@ -132,6 +132,8 @@ def run_fuzzer():
                                 "/media/nimashiri/SSD/FSE23_2/fuzzing/orion_main.py",
                                 "TF",
                                 api_,
+                                str(i),
+                                tool,
                             ],
                             shell=False,
                             timeout=100,
@@ -144,6 +146,8 @@ def run_fuzzer():
                                 config_name,
                                 "tf",
                                 api_,
+                                str(i),
+                                tool,
                             ],
                             shell=False,
                             timeout=100,
